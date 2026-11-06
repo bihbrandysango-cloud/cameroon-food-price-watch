@@ -1,73 +1,66 @@
 # Cameroon Food Price Watch
 
-A data pipeline that tracks maize, rice and cassava prices in Cameroonian markets every month and flags prices that are unusually high or unusually low for the time of year.
+Food prices in Cameroon swing sharply, and the families who buy food and the farmers who sell it usually find out too late to react. This project is an automated pipeline that collects World Food Programme prices for 76 markets every month, cleans and tests them, flags prices that are far from normal for the season in both directions, forecasts next month, and shows it all in a Power BI report written for non-technical readers. It found that maize is in a price crash, with 15 of 18 markets well below normal in September 2026, and it caught recording errors in WFP's own data.
 
-**Status:** in progress. Step 1 (data fetch) is built and tested.
+![This month page](docs/screenshots/01-this-month.png)
 
-## The problem
+| | |
+|---|---|
+| **Data** | 68,996 WFP price records, Jan 2017 to Sep 2026, 76 markets, 54 foods |
+| **Engineering** | Python API ingestion, DuckDB warehouse, dbt models, 24 data checks, monthly GitHub Actions run |
+| **Science** | Seasonal anomaly detection, gradient-boosted forecast with walk-forward backtest |
+| **Report** | Seven-page Power BI report built as a PBIP project from code |
+| **Tests** | 21 code tests and 24 data checks, all passing |
 
-Food prices in Cameroon move sharply. In 2024 a kilo of white maize cost about 300 FCFA at the national median. By September 2026 it was about 150 FCFA. A jump hurts families who buy food. A crash hurts farmers who paid for seed and fertiliser at last year's prices. Both usually get noticed late.
+## The question
 
-Some rise every year is normal: prices climb in the lean season before harvest. The question this project answers is narrower: **is this market's price far from what it usually is in this month?**
+Can public market data warn people early when a food price is unusually high or unusually low for the time of year, and can next month's price be predicted well enough to help?
+
+Some rise every year is normal: prices climb in the lean season before the harvest. So the real question for each price is narrower: **is this market's price far from what it usually is in this month?**
 
 ## The data
 
-[WFP food prices for Cameroon](https://data.humdata.org/dataset/wfp-food-prices-for-cameroon), published by the World Food Programme on the Humanitarian Data Exchange (HDX), licence CC BY-IGO. The pipeline reads it through [HDX HAPI](https://hapi.humdata.org/docs), the Humanitarian API, which is built for programs like this one.
+[WFP food prices for Cameroon](https://data.humdata.org/dataset/wfp-food-prices-for-cameroon), published by the World Food Programme on the Humanitarian Data Exchange (HDX), licence CC BY-IGO. The pipeline reads it through [HDX HAPI](https://hapi.humdata.org/docs), HDX's official API for programs.
 
 - 68,996 price records, January 2017 to September 2026 (HAPI's coverage; the HDX file goes back to 2005)
-- 76 markets in 9 regions, 54 commodities
-- Retail and wholesale prices in FCFA, with local units (kg, 15 kg, 100 kg bags)
+- 76 markets in 9 regions, 54 foods, retail and wholesale, in FCFA
+- Many pack sizes: maize alone is priced per kg and per 15, 18, 90 and 100 kg bag
 
-Limits worth knowing:
-- WFP is collecting less. About 16,000 prices were recorded in 2023 and about 4,000 in the first nine months of 2026.
-- Many markets in the Centre, Littoral and South-West have only a few years of history, so "normal for this month" can't be calculated for them yet. Starting in 2017 also means the baseline covers about nine years, not twenty.
-- Several markets have stopped reporting. In Fako, Limbé has 77 months of prices (February 2019 to December 2025, 93% complete) and Tiko, Mutengene and Muea have 2022 to 2025, but none of them has reported since December 2025. Their alerts stop there.
+Limits of the data:
+- WFP is collecting less: about 16,000 prices in 2023, about 4,000 in the first nine months of 2026.
+- Only 29 of 76 markets reported in September 2026. Limbé reported for 77 months, then stopped after December 2025, as did Tiko, Mutengene and Muea.
+- Many markets in the Centre, Littoral and South-West have only a few years of history.
 
-## How it works
+## The method
 
-| Step | What it does | Status |
-|---|---|---|
-| 1. Fetch | Pulls prices from HDX HAPI each month, checks them, merges in new and corrected rows, and saves only when something changed | Done |
-| 2. Clean and store | dbt models in DuckDB: every price in one unit, suspect prices flagged, gaps per market measured, 14 data tests | Done |
-| 3. Community data | Prices collected by hand in Limbé, where WFP stopped reporting after December 2025, added as a second source | Later, after the core pipeline |
-| 4. Alerts | Price compared with the same month in earlier years, flagged both ways | Done |
-| 5. Forecast | Next month's price per market and food, with a likely range, backtested against simple guesses | Done |
-| 6. Dashboard | Power BI: map of markets, price trends, this month's alerts | Planned |
+```
+HDX HAPI ──> 1. Fetch ──> 2. Clean and store ──> 3. Alerts ──> 4. Forecast ──> 5. Export ──> Power BI
+            (Python)      (dbt + DuckDB)         (dbt)          (scikit-learn)   (CSV)
+                          GitHub Actions runs all of it on the 10th of each month
+```
 
-### Step 1 in detail
+**1. Fetch** (`src/ingest/fetch_wfp.py`). Downloads prices from HAPI in pages of 2,000 rows and retries pages that arrive cut off. After the first full download it re-fetches only the last six months, because WFP sometimes corrects recent prices, and merges them in. Each run is recorded in `data/raw/manifest.json` with row counts and a SHA-256 fingerprint; if nothing changed, nothing is saved. The HDX file link blocks scripts with a bot check, so the pipeline uses HAPI, HDX's supported route.
 
-`src/ingest/fetch_wfp.py` downloads prices from HAPI in pages of 2,000 rows and retries pages that arrive cut off. The first run takes the full history. After that it takes only the last six months, because WFP sometimes corrects recent prices, and merges them in: new rows are added and corrected rows replace old ones. Every price must be a positive number. If the result is identical to the last save, nothing is written. Each save is recorded in `data/raw/manifest.json` with the time, mode, row counts, date range and a SHA-256 hash.
-
-A GitHub Actions workflow (`.github/workflows/monthly-fetch.yml`) runs the tests and the fetch on the 10th of each month and commits new data.
-
-Why HAPI and not the HDX file link: HDX's firewall answers scripted file downloads with a bot check. HAPI is HDX's supported route for programs.
-
-### Step 2 in detail
-
-WFP records the same food in many sizes. In Maroua in September 2024, white maize was 350 FCFA per kg retail and 35,000 FCFA per 100 kg bag wholesale: the same price per kilo. A computer comparing 350 with 35,000 would get it badly wrong, so the dbt project in `transform/` puts every price into one unit before anything is compared.
+**2. Clean and store** (`transform/`, dbt on DuckDB). In Maroua in September 2024, maize was 350 FCFA per kg retail and 35,000 per 100 kg bag: the same price. The staging model reads the pack size from the unit and converts every price to FCFA per kg (per litre for oil, per piece for eggs). Prices more than 3 times above or below the national median for that food and month are flagged as suspect and kept out of the alerts. Twenty-four data checks run on every build and stop the monthly job if one fails.
 
 | Table | What's in it |
 |---|---|
-| `stg_wfp__prices` (view) | Every raw price with its pack size read from the unit ("100 KG" is 100) and turned into FCFA per kg, per litre (oils, milk) or per piece (eggs). Daily wages are left out |
-| `fct_monthly_prices` | One price per market, food, price type and month, next to the national median for the same food and month. Prices more than 3 times above or below that median, where at least 3 markets reported, are flagged `is_suspect_price` |
-| `dim_markets` | One row per market: location, first and last month, months with prices, missing months, coverage, and whether it still reports |
+| `stg_wfp__prices` | Every raw price converted to a standard unit |
+| `fct_monthly_prices` | One price per market, food, price type and month, with the national median and a suspect flag |
+| `fct_price_alerts` | Each price against its seasonal normal, with an alert level |
+| `dim_markets` | Each market's location, first and last month, coverage and whether it still reports |
 
-Suspect prices are flagged, not deleted. Some are real: Kousseri, on the Chad border, recorded retail maize at 1,200 FCFA/kg in September 2024, 3.5 times the national median. Others are clearly recording mistakes: in April 2024 several Yaoundé and Douala markets list fresh cassava at 3,000 to 6,400 FCFA "per kg" and rice at 47,000, which look like bag prices entered with the unit "KG". 1,052 of 68,625 prices (1.5%) are flagged.
+**3. Seasonal alerts** (`fct_price_alerts`). Each price is compared with the median for the same market, food, price type and calendar month in the previous five years, using earlier years only, so an alert knows only what someone would have known at the time. 20% from normal is a watch, 40% is an alert, upwards and downwards. A market needs three earlier years for that month before it's judged. Two tests guard the logic, including one that proves no same-year or future data is used.
 
-Coverage is uneven. 29 of 76 markets reported in September 2026, and the average market has prices in 78% of the months it was tracked. Maroua has 98%; Buea has 82%.
+**4. Forecast** (`src/forecast/forecast_prices.py`). A gradient-boosted tree model (scikit-learn) predicts next month's price for every market, food and price type, using recent moves, last year's move, the national trend, the month, the food and the region. It was tested month by month over October 2025 to September 2026, each time trained only on data from before the month it predicted, and compared with two simple guesses. Its forecast is published as a likely range taken from its own past errors.
 
-Data tests run on every build and stop the monthly job if they fail: required fields present, only known price types and units, no duplicate price for a market, food and month, no zero or negative prices, and wholesale prices per kg never more than 5 times the same market's retail price (which would mean a bag price wasn't divided).
+**5. Report** (`powerbi/`). A seven-page Power BI report generated by `powerbi/build/build_pbip.py`: a data model with about 100 DAX measures, a Green Sidebar design, and three colours that are safe for colour-blind readers (red = too expensive, grey = normal, blue = too cheap).
 
-### Step 4 in detail
+## What I found
 
-Prices move with the seasons. In Maroua, white maize is usually about 400 FCFA/kg in August, just before the harvest, and 250 to 300 in November and December, just after it. Comparing every month with one yearly average would raise an alarm every August and miss trouble in December. So `fct_price_alerts` compares each price with the **same market, food, price type and calendar month in the last five earlier years**:
+**Maize is in a price crash.** In September 2026, 15 of 18 markets with enough history sold maize well below normal and none above. Mokolo was 65% below its usual September price, Garoua 52% and Maroua 40%. Red and white sorghum fell with it; yam, potatoes and dried fish went up. Good news for families who buy maize, hard for farmers selling below what seed and fertiliser cost.
 
-1. "Normal" is the median of those earlier prices. It uses earlier years only, never the same or later ones, so the alert only knows what someone would have known at the time. The median keeps one extreme year from moving it, and the five-year limit keeps old, pre-inflation prices from making today's look high.
-2. With fewer than 3 earlier years for that month, the price is marked "not enough history" instead of guessed.
-3. The gap from normal sets the level: within 20% is normal, 20 to 40% is watch, 40% or more is alert, both upwards and downwards. Thresholds live in `transform/dbt_project.yml`.
-4. Suspect prices from step 2 are left out, so a recording mistake can't raise an alarm.
-
-Checked against what happened in Maroua (retail white maize):
+**The alerts catch what really happened.** Retail white maize in Maroua:
 
 | Month | Price | Normal | Gap | Level |
 |---|---|---|---|---|
@@ -75,64 +68,90 @@ Checked against what happened in Maroua (retail white maize):
 | February 2026 (price crash) | 134 | 350 | −62% | alert low |
 | September 2026 | 200 | 334 | −40% | alert low |
 
-Across maize, imported rice and fresh cassava, high alerts cluster in 2022 to 2024 (126, 161 and 145 a year), when food inflation was high. In 2026 that flips: 80 low alerts and 2 high, matching the maize price crash reported in the news. `rpt_current_alerts` lists the latest month's 158 prices outside the normal range, furthest first.
+Across maize, imported rice and fresh cassava, high alerts cluster in 2022 to 2024, when food inflation was high; in 2026 it flips to 80 low alerts against 2 high.
 
-Limits, stated plainly:
-- 78% of prices can't be judged yet, mostly because WFP's coverage only became dense from 2021. This share falls each year as history builds up.
-- "Normal" isn't adjusted for general inflation. The five-year limit helps less than it sounds today: the data starts in 2017 and is thin before 2021, so for 2022 to 2024 the last five years are nearly all the history there is (it cut all-food high alerts from 2,832 to 2,670). It will matter more as years accumulate. The proper fix is adjusting prices with Cameroon's consumer price index, a planned improvement.
+**Forecasting one month ahead is hard, and the model says so.** Over 5,136 test predictions:
 
-Two tests guard the logic: a market's first year for a food can never get an alert (proof that no future or same-year data is used), and every level must agree with its gap and the thresholds.
+| Method | Typical error | Within 10% | Direction right when the price moved over 10% |
+|---|---|---|---|
+| Next month = this month | 3.2% | 69% | (never predicts a move) |
+| Copy last year's move | 5.6% | 63% | 29% |
+| Gradient-boosted model | 3.4% | 70% | 58% |
 
-### Step 5 in detail
+The model is no more accurate than assuming the price stays the same, because 35% of prices don't change from one month to the next. Where it helps is direction: when prices really moved, it called up or down right 58% of the time. That's why the report shows a likely range (about 14% below to 18% above the estimate) and never one exact number.
 
-`src/forecast/forecast_prices.py` predicts next month's price for every market, food and price type, and checks itself honestly first. Three methods are compared over the last 12 months (October 2025 to September 2026, 5,136 predictions), each retrained every month on data from before the month it predicts:
+**The source data has errors, and the checks found them.** In September 2023 many markets jump 3 to 10 times and drop back the next month, most likely a recording error. In April 2024 several Yaoundé and Douala markets list fresh cassava at up to 6,400 FCFA "per kg", which are bag prices entered as kg. In all, 1,052 prices (1.5%) are flagged and left out of the alerts and forecasts.
 
-| Method | How it guesses | Median error | Within 10% | Direction right when price moved >10% |
-|---|---|---|---|---|
-| Naive | Next month = this month | 3.2% | 69% | (never predicts a move) |
-| Seasonal naive | This month × last year's move between the same two months | 5.6% | 63% | 29% |
-| Model | Gradient-boosted trees (scikit-learn) on recent moves, last year's move, the national trend for that food, month, food and region | 3.4% | 70% | 58% |
+## Limitations
 
-The honest reading: one month ahead, **the model is no more accurate than assuming the price stays the same.** Prices are sticky: in 35% of cases the price didn't change at all. Where it helps is direction. In the 1,611 cases where the price moved more than 10%, the model called up or down correctly 58% of the time, against 29% for last year's pattern. Seasonal patterns alone are a poor guide in these years of inflation and then a crash.
+- "Normal" isn't adjusted for general inflation yet. Deflating prices with Cameroon's consumer price index is the next improvement.
+- 78% of prices can't be judged yet, because markets need three years of history for that month.
+- The suspect-price check compares markets within the same month, so it misses an error that hits every market at once, like September 2023. Comparing each price with the same market's previous month would catch it.
+- One month is a short horizon. A longer horizon, or adding rainfall and exchange-rate data, may help the forecast.
+- WFP's shrinking coverage means some months and markets have gaps.
 
-So read the forecast as a **likely range**. The range comes from the model's own backtest errors and holds 80% of past outcomes (roughly 14% below to 18% above the forecast). Each forecast is then compared with the seasonal normal for the coming month, using the same rules as step 4, to give an early warning.
+## The report
 
-October 2026 forecast for retail white maize: prices are expected to stay far below normal across the north. Garoua (156 FCFA/kg against a normal 293), Ngaoundéré, Kaele, Kousseri and Banyo come out as alert low, and Maroua as watch low (201 against 325). That points to another hard month for farmers, not for buyers. Of 438 forecasts, 46 are alert or watch high, 89 alert or watch low, and 122 have too little history to judge.
+| Page | What it answers |
+|---|---|
+| 1. This month | Is anything wrong with prices right now? KPI cards, market map, gap by market, spotlight, markets to watch |
+| 2. Markets | What's happening in one market over time, against its usual price |
+| 3. Foods | Which foods are cheaper or dearer than normal across markets |
+| 4. Regions | Which regions are furthest from normal |
+| 5. Next month | Likely price range for each market, and expected alerts |
+| 6. Data quality | Suspect prices, coverage, and known problems in the source data |
+| 7. Method | How it works and its limits, in plain words |
 
-Outputs: `data/outputs/forecast_next_month.csv` (also the `forecast_next_month` warehouse table) and `reports/forecast_backtest.json` with all the scores. Tests check that gaps in a series stay gaps, that features only use the past, that last year's move lines up with the month being forecast, and that the alert rules match dbt's.
+Screenshots of every page are in `docs/screenshots/`. A walkthrough of the engineering and science work, with outputs, is in `docs/behind-the-dashboard.html`.
 
-## How to run
+## Reproduce it
 
-Requires Python 3.10 or later. Step 1 uses only the standard library; steps 2 to 5 need DuckDB, dbt, pandas and scikit-learn (`requirements.txt`). A virtual environment keeps them separate from other projects:
+Requires Python 3.10 or later.
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-```
-
-HAPI asks each app to identify itself with base64 of `app_name:email`. Set it as an environment variable (and as the repository secret `HAPI_APP_IDENTIFIER` for GitHub Actions):
-
-```bash
-export HAPI_APP_IDENTIFIER=$(printf 'your-app-name:you@example.com' | base64)
-```
-
-```bash
+source .venv/bin/activate                     # Windows: .venv\Scripts\activate
 pip install -r requirements.txt -r requirements-dev.txt
-python -m pytest -q
-python -m src.ingest.fetch_wfp           # update the last six months
-python -m src.ingest.fetch_wfp --full    # rebuild the whole history
 
-# Steps 2 to 4: build and test the warehouse (run from the repository root)
-dbt build --project-dir transform --profiles-dir transform
+# HAPI asks each app to identify itself: base64 of "app_name:email"
+export HAPI_APP_IDENTIFIER=$(printf 'your-app-name:you@example.com' | base64)
 
-# Step 5: backtest and forecast next month
-python -m src.forecast.forecast_prices
+python -m pytest -q                                          # 21 code tests
+python -m src.ingest.fetch_wfp --full                        # 1. fetch the whole history
+dbt build --project-dir transform --profiles-dir transform   # 2-3. warehouse, alerts, 24 data checks
+python -m src.forecast.forecast_prices                       # 4. backtest and forecast
+python -m src.export.export_powerbi                          # 5. tables for Power BI
+python powerbi/build/build_pbip.py                           # build the Power BI project
 ```
 
-The warehouse is one file, `data/warehouse/food_prices.duckdb`. It's rebuilt from `data/raw` on every run, so it isn't committed.
+Open `powerbi/Cameroon Food Price Watch.pbip` in Power BI Desktop. If your copy of the repository is in a different folder, change the `DataFolder` parameter (Transform data > Edit parameters) to your `powerbi/data/` folder, then refresh.
 
-## Credits
+For the monthly run on GitHub, add the repository secret `HAPI_APP_IDENTIFIER`.
 
-Data: World Food Programme, via HDX. The idea of a WFP price analysis came from [osulayman/nigeria-food-price-analysis](https://github.com/osulayman/nigeria-food-price-analysis). This project is written from scratch and adds automation, Cameroon coverage, community data and alerts.
+## Repository structure
+
+```
+src/ingest/fetch_wfp.py          fetch from HDX HAPI
+transform/                       dbt project: models and data tests
+src/forecast/forecast_prices.py  forecast and backtest
+src/export/export_powerbi.py     CSV tables for Power BI
+powerbi/                         Power BI project, its data, and the code that builds it
+data/raw/                        downloaded prices and the fetch manifest
+data/outputs/                    next month's forecast
+reports/forecast_backtest.json   every forecast score
+tests/                           code tests
+docs/                            walkthrough and screenshots
+.github/workflows/               the monthly run
+```
+
+## Sources
+
+- World Food Programme, Cameroon food prices, via [HDX HAPI](https://hapi.humdata.org) (CC BY-IGO).
+- [WFP DataViz](https://dataviz.vam.wfp.org/western-africa/cameroon/economic/prices), the official price dashboard (with its ALPS spike alert). This project complements it with low-price alerts, a tested forecast range and data-quality flags.
+- Inspiration only, no code reused: [osulayman/nigeria-food-price-analysis](https://github.com/osulayman/nigeria-food-price-analysis).
+
+## Tech stack
+
+Python · HDX HAPI · DuckDB · dbt · pandas · scikit-learn · pytest · GitHub Actions · Power BI (PBIP, DAX)
 
 Built by [Bih Brandy Sango](https://github.com/bihbrandysango-cloud).
