@@ -14,6 +14,11 @@ vars:
   outlier_ratio: 3
   # The national median only counts when at least this many markets report
   min_markets_for_median: 3
+  # Seasonal alerts (step 4). "Normal" is the median price for the same market,
+  # food, price type and calendar month in earlier years only.
+  min_years_history: 3   # fewer earlier years than this: "not enough history"
+  watch_threshold: 0.20  # 20% or more away from normal: watch
+  alert_threshold: 0.40  # 40% or more away from normal: alert
 
 models:
   food_price_watch:

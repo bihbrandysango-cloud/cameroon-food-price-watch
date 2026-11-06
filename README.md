@@ -30,7 +30,7 @@ Limits worth knowing:
 | 1. Fetch | Pulls prices from HDX HAPI each month, checks them, merges in new and corrected rows, and saves only when something changed | Done |
 | 2. Clean and store | dbt models in DuckDB: every price in one unit, suspect prices flagged, gaps per market measured, 14 data tests | Done |
 | 3. Community data | Prices collected by hand in Limbe markets, added as a second source | Later, after the core pipeline |
-| 4. Alerts | Price compared with the same month in past years, flagged both ways | Planned |
+| 4. Alerts | Price compared with the same month in earlier years, flagged both ways | Done |
 | 5. Forecast | Next month's price per market and commodity | Planned |
 | 6. Dashboard | Power BI: map of markets, price trends, this month's alerts | Planned |
 
@@ -57,6 +57,31 @@ Suspect prices are flagged, not deleted. Some are real: Kousseri, on the Chad bo
 Coverage is uneven. 29 of 76 markets reported in September 2026, and the average market has prices in 78% of the months it was tracked. Maroua has 98%; Buea has 82%.
 
 Data tests run on every build and stop the monthly job if they fail: required fields present, only known price types and units, no duplicate price for a market, food and month, no zero or negative prices, and wholesale prices per kg never more than 5 times the same market's retail price (which would mean a bag price wasn't divided).
+
+### Step 4 in detail
+
+Prices move with the seasons. In Maroua, white maize is usually about 400 FCFA/kg in August, just before the harvest, and 250 to 300 in November and December, just after it. Comparing every month with one yearly average would raise an alarm every August and miss trouble in December. So `fct_price_alerts` compares each price with the **same market, food, price type and calendar month in earlier years**:
+
+1. "Normal" is the median of those earlier prices. It uses earlier years only, never the same or later ones, so the alert only knows what someone would have known at the time. The median keeps one extreme year from moving it.
+2. With fewer than 3 earlier years for that month, the price is marked "not enough history" instead of guessed.
+3. The gap from normal sets the level: within 20% is normal, 20 to 40% is watch, 40% or more is alert, both upwards and downwards. Thresholds live in `transform/dbt_project.yml`.
+4. Suspect prices from step 2 are left out, so a recording mistake can't raise an alarm.
+
+Checked against what happened in Maroua (retail white maize):
+
+| Month | Price | Normal | Gap | Level |
+|---|---|---|---|---|
+| June 2024 (lean season) | 563 | 342 | +65% | alert high |
+| February 2026 (price crash) | 134 | 350 | −62% | alert low |
+| September 2026 | 200 | 317 | −37% | watch low |
+
+Across maize, imported rice and fresh cassava, high alerts cluster in 2022 to 2024 (126, 203 and 177 a year), when food inflation was high. In 2026 that flips: 80 low alerts and 4 high, matching the maize price crash reported in the news. `rpt_current_alerts` lists the latest month's 164 prices outside the normal range, furthest first.
+
+Limits, stated plainly:
+- 78% of prices can't be judged yet, mostly because WFP's coverage only became dense from 2021. This share falls each year as history builds up.
+- "Normal" isn't adjusted for general inflation. After several years of rising prices, a price can look high partly because everything costs more. Comparing only with recent years, or adjusting with Cameroon's consumer price index, would tighten this.
+
+Two tests guard the logic: a market's first year for a food can never get an alert (proof that no future or same-year data is used), and every level must agree with its gap and the thresholds.
 
 ## How to run
 

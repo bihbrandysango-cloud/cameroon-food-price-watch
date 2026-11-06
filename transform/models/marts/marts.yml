@@ -16,3 +16,18 @@ models:
         tests: [unique, not_null]
       - name: coverage
         description: Share of months between first and last report that have a price.
+
+  - name: fct_price_alerts
+    description: Every price (suspect ones left out) compared with the median for the same market, food, price type and calendar month in earlier years, and given an alert level in both directions.
+    columns:
+      - name: alert_level
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["normal", "watch high", "watch low", "alert high", "alert low", "not enough history"]
+      - name: years_of_history
+        tests: [not_null]
+
+  - name: rpt_current_alerts
+    description: The latest month's prices outside the normal range, furthest from normal first.
