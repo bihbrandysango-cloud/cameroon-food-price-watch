@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Page Background</title>
+<!-- Renders a Power BI page background (1280x720) in the Green Stalk design.
+     Open with ?page=overview (default). Screenshot with headless Chrome; see powerbi/build/render_images.ps1. -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+  html, body { margin:0; width:1280px; height:720px; overflow:hidden; background:#0C2614; font-family:Outfit, sans-serif; color:#EAF3DF; }
+  svg { position:absolute; inset:0; }
+</style>
+</head>
+<body>
+<svg id="bg" width="1280" height="720" viewBox="0 0 1280 720"></svg>
+<script>
+const PAGES = {
+  // panels: [x, y, w, h, title, subtitle]
+  overview: {
+    active: 0,
+    panels: [
+      [34, 124, 300, 250, "This month", ""],
+      [34, 388, 300, 306, "Spotlight", "Market furthest from normal"],
+      [350, 124, 400, 570, "Market map", ""],
+      [766, 124, 480, 570, "Gap from normal, by market", "This month, against the same month in the last five years"],
+    ],
+    legend: [362, 170],
+  },
+};
+const page = PAGES[new URLSearchParams(location.search).get("page") || "overview"];
+const bg = d3.select("#bg");
+
+function rng(seed) { return () => (seed = (seed * 16807) % 2147483647) / 2147483647; }
+function plant(g, x, base, h, o) {
+  const r = o.rand, lean = (r() - .5) * h * .08, top = base - h;
+  const p = g.append("g").attr("opacity", o.opacity ?? 1);
+  p.append("path").attr("d", `M${x},${base} C${x + lean * .3},${base - h * .4} ${x + lean * .8},${base - h * .75} ${x + lean},${top}`)
+    .attr("stroke", o.stalk).attr("stroke-width", Math.max(2, h * .028)).attr("fill", "none").attr("stroke-linecap", "round");
+  const nLeaves = 5 + Math.floor(r() * 3);
+  for (let i = 0; i < nLeaves; i++) {
+    const t = .18 + i * (.7 / nLeaves), side = i % 2 ? 1 : -1;
+    const sx = x + lean * t, sy = base - h * t, len = h * (.42 - t * .18) * (.85 + r() * .3);
+    const ex = sx + side * len, ey = sy + len * (.15 + r() * .25), cx1 = sx + side * len * .45, cy1 = sy - len * .42, wdt = Math.max(3, h * .035);
+    p.append("path").attr("d", `M${sx},${sy} Q${cx1},${cy1 - wdt} ${ex},${ey} Q${cx1},${cy1 + wdt} ${sx},${sy + wdt * .6} Z`).attr("fill", i % 3 === 0 ? o.leafLight : o.leaf);
+  }
+  const tx = x + lean;
+  for (let k = -3; k <= 3; k++) p.append("path").attr("d", `M${tx},${top} q${k * h * .018},${-h * .05} ${k * h * .03},${-h * .02}`).attr("stroke", o.tassel).attr("stroke-width", Math.max(1, h * .006)).attr("fill", "none");
+  if (o.cob) {
+    const ct = .45 + r() * .12, cxp = x + lean * ct, cyp = base - h * ct, side = r() > .5 ? 1 : -1, cl = h * .17;
+    const cg = p.append("g").attr("transform", `translate(${cxp + side * h * .03},${cyp}) rotate(${side * 22})`);
+    cg.append("ellipse").attr("rx", cl * .23).attr("ry", cl * .5).attr("cy", -cl * .45).attr("fill", o.cobColor);
+    for (let rr = 0; rr < 6; rr++) for (let kk = -1; kk <= 1; kk++) cg.append("circle").attr("cx", kk * cl * .1).attr("cy", -cl * .78 + rr * cl * .13).attr("r", cl * .035).attr("fill", "rgba(120,80,0,.25)");
+    cg.append("path").attr("d", `M0,0 C${-cl * .4},${-cl * .3} ${-cl * .35},${-cl * .7} ${-cl * .1},${-cl * .95} C${-cl * .2},${-cl * .5} ${-cl * .05},${-cl * .25} 0,0Z`).attr("fill", o.leaf);
+    cg.append("path").attr("d", `M0,0 C${cl * .4},${-cl * .3} ${cl * .35},${-cl * .7} ${cl * .1},${-cl * .95} C${cl * .2},${-cl * .5} ${cl * .05},${-cl * .25} 0,0Z`).attr("fill", o.leafLight);
+  }
+}
+function field(rows) {
+  rows.forEach(rw => { const g = bg.append("g"), r = rng(rw.seed);
+    for (let x = -20; x < 1320; x += rw.gap * (0.8 + r() * .4)) plant(g, x, rw.base + (r() - .5) * 8, rw.h * (0.85 + r() * .3), { ...rw, rand: r, cob: r() < rw.cobRate }); });
+}
+
+// sky glow and sweeping leaves
+const gr = bg.append("defs").append("radialGradient").attr("id", "glow").attr("cx", "70%").attr("cy", "0%").attr("r", "80%");
+[["0%", "#1F4F25"], ["100%", "#0A2011"]].forEach(([o, c]) => gr.append("stop").attr("offset", o).attr("stop-color", c));
+bg.append("rect").attr("width", 1280).attr("height", 720).attr("fill", "url(#glow)");
+const leaf = (d, c, op) => bg.append("path").attr("d", d).attr("fill", c).attr("opacity", op);
+leaf("M-60,760 C200,520 420,360 760,330 C520,420 300,560 120,760Z", "#174A26", .9);
+leaf("M1340,760 C1100,560 980,380 640,250 C900,420 1060,560 1180,760Z", "#1A5A2C", .8);
+leaf("M300,760 C380,560 560,420 900,470 C640,500 480,600 420,760Z", "#123D20", .9);
+leaf("M-40,200 C180,160 360,60 560,-20 C400,120 220,230 -40,290Z", "#143F22", .8);
+leaf("M1320,120 C1120,170 940,120 820,-30 C980,60 1120,90 1320,40Z", "#174A26", .7);
+field([
+  { seed: 5, base: 740, h: 480, gap: 64, stalk: "#1A4A26", leaf: "#1C5029", leafLight: "#22592E", tassel: "#C9A22A", cobColor: "#D9AE1C", cobRate: .4, opacity: .75 },
+  { seed: 19, base: 770, h: 330, gap: 52, stalk: "#225C2F", leaf: "#26652F", leafLight: "#2F7838", tassel: "#E8B92C", cobColor: "#F5C518", cobRate: .55, opacity: .9 },
+]);
+const edge = rng(41);
+[[8, 760, 600], [1268, 760, 600], [20, 790, 420], [1250, 790, 440]].forEach(([x, b, h]) =>
+  plant(bg.append("g"), x, b, h, { rand: edge, stalk: "#2A6B37", leaf: "#2F7A3B", leafLight: "#3B8C45", tassel: "#F5C518", cobColor: "#F5C518", cob: true }));
+const t = rng(7);
+for (let i = 0; i < 26; i++) { const x = 30 + i * 49 + t() * 20, len = 30 + t() * 40;
+  for (let k = -3; k <= 3; k++) bg.append("path").attr("d", `M${x},-4 q${k * 4},${len * .6} ${k * 9},${len}`).attr("stroke", "#F5C518").attr("stroke-width", 1.3).attr("fill", "none").attr("opacity", .35 + t() * .4); }
+
+// header: cob logo, title, page tabs (Power BI buttons sit on top of the tabs later)
+const logo = bg.append("g").attr("transform", "translate(34,62) scale(1.2)");
+logo.append("path").attr("d", "M9 30c-2-6 0-12 4-15M23 30c2-6 0-12-4-15").attr("stroke", "#7DBB4A").attr("stroke-width", 2.2).attr("fill", "none").attr("stroke-linecap", "round");
+logo.append("ellipse").attr("cx", 16).attr("cy", 13).attr("rx", 6.5).attr("ry", 11).attr("fill", "#F5C518");
+for (let r = 0; r < 5; r++) for (let k = 0; k < 3; k++) logo.append("circle").attr("cx", 12.2 + k * 3.8).attr("cy", 5 + r * 3.9).attr("r", 1.3).attr("fill", "rgba(0,0,0,.18)");
+bg.append("text").attr("x", 82).attr("y", 90).attr("font-size", 24).attr("font-weight", 700).attr("fill", "#EAF3DF").text("Cameroon Food Price Watch");
+const tabs = ["This month", "Markets", "Foods", "Regions", "Next month", "Data quality", "Method"];
+let tx = 1246;
+tabs.slice().reverse().forEach((label, ri) => {
+  const i = tabs.length - 1 - ri, w = label.length * 7 + 22; tx -= w;
+  const on = i === page.active;
+  bg.append("rect").attr("x", tx).attr("y", 70).attr("width", w).attr("height", 28).attr("rx", 14)
+    .attr("fill", on ? "#F5C518" : "rgba(9,30,15,.55)").attr("stroke", on ? "none" : "rgba(160,210,110,.35)");
+  bg.append("text").attr("x", tx + w / 2).attr("y", 89).attr("text-anchor", "middle").attr("font-size", 12.5).attr("font-weight", on ? 700 : 500).attr("fill", on ? "#0C2614" : "#CFE3BC").text(label);
+  tx -= 6;
+});
+
+// glass panels with their titles
+page.panels.forEach(([x, y, w, h, title, sub]) => {
+  bg.append("rect").attr("x", x).attr("y", y).attr("width", w).attr("height", h).attr("rx", 18).attr("fill", "rgba(9,30,15,.74)").attr("stroke", "rgba(160,210,110,.22)");
+  bg.append("text").attr("x", x + 18).attr("y", y + 28).attr("font-size", 15).attr("font-weight", 500).attr("fill", "#CFE3BC").text(title);
+  if (sub) bg.append("text").attr("x", x + 18).attr("y", y + 46).attr("font-size", 11.5).attr("fill", "#9FB58F").text(sub);
+});
+
+// map legend: colour = direction, size = strength
+if (page.legend) {
+  const items = [["#E5573E", "Too expensive", 6], ["#F4A462", "Rising", 4.5], ["#7F8A82", "Normal", 4.5], ["#93C6F2", "Falling", 4.5], ["#2F84D8", "Too cheap", 6]];
+  let lx = page.legend[0];
+  items.forEach(([c, l, r]) => { bg.append("circle").attr("cx", lx + 6).attr("cy", page.legend[1]).attr("r", r).attr("fill", c);
+    bg.append("text").attr("x", lx + 15).attr("y", page.legend[1] + 4).attr("font-size", 11).attr("fill", "#CFE3BC").text(l); lx += l.length * 6.2 + 30; });
+  bg.append("text").attr("x", page.legend[0]).attr("y", page.legend[1] + 20).attr("font-size", 10.5).attr("fill", "#9FB58F").text("Big dot = alert (40%+ from normal) · small dot = watch (20–40%)");
+}
+document.body.setAttribute("data-ready", "1");
+</script>
+</body>
+</html>

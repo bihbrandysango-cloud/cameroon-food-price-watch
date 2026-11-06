@@ -1,0 +1,81 @@
+table Markets
+
+	column market_code
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: market_code
+
+	column market
+		dataType: string
+		summarizeBy: none
+		sourceColumn: market
+
+	column region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: region
+
+	column department
+		dataType: string
+		summarizeBy: none
+		sourceColumn: department
+
+	column lat
+		dataType: double
+		formatString: 0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: lat
+
+	column lon
+		dataType: double
+		formatString: 0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: lon
+
+	column first_month
+		dataType: dateTime
+		formatString: mmm yyyy
+		summarizeBy: none
+		sourceColumn: first_month
+
+	column last_month
+		dataType: dateTime
+		formatString: mmm yyyy
+		summarizeBy: none
+		sourceColumn: last_month
+
+	column months_with_prices
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: months_with_prices
+
+	column missing_months
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: missing_months
+
+	column coverage
+		dataType: double
+		formatString: 0%
+		summarizeBy: none
+		sourceColumn: coverage
+
+	column is_reporting_now
+		dataType: boolean
+		summarizeBy: none
+		sourceColumn: is_reporting_now
+
+	partition Markets = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "markets.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    H = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    K = Table.SelectColumns(H,{"market_code","market","region","department","lat","lon","first_month","last_month","months_with_prices","missing_months","coverage","is_reporting_now"}),
+				    T = Table.TransformColumnTypes(K,{{"market_code", Int64.Type},{"market", type text},{"region", type text},{"department", type text},{"lat", type number},{"lon", type number},{"first_month", type date},{"last_month", type date},{"months_with_prices", Int64.Type},{"missing_months", Int64.Type},{"coverage", type number},{"is_reporting_now", type logical}}, "en-US")
+				in
+				    T
+

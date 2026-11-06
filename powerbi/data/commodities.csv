@@ -1,0 +1,53 @@
+commodity_code,commodity,commodity_category
+254,Bananas,vegetables and fruits
+120,Beans (niebe),pulses and nuts
+78,Beans (red),pulses and nuts
+302,Cassava (cossette),cereals and tubers
+291,Cassava (fresh),cereals and tubers
+403,Cassava meal (gari),cereals and tubers
+866,Cocoyam (macabo),cereals and tubers
+886,Cowpeas (Red),pulses and nuts
+92,Eggs,"meat, fish and eggs"
+171,Fish (dry),"meat, fish and eggs"
+744,"Fish (mackerel, fresh)","meat, fish and eggs"
+719,"Fish (tilapia, salted, dried)","meat, fish and eggs"
+105,Garlic,vegetables and fruits
+119,Groundnuts (shelled),pulses and nuts
+118,Groundnuts (unshelled),pulses and nuts
+765,Leafy vegetables,vegetables and fruits
+67,Maize (white),cereals and tubers
+136,Maize (yellow),cereals and tubers
+76,Maize flour,cereals and tubers
+411,Mangoes,vegetables and fruits
+141,Meat (beef),"meat, fish and eggs"
+94,Meat (chicken),"meat, fish and eggs"
+472,"Milk (cow, pasteurized)",milk and dairy
+238,Milk (powder),milk and dairy
+73,Millet,cereals and tubers
+172,Oil (cotton),oil and fats
+62,Oil (palm),oil and fats
+1196,"Oil (palm, refined)",oil and fats
+756,"Oil (vegetable, bulk)",oil and fats
+222,"Oil (vegetable, local)",oil and fats
+690,Okra (dry),vegetables and fruits
+523,Okra (fresh),vegetables and fruits
+173,Onions,vegetables and fruits
+551,Pasta (spaghetti),cereals and tubers
+714,Peppers (dried),vegetables and fruits
+147,Plantains,vegetables and fruits
+83,Potatoes,cereals and tubers
+148,Potatoes (Irish),cereals and tubers
+52,Rice,cereals and tubers
+71,Rice (local),cereals and tubers
+225,"Rice (long grain, imported)",cereals and tubers
+185,Salt,miscellaneous food
+156,Sesame,pulses and nuts
+282,Sorghum (red),cereals and tubers
+135,Sorghum (white),cereals and tubers
+248,Soybeans,pulses and nuts
+97,Sugar,miscellaneous food
+598,Taro,cereals and tubers
+114,Tomatoes,vegetables and fruits
+716,Watermelons,vegetables and fruits
+58,Wheat flour,cereals and tubers
+99,Yam,cereals and tubers

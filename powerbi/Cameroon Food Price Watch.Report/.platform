@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Cameroon Food Price Watch"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0ba5a05c-0524-4f27-8f60-c5ecb0bf838d"
+  }
+}

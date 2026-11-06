@@ -1,0 +1,16 @@
+table PriceType
+
+	column price_type
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: [price_type]
+
+	column 'Price type'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: [Price type]
+
+	partition PriceType = calculated
+		mode: import
+		source = DATATABLE ( "price_type", STRING, "Price type", STRING, { { "retail", "Retail" }, { "wholesale", "Wholesale" } } )

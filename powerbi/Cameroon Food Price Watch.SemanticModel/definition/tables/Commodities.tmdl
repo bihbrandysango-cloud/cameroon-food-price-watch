@@ -1,0 +1,29 @@
+table Commodities
+
+	column commodity_code
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: commodity_code
+
+	column commodity
+		dataType: string
+		summarizeBy: none
+		sourceColumn: commodity
+
+	column commodity_category
+		dataType: string
+		summarizeBy: none
+		sourceColumn: commodity_category
+
+	partition Commodities = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "commodities.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    H = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    K = Table.SelectColumns(H,{"commodity_code","commodity","commodity_category"}),
+				    T = Table.TransformColumnTypes(K,{{"commodity_code", Int64.Type},{"commodity", type text},{"commodity_category", type text}}, "en-US")
+				in
+				    T
+

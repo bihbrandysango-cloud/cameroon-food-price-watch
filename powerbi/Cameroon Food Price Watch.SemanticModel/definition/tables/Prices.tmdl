@@ -1,0 +1,86 @@
+table Prices
+
+	column price_month
+		dataType: dateTime
+		formatString: mmm yyyy
+		summarizeBy: none
+		sourceColumn: price_month
+
+	column market_code
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: market_code
+
+	column commodity_code
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: commodity_code
+
+	column price_type
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: price_type
+
+	column standard_unit
+		dataType: string
+		summarizeBy: none
+		sourceColumn: standard_unit
+
+	column price_per_unit
+		dataType: double
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: price_per_unit
+
+	column normal_price
+		dataType: double
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: normal_price
+
+	column years_of_history
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: years_of_history
+
+	column gap_from_normal
+		dataType: double
+		formatString: +0%;-0%;0%
+		summarizeBy: none
+		sourceColumn: gap_from_normal
+
+	column alert_level
+		dataType: string
+		summarizeBy: none
+		sourceColumn: alert_level
+
+	column direction
+		dataType: string
+		summarizeBy: none
+		sourceColumn: direction
+
+	column strength
+		dataType: string
+		summarizeBy: none
+		sourceColumn: strength
+
+	column alert_order
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: alert_order
+
+	partition Prices = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "prices.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    H = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    K = Table.SelectColumns(H,{"price_month","market_code","commodity_code","price_type","standard_unit","price_per_unit","normal_price","years_of_history","gap_from_normal","alert_level","direction","strength","alert_order"}),
+				    T = Table.TransformColumnTypes(K,{{"price_month", type date},{"market_code", Int64.Type},{"commodity_code", Int64.Type},{"price_type", type text},{"standard_unit", type text},{"price_per_unit", type number},{"normal_price", type number},{"years_of_history", Int64.Type},{"gap_from_normal", type number},{"alert_level", type text},{"direction", type text},{"strength", type text},{"alert_order", Int64.Type}}, "en-US")
+				in
+				    T
+

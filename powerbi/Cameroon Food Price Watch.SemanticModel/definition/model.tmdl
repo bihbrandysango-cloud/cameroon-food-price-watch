@@ -1,0 +1,15 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+ref table Prices
+ref table Markets
+ref table Commodities
+ref table PriceType
+ref table Calendar
+ref table Forecast
+ref table _Measures

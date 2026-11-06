@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Map Outline</title>
+<!-- Cameroon outline for the scatter-chart map's plot-area image.
+     The image spans exactly longitude 8.0 to 16.6 and latitude 1.5 to 13.2 with a
+     straight (unprojected) scale, so it lines up with the scatter axes set to the
+     same ranges. 100 px per degree: 860 x 1170. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<style> html, body { margin:0; width:860px; height:1170px; overflow:hidden; background:transparent; } </style>
+</head>
+<body>
+<svg id="m" width="860" height="1170"></svg>
+<script>
+const LON = [8.0, 16.6], LAT = [1.5, 13.2], W = 860, H = 1170;
+const toXY = ([lon, lat]) => [(lon - LON[0]) / (LON[1] - LON[0]) * W, (LAT[1] - lat) / (LAT[1] - LAT[0]) * H];
+const path = d3.geoPath(d3.geoTransform({ point(x, y) { const [a, b] = toXY([x, y]); this.stream.point(a, b); } }));
+d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json").then(w => {
+  const all = topojson.feature(w, w.objects.countries).features;
+  const cmr = all.find(f => f.id === "120");
+  const svg = d3.select("#m");
+  // neighbours, faint, for context
+  svg.append("g").selectAll("path").data(all.filter(f => ["566", "148", "140", "226", "266", "178"].includes(f.id))).join("path")
+    .attr("d", path).attr("fill", "rgba(22,58,33,.35)").attr("stroke", "rgba(61,107,69,.45)").attr("stroke-width", 1.5);
+  svg.append("path").datum(cmr).attr("d", path).attr("fill", "#163A21").attr("stroke", "#4F8A58").attr("stroke-width", 3);
+  document.body.setAttribute("data-ready", "1");
+});
+</script>
+</body>
+</html>

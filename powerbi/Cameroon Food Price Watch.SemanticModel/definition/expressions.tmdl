@@ -1,0 +1,3 @@
+expression DataFolder = "C:\Users\Sango\Desktop\Github Projects\02-to-publish\cameroon-food-price-watch\powerbi\data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+	annotation PBI_ResultType = Text

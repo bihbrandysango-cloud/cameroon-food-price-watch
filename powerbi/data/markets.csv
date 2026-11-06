@@ -1,0 +1,77 @@
+market_code,market,region,department,lat,lon,first_month,last_month,months_with_prices,missing_months,coverage,is_reporting_now
+7625,Amchidé,Far-North,Mayo-Sava,11.24,14.14,2022-03-15,2023-01-15,4,7,0.36,false
+2566,Bafoussam,West,Mifi,5.48,10.42,2017-01-15,2020-09-15,21,24,0.47,false
+2567,Bamenda,North-West,Mezam,5.96,10.15,2017-01-15,2026-09-15,112,5,0.96,true
+5528,Bamenda-Nkwen,North-West,Mezam,5.96,10.17,2021-03-15,2024-02-15,35,1,0.97,false
+8559,Bamyanga,Adamawa,Vina,7.29,13.58,2023-06-15,2024-06-15,7,6,0.54,false
+7603,Banyo,Adamawa,Mayo-Banyo,6.75,11.8,2022-04-15,2026-09-15,52,2,0.96,true
+6705,Barombi Kang,South-West,Meme,4.59,9.47,2022-01-15,2025-12-15,35,13,0.73,false
+2257,Batoua Godolé,Adamawa,Mbéré,6.95,14.9,2018-01-15,2024-10-15,49,33,0.6,false
+2253,Batouri,East,Kadey,4.44,14.36,2018-01-15,2025-11-15,81,14,0.85,false
+2247,Bertoua 1,East,Lom-et-Djérem,4.58,13.68,2018-01-15,2024-07-15,57,22,0.72,false
+2246,Bertoua 2,East,Lom-et-Djérem,4.57,13.69,2018-01-15,2023-08-15,39,29,0.57,false
+2248,Betare Oya,East,Lom-et-Djérem,5.59,14.08,2018-01-15,2023-09-15,54,15,0.78,false
+4251,Buea,South-West,Fako,4.16,9.27,2019-02-15,2026-09-15,75,17,0.82,true
+5260,Douala-Bonaberi,Littoral,Wouri,4.08,9.65,2017-01-15,2024-09-15,92,1,0.99,false
+2579,Douala-Congo,Littoral,Wouri,4.04,9.7,2017-01-15,2020-09-15,21,24,0.47,false
+5261,Douala-Marché Central,Littoral,Wouri,4.02,9.71,2017-01-15,2026-09-15,100,17,0.85,true
+5262,Douala-Sandaga,Littoral,Wouri,4.06,9.7,2017-01-15,2024-09-15,92,1,0.99,false
+7622,Doukoula,Far-North,Mayo-Kani,10.3,14.69,2022-03-15,2026-09-15,49,6,0.89,true
+7616,Fotokol,Far-North,Logone-et-Chari,12.38,14.22,2022-03-15,2026-09-15,34,21,0.62,true
+5263,Fundong,North-West,Boyo,6.28,10.28,2019-02-15,2025-12-15,76,7,0.92,false
+7601,Galim tignère,Adamawa,Faro-et-Déo,7.1,12.47,2022-04-15,2026-08-15,50,3,0.94,false
+1593,Garoua,North,Bénoué,9.3,13.4,2017-01-15,2026-09-15,62,55,0.53,true
+2258,Garoua Boulaï,East,Lom-et-Djérem,5.9,14.55,2018-01-15,2023-08-15,31,37,0.46,false
+7614,Gazawa,Far-North,Diamaré,10.54,14.14,2022-03-15,2026-09-15,39,16,0.71,true
+2254,Gbiti,East,Kadey,4.68,14.72,2018-01-15,2025-11-15,80,15,0.84,false
+7623,Gobo,Far-North,Mayo-Danay,10.0,15.42,2022-03-15,2026-09-15,52,3,0.95,true
+1584,Guider,North,Mayo-Louti,9.93,13.95,2022-03-15,2025-09-15,28,15,0.65,false
+2249,Guiwa Yangamo,East,Lom-et-Djérem,4.97,14.05,2018-01-15,2023-08-15,52,16,0.76,false
+6549,Guzang,North-West,Momo,5.83,9.9,2021-11-15,2025-12-15,29,21,0.58,false
+2309,Kaele,Far-North,Mayo-Kani,10.11,14.45,2017-01-15,2026-09-15,114,3,0.97,true
+2255,Kentzou,East,Kadey,4.18,15.03,2018-11-15,2025-11-15,72,13,0.85,false
+7628,Kolofata,Far-North,Mayo-Sava,11.16,14.01,2023-03-15,2023-08-15,4,2,0.67,false
+1590,Kousseri,Far-North,Logone-et-Chari,12.08,15.03,2017-01-15,2026-09-15,116,1,0.99,true
+7631,Koza,Far-North,Mayo-Tsanaga,10.87,13.88,2022-04-15,2026-09-15,33,21,0.61,true
+5264,Kumba,South-West,Meme,4.64,9.45,2019-02-15,2026-09-15,85,7,0.92,true
+5275,Kumbo,North-West,Bui,6.21,10.68,2019-02-15,2026-09-15,82,10,0.89,true
+2256,Kétté,East,Kadey,4.96,14.56,2018-01-15,2025-10-15,77,17,0.82,false
+5266,Limbé,South-West,Fako,4.02,9.17,2019-02-15,2025-12-15,77,6,0.93,false
+1591,Logone-Birni,Far-North,Logone-et-Chari,11.78,15.1,2017-01-15,2026-09-15,83,34,0.71,true
+1592,Mada,Far-North,Mayo-Tsanaga,10.8,13.94,2017-01-15,2022-03-15,39,24,0.62,false
+5267,Mamfé,South-West,Manyu,5.76,9.31,2019-02-15,2026-09-15,84,8,0.91,true
+2250,Mandjou,East,Lom-et-Djérem,4.6,13.73,2018-01-15,2023-08-15,54,14,0.79,false
+4332,Mara,Far-North,Logone-et-Chari,12.39,14.9,2020-08-15,2024-09-15,21,29,0.42,false
+2307,Maroua,Far-North,Diamaré,10.6,14.33,2017-01-15,2026-09-15,115,2,0.98,true
+4336,Maroua-Dougoy,Far-North,Diamaré,10.61,14.35,2020-08-15,2025-12-15,39,26,0.6,false
+7604,Mayo Darlé,Adamawa,Mayo-Banyo,6.5,11.55,2022-04-15,2026-09-15,48,6,0.89,true
+7639,Mayo galke,North,Mayo-Rey,8.4,14.23,2022-04-15,2026-09-15,42,12,0.78,true
+1587,Mbaiboum,North,Mayo-Rey,7.54,15.45,2021-04-15,2023-09-15,25,5,0.83,false
+7605,Mbé,Adamawa,Vina,7.86,13.59,2022-03-15,2026-09-15,34,21,0.62,true
+2259,Meiganga,Adamawa,Mbéré,6.51,14.29,2018-01-15,2024-10-15,51,31,0.62,false
+7632,Mogode,Far-North,Mayo-Tsanaga,10.61,13.57,2022-04-15,2024-09-15,26,4,0.87,false
+2311,Mokolo,Far-North,Mayo-Tsanaga,10.74,13.8,2017-01-15,2026-09-15,113,4,0.97,true
+2310,Mora,Far-North,Mayo-Sava,11.05,14.14,2017-01-15,2026-09-15,113,4,0.97,true
+6702,Muea,South-West,Fako,4.17,9.3,2022-01-15,2025-11-15,31,16,0.66,false
+6703,Mutengene,South-West,Fako,4.1,9.31,2022-01-15,2025-11-15,36,11,0.77,false
+2251,Ndokayo,East,Lom-et-Djérem,5.51,14.12,2018-01-15,2023-09-15,52,17,0.75,false
+5268,Ndop,North-West,Ngo-Ketunjia,5.99,10.44,2019-02-15,2025-12-15,71,12,0.86,false
+2260,Ngaoui,Adamawa,Mbéré,6.75,14.95,2018-01-15,2024-10-15,52,30,0.63,false
+7607,Ngaoundéré,Adamawa,Vina,7.33,13.58,2022-04-15,2026-09-15,52,2,0.96,true
+1578,Ngong,North,Bénoué,9.02,13.51,2022-04-15,2024-04-15,24,1,0.96,false
+5269,Nkambe,North-West,Donga-Mantung,6.58,10.71,2019-02-15,2026-09-15,82,10,0.89,true
+1579,Pitoa,North,Bénoué,9.38,13.53,2022-03-15,2026-09-15,42,13,0.76,true
+1583,Poli,North,Faro,8.47,13.24,2022-03-15,2023-03-15,12,1,0.92,false
+7615,Salak,Far-North,Diamaré,10.46,14.24,2022-04-15,2026-09-15,52,2,0.96,true
+7599,Tibati,Adamawa,Djérem,6.47,12.63,2022-04-15,2026-09-15,51,3,0.94,true
+7602,Tignère,Adamawa,Faro-et-Déo,7.37,12.65,2022-03-15,2025-10-15,28,16,0.64,false
+6704,Tiko,South-West,Fako,4.07,9.37,2022-01-15,2025-11-15,34,13,0.72,false
+7626,Tokombere,Far-North,Mayo-Sava,10.87,14.15,2022-03-15,2025-05-15,15,24,0.38,false
+2252,Tongo Gandima,East,Lom-et-Djérem,5.18,14.0,2018-01-15,2023-08-15,52,16,0.76,false
+5270,Wum,North-West,Menchum,6.39,10.08,2019-02-15,2025-11-15,69,13,0.84,false
+2308,Yagoua,Far-North,Mayo-Danay,10.34,15.23,2017-01-15,2026-09-15,116,1,0.99,true
+2261,Yamba,Adamawa,Vina,6.89,14.1,2018-01-15,2024-10-15,47,35,0.57,false
+5272,Yaoundé-Marché 8e,Centre,Mfoundi,3.89,11.5,2017-01-15,2024-09-15,92,1,0.99,false
+2613,Yaoundé-Mfoundi,Centre,Mfoundi,3.86,11.52,2017-01-15,2026-09-15,100,17,0.85,true
+5271,Yaoundé-Mokolo,Centre,Mfoundi,3.87,11.5,2017-01-15,2024-09-15,92,1,0.99,false
+5529,Zamay,Far-North,Mayo-Tsanaga,10.63,13.9,2021-04-15,2024-06-15,36,3,0.92,false

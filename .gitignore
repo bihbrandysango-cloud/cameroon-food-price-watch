@@ -10,3 +10,6 @@ transform/dbt_packages/
 transform/logs/
 logs/
 transform/.user.yml
+powerbi/**/.pbi/localSettings.json
+powerbi/**/.pbi/cache.abf
+powerbi/out/

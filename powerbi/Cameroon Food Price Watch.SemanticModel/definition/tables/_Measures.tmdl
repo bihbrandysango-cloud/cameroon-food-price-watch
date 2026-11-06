@@ -1,0 +1,131 @@
+table _Measures
+
+	measure 'Latest Month' = CALCULATE ( MAX ( Prices[price_month] ), REMOVEFILTERS ( Markets ) )
+		formatString: mmmm yyyy
+
+	measure 'Food Label' = SELECTEDVALUE ( Commodities[commodity], "the selected foods" )
+
+	measure 'Month Label' = "Prices for " & FORMAT ( [Latest Month], "MMMM yyyy" )
+
+	measure 'Markets Reporting' = ```
+			VAR m = [Latest Month]
+			RETURN CALCULATE ( DISTINCTCOUNT ( Prices[market_code] ), Prices[price_month] = m )
+			```
+		formatString: #,0
+
+	measure 'Markets Judged' = ```
+			VAR m = [Latest Month]
+			RETURN CALCULATE ( DISTINCTCOUNT ( Prices[market_code] ), Prices[price_month] = m, Prices[direction] <> "Not enough history" )
+			```
+		formatString: #,0
+
+	measure 'Markets Too Cheap' = ```
+			VAR m = [Latest Month]
+			RETURN COALESCE ( CALCULATE ( DISTINCTCOUNT ( Prices[market_code] ), Prices[price_month] = m, Prices[direction] = "Too cheap" ), 0 )
+			```
+		formatString: #,0
+
+	measure 'Markets Too Expensive' = ```
+			VAR m = [Latest Month]
+			RETURN COALESCE ( CALCULATE ( DISTINCTCOUNT ( Prices[market_code] ), Prices[price_month] = m, Prices[direction] = "Too expensive" ), 0 )
+			```
+		formatString: #,0
+
+	measure 'Headline Fraction' = ```
+			VAR c = [Markets Too Cheap]
+			VAR e = [Markets Too Expensive]
+			RETURN FORMAT ( MAX ( c, e ), "0" ) & " / " & FORMAT ( [Markets Judged], "0" )
+			```
+
+	measure 'Headline Text' = ```
+			VAR c = [Markets Too Cheap]
+			VAR e = [Markets Too Expensive]
+			VAR food = LOWER ( [Food Label] )
+			RETURN
+			    IF ( c >= e,
+			        "markets selling " & food & " well below normal. " & e & " above.",
+			        "markets where " & food & " costs well above normal. " & c & " below." )
+			```
+
+	measure 'Reporting Text' = [Markets Reporting] & " markets reported prices in " & FORMAT ( [Latest Month], "MMMM yyyy" ) & ". Markets need three years of history to be judged."
+
+	measure 'Spotlight Market' = ```
+			VAR m = [Latest Month]
+			VAR t = ADDCOLUMNS ( VALUES ( Markets[market] ), "@gap", CALCULATE ( MAX ( Prices[gap_from_normal] ), Prices[price_month] = m ) )
+			VAR best = TOPN ( 1, FILTER ( t, NOT ISBLANK ( [@gap] ) ), ABS ( [@gap] ), DESC )
+			RETURN MAXX ( best, Markets[market] )
+			```
+
+	measure 'Spotlight Title' = ```
+			VAR mk = [Spotlight Market]
+			RETURN mk & " · " & CALCULATE ( MAX ( Markets[region] ), Markets[market] = mk )
+			```
+
+	measure 'Now (FCFA/kg)' = ```
+			VAR m = [Latest Month]
+			VAR mk = [Spotlight Market]
+			RETURN CALCULATE ( MAX ( Prices[price_per_unit] ), Prices[price_month] = m, Markets[market] = mk )
+			```
+		formatString: #,0
+
+	measure 'Normal (FCFA/kg)' = ```
+			VAR m = [Latest Month]
+			VAR mk = [Spotlight Market]
+			RETURN CALCULATE ( MAX ( Prices[normal_price] ), Prices[price_month] = m, Markets[market] = mk )
+			```
+		formatString: #,0
+
+	measure 'Spotlight Gap' = ```
+			VAR m = [Latest Month]
+			VAR mk = [Spotlight Market]
+			RETURN CALCULATE ( MAX ( Prices[gap_from_normal] ), Prices[price_month] = m, Markets[market] = mk )
+			```
+		formatString: +0%;-0%;0%
+
+	measure 'Spotlight Note' = ```
+			IF ( [Spotlight Gap] < 0,
+			    "Cheap for families who buy it. For farmers it means selling below what seed and fertiliser cost.",
+			    "Hard on families who buy it. Farmers with stock to sell may gain." )
+			```
+
+	measure 'Market Price' = ```
+			VAR m = [Latest Month]
+			RETURN CALCULATE ( MAX ( Prices[price_per_unit] ), Prices[price_month] = m )
+			```
+		formatString: #,0
+
+	measure 'Market Normal' = ```
+			VAR m = [Latest Month]
+			RETURN CALCULATE ( MAX ( Prices[normal_price] ), Prices[price_month] = m )
+			```
+		formatString: #,0
+
+	measure 'Market Alert Order' = ```
+			VAR m = [Latest Month]
+			RETURN CALCULATE ( MIN ( Prices[alert_order] ), Prices[price_month] = m )
+			```
+		formatString: 0
+
+	measure 'Gap From Normal' = ```
+			VAR m = [Latest Month]
+			VAR o = [Market Alert Order]
+			RETURN IF ( o < 6, CALCULATE ( MAX ( Prices[gap_from_normal] ), Prices[price_month] = m ) )
+			```
+		formatString: +0%;-0%;0%
+
+	measure 'Market Status' = SWITCH ( [Market Alert Order], 1, "Alert: too expensive", 2, "Watch: rising", 3, "Normal", 4, "Watch: falling", 5, "Alert: too cheap", 6, "Not enough history" )
+
+	measure 'Market Colour' = SWITCH ( [Market Alert Order], 1, "#E5573E", 2, "#F4A462", 3, "#7F8A82", 4, "#93C6F2", 5, "#2F84D8", "#4A5E50" )
+
+	measure 'Map Longitude' = IF ( NOT ISBLANK ( [Market Price] ), MAX ( Markets[lon] ) )
+		formatString: 0.00
+
+	measure 'Map Latitude' = IF ( NOT ISBLANK ( [Market Price] ), MAX ( Markets[lat] ) )
+		formatString: 0.00
+
+	measure 'Map Dot Size' = SWITCH ( [Market Alert Order], 1, 4, 5, 4, 2, 2, 4, 2, 3, 1.4, 1 )
+		formatString: 0.0
+
+	partition _Measures = calculated
+		mode: import
+		source = ROW("x",0)

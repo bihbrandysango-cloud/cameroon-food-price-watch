@@ -1,0 +1,28 @@
+relationship r0
+	fromColumn: Prices.market_code
+	toColumn: Markets.market_code
+
+relationship r1
+	fromColumn: Prices.commodity_code
+	toColumn: Commodities.commodity_code
+
+relationship r2
+	fromColumn: Prices.price_type
+	toColumn: PriceType.price_type
+
+relationship r3
+	fromColumn: Prices.price_month
+	toColumn: Calendar.Date
+
+relationship r4
+	fromColumn: Forecast.market_code
+	toColumn: Markets.market_code
+
+relationship r5
+	fromColumn: Forecast.commodity_code
+	toColumn: Commodities.commodity_code
+
+relationship r6
+	fromColumn: Forecast.price_type
+	toColumn: PriceType.price_type
+

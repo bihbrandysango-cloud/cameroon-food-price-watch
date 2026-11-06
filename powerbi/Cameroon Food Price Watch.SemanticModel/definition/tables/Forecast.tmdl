@@ -1,0 +1,88 @@
+table Forecast
+
+	column forecast_month
+		dataType: dateTime
+		formatString: mmm yyyy
+		summarizeBy: none
+		sourceColumn: forecast_month
+
+	column market_code
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: market_code
+
+	column commodity_code
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: commodity_code
+
+	column price_type
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: price_type
+
+	column last_price
+		dataType: double
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: last_price
+
+	column forecast_price
+		dataType: double
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: forecast_price
+
+	column forecast_low
+		dataType: double
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: forecast_low
+
+	column forecast_high
+		dataType: double
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: forecast_high
+
+	column normal_price
+		dataType: double
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: normal_price
+
+	column years_of_history
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: years_of_history
+
+	column forecast_gap_from_normal
+		dataType: double
+		formatString: +0%;-0%;0%
+		summarizeBy: none
+		sourceColumn: forecast_gap_from_normal
+
+	column forecast_alert_level
+		dataType: string
+		summarizeBy: none
+		sourceColumn: forecast_alert_level
+
+	column forecast_direction
+		dataType: string
+		summarizeBy: none
+		sourceColumn: forecast_direction
+
+	partition Forecast = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "forecast.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    H = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    K = Table.SelectColumns(H,{"forecast_month","market_code","commodity_code","price_type","last_price","forecast_price","forecast_low","forecast_high","normal_price","years_of_history","forecast_gap_from_normal","forecast_alert_level","forecast_direction"}),
+				    T = Table.TransformColumnTypes(K,{{"forecast_month", type date},{"market_code", Int64.Type},{"commodity_code", Int64.Type},{"price_type", type text},{"last_price", type number},{"forecast_price", type number},{"forecast_low", type number},{"forecast_high", type number},{"normal_price", type number},{"years_of_history", Int64.Type},{"forecast_gap_from_normal", type number},{"forecast_alert_level", type text},{"forecast_direction", type text}}, "en-US")
+				in
+				    T
+
