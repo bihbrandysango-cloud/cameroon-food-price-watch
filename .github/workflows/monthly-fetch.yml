@@ -1,0 +1,46 @@
+name: Monthly WFP data fetch
+
+on:
+  schedule:
+    # 06:00 UTC on the 10th of every month. WFP usually posts the previous month by then.
+    - cron: "0 6 10 * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Download even if HDX has not changed"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install test tools
+        run: pip install -r requirements-dev.txt
+
+      - name: Run tests
+        run: python -m pytest -q
+
+      - name: Fetch latest data
+        run: python -m src.ingest.fetch_wfp ${{ inputs.force && '--force' || '' }}
+
+      - name: Commit new data if anything changed
+        run: |
+          if git diff --quiet -- data/raw; then
+            echo "No new data this month."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/raw
+          git commit -m "data: monthly WFP fetch $(date -u +%Y-%m-%d)"
+          git push

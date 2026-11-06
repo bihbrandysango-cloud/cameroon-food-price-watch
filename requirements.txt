@@ -1,0 +1,2 @@
+# Step 1 (fetch) uses only the Python standard library.
+# Later steps will add duckdb, dbt-duckdb and pandas here.

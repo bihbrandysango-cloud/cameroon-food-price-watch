@@ -1,0 +1,16 @@
+{
+  "source": "https://data.humdata.org/dataset/wfp-food-prices-for-cameroon",
+  "fetches": [
+    {
+      "fetched_at": "2026-11-06T03:54:30+00:00",
+      "method": "manual file prices.csv",
+      "hdx_last_modified": "2026-11-04T01:14:34.717365",
+      "sha256": "d73be6d007a4f3225c9b4507eb7e08e42119e31a3402f7412b00cba31472391b",
+      "rows": 77711,
+      "first_date": "2005-01-15",
+      "last_date": "2026-09-15",
+      "markets": 83,
+      "commodities": 55
+    }
+  ]
+}
