@@ -1,0 +1,9 @@
+# Run dbt from the repository root, so these paths resolve:
+#   dbt build --project-dir transform --profiles-dir transform
+food_price_watch:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: data/warehouse/food_prices.duckdb
+      threads: 4

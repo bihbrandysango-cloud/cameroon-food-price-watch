@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_wfp__prices
+    description: Raw WFP prices with every price converted to FCFA per kg, litre or piece. Daily wages removed.
+    columns:
+      - name: price_month
+        tests: [not_null]
+      - name: market_code
+        tests: [not_null]
+      - name: commodity_code
+        tests: [not_null]
+      - name: price_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["retail", "wholesale"]
+      - name: standard_unit
+        description: Null would mean a unit we don't know how to convert.
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["kg", "litre", "piece"]
+      - name: price_per_unit
+        tests: [not_null]

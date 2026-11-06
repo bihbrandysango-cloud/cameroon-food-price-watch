@@ -1,0 +1,23 @@
+name: food_price_watch
+version: "0.2.0"
+config-version: 2
+profile: food_price_watch
+
+model-paths: ["models"]
+test-paths: ["tests"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+vars:
+  # A price this many times above (or below) the national median for the same
+  # food, price type and month is flagged for checking, not deleted
+  outlier_ratio: 3
+  # The national median only counts when at least this many markets report
+  min_markets_for_median: 3
+
+models:
+  food_price_watch:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

@@ -1,2 +1,5 @@
 # Step 1 (fetch) uses only the Python standard library.
-# Later steps will add duckdb, dbt-duckdb and pandas here.
+# Step 2 (clean and store):
+duckdb==2.0.0
+dbt-duckdb==1.11.1
+dbt-core==1.12.6

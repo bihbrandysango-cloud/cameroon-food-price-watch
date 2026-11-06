@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Files saved by step 1 (src/ingest/fetch_wfp.py), read straight from data/raw.
+    meta:
+      external_location: "read_csv('data/raw/{name}.csv', header = true)"
+    tables:
+      - name: wfp_food_prices_cmr
+        description: WFP market prices for Cameroon from HDX HAPI, one row per market, food, unit, price type and month.

@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: fct_monthly_prices
+    description: One price per market, food, price type and month in a standard unit, with prices far from the national median flagged as suspect (kept, not deleted).
+    columns:
+      - name: price_per_unit
+        tests: [not_null]
+      - name: is_suspect_price
+        tests: [not_null]
+
+  - name: dim_markets
+    description: One row per market with location and how complete its price history is.
+    columns:
+      - name: market_code
+        tests: [unique, not_null]
+      - name: coverage
+        description: Share of months between first and last report that have a price.
