@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Behind the Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1E3A22; --muted:#56684F; --line:#D6E7CD; --green:#2E7D32; --gold:#F2C230; --blue:#2864A8; --red:#C8372D; --bg:#F4F8F1; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 Inter, system-ui, sans-serif; }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 16px; }
+  header { background:var(--green); color:#fff; padding:48px 0 40px; border-bottom:5px solid var(--gold); }
+  header .k { font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:#CDE8C3; }
+  h1 { font:800 44px/1.1 Fraunces, serif; margin:8px 0 12px; }
+  header p { color:#E6F3E0; max-width:720px; margin:0; }
+  h2 { font:800 30px Fraunces, serif; margin:56px 0 6px; display:flex; align-items:center; gap:12px; }
+  h2 .tag { font:600 12px Inter; letter-spacing:.08em; text-transform:uppercase; padding:4px 10px; border-radius:20px; }
+  h3 { font:700 18px Inter; margin:28px 0 6px; }
+  p.lead { color:var(--muted); max-width:780px; margin:0 0 18px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin:18px 0; }
+  .stat { background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px; }
+  .stat .v { font:800 30px Fraunces, serif; line-height:1.1; }
+  .stat .l { color:var(--muted); font-size:14px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px 22px; margin:14px 0; }
+  .card p { margin:6px 0; }
+  pre { background:#13261A; color:#E6F3E0; border-radius:12px; padding:16px 18px; overflow-x:auto; font:13px/1.55 "JetBrains Mono", Consolas, monospace; margin:10px 0; }
+  pre .c { color:#8FBF7A; }
+  code { font-family:"JetBrains Mono", Consolas, monospace; font-size:.9em; background:#E7F0E2; padding:1px 5px; border-radius:5px; }
+  table { border-collapse:collapse; width:100%; font-size:15px; }
+  th, td { text-align:left; padding:9px 10px; border-bottom:1px solid #E6EEE1; }
+  th { color:var(--muted); font-weight:600; font-size:13px; }
+  td.n { text-align:right; font-variant-numeric:tabular-nums; }
+  .flow { display:flex; flex-wrap:wrap; gap:10px; align-items:stretch; margin:18px 0; }
+  .step { flex:1 1 150px; background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px; position:relative; }
+  .step b { display:block; font-size:15px; }
+  .step span { font-size:13px; color:var(--muted); }
+  .step .who { position:absolute; top:-10px; right:10px; font-size:11px; padding:2px 8px; border-radius:10px; font-weight:600; }
+  .de { background:#E3F0FB; color:#1F4F86; } .ds { background:#FFF3CC; color:#7A5A00; } .da { background:#E5F3DF; color:#1E5A24; }
+  ul.files li { margin:4px 0; }
+  footer { color:var(--muted); font-size:14px; padding:40px 0 60px; }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="k">Cameroon Food Price Watch · how it's built</div>
+  <h1>Behind the dashboard</h1>
+  <p>The Power BI page is the last step. Underneath it is a pipeline that collects WFP market prices every month, cleans and tests them, flags prices that are unusual for the season, forecasts next month, and hands clean tables to Power BI. This page shows that work, with real numbers from the latest run.</p>
+</div></header>
+
+<div class="wrap">
+
+<h2>The whole pipeline</h2>
+<p class="lead">Each box is real code in the project. The colour shows which discipline it belongs to.</p>
+<div class="flow">
+  <div class="step"><div class="who de">Engineering</div><b>1. Fetch</b><span>Python pulls prices from HDX HAPI each month, in pages, with retries</span></div>
+  <div class="step"><div class="who de">Engineering</div><b>2. Clean and store</b><span>dbt models in a DuckDB warehouse turn every price into FCFA per kg</span></div>
+  <div class="step"><div class="who ds">Science</div><b>3. Alerts</b><span>Each price compared with the same month in earlier years</span></div>
+  <div class="step"><div class="who ds">Science</div><b>4. Forecast</b><span>Machine learning, tested against simple guesses</span></div>
+  <div class="step"><div class="who de">Engineering</div><b>5. Export</b><span>Clean tables written for Power BI</span></div>
+  <div class="step"><div class="who da">Analysis</div><b>6. Dashboard</b><span>Power BI report with a 25-measure model</span></div>
+</div>
+<div class="card"><p><b>It runs by itself.</b> A GitHub Actions workflow runs every step on the 10th of each month: tests first, then fetch, build, forecast and export. If any data check fails, the run stops before anything is saved, so a bad month never reaches the dashboard.</p></div>
+
+<div class="grid">
+  <div class="stat"><div class="v">68,996</div><div class="l">price records, Jan 2017 to Sep 2026</div></div>
+  <div class="stat"><div class="v">76 · 54</div><div class="l">markets · foods</div></div>
+  <div class="stat"><div class="v">21 + 24</div><div class="l">code tests + data checks, all passing</div></div>
+  <div class="stat"><div class="v">12 sec</div><div class="l">monthly refresh (the first full download took about 7 minutes)</div></div>
+</div>
+
+<h2><span>Data engineering</span><span class="tag de">built</span></h2>
+<p class="lead">Getting reliable data in, keeping it tidy, and making sure it can be trusted every month without anyone touching it.</p>
+
+<h3>1. Fetching from an official API, safely</h3>
+<div class="card">
+  <p>The first attempt downloaded the CSV file from HDX, but HDX's firewall blocks scripts with a bot check. Instead of working around it, the pipeline switched to <b>HDX HAPI</b>, the official API for programs, which asks each app to identify itself.</p>
+  <p>Large pages of 10,000 rows often arrived cut off, so the script asks for 2,000 rows at a time and retries broken pages. After the first full download it only re-fetches the <b>last six months</b>, because WFP sometimes corrects recent prices, and merges them in.</p>
+</div>
+<pre><span class="c"># src/ingest/fetch_wfp.py: new rows are added, corrected rows replace old ones</span>
+def merge(existing, fresh):
+    merged = {tuple(r[k] for k in KEY): r for r in existing}
+    merged.update({tuple(r[k] for k in KEY): r for r in fresh})
+    return sorted(merged.values(), key=lambda r: tuple(r[k] for k in KEY[::-1]))</pre>
+<div class="card"><p>Every run is recorded in a manifest with the time, the mode, the row counts and a SHA-256 fingerprint of the file. If the data hasn't changed, nothing is saved. Latest run: refresh from May 2026, 2,756 rows downloaded, 0 changes.</p></div>
+
+<h3>2. Cleaning and storing with dbt and DuckDB</h3>
+<div class="card">
+  <p>WFP records the same food in many sizes: maize per kg, and per 15, 18, 90 and 100 kg bag. In Maroua in September 2024, maize was 350 per kg and 35,000 per 100 kg bag, the same price. The staging model reads the pack size from the unit and converts everything to <b>FCFA per kg</b> (per litre for oil, per piece for eggs).</p>
+</div>
+<pre><span class="c">-- transform/models/staging/stg_wfp__prices.sql</span>
+coalesce(try_cast(regexp_extract(unit, '^([0-9.]+) ', 1) as double), 1) as pack_size,
+...
+price / case when unit_base = 'G' then pack_size / 1000 else pack_size end as price_per_unit</pre>
+<div class="card">
+  <p>The warehouse has three layers: <b>raw</b> (as downloaded), <b>staging</b> (cleaned) and <b>marts</b> (ready for analysis and Power BI). Twenty-four data checks run on every build: no missing fields, no duplicate price for a market and month, no zero prices, and wholesale prices never more than 5 times retail (a sign a bag price wasn't divided).</p>
+</div>
+
+<h2><span>Data science</span><span class="tag ds">built</span></h2>
+<p class="lead">Finding what's unusual, predicting what comes next, and being honest about how good the predictions are.</p>
+
+<h3>3. Seasonal anomaly detection (the alerts)</h3>
+<div class="card">
+  <p>Prices rise and fall with the seasons, so a price is compared with the <b>same month in the last five years</b>, using the median so one extreme year can't distort "normal". It only looks at <b>earlier</b> years, never later ones, so the alert knows only what someone would have known at the time. A test proves this.</p>
+  <p>It flags both directions: 20% from normal is a watch, 40% is an alert. It caught the June 2024 lean-season spike in Maroua (+65%) and the 2026 crash (−62% in February).</p>
+</div>
+
+<h3>4. Forecasting next month, tested honestly</h3>
+<div class="card">
+  <p>A gradient-boosted tree model (scikit-learn) predicts next month's price for every market and food. It was tested month by month over the last year, each time trained only on data from before the month it predicted (5,136 predictions), and compared with two simple guesses.</p>
+  <table>
+    <tr><th>Method</th><th class="n">Typical error</th><th class="n">Within 10%</th><th class="n">Direction right on big moves</th></tr>
+    <tr><td>"Same as last month"</td><td class="n">3.2%</td><td class="n">69%</td><td class="n">–</td></tr>
+    <tr><td>"Copy last year's pattern"</td><td class="n">5.6%</td><td class="n">63%</td><td class="n">29%</td></tr>
+    <tr><td><b>Machine-learning model</b></td><td class="n">3.4%</td><td class="n">70%</td><td class="n"><b>58%</b></td></tr>
+  </table>
+  <p style="margin-top:12px"><b>The honest result:</b> the model is no more accurate than assuming the price stays the same, because prices are sticky (35% of the time they don't change at all). It does call the direction of big moves right 58% of the time, against 29% for last year's pattern. So the forecast is shown as a likely range, roughly 14% below to 18% above the estimate, and never as one exact number.</p>
+</div>
+
+<h2><span>Data analysis</span><span class="tag da">in progress</span></h2>
+<p class="lead">What the data says. Page 1 of the dashboard is built; six more pages are planned.</p>
+<div class="card">
+  <p><b>Maize is in a price crash.</b> In September 2026, 15 of 18 markets with enough history sold maize well below normal and none above. Mokolo is 65% below its usual September price. Good for buyers, hard for farmers.</p>
+  <p><b>The data has errors, and the pipeline found them.</b> In September 2023 many markets jumped 3 to 10 times and dropped back the next month, a likely recording error. In April 2024 several Yaoundé and Douala markets list cassava at up to 6,400 FCFA "per kg", which are bag prices typed with the wrong unit.</p>
+  <p><b>Coverage is shrinking.</b> WFP recorded about 16,000 prices in 2023 and about 4,000 in the first nine months of 2026. Limbé reported for 77 months, then stopped after December 2025.</p>
+</div>
+
+<h2>Skills this project shows</h2>
+<div class="grid">
+  <div class="stat"><div class="l"><b style="color:#1F4F86">Data engineering</b><br>REST API ingestion with paging and retries · incremental loads · data warehouse (DuckDB) · dbt modelling and tests · CI/CD scheduling (GitHub Actions) · data quality checks</div></div>
+  <div class="stat"><div class="l"><b style="color:#7A5A00">Data science</b><br>Anomaly detection · time-series forecasting · gradient boosting (scikit-learn) · walk-forward backtesting · baseline comparison · avoiding data leakage</div></div>
+  <div class="stat"><div class="l"><b style="color:#1E5A24">Data analysis and BI</b><br>Power BI data model and DAX · dashboard design for non-technical readers · colour-blind-safe palettes · storytelling with data</div></div>
+</div>
+
+<h2>Where the work lives</h2>
+<div class="card"><ul class="files">
+  <li><code>src/ingest/fetch_wfp.py</code>: fetch from HDX HAPI</li>
+  <li><code>transform/</code>: the dbt project (models and data tests)</li>
+  <li><code>src/forecast/forecast_prices.py</code>: forecast and backtest</li>
+  <li><code>src/export/export_powerbi.py</code>: tables for Power BI</li>
+  <li><code>powerbi/</code>: the Power BI project and the script that builds it</li>
+  <li><code>tests/</code>: 21 code tests · <code>.github/workflows/monthly-fetch.yml</code>: the monthly run</li>
+  <li><code>reports/forecast_backtest.json</code>: every forecast score</li>
+</ul></div>
+
+<footer>Data: World Food Programme via HDX HAPI (CC BY-IGO). Built by Bih Brandy Sango. Numbers on this page are from the run on 6 November 2026.</footer>
+</div>
+</body>
+</html>
