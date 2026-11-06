@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
-  "name": "c2Name",
+  "name": "k3",
   "position": {
-    "x": 46,
-    "y": 440,
-    "z": 7000,
-    "height": 36,
-    "width": 276,
-    "tabOrder": 7000
+    "x": 829.0,
+    "y": 84,
+    "z": 8000,
+    "height": 46,
+    "width": 160,
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Spotlight Title"
+                  "Property": "Markets Reporting"
                 }
               },
-              "queryRef": "_Measures.Spotlight Title",
-              "nativeQueryRef": "Spotlight Title"
+              "queryRef": "_Measures.Markets Reporting",
+              "nativeQueryRef": "Markets Reporting"
             }
           ]
         }
@@ -40,7 +40,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "18D"
+                  "Value": "24D"
                 }
               }
             },
@@ -49,7 +49,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#EAF3DF'"
+                      "Value": "'#1E3A22'"
                     }
                   }
                 }
@@ -94,7 +94,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#9FB58F'"
+                      "Value": "'#6A7C62'"
                     }
                   }
                 }

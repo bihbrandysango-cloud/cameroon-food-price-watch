@@ -25,10 +25,15 @@ BASE_THEME = (Path.home() / "Desktop" / "Github Projects" / "01-published" / "vi
               / "04 Power BI Report" / "Vitalis Healthcare.Report" / "StaticResources" / "SharedResources"
               / "BaseThemes" / "CY24SU10.json")
 
-# Alert colours, validated for colour blindness on the dark green panels
-COLOURS = {1: "#E5573E", 2: "#F4A462", 3: "#7F8A82", 4: "#93C6F2", 5: "#2F84D8", 6: "#4A5E50"}
-INK, MUTED, GOLD, BLUE = "#EAF3DF", "#9FB58F", "#F5C518", "#6FAEF0"
+# Fresh Field "Green Sidebar" design: dark text on white cards. Three alert colours,
+# validated for colour blindness on white: direction only; how big the change is
+# shows as dot size and bar length. Order: 1 alert high ... 5 alert low, 6 not judged.
+HIGH, NORMAL, LOW, NOT_JUDGED = "#C8372D", "#8F8A7E", "#2864A8", "#C9C6BB"
+COLOURS = {1: HIGH, 2: HIGH, 3: NORMAL, 4: LOW, 5: LOW, 6: NOT_JUDGED}
+INK, MUTED, GOLD, GREEN = "#1E3A22", "#6A7C62", "#F2C230", "#2E7D32"
 FONT = "Segoe UI"
+BACKGROUND = "bg_overview_sidebar.png"
+MAP_IMAGE = "map_outline_light.png"
 
 # Map plot-area image extent: must match powerbi/design/map-outline.html
 LON, LAT = (8.0, 16.6), (1.5, 13.2)
@@ -94,8 +99,8 @@ MEASURES = {
     # ---- spotlight: the market furthest from normal
     "Spotlight Market": ("VAR m = [Latest Month]\nVAR t = ADDCOLUMNS ( VALUES ( Markets[market] ), \"@gap\", CALCULATE ( MAX ( Prices[gap_from_normal] ), Prices[price_month] = m ) )\nVAR best = TOPN ( 1, FILTER ( t, NOT ISBLANK ( [@gap] ) ), ABS ( [@gap] ), DESC )\nRETURN MAXX ( best, Markets[market] )", None),
     "Spotlight Title": ("VAR mk = [Spotlight Market]\nRETURN mk & \" · \" & CALCULATE ( MAX ( Markets[region] ), Markets[market] = mk )", None),
-    "Now (FCFA/kg)": ("VAR m = [Latest Month]\nVAR mk = [Spotlight Market]\nRETURN CALCULATE ( MAX ( Prices[price_per_unit] ), Prices[price_month] = m, Markets[market] = mk )", "#,0"),
-    "Normal (FCFA/kg)": ("VAR m = [Latest Month]\nVAR mk = [Spotlight Market]\nRETURN CALCULATE ( MAX ( Prices[normal_price] ), Prices[price_month] = m, Markets[market] = mk )", "#,0"),
+    "FCFA per kg now": ("VAR m = [Latest Month]\nVAR mk = [Spotlight Market]\nRETURN CALCULATE ( MAX ( Prices[price_per_unit] ), Prices[price_month] = m, Markets[market] = mk )", "#,0"),
+    "Usual for this month": ("VAR m = [Latest Month]\nVAR mk = [Spotlight Market]\nRETURN CALCULATE ( MAX ( Prices[normal_price] ), Prices[price_month] = m, Markets[market] = mk )", "#,0"),
     "Spotlight Gap": ("VAR m = [Latest Month]\nVAR mk = [Spotlight Market]\nRETURN CALCULATE ( MAX ( Prices[gap_from_normal] ), Prices[price_month] = m, Markets[market] = mk )", '+0%;-0%;0%'),
     "Spotlight Note": ('IF ( [Spotlight Gap] < 0,\n    "Cheap for families who buy it. For farmers it means selling below what seed and fertiliser cost.",\n    "Hard on families who buy it. Farmers with stock to sell may gain." )', None),
     # ---- one market in the latest month (map and bar chart)
@@ -108,6 +113,16 @@ MEASURES = {
     "Map Longitude": ("IF ( NOT ISBLANK ( [Market Price] ), MAX ( Markets[lon] ) )", "0.00"),
     "Map Latitude": ("IF ( NOT ISBLANK ( [Market Price] ), MAX ( Markets[lat] ) )", "0.00"),
     "Map Dot Size": ("SWITCH ( [Market Alert Order], 1, 4, 5, 4, 2, 2, 4, 2, 3, 1.4, 1 )", "0.0"),
+    # ---- Green Sidebar page: title strip, KPI row, markets-to-watch table
+    "Page Title": ('[Food Label] & " prices this month"', None),
+    "Page Subtitle": ('SELECTEDVALUE ( PriceType[Price type], "All" ) & " prices · " & FORMAT ( [Latest Month], "MMMM yyyy" ) & " · compared with the same month in the last five years"', None),
+    "Cheap Fraction": ('[Markets Too Cheap] & " of " & [Markets Judged]', None),
+    "Biggest Change Label": ('"biggest change: " & [Spotlight Market]', None),
+    "Spotlight Gap Colour": (f'IF ( [Spotlight Gap] < 0, "{LOW}", "{HIGH}" )', None),
+    "Watch Rank": ("VAR g = [Gap From Normal]\nRETURN\n    IF ( NOT ISBLANK ( g ),\n        RANKX ( FILTER ( ALLSELECTED ( Markets[market] ), NOT ISBLANK ( [Gap From Normal] ) ), ABS ( [Gap From Normal] ), ABS ( g ), DESC ) )", "0"),
+    "Now": ("VAR r = [Watch Rank]\nRETURN IF ( NOT ISBLANK ( r ) && r <= 7, [Market Price] )", "#,0"),
+    "Usual": ("VAR r = [Watch Rank]\nRETURN IF ( NOT ISBLANK ( r ) && r <= 7, [Market Normal] )", "#,0"),
+    "Change": ("VAR r = [Watch Rank]\nRETURN IF ( NOT ISBLANK ( r ) && r <= 7, [Gap From Normal] )", '+0%;-0%;0%'),
 }
 
 
@@ -255,15 +270,26 @@ def card(name, x, y, w, h, m, size, col, label=False, bold=False, align="left", 
     return v
 
 
-def text_card(name, x, y, w, h, m, size, col):
-    # a sentence: a card with word wrap and no label
-    return card(name, x, y, w, h, m, size, col)
+def text_card(name, x, y, w, h, m, size, col, bold=False):
+    # Left-aligned text from a measure: a multi-row card with no labels or accent bar
+    # (the basic card always centres its value)
+    objs = {"dataLabels": props(fontSize=size, color=colour(col), fontFamily=FONT, bold=bold),
+            "categoryLabels": props(show=False),
+            "card": props(barShow=False, outlineStyle="None", cardPadding=0)}
+    return visual(name, x, y, w, h, "multiRowCard", {"Values": {"projections": [proj(measure(m))]}}, objs)
+
+
+def card_colour_by(v, m):
+    # colour a card's value with a measure that returns a hex colour
+    v["visual"]["objects"]["labels"][0]["properties"]["color"] = {"solid": {"color": {"expr": measure(m)}}}
+    return v
 
 
 def slicer(name, x, y, w, h, table, col, header, default=None, descending=False):
+    # white dropdown box; its label is drawn in the page background
     objs = {"data": props(mode="Dropdown"), "selection": props(singleSelect=True),
-            "header": props(show=True, text=header, fontColor=colour(MUTED), textSize=9, fontFamily=FONT),
-            "items": props(fontColor=colour(INK), background=colour("#0E2A17"), textSize=10, fontFamily=FONT),
+            "header": props(show=False),
+            "items": props(fontColor=colour(INK), background=colour("#FFFFFF"), textSize=10, fontFamily=FONT),
             "general": [{"properties": {}}]}
     if default is not None:
         objs["general"] = [{"properties": {"filter": {"filter": {
@@ -272,6 +298,8 @@ def slicer(name, x, y, w, h, table, col, header, default=None, descending=False)
                                             "Values": [[{"Literal": {"Value": f"'{default}'"}}]]}}}]}}}}]
     query = {"Values": {"projections": [{**proj(column(table, col)), "active": True}]}}
     v = visual(name, x, y, w, h, "slicer", query, objs)
+    v["visual"]["visualContainerObjects"]["background"] = props(show=True, color=colour("#FFFFFF"), transparency=0)
+    v["visual"]["visualContainerObjects"]["border"] = props(show=True, color=colour("#FFFFFF"), radius=8)
     if descending:
         v["visual"]["query"]["sortDefinition"] = {"sort": [{"field": column(table, col), "direction": "Descending"}], "isDefaultSort": False}
     return v
@@ -285,23 +313,31 @@ def image_ref(item):
 # ----------------------------------------------------------------------------- page 1
 
 def overview_visuals():
+    """Page 1 in the Green Sidebar layout. Positions match powerbi/design/page-sidebar.html."""
     v = []
-    # header slicers, right of the title (the page tabs sit in a slim row above)
-    v.append(slicer("slFood", 846, 62, 160, 46, "Commodities", "commodity", "Food", default="Maize (white)"))
-    v.append(slicer("slType", 1016, 62, 100, 46, "PriceType", "Price type", "Price", default="Retail"))
-    v.append(slicer("slMonth", 1126, 62, 120, 46, "Calendar", "Month", "Month (latest if blank)", descending=True))
+    # sidebar slicers (labels are in the background image)
+    v.append(slicer("slFood", 20, 146, 170, 30, "Commodities", "commodity", "Food", default="Maize (white)"))
+    v.append(slicer("slType", 20, 206, 170, 30, "PriceType", "Price type", "Price", default="Retail"))
+    v.append(slicer("slMonth", 20, 266, 170, 30, "Calendar", "Month", "Month", descending=True))
 
-    # card 1: this month
-    v.append(card("c1Big", 46, 158, 276, 78, "Headline Fraction", 46, GOLD, bold=True))
-    v.append(text_card("c1Text", 46, 238, 276, 54, "Headline Text", 12, INK))
-    v.append(text_card("c1Rep", 46, 300, 276, 64, "Reporting Text", 9, MUTED))
+    # title strip: follows the food and month chosen
+    v.append(text_card("tTitle", 232, 12, 820, 38, "Page Title", 20, INK, bold=True))
+    v.append(text_card("tSub", 232, 48, 980, 24, "Page Subtitle", 10, MUTED))
 
-    # card 2: spotlight
-    v.append(card("c2Name", 46, 440, 276, 36, "Spotlight Title", 18, INK, bold=True))
-    v.append(card("c2Now", 46, 482, 130, 64, "Now (FCFA/kg)", 26, INK, label=True, bold=True))
-    v.append(card("c2Norm", 186, 482, 130, 64, "Normal (FCFA/kg)", 26, MUTED, label=True, bold=True))
-    v.append(card("c2Gap", 46, 552, 276, 56, "Spotlight Gap", 34, BLUE, bold=True))
-    v.append(text_card("c2Note", 46, 612, 276, 70, "Spotlight Note", 10, "#CFE3BC"))
+    # KPI row: four cards, icons and labels in the background, numbers here
+    kw = (1026 - 36) / 4
+    kx = [232 + i * (kw + 12) + 78 for i in range(4)]
+    v.append(card("k1", kx[0], 84, 160, 46, "Cheap Fraction", 24, LOW, bold=True))
+    v.append(card("k2", kx[1], 84, 160, 46, "Markets Too Expensive", 24, HIGH, bold=True))
+    v.append(card("k3", kx[2], 84, 160, 46, "Markets Reporting", 24, INK, bold=True))
+    v.append(card_colour_by(card("k4", kx[3], 84, 160, 46, "Spotlight Gap", 24, LOW, bold=True), "Spotlight Gap Colour"))
+    v.append(text_card("k4Lbl", kx[3], 132, 160, 22, "Biggest Change Label", 9, MUTED))
+
+    # spotlight card
+    v.append(text_card("sName", 976, 226, 270, 30, "Spotlight Title", 14, INK, bold=True))
+    v.append(card("sNow", 972, 260, 130, 62, "FCFA per kg now", 22, INK, label=True, bold=True))
+    v.append(card("sUsual", 1110, 260, 140, 62, "Usual for this month", 22, NORMAL, label=True, bold=True))
+    v.append(text_card("sNote", 976, 330, 270, 66, "Spotlight Note", 10, INK))
 
     # map: scatter of longitude and latitude over a Cameroon outline in the plot area
     tooltips = [proj(measure("Market Price"), "Price (FCFA/kg)"), proj(measure("Market Normal"), "Normal (FCFA/kg)"),
@@ -320,9 +356,10 @@ def overview_visuals():
         "bubbles": props(bubbleSize=-20),
         "categoryLabels": props(show=False),
         "legend": props(show=False),
-        "plotArea": [{"properties": {"image": image_ref("map_outline.png"), "transparency": lit(0)}}],
+        "plotArea": [{"properties": {"image": image_ref(MAP_IMAGE), "transparency": lit(0)}}],
     }
-    v.append(visual("mapScatter", 370, 200, 360, 488, "scatterChart", map_q, map_objs))
+    # 331 x 450 keeps the outline's proportions (8.6 degrees wide, 11.7 tall)
+    v.append(visual("mapScatter", 246, 244, 331, 450, "scatterChart", map_q, map_objs))
 
     # gap from normal by market, coloured by alert level
     bar_q = {"Category": {"projections": [{**proj(column("Markets", "market"), "Market"), "active": True}]},
@@ -331,13 +368,30 @@ def overview_visuals():
     bar_objs = {
         "dataPoint": fill_by_measure,
         "categoryAxis": props(show=True, labelColor=colour(INK), fontSize=9, fontFamily=FONT, showAxisTitle=False),
-        "valueAxis": props(show=True, labelColor=colour(MUTED), fontSize=8, gridlineShow=True, gridlineColor=colour("#244A2E"), showAxisTitle=False),
+        "valueAxis": props(show=True, labelColor=colour(MUTED), fontSize=8, gridlineShow=True, gridlineColor=colour("#E8F0E3"), showAxisTitle=False),
         "labels": props(show=True, color=colour(INK), fontSize=8, labelDisplayUnits=1),
         "legend": props(show=False),
     }
-    bar = visual("barGap", 778, 184, 456, 500, "clusteredBarChart", bar_q, bar_objs)
+    bar = visual("barGap", 616, 228, 320, 468, "clusteredBarChart", bar_q, bar_objs)
     bar["visual"]["query"]["sortDefinition"] = {"sort": [{"field": measure("Gap From Normal"), "direction": "Ascending"}], "isDefaultSort": False}
     v.append(bar)
+
+    # markets to watch: the seven markets furthest from normal
+    tbl_q = {"Values": {"projections": [proj(column("Markets", "market"), "Market"), proj(measure("Now")),
+                                        proj(measure("Usual")), proj(measure("Change"))]}}
+    tbl_objs = {
+        "columnHeaders": props(fontColor=colour(MUTED), backColor=colour("#FFFFFF"), fontSize=9, fontFamily=FONT),
+        "values": props(fontColorPrimary=colour(INK), backColorPrimary=colour("#FFFFFF"), fontColorSecondary=colour(INK),
+                        backColorSecondary=colour("#FFFFFF"), fontSize=10, fontFamily=FONT),
+        "grid": props(gridVertical=False, gridHorizontal=True, gridHorizontalColor=colour("#EEF3EA"), rowPadding=4),
+        "total": props(totals=False),
+    }
+    # colour the Change column by direction
+    tbl_objs["values"].append({"properties": {"fontColor": {"solid": {"color": {"expr": measure("Market Colour")}}}},
+                               "selector": {"metadata": "_Measures.Change"}})
+    tbl = visual("tblWatch", 972, 474, 276, 222, "tableEx", tbl_q, tbl_objs)
+    tbl["visual"]["query"]["sortDefinition"] = {"sort": [{"field": measure("Change"), "direction": "Ascending"}], "isDefaultSort": False}
+    v.append(tbl)
     return v
 
 
@@ -345,8 +399,8 @@ def overview_visuals():
 
 THEME = {
     "name": "FoodPriceWatchGreen",
-    "dataColors": [GOLD, "#2F84D8", "#E5573E", "#7DBB4A", "#93C6F2", "#F4A462", "#7F8A82", "#C9D96A"],
-    "background": "#0C2614", "foreground": INK, "tableAccent": GOLD,
+    "dataColors": [GREEN, LOW, HIGH, GOLD, "#8BC34A", NORMAL, "#6DAA45", "#C9C6BB"],
+    "background": "#FFFFFF", "foreground": INK, "tableAccent": GREEN,
     "textClasses": {"label": {"fontFace": FONT, "color": INK, "fontSize": 9}, "callout": {"fontFace": FONT, "color": INK},
                     "title": {"fontFace": "Segoe UI Semibold", "color": INK}, "header": {"fontFace": "Segoe UI Semibold", "color": INK}},
     "visualStyles": {"*": {"*": {"background": [{"show": False}], "border": [{"show": False}], "dropShadow": [{"show": False}]}}},
@@ -373,7 +427,7 @@ def build_report(root: Path) -> None:
     (res / "SharedResources" / "BaseThemes").mkdir(parents=True)
     shutil.copy(BASE_THEME, res / "SharedResources" / "BaseThemes" / "CY24SU10.json")
     write_json(res / "RegisteredResources" / "FoodPriceWatchGreen.json", THEME)
-    images = ["bg_overview.png", "map_outline.png"]
+    images = [BACKGROUND, MAP_IMAGE]
     for img in images:
         shutil.copy(IMAGES / img, res / "RegisteredResources" / img)
 
@@ -391,7 +445,7 @@ def build_report(root: Path) -> None:
         "settings": {"useStylableVisualContainerHeader": True, "exportDataMode": "AllowSummarized", "defaultDrillFilterOtherVisuals": True,
                      "allowChangeFilterTypes": True, "useEnhancedTooltips": True, "useDefaultAggregateDisplayName": True}})
 
-    pages = {"p_overview": ("This month", "bg_overview.png", overview_visuals())}
+    pages = {"p_overview": ("This month", BACKGROUND, overview_visuals())}
     write_json(d / "pages" / "pages.json", {"$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json",
                                             "pageOrder": list(pages), "activePageName": "p_overview"})
     for pid, (title, bg, visuals) in pages.items():
@@ -399,7 +453,7 @@ def build_report(root: Path) -> None:
             "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
             "name": pid, "displayName": title, "displayOption": "FitToPage", "height": 720, "width": 1280,
             "objects": {"background": [{"properties": {"image": image_ref(bg), "transparency": lit(0)}}],
-                        "outspace": [{"properties": {"color": colour("#0C2614")}}]}})
+                        "outspace": [{"properties": {"color": colour("#EEF6EA")}}]}})
         for i, vis in enumerate(visuals):
             vis["position"]["z"] = vis["position"]["tabOrder"] = (i + 1) * 1000
             write_json(d / "pages" / pid / "visuals" / vis["name"] / "visual.json", vis)

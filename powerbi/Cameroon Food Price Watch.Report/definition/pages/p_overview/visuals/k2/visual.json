@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
-  "name": "c2Norm",
+  "name": "k2",
   "position": {
-    "x": 186,
-    "y": 482,
-    "z": 9000,
-    "height": 64,
-    "width": 130,
-    "tabOrder": 9000
+    "x": 569.5,
+    "y": 84,
+    "z": 7000,
+    "height": 46,
+    "width": 160,
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Normal (FCFA/kg)"
+                  "Property": "Markets Too Expensive"
                 }
               },
-              "queryRef": "_Measures.Normal (FCFA/kg)",
-              "nativeQueryRef": "Normal (FCFA/kg)"
+              "queryRef": "_Measures.Markets Too Expensive",
+              "nativeQueryRef": "Markets Too Expensive"
             }
           ]
         }
@@ -40,7 +40,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "26D"
+                  "Value": "24D"
                 }
               }
             },
@@ -49,7 +49,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#9FB58F'"
+                      "Value": "'#C8372D'"
                     }
                   }
                 }
@@ -78,7 +78,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -94,7 +94,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#9FB58F'"
+                      "Value": "'#6A7C62'"
                     }
                   }
                 }

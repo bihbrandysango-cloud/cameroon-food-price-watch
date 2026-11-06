@@ -1,35 +1,35 @@
 {
   "name": "FoodPriceWatchGreen",
   "dataColors": [
-    "#F5C518",
-    "#2F84D8",
-    "#E5573E",
-    "#7DBB4A",
-    "#93C6F2",
-    "#F4A462",
-    "#7F8A82",
-    "#C9D96A"
+    "#2E7D32",
+    "#2864A8",
+    "#C8372D",
+    "#F2C230",
+    "#8BC34A",
+    "#8F8A7E",
+    "#6DAA45",
+    "#C9C6BB"
   ],
-  "background": "#0C2614",
-  "foreground": "#EAF3DF",
-  "tableAccent": "#F5C518",
+  "background": "#FFFFFF",
+  "foreground": "#1E3A22",
+  "tableAccent": "#2E7D32",
   "textClasses": {
     "label": {
       "fontFace": "Segoe UI",
-      "color": "#EAF3DF",
+      "color": "#1E3A22",
       "fontSize": 9
     },
     "callout": {
       "fontFace": "Segoe UI",
-      "color": "#EAF3DF"
+      "color": "#1E3A22"
     },
     "title": {
       "fontFace": "Segoe UI Semibold",
-      "color": "#EAF3DF"
+      "color": "#1E3A22"
     },
     "header": {
       "fontFace": "Segoe UI Semibold",
-      "color": "#EAF3DF"
+      "color": "#1E3A22"
     }
   },
   "visualStyles": {

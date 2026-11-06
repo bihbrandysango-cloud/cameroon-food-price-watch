@@ -42,13 +42,13 @@
           "type": "CustomTheme"
         },
         {
-          "name": "bg_overview.png",
-          "path": "bg_overview.png",
+          "name": "bg_overview_sidebar.png",
+          "path": "bg_overview_sidebar.png",
           "type": "Image"
         },
         {
-          "name": "map_outline.png",
-          "path": "map_outline.png",
+          "name": "map_outline_light.png",
+          "path": "map_outline_light.png",
           "type": "Image"
         }
       ]

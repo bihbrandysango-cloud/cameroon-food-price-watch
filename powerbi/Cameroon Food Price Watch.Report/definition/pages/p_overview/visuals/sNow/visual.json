@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
-  "name": "c1Text",
+  "name": "sNow",
   "position": {
-    "x": 46,
-    "y": 238,
-    "z": 5000,
-    "height": 54,
-    "width": 276,
-    "tabOrder": 5000
+    "x": 972,
+    "y": 260,
+    "z": 12000,
+    "height": 62,
+    "width": 130,
+    "tabOrder": 12000
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Headline Text"
+                  "Property": "FCFA per kg now"
                 }
               },
-              "queryRef": "_Measures.Headline Text",
-              "nativeQueryRef": "Headline Text"
+              "queryRef": "_Measures.FCFA per kg now",
+              "nativeQueryRef": "FCFA per kg now"
             }
           ]
         }
@@ -40,7 +40,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
+                  "Value": "22D"
                 }
               }
             },
@@ -49,7 +49,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#EAF3DF'"
+                      "Value": "'#1E3A22'"
                     }
                   }
                 }
@@ -65,7 +65,7 @@
             "bold": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             }
@@ -78,7 +78,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -94,7 +94,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#9FB58F'"
+                      "Value": "'#6A7C62'"
                     }
                   }
                 }

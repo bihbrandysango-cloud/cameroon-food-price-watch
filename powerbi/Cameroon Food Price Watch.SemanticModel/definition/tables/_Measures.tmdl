@@ -61,14 +61,14 @@ table _Measures
 			RETURN mk & " · " & CALCULATE ( MAX ( Markets[region] ), Markets[market] = mk )
 			```
 
-	measure 'Now (FCFA/kg)' = ```
+	measure 'FCFA per kg now' = ```
 			VAR m = [Latest Month]
 			VAR mk = [Spotlight Market]
 			RETURN CALCULATE ( MAX ( Prices[price_per_unit] ), Prices[price_month] = m, Markets[market] = mk )
 			```
 		formatString: #,0
 
-	measure 'Normal (FCFA/kg)' = ```
+	measure 'Usual for this month' = ```
 			VAR m = [Latest Month]
 			VAR mk = [Spotlight Market]
 			RETURN CALCULATE ( MAX ( Prices[normal_price] ), Prices[price_month] = m, Markets[market] = mk )
@@ -115,7 +115,7 @@ table _Measures
 
 	measure 'Market Status' = SWITCH ( [Market Alert Order], 1, "Alert: too expensive", 2, "Watch: rising", 3, "Normal", 4, "Watch: falling", 5, "Alert: too cheap", 6, "Not enough history" )
 
-	measure 'Market Colour' = SWITCH ( [Market Alert Order], 1, "#E5573E", 2, "#F4A462", 3, "#7F8A82", 4, "#93C6F2", 5, "#2F84D8", "#4A5E50" )
+	measure 'Market Colour' = SWITCH ( [Market Alert Order], 1, "#C8372D", 2, "#C8372D", 3, "#8F8A7E", 4, "#2864A8", 5, "#2864A8", "#C9C6BB" )
 
 	measure 'Map Longitude' = IF ( NOT ISBLANK ( [Market Price] ), MAX ( Markets[lon] ) )
 		formatString: 0.00
@@ -125,6 +125,42 @@ table _Measures
 
 	measure 'Map Dot Size' = SWITCH ( [Market Alert Order], 1, 4, 5, 4, 2, 2, 4, 2, 3, 1.4, 1 )
 		formatString: 0.0
+
+	measure 'Page Title' = [Food Label] & " prices this month"
+
+	measure 'Page Subtitle' = SELECTEDVALUE ( PriceType[Price type], "All" ) & " prices · " & FORMAT ( [Latest Month], "MMMM yyyy" ) & " · compared with the same month in the last five years"
+
+	measure 'Cheap Fraction' = [Markets Too Cheap] & " of " & [Markets Judged]
+
+	measure 'Biggest Change Label' = "biggest change: " & [Spotlight Market]
+
+	measure 'Spotlight Gap Colour' = IF ( [Spotlight Gap] < 0, "#2864A8", "#C8372D" )
+
+	measure 'Watch Rank' = ```
+			VAR g = [Gap From Normal]
+			RETURN
+			    IF ( NOT ISBLANK ( g ),
+			        RANKX ( FILTER ( ALLSELECTED ( Markets[market] ), NOT ISBLANK ( [Gap From Normal] ) ), ABS ( [Gap From Normal] ), ABS ( g ), DESC ) )
+			```
+		formatString: 0
+
+	measure Now = ```
+			VAR r = [Watch Rank]
+			RETURN IF ( NOT ISBLANK ( r ) && r <= 7, [Market Price] )
+			```
+		formatString: #,0
+
+	measure Usual = ```
+			VAR r = [Watch Rank]
+			RETURN IF ( NOT ISBLANK ( r ) && r <= 7, [Market Normal] )
+			```
+		formatString: #,0
+
+	measure Change = ```
+			VAR r = [Watch Rank]
+			RETURN IF ( NOT ISBLANK ( r ) && r <= 7, [Gap From Normal] )
+			```
+		formatString: +0%;-0%;0%
 
 	partition _Measures = calculated
 		mode: import

@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
-  "name": "c2Now",
+  "name": "k4Lbl",
   "position": {
-    "x": 46,
-    "y": 482,
-    "z": 8000,
-    "height": 64,
-    "width": 130,
-    "tabOrder": 8000
+    "x": 1088.5,
+    "y": 132,
+    "z": 10000,
+    "height": 22,
+    "width": 160,
+    "tabOrder": 10000
   },
   "visual": {
-    "visualType": "card",
+    "visualType": "multiRowCard",
     "query": {
       "queryState": {
         "Values": {
@@ -23,24 +23,24 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Now (FCFA/kg)"
+                  "Property": "Biggest Change Label"
                 }
               },
-              "queryRef": "_Measures.Now (FCFA/kg)",
-              "nativeQueryRef": "Now (FCFA/kg)"
+              "queryRef": "_Measures.Biggest Change Label",
+              "nativeQueryRef": "Biggest Change Label"
             }
           ]
         }
       }
     },
     "objects": {
-      "labels": [
+      "dataLabels": [
         {
           "properties": {
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "26D"
+                  "Value": "9D"
                 }
               }
             },
@@ -49,7 +49,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#EAF3DF'"
+                      "Value": "'#6A7C62'"
                     }
                   }
                 }
@@ -65,7 +65,7 @@
             "bold": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -78,45 +78,34 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "11D"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#9FB58F'"
-                    }
-                  }
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Segoe UI'"
+                  "Value": "false"
                 }
               }
             }
           }
         }
       ],
-      "wordWrap": [
+      "card": [
         {
           "properties": {
-            "show": {
+            "barShow": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
+                }
+              }
+            },
+            "outlineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "'None'"
+                }
+              }
+            },
+            "cardPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }

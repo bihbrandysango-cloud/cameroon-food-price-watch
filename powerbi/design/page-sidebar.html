@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sidebar Page Background</title>
+<!-- Static layer for the "Green Sidebar" design (Fresh Field, version 1): sidebar, card shapes,
+     icons and fixed labels. Every number, title that depends on the filters, the map, the bars
+     and the table are live Power BI visuals placed on top (see powerbi/build/build_pbip.py).
+     Render at 1280x720 with headless Chrome; ?page=overview picks the page. -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style> html, body { margin:0; width:1280px; height:720px; overflow:hidden; background:#EEF6EA; } svg { position:absolute; inset:0; } </style>
+</head>
+<body>
+<svg id="s" width="1280" height="720"></svg>
+<script>
+const HIGH = "#C8372D", NORMAL = "#8F8A7E", LOW = "#2864A8", GREEN = "#2E7D32", GOLD = "#F2C230";
+const INK = "#1E3A22", MUTED = "#56684F", FAINT = "#6A7C62";
+const svg = d3.select("#s"), defs = svg.append("defs");
+const sh = defs.append("filter").attr("id", "sh").attr("x", "-5%").attr("y", "-5%").attr("width", "110%").attr("height", "115%");
+sh.append("feDropShadow").attr("dx", 0).attr("dy", 4).attr("stdDeviation", 7).attr("flood-color", "#285014").attr("flood-opacity", .08);
+const T = (x, y, txt, size, weight, fill, family) => svg.append("text").attr("x", x).attr("y", y).attr("font-size", size).attr("font-weight", weight || 400)
+  .attr("fill", fill || INK).attr("font-family", family || "Inter, Segoe UI, sans-serif").text(txt);
+
+// page background
+svg.append("rect").attr("width", 1280).attr("height", 720).attr("fill", "#EEF6EA");
+
+// ---------------- sidebar ----------------
+const sg = defs.append("linearGradient").attr("id", "sb").attr("x1", 0).attr("x2", 0).attr("y1", 0).attr("y2", 1);
+[["0%", "#2E7D32"], ["100%", "#25692A"]].forEach(([o, c]) => sg.append("stop").attr("offset", o).attr("stop-color", c));
+svg.append("rect").attr("width", 210).attr("height", 720).attr("fill", "url(#sb)");
+svg.append("path").attr("d", "M0,720 L0,600 C60,560 150,585 210,540 L210,720Z").attr("fill", "#1F5A24");
+T(20, 44, "Cameroon", 20, 800, "#FFFFFF", "Outfit, sans-serif");
+T(20, 68, "Food Price Watch", 20, 800, "#FFFFFF", "Outfit, sans-serif");
+T(20, 90, "Monthly market prices", 12, 400, "#CDE8C3");
+svg.append("rect").attr("x", 20).attr("y", 102).attr("width", 40).attr("height", 3).attr("rx", 1.5).attr("fill", GOLD);
+// slicer labels; the white dropdown boxes are Power BI slicers
+[["Food", 128], ["Price", 188], ["Month", 248]].forEach(([l, y]) => T(20, y + 12, l, 11.5, 500, "#CDE8C3"));
+// page links (Power BI page-navigation buttons go on top later)
+["This month", "Markets", "Foods", "Regions", "Next month", "Data quality", "Method"].forEach((t, i) => {
+  const y = 322 + i * 27;
+  if (i === 0) svg.append("rect").attr("x", 10).attr("y", y).attr("width", 180).attr("height", 24).attr("rx", 7).attr("fill", GOLD);
+  T(22, y + 17, t, 13, i === 0 ? 700 : 400, i === 0 ? INK : "#DCEFD4");
+});
+// maize plant growing at the foot of the sidebar
+function maizePlant(x, base, h) {
+  const g = svg.append("g").attr("transform", `translate(${x},${base})`), leaf = "#8BC34A", leaf2 = "#6DAA45";
+  g.append("path").attr("d", `M0,0 C2,${-h * .4} -2,${-h * .75} 1,${-h}`).attr("stroke", leaf2).attr("stroke-width", h * .035).attr("fill", "none").attr("stroke-linecap", "round");
+  [[.2, -1, .55], [.32, 1, .5], [.46, -1, .45], [.6, 1, .4], [.74, -1, .3]].forEach(([t, s, len], i) => {
+    const y = -h * t, L = h * len;
+    g.append("path").attr("d", `M0,${y} Q${s * L * .5},${y - L * .45} ${s * L},${y + L * .25} Q${s * L * .45},${y - L * .25} 0,${y + h * .03}Z`).attr("fill", i % 2 ? leaf : leaf2);
+  });
+  [[.42, 1], [.55, -1]].forEach(([t, s]) => {
+    const cg = g.append("g").attr("transform", `translate(${s * h * .04},${-h * t}) rotate(${s * 24})`), cl = h * .2;
+    cg.append("ellipse").attr("cy", -cl * .5).attr("rx", cl * .22).attr("ry", cl * .5).attr("fill", GOLD);
+    for (let r = 0; r < 7; r++) for (let k = -1; k <= 1; k++) cg.append("circle").attr("cx", k * cl * .09).attr("cy", -cl * .85 + r * cl * .12).attr("r", cl * .035).attr("fill", "rgba(140,90,0,.3)");
+    cg.append("path").attr("d", `M0,0 C${-cl * .4},${-cl * .3} ${-cl * .3},${-cl * .75} ${-cl * .08},${-cl * .98} C${-cl * .18},${-cl * .5} ${-cl * .05},${-cl * .25} 0,0Z`).attr("fill", leaf);
+    cg.append("path").attr("d", `M0,0 C${cl * .4},${-cl * .3} ${cl * .3},${-cl * .75} ${cl * .08},${-cl * .98} C${cl * .18},${-cl * .5} ${cl * .05},${-cl * .25} 0,0Z`).attr("fill", leaf2);
+  });
+  for (let k = -3; k <= 3; k++) g.append("path").attr("d", `M1,${-h} q${k * 3},${-h * .06} ${k * 6},${-h * .04}`).attr("stroke", "#D9A520").attr("stroke-width", 1.4).attr("fill", "none");
+}
+maizePlant(105, 712, 190);
+
+// ---------------- cards ----------------
+const card = (x, y, w, h, title, sub) => {
+  svg.append("rect").attr("x", x).attr("y", y).attr("width", w).attr("height", h).attr("rx", 16).attr("fill", "#FFFFFF").attr("stroke", "#D6E7CD").attr("filter", "url(#sh)");
+  if (!title) return;
+  svg.append("rect").attr("x", x + 16).attr("y", y + 14).attr("width", 4).attr("height", 17).attr("rx", 2).attr("fill", GOLD);
+  T(x + 28, y + 28, title, 15, 700, "#1E4A24", "Outfit, sans-serif");
+  if (sub) T(x + 28, y + 47, sub, 11.5, 400, FAINT);
+};
+
+// KPI row: icon tiles and fixed labels; the numbers are Power BI cards
+const ICONS = {
+  cobDown: g => { g.append("ellipse").attr("cx", 12).attr("cy", 13).attr("rx", 5.5).attr("ry", 10).attr("fill", GOLD);
+    for (let r = 0; r < 5; r++) for (let k = 0; k < 2; k++) g.append("circle").attr("cx", 10 + k * 4).attr("cy", 6 + r * 3.6).attr("r", 1.2).attr("fill", "rgba(140,90,0,.35)");
+    g.append("path").attr("d", "M7 27c-1-5 1-9 4-11M17 27c1-5-1-9-4-11").attr("stroke", "#4E8F35").attr("stroke-width", 2).attr("fill", "none").attr("stroke-linecap", "round");
+    g.append("path").attr("d", "M24 8v12m-4-4 4 4 4-4").attr("stroke", LOW).attr("stroke-width", 2.6).attr("fill", "none").attr("stroke-linecap", "round").attr("stroke-linejoin", "round"); },
+  tagUp: g => { g.append("path").attr("d", "M4 14 14 4h9v9L13 23z").attr("fill", "none").attr("stroke", HIGH).attr("stroke-width", 2.4).attr("stroke-linejoin", "round");
+    g.append("circle").attr("cx", 18.5).attr("cy", 8.5).attr("r", 1.8).attr("fill", HIGH);
+    g.append("path").attr("d", "M24 27V17m-4 4 4-4 4 4").attr("stroke", HIGH).attr("stroke-width", 2.6).attr("fill", "none").attr("stroke-linecap", "round").attr("stroke-linejoin", "round"); },
+  stall: g => { g.append("path").attr("d", "M4 11 7 4h16l3 7z").attr("fill", GOLD);
+    g.append("path").attr("d", "M4 11h22v2.5a3 3 0 0 1-5.5 1.5 3 3 0 0 1-5.5 0 3 3 0 0 1-5.5 0A3 3 0 0 1 4 13.5z").attr("fill", GREEN);
+    g.append("path").attr("d", "M6 15v11h18V15").attr("fill", "none").attr("stroke", GREEN).attr("stroke-width", 2.2);
+    g.append("rect").attr("x", 12).attr("y", 19).attr("width", 6).attr("height", 7).attr("fill", GREEN); },
+  target: g => { g.append("circle").attr("cx", 15).attr("cy", 15).attr("r", 11).attr("fill", "none").attr("stroke", GREEN).attr("stroke-width", 2.2);
+    g.append("circle").attr("cx", 15).attr("cy", 15).attr("r", 6).attr("fill", "none").attr("stroke", GREEN).attr("stroke-width", 2.2);
+    g.append("circle").attr("cx", 15).attr("cy", 15).attr("r", 2.2).attr("fill", GOLD); },
+};
+const KPI = [["cobDown", "#EAF1FA", "markets cheaper than normal"], ["tagUp", "#FBEDEB", "markets dearer than normal"],
+             ["stall", "#FFF6D6", "markets reporting this month"], ["target", "#EAF4E4", null]];
+const kw = (1026 - 36) / 4;
+KPI.forEach(([ic, bg, label], i) => {
+  const x = 232 + i * (kw + 12), y = 78;
+  card(x, y, kw, 82);
+  svg.append("rect").attr("x", x + 14).attr("y", y + 15).attr("width", 52).attr("height", 52).attr("rx", 14).attr("fill", bg);
+  ICONS[ic](svg.append("g").attr("transform", `translate(${x + 25},${y + 26})`));
+  if (label) T(x + 78, y + 66, label, 11.5, 400, MUTED);
+});
+
+// main cards
+card(232, 174, 360, 530, "Market map");
+[[HIGH, "Too expensive"], [NORMAL, "Normal"], [LOW, "Too cheap"]].reduce((lx, [c, l]) => {
+  svg.append("circle").attr("cx", lx + 5).attr("cy", 214).attr("r", 5).attr("fill", c);
+  T(lx + 14, 218, l, 11.5, 400, MUTED); return lx + l.length * 6.4 + 30; }, 260);
+T(260, 236, "Bigger dot = bigger change from a normal month", 11, 400, FAINT);
+card(606, 174, 340, 530, "Gap from normal", "Sorted from cheapest to dearest");
+card(960, 174, 298, 230, "Spotlight", "Market furthest from normal");
+card(960, 418, 298, 286, "Markets to watch", "Furthest from normal this month");
+document.body.setAttribute("data-ready", "1");
+</script>
+</body>
+</html>

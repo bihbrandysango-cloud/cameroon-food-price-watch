@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
-  "name": "c2Gap",
+  "name": "k1",
   "position": {
-    "x": 46,
-    "y": 552,
-    "z": 10000,
-    "height": 56,
-    "width": 276,
-    "tabOrder": 10000
+    "x": 310.0,
+    "y": 84,
+    "z": 6000,
+    "height": 46,
+    "width": 160,
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "card",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Spotlight Gap"
+                  "Property": "Cheap Fraction"
                 }
               },
-              "queryRef": "_Measures.Spotlight Gap",
-              "nativeQueryRef": "Spotlight Gap"
+              "queryRef": "_Measures.Cheap Fraction",
+              "nativeQueryRef": "Cheap Fraction"
             }
           ]
         }
@@ -40,7 +40,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "34D"
+                  "Value": "24D"
                 }
               }
             },
@@ -49,7 +49,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#6FAEF0'"
+                      "Value": "'#2864A8'"
                     }
                   }
                 }
@@ -94,7 +94,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#9FB58F'"
+                      "Value": "'#6A7C62'"
                     }
                   }
                 }

@@ -14,7 +14,7 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "'bg_overview.png'"
+                    "Value": "'bg_overview_sidebar.png'"
                   }
                 }
               },
@@ -23,7 +23,7 @@
                   "ResourcePackageItem": {
                     "PackageName": "RegisteredResources",
                     "PackageType": 1,
-                    "ItemName": "bg_overview.png"
+                    "ItemName": "bg_overview_sidebar.png"
                   }
                 }
               },
@@ -54,7 +54,7 @@
               "color": {
                 "expr": {
                   "Literal": {
-                    "Value": "'#0C2614'"
+                    "Value": "'#EEF6EA'"
                   }
                 }
               }

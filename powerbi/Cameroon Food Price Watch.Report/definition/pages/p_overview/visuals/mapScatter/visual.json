@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "mapScatter",
   "position": {
-    "x": 370,
-    "y": 200,
-    "z": 12000,
-    "height": 488,
-    "width": 360,
-    "tabOrder": 12000
+    "x": 246,
+    "y": 244,
+    "z": 15000,
+    "height": 450,
+    "width": 331,
+    "tabOrder": 15000
   },
   "visual": {
     "visualType": "scatterChart",
@@ -317,7 +317,7 @@
                 "name": {
                   "expr": {
                     "Literal": {
-                      "Value": "'map_outline.png'"
+                      "Value": "'map_outline_light.png'"
                     }
                   }
                 },
@@ -326,7 +326,7 @@
                     "ResourcePackageItem": {
                       "PackageName": "RegisteredResources",
                       "PackageType": 1,
-                      "ItemName": "map_outline.png"
+                      "ItemName": "map_outline_light.png"
                     }
                   }
                 },
