@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minimalist Page Designs</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; background:#E9EEE4; color:#16301C; font-family:Inter, system-ui, sans-serif; }
+  header.board, section.option, footer.board { max-width:1340px; margin:0 auto; padding:0 16px; }
+  header.board { padding-top:40px; }
+  h1 { font-family:Fraunces, serif; font-size:38px; margin:0 0 8px; }
+  header.board p, .opt p { color:#526148; line-height:1.5; max-width:820px; margin:4px 0; }
+  section.option { margin-top:30px; margin-bottom:56px; }
+  .opt { margin-bottom:12px; } .opt .tag { font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:#526148; }
+  .opt h2 { font-family:Fraunces, serif; font-size:27px; margin:2px 0 4px; }
+  .wrap { position:relative; width:100%; border-radius:12px; overflow:hidden; box-shadow:0 18px 40px rgba(10,30,10,.22); }
+  .page { position:absolute; left:0; top:0; width:1280px; height:720px; transform-origin:top left; font-family:"Segoe UI", Inter, sans-serif; color:#EAF3DF; }
+  .page > img.bg { position:absolute; inset:0; width:1280px; height:720px; }
+  .abs { position:absolute; }
+  .slicer .lab { font-size:11px; color:#9FB58F; } .slicer .box { margin-top:3px; height:24px; border:1px solid #3D6B45; border-radius:6px; background:#0E2A17; font-size:12px; padding:3px 8px; display:flex; justify-content:space-between; }
+  .tip { position:fixed; pointer-events:none; background:#0C1F12; color:#fff; font:12px/1.45 Inter, sans-serif; padding:8px 10px; border-radius:8px; opacity:0; z-index:9; }
+  footer.board { color:#526148; font-size:13px; padding-bottom:60px; line-height:1.5; }
+</style>
+</head>
+<body>
+<header class="board">
+  <h1>Green Stalk, minimalist versions</h1>
+  <p>Same layout as the Power BI page, same real numbers (retail white maize, September 2026), four calmer backgrounds. The maize identity stays in small touches: the cob logo, gold accents, and one quiet detail per design.</p>
+</header>
+
+<section class="option"><div class="opt"><div class="tag">Option 1</div><h2>Single Leaf</h2>
+  <p>Flat deep green and near-solid panels. One long maize leaf with a thin gold vein sweeps across the page, seen faintly through the panels. Calm, but still clearly about maize.</p></div>
+  <div class="wrap"><div class="page" data-bg="leaf"></div></div></section>
+
+<section class="option"><div class="opt"><div class="tag">Option 2</div><h2>Gold Line</h2>
+  <p>The most minimal: near-black green, outlined panels, and gold hairlines under the header and along the bottom. Page tabs become simple text with a gold underline.</p></div>
+  <div class="wrap"><div class="page" data-bg="line"></div></div></section>
+
+<section class="option"><div class="opt"><div class="tag">Option 3</div><h2>Kernel Corner</h2>
+  <p>Solid rounded panels on deep green, with a faint pattern of maize kernels fading out from the top-right corner. A small piece of texture, nothing more.</p></div>
+  <div class="wrap"><div class="page" data-bg="kernel"></div></div></section>
+
+<section class="option"><div class="opt"><div class="tag">Option 4</div><h2>Evening Glow</h2>
+  <p>A soft green gradient with one warm gold glow in the corner, like late sun over a field. Light glass panels and underlined tabs. Premium without any pictures.</p></div>
+  <div class="wrap"><div class="page" data-bg="glow"></div></div></section>
+
+<footer class="board">The content on each page is drawn here to match the Power BI visuals; in the report itself the cards, map and bars are live Power BI visuals on top of the chosen background image.</footer>
+<div class="tip" id="tip"></div>
+
+<script>
+const DATA = __DATA__;
+const COL = { "alert high":"#E5573E", "watch high":"#F4A462", "normal":"#7F8A82", "watch low":"#93C6F2", "alert low":"#2F84D8", "not enough history":"#4A5E50" };
+const LON = [8.0, 16.6], LAT = [1.5, 13.2];
+const fmt = d3.format(",.0f"), pct = d => (d > 0 ? "+" : d < 0 ? "−" : "") + Math.abs(Math.round(d * 100)) + "%";
+const tip = document.getElementById("tip");
+const show = (e, h) => { tip.innerHTML = h; tip.style.opacity = 1; tip.style.left = Math.min(e.clientX + 14, innerWidth - 240) + "px"; tip.style.top = e.clientY + 14 + "px"; };
+const hide = () => tip.style.opacity = 0;
+const label = { "alert high":"Alert: too expensive", "watch high":"Watch: rising", "alert low":"Alert: too cheap", "watch low":"Watch: falling", "normal":"Normal", "not enough history":"Not enough history" };
+
+const judged = DATA.maize_markets.filter(m => m.alert_level !== "not enough history");
+const spot = judged.reduce((a, b) => Math.abs(b.gap) > Math.abs(a.gap) ? b : a);
+const nLow = judged.filter(m => m.alert_level.includes("low")).length, nHigh = judged.filter(m => m.alert_level.includes("high")).length;
+
+function build(el) {
+  const p = d3.select(el);
+  p.append("img").attr("class", "bg").attr("src", `../out/bg_overview_${el.dataset.bg}.png`);
+  // slicers
+  [[846, 160, "Food", "Maize (white)"], [1016, 100, "Price", "Retail"], [1126, 120, "Month (latest if blank)", "All"]].forEach(([x, w, l, v]) =>
+    p.append("div").attr("class", "abs slicer").style("left", x + "px").style("top", "64px").style("width", w + "px")
+      .html(`<div class="lab">${l}</div><div class="box"><span>${v}</span><span style="color:#9FB58F">▾</span></div>`));
+  // card 1
+  p.append("div").attr("class", "abs").style("left", "52px").style("top", "160px").style("font-size", "52px").style("font-weight", 700).style("color", "#F5C518").text(`${Math.max(nLow, nHigh)} / ${judged.length}`);
+  p.append("div").attr("class", "abs").style("left", "52px").style("top", "240px").style("width", "264px").style("font-size", "15px").style("line-height", "1.35")
+    .text(`markets selling maize (white) well below normal. ${nHigh} above.`);
+  p.append("div").attr("class", "abs").style("left", "52px").style("top", "302px").style("width", "264px").style("font-size", "11.5px").style("color", "#9FB58F").style("line-height", "1.4")
+    .text(`${DATA.maize_markets.length} markets reported prices in September 2026. Markets need three years of history to be judged.`);
+  // spotlight
+  p.append("div").attr("class", "abs").style("left", "52px").style("top", "444px").style("font-size", "20px").style("font-weight", 600).text(`${spot.market} · ${spot.region}`);
+  [[52, fmt(spot.price), "Now (FCFA/kg)", "#EAF3DF"], [192, fmt(spot.normal), "Normal (FCFA/kg)", "#9FB58F"]].forEach(([x, v, l, c]) =>
+    p.append("div").attr("class", "abs").style("left", x + "px").style("top", "484px").html(`<div style="font-size:28px;font-weight:700;color:${c}">${v}</div><div style="font-size:11.5px;color:#9FB58F">${l}</div>`));
+  p.append("div").attr("class", "abs").style("left", "52px").style("top", "550px").style("font-size", "38px").style("font-weight", 700).style("color", "#6FAEF0").text(pct(spot.gap));
+  p.append("div").attr("class", "abs").style("left", "52px").style("top", "612px").style("width", "264px").style("font-size", "12px").style("color", "#CFE3BC").style("line-height", "1.4")
+    .text("Cheap for families who buy it. For farmers it means selling below what seed and fertiliser cost.");
+  // map: outline image with dots placed on the same straight lon/lat scale as the Power BI scatter
+  const mx = 370, my = 200, mw = 360, mh = 488;
+  p.append("img").attr("class", "abs").attr("src", "../out/map_outline.png").style("left", mx + "px").style("top", my + "px").style("width", mw + "px").style("height", mh + "px");
+  const svg = p.append("svg").attr("class", "abs").style("left", mx + "px").style("top", my + "px").attr("width", mw).attr("height", mh);
+  const x = d3.scaleLinear().domain(LON).range([0, mw]), y = d3.scaleLinear().domain(LAT).range([mh, 0]);
+  const pts = DATA.maize_markets.slice().sort((a, b) => a.alert_level.startsWith("alert") - b.alert_level.startsWith("alert"));
+  svg.selectAll("circle").data(pts).join("circle").attr("cx", d => x(d.lon)).attr("cy", d => y(d.lat))
+    .attr("r", d => d.alert_level.startsWith("alert") ? 8 : d.alert_level.startsWith("watch") ? 5.5 : d.alert_level === "normal" ? 4.5 : 3.5)
+    .attr("fill", d => COL[d.alert_level]).attr("stroke", "#0C2614").attr("stroke-width", 1.5)
+    .on("mousemove", (e, d) => show(e, `<b>${d.market}</b><br>${fmt(d.price)} FCFA/kg · normal ${d.normal ? fmt(d.normal) : "–"}<br>${label[d.alert_level]}`)).on("mouseleave", hide);
+  // bars: gap from normal by market
+  const bx = 778, by = 184, bw = 456, bh = 500, rows = judged.slice().sort((a, b) => a.gap - b.gap);
+  const bs = p.append("svg").attr("class", "abs").style("left", bx + "px").style("top", by + "px").attr("width", bw).attr("height", bh);
+  const bxS = d3.scaleLinear().domain([-0.75, 0.25]).range([96, bw - 40]), byS = d3.scaleBand().domain(rows.map(d => d.market)).range([6, bh - 24]).padding(.28);
+  bs.selectAll("line").data([-.6, -.4, -.2, 0, .2]).join("line").attr("x1", bxS).attr("x2", bxS).attr("y1", 0).attr("y2", bh - 22).attr("stroke", d => d === 0 ? "#4F8A58" : "#21452F");
+  bs.selectAll("text.ax").data([-.6, -.4, -.2, 0, .2]).join("text").attr("x", bxS).attr("y", bh - 6).attr("text-anchor", "middle").attr("font-size", 10).attr("fill", "#9FB58F").text(d => pct(d));
+  const g = bs.selectAll("g").data(rows).join("g").attr("transform", d => `translate(0,${byS(d.market)})`);
+  g.append("text").attr("x", 88).attr("y", byS.bandwidth() / 2 + 4).attr("text-anchor", "end").attr("font-size", 11).attr("fill", "#EAF3DF").text(d => d.market);
+  g.append("rect").attr("x", d => bxS(Math.min(0, d.gap))).attr("width", d => Math.max(2, Math.abs(bxS(d.gap) - bxS(0)))).attr("height", byS.bandwidth()).attr("rx", 3).attr("fill", d => COL[d.alert_level]);
+  g.append("text").attr("x", d => d.gap < 0 ? bxS(d.gap) - 5 : bxS(d.gap) + 5).attr("y", byS.bandwidth() / 2 + 4).attr("text-anchor", d => d.gap < 0 ? "end" : "start").attr("font-size", 10).attr("fill", "#CFE3BC").text(d => pct(d.gap));
+  g.on("mousemove", (e, d) => show(e, `<b>${d.market}</b><br>${fmt(d.price)} against ${fmt(d.normal)} normal<br>${label[d.alert_level]}`)).on("mouseleave", hide);
+}
+document.querySelectorAll(".page").forEach(build);
+function fit() { document.querySelectorAll(".wrap").forEach(w => { const s = w.clientWidth / 1280; w.style.height = 720 * s + "px"; w.firstElementChild.style.transform = `scale(${s})`; }); }
+addEventListener("resize", fit); fit();
+</script>
+</body>
+</html>

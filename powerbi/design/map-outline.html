@@ -23,7 +23,7 @@ d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json").the
   const svg = d3.select("#m");
   // neighbours, faint, for context
   svg.append("g").selectAll("path").data(all.filter(f => ["566", "148", "140", "226", "266", "178"].includes(f.id))).join("path")
-    .attr("d", path).attr("fill", "rgba(22,58,33,.35)").attr("stroke", "rgba(61,107,69,.45)").attr("stroke-width", 1.5);
+    .attr("d", path).attr("fill", "none").attr("stroke", "rgba(79,138,88,.35)").attr("stroke-width", 1.5);
   svg.append("path").datum(cmr).attr("d", path).attr("fill", "#163A21").attr("stroke", "#4F8A58").attr("stroke-width", 3);
   document.body.setAttribute("data-ready", "1");
 });

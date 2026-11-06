@@ -286,10 +286,10 @@ def image_ref(item):
 
 def overview_visuals():
     v = []
-    # header slicers (left of the page tabs drawn in the background)
-    v.append(slicer("slFood", 420, 62, 170, 44, "Commodities", "commodity", "Food", default="Maize (white)"))
-    v.append(slicer("slType", 600, 62, 120, 44, "PriceType", "Price type", "Price", default="Retail"))
-    v.append(slicer("slMonth", 730, 62, 116, 44, "Calendar", "Month", "Month (latest if blank)", descending=True))
+    # header slicers, right of the title (the page tabs sit in a slim row above)
+    v.append(slicer("slFood", 846, 62, 160, 46, "Commodities", "commodity", "Food", default="Maize (white)"))
+    v.append(slicer("slType", 1016, 62, 100, 46, "PriceType", "Price type", "Price", default="Retail"))
+    v.append(slicer("slMonth", 1126, 62, 120, 46, "Calendar", "Month", "Month (latest if blank)", descending=True))
 
     # card 1: this month
     v.append(card("c1Big", 46, 158, 276, 78, "Headline Fraction", 46, GOLD, bold=True))
