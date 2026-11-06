@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maize Field Designs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; background:#EEF2E6; color:#17260F; font-family:Inter, system-ui, sans-serif; }
+  header.board { max-width:1340px; margin:0 auto; padding:40px 16px 8px; }
+  header.board h1 { font-family:Fraunces, serif; font-size:40px; margin:0 0 8px; }
+  header.board p { margin:4px 0; color:#56634B; max-width:840px; line-height:1.5; }
+  section.option { max-width:1340px; margin:28px auto 60px; padding:0 16px; }
+  .opt-head { display:flex; flex-wrap:wrap; gap:16px 32px; align-items:flex-end; justify-content:space-between; margin-bottom:12px; }
+  .opt-head h2 { font-family:Fraunces, serif; font-size:28px; margin:0; }
+  .opt-head .tag { font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:#56634B; }
+  .opt-head p { margin:6px 0 0; color:#56634B; max-width:660px; line-height:1.5; font-size:15px; }
+  .swatches { display:flex; flex-wrap:wrap; gap:8px; max-width:520px; }
+  .sw { display:flex; align-items:center; gap:6px; font-size:12px; background:#fff; border-radius:8px; padding:4px 8px 4px 4px; }
+  .sw i { width:22px; height:22px; border-radius:6px; display:block; border:1px solid rgba(0,0,0,.08); }
+  .sw b { font-weight:600; } .sw span { color:#6B7660; }
+  .frame-wrap { width:100%; position:relative; border-radius:14px; overflow:hidden; box-shadow:0 18px 40px rgba(20,40,10,.2); }
+  .frame { width:1280px; height:720px; position:absolute; top:0; left:0; transform-origin:top left; overflow:hidden; }
+  .bg { position:absolute; inset:0; z-index:0; }
+  .layer { position:absolute; inset:0; z-index:1; }
+  .card { position:absolute; border-radius:18px; }
+  .legend { display:flex; gap:12px; flex-wrap:wrap; font-size:11px; align-items:center; }
+  .legend svg { vertical-align:middle; margin-right:3px; }
+  .kick { font-size:11px; letter-spacing:.12em; text-transform:uppercase; }
+  .tip { position:fixed; pointer-events:none; z-index:50; background:#10200C; color:#fff; font:12px/1.45 Inter, sans-serif; padding:8px 10px; border-radius:8px; opacity:0; transition:opacity .1s; max-width:250px; box-shadow:0 6px 18px rgba(0,0,0,.3); }
+  footer.board { max-width:1340px; margin:0 auto 60px; padding:0 16px; color:#56634B; font-size:13px; line-height:1.5; }
+
+  /* E: Dawn Field */
+  .E { font-family:Outfit, sans-serif; color:#163A1C; }
+  .E .glass { background:rgba(255,255,255,.80); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.9); box-shadow:0 10px 30px rgba(30,70,20,.14); padding:16px 18px; }
+  .E h3 { margin:0; font-size:15px; font-weight:700; }
+  /* F: Golden Cob */
+  .F { background:#FFFDF6; font-family:"Bricolage Grotesque", sans-serif; color:#1D3A15; }
+  .F .panel { background:#fff; border:1px solid #ECE6CF; box-shadow:0 6px 20px rgba(80,70,20,.07); padding:16px 18px; }
+  .F h3 { margin:0; font-size:15px; font-weight:700; }
+  .F .kernel { position:absolute; width:150px; height:118px; border-radius:58px 58px 44px 44px; background:radial-gradient(circle at 35% 28%, #FFF1B0 0 14%, #F7C928 46%, #E1A90B 100%); box-shadow:inset 0 -6px 0 rgba(150,100,0,.18), 0 6px 16px rgba(160,120,0,.18); padding:22px 16px 0; text-align:center; color:#3B2A00; }
+  .F .kernel .v { font-size:36px; font-weight:800; line-height:1; }
+  .F .kernel .l { font-size:12px; margin-top:6px; line-height:1.25; }
+  /* G: Green Stalk */
+  .G { background:#0C2614; font-family:Outfit, sans-serif; color:#EAF3DF; }
+  .G .glass { background:rgba(9,30,15,.72); backdrop-filter:blur(6px); border:1px solid rgba(160,210,110,.22); padding:16px 18px; }
+  .G h3 { margin:0; font-size:15px; font-weight:500; color:#CFE3BC; }
+  /* H: Kernel Mosaic */
+  .H { background:#FFFFFF; font-family:Inter, sans-serif; color:#15301A; }
+  .H .panel { background:rgba(255,255,255,.92); border:1px solid #E5EDDF; box-shadow:0 8px 24px rgba(30,70,30,.08); padding:16px 18px; }
+  .H h3 { margin:0; font-size:15px; font-weight:600; }
+</style>
+</head>
+<body>
+<header class="board">
+  <h1>Maize field designs: round two</h1>
+  <p>Four new overview pages where the maize plant is part of the artwork: stalks, leaves, tassels and cobs, drawn as illustrations so they belong to you and export cleanly as Power BI background images. Green leads, with maize yellow and white.</p>
+  <p>The alert language stays the same as before, checked for colour blindness: <b>red = too expensive</b>, <b>blue = too cheap</b>, <b>grey = normal</b>; solid = alert, hollow ring = watch. Hover any chart to see the numbers.</p>
+</header>
+
+<section class="option"><div class="opt-head"><div><div class="tag">Option E · light</div><h2>Dawn Field</h2>
+  <p>A maize field at sunrise fills the whole page: soft yellow sky, rows of green plants with ripening cobs, the sun behind the title. The data floats on frosted white glass above the crop.</p></div><div class="swatches" data-theme="E"></div></div>
+  <div class="frame-wrap"><div class="frame E" id="E"></div></div></section>
+
+<section class="option"><div class="opt-head"><div><div class="tag">Option F · light</div><h2>Golden Cob</h2>
+  <p>A giant cob runs down the left edge, its green husk peeling open to become the menu. The headline numbers sit inside big yellow kernels. Clean white page, green type.</p></div><div class="swatches" data-theme="F"></div></div>
+  <div class="frame-wrap"><div class="frame F" id="F"></div></div></section>
+
+<section class="option"><div class="opt-head"><div><div class="tag">Option G · dark</div><h2>Green Stalk</h2>
+  <p>Night-green with huge maize leaves sweeping across the page and golden tassels at the top. Dark glass cards. The signature chart shows next month's likely price range for every market against its normal.</p></div><div class="swatches" data-theme="G"></div></div>
+  <div class="frame-wrap"><div class="frame G" id="G"></div></div></section>
+
+<section class="option"><div class="opt-head"><div><div class="tag">Option H · light</div><h2>Kernel Mosaic</h2>
+  <p>The calmest: white page, a fresh green leaf band on top, and a huge cob watermark made of pale yellow kernels behind the charts. Reads like a polished official report.</p></div><div class="swatches" data-theme="H"></div></div>
+  <div class="frame-wrap"><div class="frame H" id="H"></div></div></section>
+
+<footer class="board">Data: World Food Programme via HDX HAPI (CC BY-IGO), retail white maize, September 2026. "Normal" is the median for the same market and month over the previous five years. Forecast for October 2026 from the project's model. All maize artwork is drawn in code for this project. Design previews only: the final report is built in Power BI.</footer>
+<div class="tip" id="tip"></div>
+
+<script>
+const DATA = {"kpi": {"markets": 29, "judged": 351, "alert_high": 19, "watch_high": 19, "alert_low": 52, "watch_low": 68, "normal": 193}, "maize_markets": [{"market": "Kousseri", "region": "Far-North", "lat": 12.08, "lon": 15.03, "price": 208.0, "normal": 350.0, "gap": -0.406, "alert_level": "alert low", "forecast_price": 208.44, "forecast_low": 178.37, "forecast_high": 246.42, "forecast_alert_level": "alert low"}, {"market": "Kaele", "region": "Far-North", "lat": 10.11, "lon": 14.45, "price": 190.0, "normal": 363.0, "gap": -0.476, "alert_level": "alert low", "forecast_price": 190.73, "forecast_low": 163.22, "forecast_high": 225.49, "forecast_alert_level": "alert low"}, {"market": "Mokolo", "region": "Far-North", "lat": 10.74, "lon": 13.8, "price": 167.0, "normal": 473.0, "gap": -0.647, "alert_level": "alert low", "forecast_price": 163.15, "forecast_low": 139.62, "forecast_high": 192.89, "forecast_alert_level": "watch low"}, {"market": "Salak", "region": "Far-North", "lat": 10.46, "lon": 14.24, "price": 158.0, "normal": 255.0, "gap": -0.379, "alert_level": "watch low", "forecast_price": 158.8, "forecast_low": 135.89, "forecast_high": 187.74, "forecast_alert_level": "watch low"}, {"market": "Gobo", "region": "Far-North", "lat": 10.0, "lon": 15.42, "price": 250.0, "normal": 226.0, "gap": 0.106, "alert_level": "normal", "forecast_price": 247.88, "forecast_low": 212.12, "forecast_high": 293.05, "forecast_alert_level": "watch high"}, {"market": "Logone-Birni", "region": "Far-North", "lat": 11.78, "lon": 15.1, "price": 266.67, "normal": 550.0, "gap": -0.515, "alert_level": "not enough history", "forecast_price": 268.02, "forecast_low": 229.35, "forecast_high": 316.86, "forecast_alert_level": "not enough history"}, {"market": "Gazawa", "region": "Far-North", "lat": 10.54, "lon": 14.14, "price": 144.0, "normal": 236.0, "gap": -0.39, "alert_level": "watch low", "forecast_price": 144.98, "forecast_low": 124.06, "forecast_high": 171.4, "forecast_alert_level": "watch low"}, {"market": "Mbé", "region": "Adamawa", "lat": 7.86, "lon": 13.59, "price": 154.0, "normal": 199.0, "gap": -0.225, "alert_level": "not enough history", "forecast_price": 152.86, "forecast_low": 130.81, "forecast_high": 180.72, "forecast_alert_level": "not enough history"}, {"market": "Mayo galke", "region": "North", "lat": 8.4, "lon": 14.23, "price": 153.0, "normal": 240.0, "gap": -0.361, "alert_level": "watch low", "forecast_price": 152.06, "forecast_low": 130.13, "forecast_high": 179.77, "forecast_alert_level": "not enough history"}, {"market": "Garoua", "region": "North", "lat": 9.3, "lon": 13.4, "price": 150.0, "normal": 311.0, "gap": -0.518, "alert_level": "alert low", "forecast_price": 156.34, "forecast_low": 133.79, "forecast_high": 184.83, "forecast_alert_level": "alert low"}, {"market": "Tibati", "region": "Adamawa", "lat": 6.47, "lon": 12.63, "price": 155.0, "normal": 194.0, "gap": -0.199, "alert_level": "normal", "forecast_price": 152.26, "forecast_low": 130.29, "forecast_high": 180.0, "forecast_alert_level": "normal"}, {"market": "Koza", "region": "Far-North", "lat": 10.87, "lon": 13.88, "price": 120.0, "normal": 218.0, "gap": -0.45, "alert_level": "alert low", "forecast_price": 120.3, "forecast_low": 102.94, "forecast_high": 142.22, "forecast_alert_level": "not enough history"}, {"market": "Ngaoundéré", "region": "Adamawa", "lat": 7.33, "lon": 13.58, "price": 145.0, "normal": 275.0, "gap": -0.473, "alert_level": "alert low", "forecast_price": 146.14, "forecast_low": 125.06, "forecast_high": 172.78, "forecast_alert_level": "alert low"}, {"market": "Fotokol", "region": "Far-North", "lat": 12.38, "lon": 14.22, "price": 218.0, "normal": 327.0, "gap": -0.333, "alert_level": "watch low", "forecast_price": 218.55, "forecast_low": 187.02, "forecast_high": 258.38, "forecast_alert_level": "watch low"}, {"market": "Maroua", "region": "Far-North", "lat": 10.6, "lon": 14.33, "price": 200.0, "normal": 334.0, "gap": -0.4, "alert_level": "alert low", "forecast_price": 200.63, "forecast_low": 171.69, "forecast_high": 237.19, "forecast_alert_level": "watch low"}, {"market": "Yagoua", "region": "Far-North", "lat": 10.34, "lon": 15.23, "price": 250.0, "normal": 375.0, "gap": -0.333, "alert_level": "watch low", "forecast_price": 243.8, "forecast_low": 208.63, "forecast_high": 288.23, "forecast_alert_level": "watch low"}, {"market": "Doukoula", "region": "Far-North", "lat": 10.3, "lon": 14.69, "price": 97.0, "normal": 97.0, "gap": 0.0, "alert_level": "normal", "forecast_price": 97.0, "forecast_low": 83.01, "forecast_high": 114.68, "forecast_alert_level": "normal"}, {"market": "Pitoa", "region": "North", "lat": 9.38, "lon": 13.53, "price": 143.0, "normal": 207.0, "gap": -0.309, "alert_level": "watch low", "forecast_price": 143.99, "forecast_low": 123.22, "forecast_high": 170.23, "forecast_alert_level": "watch low"}, {"market": "Banyo", "region": "Adamawa", "lat": 6.75, "lon": 11.8, "price": 111.0, "normal": 239.0, "gap": -0.535, "alert_level": "alert low", "forecast_price": 111.27, "forecast_low": 95.22, "forecast_high": 131.55, "forecast_alert_level": "alert low"}, {"market": "Mayo Darlé", "region": "Adamawa", "lat": 6.5, "lon": 11.55, "price": 111.0, "normal": 206.0, "gap": -0.46, "alert_level": "alert low", "forecast_price": 111.0, "forecast_low": 94.99, "forecast_high": 131.23, "forecast_alert_level": "watch low"}, {"market": "Kumba", "region": "South-West", "lat": 4.64, "lon": 9.45, "price": 300.0, "normal": null, "gap": null, "alert_level": "not enough history", "forecast_price": 297.41, "forecast_low": 254.5, "forecast_high": 351.61, "forecast_alert_level": "not enough history"}, {"market": "Nkambe", "region": "North-West", "lat": 6.58, "lon": 10.71, "price": 111.0, "normal": null, "gap": null, "alert_level": "not enough history", "forecast_price": 112.22, "forecast_low": 96.03, "forecast_high": 132.67, "forecast_alert_level": "not enough history"}, {"market": "Kumbo", "region": "North-West", "lat": 6.21, "lon": 10.68, "price": 159.0, "normal": null, "gap": null, "alert_level": "not enough history", "forecast_price": 160.24, "forecast_low": 137.12, "forecast_high": 189.44, "forecast_alert_level": "not enough history"}, {"market": "Yaoundé-Mfoundi", "region": "Centre", "lat": 3.86, "lon": 11.52, "price": 214.0, "normal": null, "gap": null, "alert_level": "not enough history", "forecast_price": 214.95, "forecast_low": 183.94, "forecast_high": 254.12, "forecast_alert_level": "not enough history"}, {"market": "Buea", "region": "South-West", "lat": 4.16, "lon": 9.27, "price": 317.0, "normal": null, "gap": null, "alert_level": "not enough history", "forecast_price": 317.4, "forecast_low": 271.61, "forecast_high": 375.23, "forecast_alert_level": "not enough history"}, {"market": "Mamfé", "region": "South-West", "lat": 5.76, "lon": 9.31, "price": 333.0, "normal": null, "gap": null, "alert_level": "not enough history", "forecast_price": 333.0, "forecast_low": 284.96, "forecast_high": 393.68, "forecast_alert_level": "not enough history"}, {"market": "Bamenda", "region": "North-West", "lat": 5.96, "lon": 10.15, "price": 197.0, "normal": null, "gap": null, "alert_level": "not enough history", "forecast_price": 201.32, "forecast_low": 172.28, "forecast_high": 238.01, "forecast_alert_level": "not enough history"}], "maroua": [{"m": "2021-03", "p": 317.0, "n": null, "a": "not enough history"}, {"m": "2021-04", "p": 300.0, "n": null, "a": "not enough history"}, {"m": "2021-06", "p": 342.0, "n": null, "a": "not enough history"}, {"m": "2021-07", "p": 250.0, "n": null, "a": "not enough history"}, {"m": "2021-10", "p": 350.0, "n": null, "a": "not enough history"}, {"m": "2021-11", "p": 300.0, "n": null, "a": "not enough history"}, {"m": "2022-03", "p": 238.64, "n": 317.0, "a": "not enough history"}, {"m": "2022-04", "p": 238.64, "n": 300.0, "a": "not enough history"}, {"m": "2022-05", "p": 238.64, "n": null, "a": "not enough history"}, {"m": "2022-06", "p": 238.64, "n": 342.0, "a": "not enough history"}, {"m": "2022-07", "p": 283.33, "n": 250.0, "a": "not enough history"}, {"m": "2022-08", "p": 250.0, "n": null, "a": "not enough history"}, {"m": "2022-09", "p": 275.0, "n": 300.0, "a": "not enough history"}, {"m": "2022-10", "p": 225.0, "n": 350.0, "a": "not enough history"}, {"m": "2022-11", "p": 225.0, "n": 300.0, "a": "not enough history"}, {"m": "2022-12", "p": 250.0, "n": null, "a": "not enough history"}, {"m": "2023-01", "p": 275.0, "n": null, "a": "not enough history"}, {"m": "2023-02", "p": 350.0, "n": null, "a": "not enough history"}, {"m": "2023-03", "p": 311.0, "n": 277.82, "a": "not enough history"}, {"m": "2023-04", "p": 300.0, "n": 269.32, "a": "not enough history"}, {"m": "2023-05", "p": 300.0, "n": 238.64, "a": "not enough history"}, {"m": "2023-06", "p": 367.0, "n": 290.32, "a": "not enough history"}, {"m": "2023-07", "p": 425.0, "n": 266.665, "a": "not enough history"}, {"m": "2023-08", "p": 475.0, "n": 250.0, "a": "not enough history"}, {"m": "2023-09", "p": 375.0, "n": 287.5, "a": "not enough history"}, {"m": "2023-10", "p": 300.0, "n": 287.5, "a": "not enough history"}, {"m": "2023-11", "p": 317.0, "n": 262.5, "a": "not enough history"}, {"m": "2024-01", "p": 375.0, "n": 275.0, "a": "not enough history"}, {"m": "2024-02", "p": 300.0, "n": 350.0, "a": "not enough history"}, {"m": "2024-03", "p": 300.0, "n": 311.0, "a": "normal"}, {"m": "2024-04", "p": 450.0, "n": 300.0, "a": "alert high"}, {"m": "2024-05", "p": 425.0, "n": 269.32, "a": "not enough history"}, {"m": "2024-06", "p": 563.0, "n": 342.0, "a": "alert high"}, {"m": "2024-07", "p": 500.0, "n": 283.33, "a": "alert high"}, {"m": "2024-08", "p": 450.0, "n": 362.5, "a": "not enough history"}, {"m": "2024-09", "p": 350.0, "n": 300.0, "a": "normal"}, {"m": "2024-10", "p": 367.0, "n": 300.0, "a": "watch high"}, {"m": "2024-11", "p": 308.0, "n": 300.0, "a": "normal"}, {"m": "2024-12", "p": 400.0, "n": 250.0, "a": "not enough history"}, {"m": "2025-01", "p": 400.0, "n": 325.0, "a": "not enough history"}, {"m": "2025-02", "p": 375.0, "n": 325.0, "a": "not enough history"}, {"m": "2025-03", "p": 300.0, "n": 305.5, "a": "normal"}, {"m": "2025-04", "p": 270.0, "n": 300.0, "a": "normal"}, {"m": "2025-05", "p": 283.0, "n": 300.0, "a": "normal"}, {"m": "2025-06", "p": 300.0, "n": 354.5, "a": "normal"}, {"m": "2025-07", "p": 300.0, "n": 354.165, "a": "normal"}, {"m": "2025-08", "p": 350.0, "n": 450.0, "a": "watch low"}, {"m": "2025-09", "p": 317.0, "n": 325.0, "a": "normal"}, {"m": "2025-11", "p": 204.55, "n": 304.0, "a": "watch low"}, {"m": "2025-12", "p": 200.0, "n": 325.0, "a": "not enough history"}, {"m": "2026-01", "p": 198.86, "n": 375.0, "a": "alert low"}, {"m": "2026-02", "p": 134.0, "n": 350.0, "a": "alert low"}, {"m": "2026-03", "p": 170.46, "n": 300.0, "a": "alert low"}, {"m": "2026-04", "p": 200.0, "n": 300.0, "a": "watch low"}, {"m": "2026-05", "p": 196.0, "n": 291.5, "a": "watch low"}, {"m": "2026-06", "p": 136.0, "n": 342.0, "a": "alert low"}, {"m": "2026-07", "p": 170.46, "n": 300.0, "a": "alert low"}, {"m": "2026-08", "p": 250.0, "n": 400.0, "a": "watch low"}, {"m": "2026-09", "p": 200.0, "n": 333.5, "a": "alert low"}], "national": [{"m": "2020-01", "p": 280.0}, {"m": "2020-02", "p": 305.5}, {"m": "2020-03", "p": 292.3}, {"m": "2020-04", "p": 305.53}, {"m": "2020-05", "p": 308.65}, {"m": "2020-06", "p": 315.65}, {"m": "2020-09", "p": 327.0}, {"m": "2020-10", "p": 350.0}, {"m": "2021-03", "p": 258.5}, {"m": "2021-04", "p": 250.0}, {"m": "2021-06", "p": 316.5}, {"m": "2021-07", "p": 337.5}, {"m": "2021-08", "p": 300.0}, {"m": "2021-10", "p": 329.16499999999996}, {"m": "2021-11", "p": 350.0}, {"m": "2021-12", "p": 250.0}, {"m": "2022-03", "p": 218.60500000000002}, {"m": "2022-04", "p": 210.52499999999998}, {"m": "2022-05", "p": 218.12}, {"m": "2022-06", "p": 223.24}, {"m": "2022-07", "p": 231.64}, {"m": "2022-08", "p": 229.48}, {"m": "2022-09", "p": 234.48000000000002}, {"m": "2022-10", "p": 211.83499999999998}, {"m": "2022-11", "p": 212.5}, {"m": "2022-12", "p": 220.315}, {"m": "2023-01", "p": 248.5}, {"m": "2023-02", "p": 255.875}, {"m": "2023-03", "p": 241.0}, {"m": "2023-04", "p": 301.0}, {"m": "2023-05", "p": 275.0}, {"m": "2023-06", "p": 301.83500000000004}, {"m": "2023-07", "p": 305.0}, {"m": "2023-08", "p": 345.0}, {"m": "2023-09", "p": 563.0}, {"m": "2023-10", "p": 274.5}, {"m": "2023-11", "p": 255.0}, {"m": "2023-12", "p": 241.0}, {"m": "2024-01", "p": 255.0}, {"m": "2024-02", "p": 264.5}, {"m": "2024-03", "p": 241.0}, {"m": "2024-04", "p": 262.0}, {"m": "2024-05", "p": 301.51}, {"m": "2024-06", "p": 288.205}, {"m": "2024-07", "p": 344.0}, {"m": "2024-08", "p": 338.0}, {"m": "2024-09", "p": 325.5}, {"m": "2024-10", "p": 287.5}, {"m": "2024-11", "p": 263.315}, {"m": "2024-12", "p": 263.5}, {"m": "2025-01", "p": 259.25}, {"m": "2025-02", "p": 270.98}, {"m": "2025-03", "p": 263.16}, {"m": "2025-04", "p": 262.83000000000004}, {"m": "2025-05", "p": 271.69}, {"m": "2025-06", "p": 269.0}, {"m": "2025-07", "p": 263.0}, {"m": "2025-08", "p": 223.0}, {"m": "2025-09", "p": 206.25}, {"m": "2025-10", "p": 173.5}, {"m": "2025-11", "p": 169.5}, {"m": "2025-12", "p": 154.0}, {"m": "2026-01", "p": 150.5}, {"m": "2026-02", "p": 152.5}, {"m": "2026-03", "p": 150.0}, {"m": "2026-04", "p": 145.35}, {"m": "2026-05", "p": 153.5}, {"m": "2026-06", "p": 154.0}, {"m": "2026-07", "p": 153.5}, {"m": "2026-08", "p": 164.5}, {"m": "2026-09", "p": 159.0}], "other_foods": [{"commodity": "Sorghum (white)", "hi": 0, "lo": 15, "ok": 1}, {"commodity": "Maize (white)", "hi": 0, "lo": 15, "ok": 3}, {"commodity": "Sorghum (red)", "hi": 0, "lo": 12, "ok": 3}, {"commodity": "Beans (niebe)", "hi": 2, "lo": 9, "ok": 5}, {"commodity": "Onions", "hi": 0, "lo": 11, "ok": 5}, {"commodity": "Fish (tilapia, salted, dried)", "hi": 5, "lo": 4, "ok": 7}, {"commodity": "Potatoes", "hi": 6, "lo": 2, "ok": 5}, {"commodity": "Groundnuts (shelled)", "hi": 1, "lo": 6, "ok": 8}], "spotlight": {"market": "Garoua", "region": "North", "lat": 9.3, "lon": 13.4, "price": 150.0, "normal": 311.0, "gap": -0.518, "alert_level": "alert low", "forecast_price": 156.34, "forecast_low": 133.79, "forecast_high": 184.83, "forecast_alert_level": "alert low"}};
+const LIGHT = { high:"#C8372D", normal:"#8F8A7E", low:"#2864A8" };   // validated on #FBF7EC
+const DARK  = { high:"#E5573E", normal:"#8A938C", low:"#2F84D8" };   // validated on #10261B
+const THEMES = {
+  E: { ...LIGHT, surface:"#FFFFFF", ink:"#163A1C", muted:"#5D6F55", grid:"#E3E9DA", land:"#E7F0DA", landStroke:"#9DB887", accent:"#2E7D32",
+       sw:[["#FFF6D6","Dawn sky"],["#F5C518","Maize yellow"],["#3E8E2F","Leaf green"],["#1E5A23","Deep stalk"],["#FFFFFF","Glass white"]] },
+  F: { ...LIGHT, surface:"#FFFFFF", ink:"#1D3A15", muted:"#6A7259", grid:"#EFEADA", land:"#F3F6E8", landStroke:"#B8C79A", accent:"#2F6B1F",
+       sw:[["#FFFDF6","Cream white"],["#F7C928","Kernel gold"],["#E1A90B","Ripe kernel"],["#4E8B2A","Husk green"],["#1D3A15","Ink green"]] },
+  G: { ...DARK, surface:"#0E2A17", ink:"#EAF3DF", muted:"#9FB58F", grid:"#244A2E", land:"#163A21", landStroke:"#3D6B45", accent:"#F5C518",
+       sw:[["#0C2614","Night field"],["#1F5A2C","Leaf"],["#7DBB4A","Young shoot"],["#F5C518","Tassel gold"],["#EAF3DF","Silk white"]] },
+  H: { ...LIGHT, surface:"#FFFFFF", ink:"#15301A", muted:"#62705C", grid:"#E8EEE3", land:"#F1F6EC", landStroke:"#A9C29A", accent:"#2E7D32",
+       sw:[["#FFFFFF","White"],["#2E7D32","Fresh green"],["#8BC34A","Leaf light"],["#FFF3C4","Kernel pale"],["#F2B705","Maize gold"]] },
+};
+document.querySelectorAll(".swatches").forEach(el => THEMES[el.dataset.theme].sw.forEach(([h, r]) =>
+  el.insertAdjacentHTML("beforeend", `<div class="sw"><i style="background:${h}"></i><div><b>${r}</b><br><span>${h}</span></div></div>`)));
+function fit() { document.querySelectorAll(".frame-wrap").forEach(w => { const s = w.clientWidth / 1280; w.style.height = 720 * s + "px"; w.querySelector(".frame").style.transform = `scale(${s})`; }); }
+addEventListener("resize", fit); fit();
+
+const tip = document.getElementById("tip");
+const showTip = (e, h) => { tip.innerHTML = h; tip.style.opacity = 1; moveTip(e); };
+const moveTip = e => { tip.style.left = Math.min(e.clientX + 14, innerWidth - 270) + "px"; tip.style.top = e.clientY + 14 + "px"; };
+const hideTip = () => tip.style.opacity = 0;
+const fmt = d3.format(",.0f"), pct = d => (d > 0 ? "+" : d < 0 ? "−" : "") + Math.abs(Math.round(d * 100)) + "%";
+const dir = l => !l ? "none" : l.includes("high") ? "high" : l.includes("low") ? "low" : l === "normal" ? "normal" : "none";
+const label = { "alert high":"Alert: too expensive", "watch high":"Watch: rising", "alert low":"Alert: too cheap", "watch low":"Watch: falling", "normal":"Normal", "not enough history":"Not enough history" };
+function mark(sel, lvl, T, r) {
+  const d = dir(lvl), c = d === "none" ? T.muted : T[d];
+  if (lvl.startsWith("alert")) sel.attr("r", r).attr("fill", c).attr("stroke", T.surface).attr("stroke-width", 2);
+  else if (lvl.startsWith("watch")) sel.attr("r", r - 1).attr("fill", T.surface).attr("stroke", c).attr("stroke-width", 2.6);
+  else if (lvl === "normal") sel.attr("r", r - 2).attr("fill", c).attr("stroke", T.surface).attr("stroke-width", 2);
+  else sel.attr("r", r - 3).attr("fill", "none").attr("stroke", c).attr("stroke-width", 1.4).attr("stroke-dasharray", "2 2");
+}
+function legendHTML(T) {
+  const s = lvl => { const d = dir(lvl), c = d === "none" ? T.muted : T[d];
+    const i = lvl.startsWith("alert") ? `<circle cx="7" cy="7" r="5.5" fill="${c}"/>` : lvl.startsWith("watch") ? `<circle cx="7" cy="7" r="4.5" fill="none" stroke="${c}" stroke-width="2.4"/>` : lvl === "normal" ? `<circle cx="7" cy="7" r="4" fill="${c}"/>` : `<circle cx="7" cy="7" r="3.5" fill="none" stroke="${c}" stroke-width="1.3" stroke-dasharray="2 2"/>`;
+    return `<span><svg width="14" height="14">${i}</svg>${label[lvl]}</span>`; };
+  return `<div class="legend">${["alert high", "alert low", "watch low", "normal", "not enough history"].map(s).join("")}</div>`;
+}
+const marketTip = m => `<b>${m.market}</b> · ${m.region}<br>September 2026: <b>${fmt(m.price)} FCFA/kg</b><br>` +
+  (m.normal ? `Normal for September: ${fmt(m.normal)} (${pct(m.gap)})<br>` : `Not enough history for a normal<br>`) + label[m.alert_level] +
+  (m.forecast_price ? `<br>October likely: ${fmt(m.forecast_low)}–${fmt(m.forecast_high)}` : "");
+const svgIn = (sel, w, h) => d3.select(sel).append("svg").attr("width", w).attr("height", h);
+const judged = DATA.maize_markets.filter(m => m.alert_level !== "not enough history");
+const nLow = judged.filter(m => dir(m.alert_level) === "low").length, nHigh = judged.filter(m => dir(m.alert_level) === "high").length;
+const K = DATA.kpi, S = DATA.spotlight;
+
+// ---------- maize artwork (all drawn in code) ----------
+function rng(seed) { return () => (seed = (seed * 16807) % 2147483647) / 2147483647; }
+// one maize plant: stalk, arching leaves, tassel, optional cob with husk
+function plant(g, x, base, h, o) {
+  const r = o.rand, lean = (r() - .5) * h * .08, top = base - h;
+  const p = g.append("g").attr("opacity", o.opacity ?? 1);
+  p.append("path").attr("d", `M${x},${base} C${x + lean * .3},${base - h * .4} ${x + lean * .8},${base - h * .75} ${x + lean},${top}`)
+    .attr("stroke", o.stalk).attr("stroke-width", Math.max(2, h * .028)).attr("fill", "none").attr("stroke-linecap", "round");
+  const nLeaves = 5 + Math.floor(r() * 3);
+  for (let i = 0; i < nLeaves; i++) {
+    const t = .18 + i * (.7 / nLeaves), side = i % 2 ? 1 : -1;
+    const sx = x + lean * t, sy = base - h * t, len = h * (.42 - t * .18) * (.85 + r() * .3);
+    const ex = sx + side * len, ey = sy + len * (.15 + r() * .25), cx1 = sx + side * len * .45, cy1 = sy - len * .42;
+    const wdt = Math.max(3, h * .035);
+    p.append("path").attr("d", `M${sx},${sy} Q${cx1},${cy1 - wdt} ${ex},${ey} Q${cx1},${cy1 + wdt} ${sx},${sy + wdt * .6} Z`)
+      .attr("fill", i % 3 === 0 ? o.leafLight : o.leaf);
+  }
+  // tassel
+  const tx = x + lean;
+  for (let k = -3; k <= 3; k++) p.append("path").attr("d", `M${tx},${top} q${k * h * .018},${-h * .05} ${k * h * .03},${-h * .02}`).attr("stroke", o.tassel).attr("stroke-width", Math.max(1, h * .006)).attr("fill", "none");
+  if (o.cob) {
+    const ct = .45 + r() * .12, cxp = x + lean * ct, cyp = base - h * ct, side = r() > .5 ? 1 : -1, cl = h * .17;
+    const cg = p.append("g").attr("transform", `translate(${cxp + side * h * .03},${cyp}) rotate(${side * 22})`);
+    cg.append("ellipse").attr("rx", cl * .23).attr("ry", cl * .5).attr("cy", -cl * .45).attr("fill", o.cobColor);
+    for (let rr = 0; rr < 6; rr++) for (let kk = -1; kk <= 1; kk++) cg.append("circle").attr("cx", kk * cl * .1).attr("cy", -cl * .78 + rr * cl * .13).attr("r", cl * .035).attr("fill", "rgba(120,80,0,.25)");
+    cg.append("path").attr("d", `M0,0 C${-cl * .4},${-cl * .3} ${-cl * .35},${-cl * .7} ${-cl * .1},${-cl * .95} C${-cl * .2},${-cl * .5} ${-cl * .05},${-cl * .25} 0,0Z`).attr("fill", o.leaf);
+    cg.append("path").attr("d", `M0,0 C${cl * .4},${-cl * .3} ${cl * .35},${-cl * .7} ${cl * .1},${-cl * .95} C${cl * .2},${-cl * .5} ${cl * .05},${-cl * .25} 0,0Z`).attr("fill", o.leafLight);
+    cg.append("path").attr("d", `M0,${-cl * .95} q${cl * .1},${-cl * .2} ${cl * .25},${-cl * .2}`).attr("stroke", "#C98A3A").attr("stroke-width", 1.5).attr("fill", "none");
+  }
+}
+function field(svg, rows, W) {
+  rows.forEach(rw => {
+    const g = svg.append("g"), r = rng(rw.seed);
+    for (let x = -20; x < W + 40; x += rw.gap * (0.8 + r() * .4)) plant(g, x, rw.base + (r() - .5) * 8, rw.h * (0.85 + r() * .3), { ...rw, rand: r, cob: r() < rw.cobRate });
+  });
+}
+// a giant cob made of kernels
+function bigCob(g, cx, cy, rx, ry, o) {
+  const rows = o.rows || 26, cols = o.cols || 9;
+  g.append("ellipse").attr("cx", cx).attr("cy", cy).attr("rx", rx).attr("ry", ry).attr("fill", o.base);
+  for (let i = 0; i < rows; i++) {
+    const y = cy - ry + (i + .5) * (2 * ry / rows), half = rx * Math.sqrt(Math.max(0, 1 - ((y - cy) / ry) ** 2));
+    const n = Math.max(1, Math.round(cols * half / rx));
+    for (let k = 0; k < n; k++) {
+      const x = cx - half + (k + .5) * (2 * half / n) + (i % 2 ? half / n * .25 : 0);
+      g.append("ellipse").attr("cx", x).attr("cy", y).attr("rx", Math.min(half / n, rx / cols) * .86).attr("ry", ry / rows * .9)
+        .attr("fill", o.kernel(i, k)).attr("stroke", o.edge || "none").attr("stroke-width", .8);
+    }
+  }
+}
+
+// ---------- shared charts ----------
+let CMR;
+function drawMap(sel, w, h, T, o = {}) {
+  const svg = svgIn(sel, w, h), proj = d3.geoMercator().fitExtent([[10, 10], [w - 10, h - 10]], CMR);
+  svg.append("path").datum(CMR).attr("d", d3.geoPath(proj)).attr("fill", T.land).attr("stroke", T.landStroke).attr("stroke-width", 1.2);
+  const pts = DATA.maize_markets.slice().sort((a, b) => a.alert_level.startsWith("alert") - b.alert_level.startsWith("alert"));
+  svg.selectAll("circle.m").data(pts).join("circle").attr("cx", d => proj([d.lon, d.lat])[0]).attr("cy", d => proj([d.lon, d.lat])[1]).each(function (d) { mark(d3.select(this), d.alert_level, T, o.r || 8); });
+  svg.selectAll("circle.h").data(pts).join("circle").attr("r", 12).attr("fill", "transparent").attr("cx", d => proj([d.lon, d.lat])[0]).attr("cy", d => proj([d.lon, d.lat])[1])
+    .on("mouseenter", (e, d) => showTip(e, marketTip(d))).on("mousemove", moveTip).on("mouseleave", hideTip);
+  ["Garoua", "Maroua", "Ngaoundéré", "Buea", "Yaoundé-Mfoundi", "Bamenda", "Kousseri"].forEach(n => {
+    const m = DATA.maize_markets.find(x => x.market === n); if (!m) return; const [x, y] = proj([m.lon, m.lat]);
+    svg.append("text").attr("x", x + 10).attr("y", y + 4).text(n.replace("-Mfoundi", "")).attr("font-size", o.fs || 11).attr("font-weight", 600).attr("fill", T.ink).attr("paint-order", "stroke").attr("stroke", T.land).attr("stroke-width", 3);
+  });
+}
+function drawLine(sel, w, h, T, o = {}) {
+  const svg = svgIn(sel, w, h), pad = { l: 38, r: 46, t: 16, b: 22 };
+  const rows = DATA.maroua.map(d => ({ ...d, date: d3.timeParse("%Y-%m")(d.m) })).filter(d => d.m >= (o.start || "2023-01"));
+  const fc = DATA.maize_markets.find(x => x.market === "Maroua"), fdate = new Date(2026, 9, 1);
+  const x = d3.scaleTime().domain([rows[0].date, fdate]).range([pad.l, w - pad.r]), y = d3.scaleLinear().domain([0, 600]).range([h - pad.b, pad.t]);
+  svg.append("g").selectAll("line").data(y.ticks(3)).join("line").attr("x1", pad.l).attr("x2", w - pad.r).attr("y1", y).attr("y2", y).attr("stroke", T.grid).attr("stroke-dasharray", "2 3");
+  svg.append("g").selectAll("text").data(y.ticks(3)).join("text").attr("x", pad.l - 6).attr("y", d => y(d) + 4).attr("text-anchor", "end").attr("font-size", 10.5).attr("fill", T.muted).text(d3.format(","));
+  svg.append("g").selectAll("text").data(d3.range(2023, 2027).filter(yr => new Date(yr, 0, 1) >= rows[0].date)).join("text").attr("x", d => x(new Date(d, 0, 1))).attr("y", h - 5).attr("font-size", 10.5).attr("fill", T.muted).text(d => d);
+  const norm = rows.filter(d => d.n != null);
+  // shaded normal range: within 20% of normal
+  svg.append("path").datum(norm).attr("d", d3.area().x(d => x(d.date)).y0(d => y(d.n * .8)).y1(d => y(d.n * 1.2)).curve(d3.curveMonotoneX)).attr("fill", o.band || T.normal).attr("opacity", .16);
+  svg.append("path").datum(rows).attr("d", d3.line().defined(d => d.p != null).x(d => x(d.date)).y(d => y(d.p))).attr("fill", "none").attr("stroke", o.line).attr("stroke-width", 2.3);
+  const last = rows[rows.length - 1];
+  svg.append("line").attr("x1", x(fdate)).attr("x2", x(fdate)).attr("y1", y(fc.forecast_low)).attr("y2", y(fc.forecast_high)).attr("stroke", o.line).attr("stroke-width", 7).attr("stroke-linecap", "round").attr("opacity", .3);
+  svg.append("line").attr("x1", x(last.date)).attr("x2", x(fdate)).attr("y1", y(last.p)).attr("y2", y(fc.forecast_price)).attr("stroke", o.line).attr("stroke-width", 2).attr("stroke-dasharray", "2 3");
+  svg.append("circle").attr("cx", x(fdate)).attr("cy", y(fc.forecast_price)).attr("r", 4.5).attr("fill", T.surface).attr("stroke", o.line).attr("stroke-width", 2);
+  svg.append("text").attr("x", x(fdate) + 8).attr("y", y(fc.forecast_price) + 4).attr("font-size", 10.5).attr("fill", T.ink).text("Oct");
+  const pk = rows.find(d => d.m === "2024-06"); if (pk) svg.append("text").attr("x", x(pk.date) + 6).attr("y", y(pk.p) - 4).attr("font-size", 10.5).attr("fill", T.ink).text(`${fmt(pk.p)}, June 2024`);
+  const cross = svg.append("line").attr("y1", pad.t).attr("y2", h - pad.b).attr("stroke", T.muted).attr("opacity", 0);
+  svg.append("rect").attr("x", pad.l).attr("y", pad.t).attr("width", w - pad.l - pad.r).attr("height", h - pad.t - pad.b).attr("fill", "transparent")
+    .on("mousemove", e => { const t = x.invert(d3.pointer(e)[0]), d = rows.reduce((a, b) => Math.abs(b.date - t) < Math.abs(a.date - t) ? b : a);
+      cross.attr("x1", x(d.date)).attr("x2", x(d.date)).attr("opacity", .5);
+      showTip(e, `<b>Maroua · ${d3.timeFormat("%B %Y")(d.date)}</b><br>Price: ${d.p != null ? fmt(d.p) + " FCFA/kg" : "no report"}<br>Normal: ${d.n != null ? fmt(d.n) : "not enough history"}<br>${label[d.a] || ""}`); })
+    .on("mouseleave", () => { cross.attr("opacity", 0); hideTip(); });
+}
+const cobIcon = (c1, c2, s = 30) => `<svg width="${s}" height="${s}" viewBox="0 0 32 32"><path d="M9 30c-2-6 0-12 4-15M23 30c2-6 0-12-4-15" stroke="${c2}" stroke-width="2.2" fill="none" stroke-linecap="round"/><ellipse cx="16" cy="13" rx="6.5" ry="11" fill="${c1}"/>${[...Array(5)].map((_, r) => [...Array(3)].map((_, k) => `<circle cx="${12.2 + k * 3.8}" cy="${5 + r * 3.9}" r="1.3" fill="rgba(0,0,0,.18)"/>`).join("")).join("")}</svg>`;
+
+// ================= E: Dawn Field =================
+function buildE() {
+  const T = THEMES.E, f = d3.select("#E");
+  const bg = f.append("svg").attr("class", "bg").attr("viewBox", "0 0 1280 720");
+  const sky = bg.append("defs").append("linearGradient").attr("id", "skyE").attr("x1", 0).attr("x2", 0).attr("y1", 0).attr("y2", 1);
+  [["0%", "#FFF8DD"], ["55%", "#FFFDF4"], ["100%", "#EAF5D9"]].forEach(([o, c]) => sky.append("stop").attr("offset", o).attr("stop-color", c));
+  bg.append("rect").attr("width", 1280).attr("height", 720).attr("fill", "url(#skyE)");
+  bg.append("circle").attr("cx", 1110).attr("cy", 120).attr("r", 120).attr("fill", "#FFE27A").attr("opacity", .55);
+  bg.append("circle").attr("cx", 1110).attr("cy", 120).attr("r", 74).attr("fill", "#FFD23F").attr("opacity", .7);
+  bg.append("path").attr("d", "M0,520 C300,470 700,500 1280,455 L1280,720 L0,720Z").attr("fill", "#CFE5B0");
+  field(bg, [
+    { seed: 11, base: 560, h: 170, gap: 34, stalk: "#7FAF5A", leaf: "#8FBF66", leafLight: "#A8CF80", tassel: "#E2C25A", cobColor: "#F5C518", cobRate: .15, opacity: .75 },
+    { seed: 29, base: 650, h: 250, gap: 46, stalk: "#3E8E2F", leaf: "#4C9A35", leafLight: "#6DB04A", tassel: "#E8B92C", cobColor: "#F5C518", cobRate: .35 },
+    { seed: 47, base: 760, h: 340, gap: 70, stalk: "#1E5A23", leaf: "#26692A", leafLight: "#37803A", tassel: "#E8B92C", cobColor: "#F7C928", cobRate: .45 },
+  ], 1280);
+  const L = f.append("div").attr("class", "layer");
+  L.html(`
+   <div style="position:absolute;left:36px;top:26px;display:flex;align-items:center;gap:12px">${cobIcon("#F5C518", "#2E7D32", 40)}
+     <div><div style="font-size:30px;font-weight:800;letter-spacing:-.01em">Cameroon Food Price Watch</div><div style="font-size:14px;color:#46603B">Maize · September 2026 · what changed, where, and what comes next</div></div></div>
+   <div style="position:absolute;right:36px;top:34px;display:flex;gap:6px;font-size:13px">${["This month", "Markets", "Next month", "Data quality", "Method"].map((t, i) => `<span style="padding:7px 13px;border-radius:20px;${i ? "background:rgba(255,255,255,.7);color:#2C4A22" : "background:#1E5A23;color:#fff"}">${t}</span>`).join("")}</div>
+   <div class="card glass" style="left:36px;top:104px;width:250px;height:132px"><div class="kick" style="color:#5D6F55">Maize markets too cheap</div><div style="font-size:54px;font-weight:800;color:${T.low};line-height:1.05;margin-top:8px">${nLow}<span style="font-size:22px;color:#5D6F55"> of ${judged.length}</span></div><div style="font-size:13px;color:#46603B">20% or more below normal</div></div>
+   <div class="card glass" style="left:36px;top:250px;width:250px;height:132px"><div class="kick" style="color:#5D6F55">Maize markets too dear</div><div style="font-size:54px;font-weight:800;color:${T.high};line-height:1.05;margin-top:8px">${nHigh}</div><div style="font-size:13px;color:#46603B">a good month for buyers</div></div>
+   <div class="card glass" style="left:36px;top:396px;width:250px;height:132px"><div class="kick" style="color:#5D6F55">Garoua, biggest drop</div><div style="font-size:54px;font-weight:800;color:${T.low};line-height:1.05;margin-top:8px">−52%</div><div style="font-size:13px;color:#46603B">${fmt(S.price)} FCFA/kg against ${fmt(S.normal)} normal</div></div>
+   <div class="card glass" style="left:304px;top:104px;width:420px;height:470px"><h3>Where maize is far from normal</h3><div style="margin-top:6px">${legendHTML(T)}</div><div id="Emap"></div></div>
+   <div class="card glass" style="left:742px;top:300px;width:500px;height:274px"><h3>Maroua: price against its normal range</h3><div style="font-size:12px;color:#5D6F55">FCFA per kg · shaded = within 20% of normal · October likely range at the end</div><div id="Eline"></div></div>`);
+  drawMap("#Emap", 384, 410, T, { r: 8 });
+  drawLine("#Eline", 464, 210, T, { line: "#1E5A23", start: "2023-07" });
+}
+
+// ================= F: Golden Cob =================
+function buildF() {
+  const T = THEMES.F, f = d3.select("#F");
+  const bg = f.append("svg").attr("class", "bg").attr("viewBox", "0 0 1280 720");
+  // husk leaves and giant cob on the left
+  bg.append("rect").attr("width", 1280).attr("height", 720).attr("fill", "#FFFDF6");
+  bg.append("path").attr("d", "M0,0 L250,0 C300,180 230,420 300,720 L0,720Z").attr("fill", "#4E8B2A");
+  bg.append("path").attr("d", "M0,0 L190,0 C250,200 170,450 230,720 L0,720Z").attr("fill", "#2F6B1F");
+  const cg = bg.append("g");
+  bigCob(cg, 118, 330, 92, 300, { base: "#E1A90B", rows: 30, cols: 7, kernel: (i, k) => ["#F7C928", "#F5C518", "#FAD54A", "#EDB915"][(i * 3 + k) % 4], edge: "rgba(160,110,0,.35)" });
+  bg.append("path").attr("d", "M30,720 C60,520 40,380 118,250 C90,420 130,560 160,720Z").attr("fill", "#5E9E33").attr("opacity", .95);
+  bg.append("path").attr("d", "M220,720 C200,540 220,420 140,280 C190,420 160,560 130,720Z").attr("fill", "#3F7D24").attr("opacity", .95);
+  bg.append("path").attr("d", "M118,30 q-20,-25 -50,-20 M118,30 q5,-28 30,-28 M118,30 q25,-15 48,-5").attr("stroke", "#C98A3A").attr("stroke-width", 2.5).attr("fill", "none");
+  // faint leaf on the right
+  bg.append("path").attr("d", "M1280,720 C1180,560 1120,420 1260,240 C1220,420 1260,560 1280,600Z").attr("fill", "#E6F0D6");
+  const L = f.append("div").attr("class", "layer");
+  L.html(`
+   <div style="position:absolute;left:22px;top:600px;width:200px;color:#FFF6D0;font-size:13px;line-height:1.9">${["● This month", "Markets", "Next month", "Data quality", "Method"].map((t, i) => `<div style="${i ? "opacity:.75" : "font-weight:700"}">${t}</div>`).join("")}</div>
+   <div style="position:absolute;left:330px;top:30px;width:620px"><div class="kick" style="color:#7A8160">Cameroon Food Price Watch · Maize · September 2026</div>
+     <div style="font-size:40px;font-weight:800;line-height:1.08;margin-top:10px;letter-spacing:-.02em">The harvest glut: maize is cheaper than normal almost everywhere.</div></div>
+   <div class="kernel" style="left:978px;top:24px"><div class="v">${nLow}<span style="font-size:18px">/${judged.length}</span></div><div class="l">markets below normal</div></div>
+   <div class="kernel" style="left:1110px;top:24px;width:150px"><div class="v">−52%</div><div class="l">Garoua, the steepest drop</div></div>
+   <div class="kernel" style="left:1044px;top:150px;width:150px;background:radial-gradient(circle at 35% 28%, #FFFFFF 0 14%, #F4F1E2 50%, #E4DEC4 100%)"><div class="v">${K.markets}</div><div class="l">markets still reporting</div></div>
+   <div class="card panel" style="left:330px;top:184px;width:400px;height:510px"><h3>Market map</h3><div style="margin-top:6px">${legendHTML(T)}</div><div id="Fmap"></div></div>
+   <div class="card panel" style="left:748px;top:290px;width:504px;height:404px"><h3>Every market against its normal</h3><div style="font-size:12px;color:${T.muted}">FCFA per kg · grey = normal for September · coloured = September 2026</div><div id="Fdumb"></div></div>`);
+  drawMap("#Fmap", 364, 450, T, { r: 8 });
+  const rows = judged.slice().sort((a, b) => a.gap - b.gap), w = 470, h = 350, pad = { l: 92, r: 44, t: 10, b: 20 };
+  const svg = svgIn("#Fdumb", w, h), x = d3.scaleLinear().domain([0, 500]).range([pad.l, w - pad.r]), y = d3.scaleBand().domain(rows.map(d => d.market)).range([pad.t, h - pad.b]).padding(.3);
+  svg.append("g").selectAll("line").data(x.ticks(5)).join("line").attr("x1", x).attr("x2", x).attr("y1", pad.t).attr("y2", h - pad.b).attr("stroke", T.grid);
+  svg.append("g").selectAll("text").data(x.ticks(5)).join("text").attr("x", x).attr("y", h - 4).attr("text-anchor", "middle").attr("font-size", 10).attr("fill", T.muted).text(d3.format(","));
+  const g = svg.selectAll("g.r").data(rows).join("g").attr("transform", d => `translate(0,${y(d.market) + y.bandwidth() / 2})`);
+  g.append("text").attr("x", pad.l - 8).attr("y", 4).attr("text-anchor", "end").attr("font-size", 11).attr("fill", T.ink).text(d => d.market);
+  g.append("line").attr("x1", d => x(d.normal)).attr("x2", d => x(d.price)).attr("stroke", d => T[dir(d.alert_level)] || T.normal).attr("stroke-width", 2).attr("opacity", .4);
+  g.append("circle").attr("cx", d => x(d.normal)).attr("r", 4.5).attr("fill", T.normal);
+  g.append("circle").attr("cx", d => x(d.price)).each(function (d) { mark(d3.select(this), d.alert_level, T, 6.5); });
+  g.append("text").attr("x", d => Math.max(x(d.normal), x(d.price)) + 9).attr("y", 4).attr("font-size", 10).attr("fill", T.muted).text(d => pct(d.gap));
+  g.append("rect").attr("width", w).attr("y", -y.bandwidth()).attr("height", y.bandwidth() * 2).attr("fill", "transparent").on("mouseenter", (e, d) => showTip(e, marketTip(d))).on("mousemove", moveTip).on("mouseleave", hideTip);
+}
+
+// ================= G: Green Stalk =================
+function buildG() {
+  const T = THEMES.G, f = d3.select("#G");
+  const bg = f.append("svg").attr("class", "bg").attr("viewBox", "0 0 1280 720");
+  const gr = bg.append("defs").append("radialGradient").attr("id", "glowG").attr("cx", "70%").attr("cy", "0%").attr("r", "80%");
+  [["0%", "#1F4F25"], ["100%", "#0A2011"]].forEach(([o, c]) => gr.append("stop").attr("offset", o).attr("stop-color", c));
+  bg.append("rect").attr("width", 1280).attr("height", 720).attr("fill", "url(#glowG)");
+  // giant sweeping leaves
+  const leaf = (d, c, op) => bg.append("path").attr("d", d).attr("fill", c).attr("opacity", op);
+  leaf("M-60,760 C200,520 420,360 760,330 C520,420 300,560 120,760Z", "#174A26", .9);
+  leaf("M1340,760 C1100,560 980,380 640,250 C900,420 1060,560 1180,760Z", "#1A5A2C", .8);
+  leaf("M300,760 C380,560 560,420 900,470 C640,500 480,600 420,760Z", "#123D20", .9);
+  leaf("M-40,200 C180,160 360,60 560,-20 C400,120 220,230 -40,290Z", "#143F22", .8);
+  leaf("M1320,120 C1120,170 940,120 820,-30 C980,60 1120,90 1320,40Z", "#174A26", .7);
+  // leaf midribs
+  bg.append("path").attr("d", "M-30,740 C220,520 420,380 740,335").attr("stroke", "#2A6B37").attr("stroke-width", 2).attr("fill", "none").attr("opacity", .6);
+  bg.append("path").attr("d", "M1320,740 C1100,560 990,390 660,258").attr("stroke", "#2E7A3D").attr("stroke-width", 2).attr("fill", "none").attr("opacity", .5);
+  // maize plants: a tall back row rising behind the cards, a fuller front row with ripe cobs
+  field(bg, [
+    { seed: 5, base: 740, h: 480, gap: 64, stalk: "#1A4A26", leaf: "#1C5029", leafLight: "#22592E", tassel: "#C9A22A", cobColor: "#D9AE1C", cobRate: .4, opacity: .75 },
+    { seed: 19, base: 770, h: 330, gap: 52, stalk: "#225C2F", leaf: "#26652F", leafLight: "#2F7838", tassel: "#E8B92C", cobColor: "#F5C518", cobRate: .55, opacity: .9 },
+  ], 1280);
+  // big plants framing the left and right edges
+  const edge = rng(41);
+  [[8, 760, 600], [1268, 760, 600], [20, 790, 420], [1250, 790, 440]].forEach(([x, b, h]) =>
+    plant(bg.append("g"), x, b, h, { rand: edge, stalk: "#2A6B37", leaf: "#2F7A3B", leafLight: "#3B8C45", tassel: "#F5C518", cobColor: "#F5C518", cob: true }));
+  // golden tassels along the top
+  const r = rng(7);
+  for (let i = 0; i < 26; i++) { const x = 30 + i * 49 + r() * 20, len = 30 + r() * 40;
+    for (let k = -3; k <= 3; k++) bg.append("path").attr("d", `M${x},-4 q${k * 4},${len * .6} ${k * 9},${len}`).attr("stroke", "#F5C518").attr("stroke-width", 1.3).attr("fill", "none").attr("opacity", .35 + r() * .4); }
+  const L = f.append("div").attr("class", "layer");
+  L.html(`
+   <div style="position:absolute;left:34px;top:76px;display:flex;align-items:center;gap:12px">${cobIcon("#F5C518", "#7DBB4A", 38)}<div style="font-size:26px;font-weight:700">Cameroon Food Price Watch</div></div>
+   <div style="position:absolute;right:34px;top:84px;display:flex;gap:6px;font-size:13px">${["This month", "Markets", "Next month", "Data quality", "Method"].map((t, i) => `<span style="padding:7px 13px;border-radius:20px;${i ? "border:1px solid rgba(160,210,110,.3);color:#CFE3BC" : "background:#F5C518;color:#0C2614;font-weight:700"}">${t}</span>`).join("")}</div>
+   <div class="card glass" style="left:34px;top:140px;width:300px;height:250px"><h3>Maize this month</h3>
+     <div style="font-size:84px;font-weight:800;color:#F5C518;line-height:1;margin-top:14px">${nLow}<span style="font-size:30px;color:#9FB58F">/${judged.length}</span></div>
+     <div style="font-size:15px;margin-top:10px;line-height:1.4">markets selling maize well below normal. <b style="color:#F5C518">${nHigh}</b> above.</div></div>
+   <div class="card glass" style="left:34px;top:404px;width:300px;height:290px"><h3>Spotlight: Garoua</h3>
+     <div style="display:flex;gap:18px;margin-top:14px"><div><div style="font-size:34px;font-weight:700">${fmt(S.price)}</div><div style="font-size:12px;color:#9FB58F">FCFA/kg now</div></div><div><div style="font-size:34px;font-weight:700;color:#9FB58F">${fmt(S.normal)}</div><div style="font-size:12px;color:#9FB58F">normal</div></div></div>
+     <div style="font-size:44px;font-weight:800;color:#6FAEF0;margin-top:14px">−52%</div>
+     <div style="font-size:13.5px;color:#CFE3BC;line-height:1.45;margin-top:6px">Cheap for families who buy maize. For farmers it means selling below what seed and fertiliser cost.</div></div>
+   <div class="card glass" style="left:350px;top:140px;width:400px;height:554px"><h3>Market map</h3><div style="margin-top:6px">${legendHTML(T)}</div><div id="Gmap"></div></div>
+   <div class="card glass" style="left:766px;top:140px;width:480px;height:554px"><h3>Next month: likely price range by market</h3><div style="font-size:12px;color:#9FB58F;margin-top:3px">October 2026, FCFA per kg · bar = likely range · tick = normal for October</div><div id="Grange"></div></div>`);
+  drawMap("#Gmap", 364, 480, T, { r: 8 });
+  const rows = DATA.maize_markets.filter(m => m.forecast_price && m.normal).sort((a, b) => a.forecast_price / a.normal - b.forecast_price / b.normal);
+  const w = 446, h = 486, pad = { l: 96, r: 18, t: 8, b: 22 };
+  const svg = svgIn("#Grange", w, h), x = d3.scaleLinear().domain([0, 650]).range([pad.l, w - pad.r]), y = d3.scaleBand().domain(rows.map(d => d.market)).range([pad.t, h - pad.b]).padding(.32);
+  svg.append("g").selectAll("line").data(x.ticks(5)).join("line").attr("x1", x).attr("x2", x).attr("y1", pad.t).attr("y2", h - pad.b).attr("stroke", T.grid);
+  svg.append("g").selectAll("text").data(x.ticks(5)).join("text").attr("x", x).attr("y", h - 5).attr("text-anchor", "middle").attr("font-size", 10).attr("fill", T.muted).text(d3.format(","));
+  const g = svg.selectAll("g.r").data(rows).join("g").attr("transform", d => `translate(0,${y(d.market)})`);
+  g.append("text").attr("x", pad.l - 8).attr("y", y.bandwidth() / 2 + 4).attr("text-anchor", "end").attr("font-size", 11).attr("fill", T.ink).text(d => d.market);
+  g.append("rect").attr("x", d => x(d.forecast_low)).attr("width", d => x(d.forecast_high) - x(d.forecast_low)).attr("height", y.bandwidth()).attr("rx", 4)
+    .attr("fill", d => { const dd = dir(d.forecast_alert_level); return dd === "none" ? T.muted : T[dd]; }).attr("opacity", d => (d.forecast_alert_level || "").startsWith("alert") ? .95 : .55);
+  g.append("line").attr("x1", d => x(d.normal)).attr("x2", d => x(d.normal)).attr("y1", -3).attr("y2", y.bandwidth() + 3).attr("stroke", "#F5C518").attr("stroke-width", 2.5);
+  g.append("rect").attr("width", w).attr("height", y.bandwidth()).attr("fill", "transparent")
+    .on("mouseenter", (e, d) => showTip(e, `<b>${d.market}</b><br>October likely: ${fmt(d.forecast_low)}–${fmt(d.forecast_high)} FCFA/kg<br>Normal for October: ${fmt(d.normal)}<br>${label[d.forecast_alert_level]}`)).on("mousemove", moveTip).on("mouseleave", hideTip);
+  svg.append("text").attr("x", x(600)).attr("y", 18).attr("text-anchor", "end").attr("font-size", 10.5).attr("fill", "#F5C518").text("| normal");
+}
+
+// ================= H: Kernel Mosaic =================
+function buildH() {
+  const T = THEMES.H, f = d3.select("#H");
+  const bg = f.append("svg").attr("class", "bg").attr("viewBox", "0 0 1280 720");
+  bg.append("rect").attr("width", 1280).attr("height", 720).attr("fill", "#FFFFFF");
+  const r = rng(3);
+  const wm = bg.append("g").attr("transform", "rotate(-24 980 430)");
+  bigCob(wm, 980, 430, 170, 420, { base: "#FFF8DC", rows: 34, cols: 9, kernel: () => ["#FFF3C4", "#FFEFB3", "#FFF6D2"][Math.floor(r() * 3)], edge: "#FBE7A1" });
+  wm.append("path").attr("d", "M980,850 C860,700 840,520 900,300 C900,520 930,680 1000,850Z").attr("fill", "#E9F3DF");
+  wm.append("path").attr("d", "M980,850 C1110,700 1130,520 1060,300 C1060,520 1030,680 960,850Z").attr("fill", "#DDEDD0");
+  // leaf band on top
+  bg.append("path").attr("d", "M0,0 L1280,0 L1280,70 C1000,96 700,58 420,86 C260,100 120,92 0,80Z").attr("fill", "#2E7D32");
+  bg.append("path").attr("d", "M0,80 C120,92 260,100 420,86 C700,58 1000,96 1280,70 L1280,82 C1000,108 700,72 420,98 C260,112 120,104 0,92Z").attr("fill", "#8BC34A");
+  const L = f.append("div").attr("class", "layer");
+  L.html(`
+   <div style="position:absolute;left:32px;top:16px;display:flex;align-items:center;gap:12px;color:#fff">${cobIcon("#F2B705", "#C5E1A5", 34)}<div style="font-size:22px;font-weight:700">Cameroon Food Price Watch</div></div>
+   <div style="position:absolute;right:32px;top:22px;display:flex;gap:18px;font-size:13.5px;color:#E3F2D3">${["This month", "Markets", "Next month", "Data quality", "Method"].map((t, i) => `<span style="${i ? "" : "color:#fff;font-weight:700;border-bottom:2px solid #F2B705;padding-bottom:3px"}">${t}</span>`).join("")}</div>
+   <div style="position:absolute;left:32px;top:122px;width:720px"><div style="font-size:13px;color:#62705C">Retail white maize · September 2026</div>
+     <div style="font-size:30px;font-weight:700;line-height:1.2;margin-top:6px">Maize is cheaper than normal in <span style="color:${T.low}">${nLow} of ${judged.length}</span> markets, and dearer in none.</div></div>
+   <div style="position:absolute;left:32px;top:218px;display:flex;gap:14px">
+     ${[["−52%", "Garoua against a normal September", T.low], ["−40%", "Maroua against a normal September", T.low], [String(K.alert_high), "foods on high alert, all markets", T.high], [String(K.markets), "markets still reporting", T.ink]].map(([v, l, c]) =>
+       `<div class="card panel" style="position:relative;width:166px;height:96px"><div style="font-size:30px;font-weight:700;color:${c}">${v}</div><div style="font-size:12px;color:#62705C;margin-top:4px;line-height:1.3">${l}</div></div>`).join("")}</div>
+   <div class="card panel" style="left:32px;top:332px;width:330px;height:364px"><h3>Market map</h3><div style="margin-top:6px">${legendHTML(T)}</div><div id="Hmap"></div></div>
+   <div class="card panel" style="left:378px;top:332px;width:470px;height:364px"><h3>Maroua against its normal range</h3><div style="font-size:12px;color:#62705C">FCFA per kg · shaded = within 20% of normal · October likely range</div><div id="Hline"></div>
+     <div style="font-size:12.5px;color:#3E4E38;line-height:1.45;margin-top:4px">From a 563 peak in June 2024 to 200 now: 40% below a normal September.</div></div>
+   <div class="card panel" style="left:864px;top:332px;width:384px;height:364px;background:rgba(255,255,255,.86)"><h3>Who is hurt this month</h3>
+     <div style="display:flex;gap:12px;margin-top:14px">
+       <div style="flex:1;border-radius:14px;padding:14px;background:#EAF1FA"><div style="font-size:12px;color:${T.low};font-weight:600">FARMERS</div><div style="font-size:42px;font-weight:700;color:${T.low}">${nLow}</div><div style="font-size:12px;color:#3E4E38">markets where maize sells far below normal</div></div>
+       <div style="flex:1;border-radius:14px;padding:14px;background:#FBEDEB"><div style="font-size:12px;color:${T.high};font-weight:600">BUYERS</div><div style="font-size:42px;font-weight:700;color:${T.high}">${nHigh}</div><div style="font-size:12px;color:#3E4E38">markets where maize costs more than normal</div></div></div>
+     <div style="font-size:13px;color:#3E4E38;line-height:1.5;margin-top:14px">Next month: still low in ${DATA.maize_markets.filter(m => dir(m.forecast_alert_level) === "low").length} markets, according to the forecast. Sorghum is falling with maize.</div></div>`);
+  drawMap("#Hmap", 296, 300, T, { r: 7, fs: 10 });
+  drawLine("#Hline", 436, 230, T, { line: "#2E7D32", band: "#8BC34A", start: "2023-07" });
+}
+
+d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json").then(w => {
+  CMR = topojson.feature(w, w.objects.countries).features.find(f => f.id === "120");
+  buildE(); buildF(); buildG(); buildH(); fit();
+});
+</script>
+</body>
+</html>
