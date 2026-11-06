@@ -21,7 +21,7 @@ Some rise every year is normal: prices climb in the lean season before harvest. 
 Limits worth knowing:
 - WFP is collecting less. About 16,000 prices were recorded in 2023 and about 4,000 in the first nine months of 2026.
 - Many markets in the Centre, Littoral and South-West have only a few years of history, so "normal for this month" can't be calculated for them yet. Starting in 2017 also means the baseline covers about nine years, not twenty.
-- Limbe and the rest of Fako are not covered.
+- Limbe and the rest of Fako are not covered, so the alerts don't apply there. The nearest WFP markets are Buea, Kumba and Mamfe.
 
 ## How it works
 
@@ -29,7 +29,7 @@ Limits worth knowing:
 |---|---|---|
 | 1. Fetch | Pulls prices from HDX HAPI each month, checks them, merges in new and corrected rows, and saves only when something changed | Done |
 | 2. Clean and store | dbt models in DuckDB: every price in one unit, suspect prices flagged, gaps per market measured, 14 data tests | Done |
-| 3. Community data | Prices collected by hand in Limbe markets, added as a second source | Planned |
+| 3. Community data | Prices collected by hand in Limbe markets, added as a second source | Later, after the core pipeline |
 | 4. Alerts | Price compared with the same month in past years, flagged both ways | Planned |
 | 5. Forecast | Next month's price per market and commodity | Planned |
 | 6. Dashboard | Power BI: map of markets, price trends, this month's alerts | Planned |
