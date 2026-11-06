@@ -2,7 +2,7 @@
 --
 -- Prices rise and fall with the seasons every year (maize in Maroua is
 -- usually dearest in August, before the harvest), so each price is compared
--- with the same calendar month in earlier years, never with later ones.
+-- with the same calendar month in recent earlier years, never with later ones.
 -- "Normal" is the median of those earlier prices, so one extreme year can't
 -- drag it. Alerts go both ways: too high hurts buyers, too low hurts farmers.
 --
@@ -23,7 +23,7 @@ with prices as (
 history as (
 
     -- For every price, the same market, food, price type and calendar month
-    -- in every earlier year
+    -- in the last few earlier years
     select
         cur.market_code,
         cur.commodity_code,
@@ -38,6 +38,7 @@ history as (
       and past.price_type     = cur.price_type
       and past.calendar_month = cur.calendar_month
       and past.price_year     < cur.price_year
+      and past.price_year     >= cur.price_year - {{ var('history_window_years') }}
     group by all
 
 ),

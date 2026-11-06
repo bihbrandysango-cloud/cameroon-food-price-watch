@@ -31,7 +31,7 @@ Limits worth knowing:
 | 2. Clean and store | dbt models in DuckDB: every price in one unit, suspect prices flagged, gaps per market measured, 14 data tests | Done |
 | 3. Community data | Prices collected by hand in Limbe markets, added as a second source | Later, after the core pipeline |
 | 4. Alerts | Price compared with the same month in earlier years, flagged both ways | Done |
-| 5. Forecast | Next month's price per market and commodity | Planned |
+| 5. Forecast | Next month's price per market and food, with a likely range, backtested against simple guesses | Done |
 | 6. Dashboard | Power BI: map of markets, price trends, this month's alerts | Planned |
 
 ### Step 1 in detail
@@ -60,9 +60,9 @@ Data tests run on every build and stop the monthly job if they fail: required fi
 
 ### Step 4 in detail
 
-Prices move with the seasons. In Maroua, white maize is usually about 400 FCFA/kg in August, just before the harvest, and 250 to 300 in November and December, just after it. Comparing every month with one yearly average would raise an alarm every August and miss trouble in December. So `fct_price_alerts` compares each price with the **same market, food, price type and calendar month in earlier years**:
+Prices move with the seasons. In Maroua, white maize is usually about 400 FCFA/kg in August, just before the harvest, and 250 to 300 in November and December, just after it. Comparing every month with one yearly average would raise an alarm every August and miss trouble in December. So `fct_price_alerts` compares each price with the **same market, food, price type and calendar month in the last five earlier years**:
 
-1. "Normal" is the median of those earlier prices. It uses earlier years only, never the same or later ones, so the alert only knows what someone would have known at the time. The median keeps one extreme year from moving it.
+1. "Normal" is the median of those earlier prices. It uses earlier years only, never the same or later ones, so the alert only knows what someone would have known at the time. The median keeps one extreme year from moving it, and the five-year limit keeps old, pre-inflation prices from making today's look high.
 2. With fewer than 3 earlier years for that month, the price is marked "not enough history" instead of guessed.
 3. The gap from normal sets the level: within 20% is normal, 20 to 40% is watch, 40% or more is alert, both upwards and downwards. Thresholds live in `transform/dbt_project.yml`.
 4. Suspect prices from step 2 are left out, so a recording mistake can't raise an alarm.
@@ -73,19 +73,42 @@ Checked against what happened in Maroua (retail white maize):
 |---|---|---|---|---|
 | June 2024 (lean season) | 563 | 342 | +65% | alert high |
 | February 2026 (price crash) | 134 | 350 | −62% | alert low |
-| September 2026 | 200 | 317 | −37% | watch low |
+| September 2026 | 200 | 334 | −40% | alert low |
 
-Across maize, imported rice and fresh cassava, high alerts cluster in 2022 to 2024 (126, 203 and 177 a year), when food inflation was high. In 2026 that flips: 80 low alerts and 4 high, matching the maize price crash reported in the news. `rpt_current_alerts` lists the latest month's 164 prices outside the normal range, furthest first.
+Across maize, imported rice and fresh cassava, high alerts cluster in 2022 to 2024 (126, 161 and 145 a year), when food inflation was high. In 2026 that flips: 80 low alerts and 2 high, matching the maize price crash reported in the news. `rpt_current_alerts` lists the latest month's 158 prices outside the normal range, furthest first.
 
 Limits, stated plainly:
 - 78% of prices can't be judged yet, mostly because WFP's coverage only became dense from 2021. This share falls each year as history builds up.
-- "Normal" isn't adjusted for general inflation. After several years of rising prices, a price can look high partly because everything costs more. Comparing only with recent years, or adjusting with Cameroon's consumer price index, would tighten this.
+- "Normal" isn't adjusted for general inflation. The five-year limit helps less than it sounds today: the data starts in 2017 and is thin before 2021, so for 2022 to 2024 the last five years are nearly all the history there is (it cut all-food high alerts from 2,832 to 2,670). It will matter more as years accumulate. The proper fix is adjusting prices with Cameroon's consumer price index, a planned improvement.
 
 Two tests guard the logic: a market's first year for a food can never get an alert (proof that no future or same-year data is used), and every level must agree with its gap and the thresholds.
 
+### Step 5 in detail
+
+`src/forecast/forecast_prices.py` predicts next month's price for every market, food and price type, and checks itself honestly first. Three methods are compared over the last 12 months (October 2025 to September 2026, 5,136 predictions), each retrained every month on data from before the month it predicts:
+
+| Method | How it guesses | Median error | Within 10% | Direction right when price moved >10% |
+|---|---|---|---|---|
+| Naive | Next month = this month | 3.2% | 69% | (never predicts a move) |
+| Seasonal naive | This month × last year's move between the same two months | 5.6% | 63% | 29% |
+| Model | Gradient-boosted trees (scikit-learn) on recent moves, last year's move, the national trend for that food, month, food and region | 3.4% | 70% | 58% |
+
+The honest reading: one month ahead, **the model is no more accurate than assuming the price stays the same.** Prices are sticky: in 35% of cases the price didn't change at all. Where it helps is direction. In the 1,611 cases where the price moved more than 10%, the model called up or down correctly 58% of the time, against 29% for last year's pattern. Seasonal patterns alone are a poor guide in these years of inflation and then a crash.
+
+So read the forecast as a **likely range**. The range comes from the model's own backtest errors and holds 80% of past outcomes (roughly 14% below to 18% above the forecast). Each forecast is then compared with the seasonal normal for the coming month, using the same rules as step 4, to give an early warning.
+
+October 2026 forecast for retail white maize: prices are expected to stay far below normal across the north. Garoua (156 FCFA/kg against a normal 293), Ngaoundéré, Kaele, Kousseri and Banyo come out as alert low, and Maroua as watch low (201 against 325). That points to another hard month for farmers, not for buyers. Of 438 forecasts, 46 are alert or watch high, 89 alert or watch low, and 122 have too little history to judge.
+
+Outputs: `data/outputs/forecast_next_month.csv` (also the `forecast_next_month` warehouse table) and `reports/forecast_backtest.json` with all the scores. Tests check that gaps in a series stay gaps, that features only use the past, that last year's move lines up with the month being forecast, and that the alert rules match dbt's.
+
 ## How to run
 
-Requires Python 3.10 or later. Step 1 uses only the standard library; step 2 needs DuckDB and dbt (`requirements.txt`).
+Requires Python 3.10 or later. Step 1 uses only the standard library; steps 2 to 5 need DuckDB, dbt, pandas and scikit-learn (`requirements.txt`). A virtual environment keeps them separate from other projects:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+```
 
 HAPI asks each app to identify itself with base64 of `app_name:email`. Set it as an environment variable (and as the repository secret `HAPI_APP_IDENTIFIER` for GitHub Actions):
 
@@ -99,8 +122,11 @@ python -m pytest -q
 python -m src.ingest.fetch_wfp           # update the last six months
 python -m src.ingest.fetch_wfp --full    # rebuild the whole history
 
-# Step 2: build and test the warehouse (run from the repository root)
+# Steps 2 to 4: build and test the warehouse (run from the repository root)
 dbt build --project-dir transform --profiles-dir transform
+
+# Step 5: backtest and forecast next month
+python -m src.forecast.forecast_prices
 ```
 
 The warehouse is one file, `data/warehouse/food_prices.duckdb`. It's rebuilt from `data/raw` on every run, so it isn't committed.

@@ -1,5 +1,9 @@
 # Step 1 (fetch) uses only the Python standard library.
-# Step 2 (clean and store):
+# Step 2 to 4 (clean, store, alerts):
 duckdb==2.0.0
 dbt-duckdb==1.11.1
 dbt-core==1.12.6
+# Step 5 (forecast):
+numpy==2.5.4
+pandas==3.1.1
+scikit-learn==1.9.1

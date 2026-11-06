@@ -1,4 +1,4 @@
-name: Monthly WFP fetch and build
+name: Monthly fetch, build and forecast
 
 on:
   schedule:
@@ -41,14 +41,18 @@ jobs:
         # If a data test fails, the job stops here and nothing is committed
         run: dbt build --project-dir transform --profiles-dir transform
 
-      - name: Commit new data if anything changed
+      - name: Forecast next month and score the backtest
+        run: python -m src.forecast.forecast_prices
+
+      - name: Commit new data and forecast if anything changed
         run: |
-          if git diff --quiet -- data/raw; then
+          # git status also sees brand-new files, which git diff would miss
+          if [ -z "$(git status --porcelain -- data/raw data/outputs reports)" ]; then
             echo "No new data this month."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/raw
-          git commit -m "data: monthly WFP fetch $(date -u +%Y-%m-%d)"
+          git add data/raw data/outputs reports
+          git commit -m "data: monthly WFP fetch and forecast $(date -u +%Y-%m-%d)"
           git push

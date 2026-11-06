@@ -17,6 +17,9 @@ vars:
   # Seasonal alerts (step 4). "Normal" is the median price for the same market,
   # food, price type and calendar month in earlier years only.
   min_years_history: 3   # fewer earlier years than this: "not enough history"
+  # Only the most recent earlier years count. Older prices sit lower simply
+  # because of years of inflation and would make today's prices look "high".
+  history_window_years: 5
   watch_threshold: 0.20  # 20% or more away from normal: watch
   alert_threshold: 0.40  # 40% or more away from normal: alert
 

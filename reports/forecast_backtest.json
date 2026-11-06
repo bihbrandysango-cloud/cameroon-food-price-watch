@@ -1,0 +1,25 @@
+{
+  "backtest_months": "2025-10 to 2026-09",
+  "predictions": 5136,
+  "share_unchanged": 0.3462,
+  "naive": {
+    "median_abs_pct_error": 0.0319,
+    "mean_abs_pct_error": 0.1013,
+    "within_10_pct": 0.6947
+  },
+  "seasonal_naive": {
+    "median_abs_pct_error": 0.0556,
+    "mean_abs_pct_error": 0.1291,
+    "within_10_pct": 0.6254,
+    "direction_right_on_big_moves": 0.293
+  },
+  "model": {
+    "median_abs_pct_error": 0.0335,
+    "mean_abs_pct_error": 0.1008,
+    "within_10_pct": 0.6955,
+    "direction_right_on_big_moves": 0.5779
+  },
+  "big_moves_over_10_pct": 1611,
+  "model_error_p10": -0.1558,
+  "model_error_p90": 0.1674
+}
