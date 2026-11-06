@@ -12,4 +12,5 @@ ref table Commodities
 ref table PriceType
 ref table Calendar
 ref table Forecast
+ref table Suspect
 ref table _Measures

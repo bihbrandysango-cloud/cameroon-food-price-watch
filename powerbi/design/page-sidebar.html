@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <title>Sidebar Page Background</title>
-<!-- Static layer for the "Green Sidebar" design (Fresh Field, version 1): sidebar, card shapes,
-     icons and fixed labels. Every number, title that depends on the filters, the map, the bars
-     and the table are live Power BI visuals placed on top (see powerbi/build/build_pbip.py).
-     Render at 1280x720 with headless Chrome; ?page=overview picks the page. -->
+<!-- Static layer for every page of the "Green Sidebar" design: sidebar, card shapes, icons,
+     fixed labels and fixed text. Numbers, filter-dependent titles, charts and tables are
+     live Power BI visuals placed on top (powerbi/build/build_pbip.py uses the same positions).
+     Render at 1280x720 with headless Chrome: ?page=overview|markets|foods|regions|forecast|quality|method
+     Forecast page also takes &dir=58&err=3.4 (scores from reports/forecast_backtest.json). -->
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <style> html, body { margin:0; width:1280px; height:720px; overflow:hidden; background:#EEF6EA; } svg { position:absolute; inset:0; } </style>
@@ -16,33 +17,81 @@
 <script>
 const HIGH = "#C8372D", NORMAL = "#8F8A7E", LOW = "#2864A8", GREEN = "#2E7D32", GOLD = "#F2C230";
 const INK = "#1E3A22", MUTED = "#56684F", FAINT = "#6A7C62";
+const qs = new URLSearchParams(location.search);
+const pageName = qs.get("page") || "overview";
+const NAV = ["This month", "Markets", "Foods", "Regions", "Next month", "Data quality", "Method"];
+const KW = (1026 - 36) / 4;
+
+// Each page: active nav item, sidebar dropdown labels, KPI tiles [icon, tile colour, label or null],
+// cards [x, y, w, h, title, subtitle], optional legends, fixed text blocks and a fixed title.
+const statusLegend = (x, y) => ({ x, y, items: [[LOW, "Cheaper than normal"], [NORMAL, "Normal"], [HIGH, "Dearer than normal"]] });
+const PAGES = {
+  overview: { nav: 0, slicers: ["Food", "Price", "Month"],
+    kpis: [["cobDown", "#EAF1FA", "markets cheaper than normal"], ["tagUp", "#FBEDEB", "markets dearer than normal"], ["stall", "#FFF6D6", "markets reporting this month"], ["target", "#EAF4E4", null]],
+    cards: [[232, 174, 360, 530, "Market map"], [606, 174, 340, 530, "Gap from normal", "Sorted from cheapest to dearest"], [960, 174, 298, 230, "Spotlight", "Market furthest from normal"], [960, 418, 298, 286, "Markets to watch", "Furthest from normal this month"]],
+    mapLegend: true },
+  markets: { nav: 1, slicers: ["Food", "Price", "Month", "Market"],
+    kpis: [["pin", "#EAF4E4", "latest price, FCFA per kg"], ["stall", "#FFF6D6", "usual for that month"], ["target", "#EAF1FA", "change from usual"], ["calendar", "#EAF4E4", "months with prices"]],
+    cards: [[232, 174, 1026, 300, "Price over time", "Green = price · grey = usual for that month · FCFA per kg"], [232, 488, 600, 216, "Last 12 months: change from usual", "Blue = cheaper than usual · red = dearer"], [846, 488, 412, 216, "About this market"]] },
+  foods: { nav: 2, slicers: ["Price", "Month"], title: ["All foods compared", null],
+    kpis: [["cobDown", "#EAF1FA", "foods mostly cheaper than normal"], ["tagUp", "#FBEDEB", "foods mostly dearer than normal"], ["stall", "#FFF6D6", "foods with enough history"], ["target", "#EAF4E4", null]],
+    cards: [[232, 174, 500, 530, "Markets by status, for each food", "How many markets sell it cheaper, normal or dearer"], [746, 174, 512, 300, "Typical change from normal", "The middle market for each food"], [746, 488, 512, 216, "Prices now", "Middle price across markets, FCFA per unit"]],
+    legends: [statusLegend(260, 236)] },
+  regions: { nav: 3, slicers: ["Food", "Price", "Month"],
+    kpis: [["pin", "#EAF4E4", "regions with prices this month"], ["cobDown", "#EAF1FA", null], ["tagUp", "#FBEDEB", null], ["stall", "#FFF6D6", "markets judged this month"]],
+    cards: [[232, 174, 500, 300, "Typical change from normal, by region", "The middle market in each region"], [232, 488, 500, 216, "Markets by status, per region"], [746, 174, 512, 530, "Region summary", "Sorted from cheapest to dearest"]],
+    legends: [statusLegend(260, 528)] },
+  forecast: { nav: 4, slicers: ["Food", "Price"],
+    kpis: [["calendar", "#EAF4E4", "month being forecast"], ["cobDown", "#EAF1FA", "markets expected cheaper than normal"], ["tagUp", "#FBEDEB", "markets expected dearer than normal"], ["target", "#FFF6D6", "right direction on big moves, in testing"]],
+    cards: [[232, 174, 620, 530, "Likely price range next month", "Green bar = likely range: 8 in 10 past outcomes fell inside it"], [866, 174, 392, 530, "Market by market"]] },
+  quality: { nav: 5, slicers: [], title: ["Can you trust these numbers?", "How complete the data is, and the problems the checks found"],
+    kpis: [["shield", "#FBEDEB", "prices flagged as suspect"], ["stall", "#FFF6D6", "markets still reporting"], ["calendar", "#EAF4E4", "of months covered, on average"], ["chart", "#EAF1FA", "price records in the latest year"]],
+    cards: [[232, 174, 500, 300, "Price records per year", "WFP has been collecting fewer prices since 2023"], [232, 488, 500, 216, "Known problems in the source data"], [746, 174, 512, 530, "Suspect prices", "Far from what other markets charged that month · left out of alerts and forecasts"]],
+    texts: [[250, 540, 464, [
+      "• September 2023: many markets jump 3 to 10 times, then drop",
+      "  back a month later. Most likely a recording error.",
+      "• April 2024: Yaoundé and Douala list cassava at up to 6,400",
+      "  FCFA \"per kg\". These look like bag prices typed as kg.",
+      "• Limbé, Tiko, Mutengene and Muea stopped reporting after",
+      "  December 2025. Their charts end there.",
+    ]]] },
+  method: { nav: 6, slicers: [], title: ["How this report works", "Plain answers to: where do the numbers come from, and how far can I trust them?"],
+    kpis: [],
+    cards: [[232, 92, 500, 300, "Where the data comes from"], [746, 92, 512, 300, "How \"normal\" is worked out"], [232, 406, 500, 298, "How the forecast works"], [746, 406, 512, 298, "Limits to keep in mind"]],
+    texts: [
+      [250, 148, 464, ["The World Food Programme records food prices in", "markets across Cameroon every month. This report reads", "them from HDX HAPI, the Humanitarian Data Exchange's", "official API, on the 10th of each month.", "", "Every price is converted to FCFA per kg (per litre for", "oil, per piece for eggs), so a 100 kg bag and a kilo", "can be compared. 24 automatic checks run before", "anything reaches this report."]],
+      [764, 148, 476, ["Prices rise and fall with the seasons. Maize is usually", "dearest just before the harvest. So each price is compared", "with the same month in the last five years, not with", "last month.", "", "\"Normal\" is the middle price of those earlier years.", "20% or more away from it: watch. 40% or more: alert.", "A market needs three years of prices for that month", "before it can be judged."]],
+      [250, 462, 464, ["A machine-learning model (gradient-boosted trees)", "predicts next month's price for each market. It was", "tested on the past year, month by month, using only", "data from before each month it predicted.", "", "It is not more accurate than \"same as last month\", but", "it calls the direction of big moves right more often.", "That is why it shows a likely range, not one number."]],
+      [764, 462, 476, ["• WFP collects fewer prices now than in 2023, and some", "  markets have stopped, so some months have gaps.", "• \"Normal\" isn't adjusted for general inflation yet.", "• Prices flagged as suspect are kept but left out of", "  alerts and forecasts. Check them on Data quality.", "• Data: World Food Programme via HDX (CC BY-IGO).", "  Built by Bih Brandy Sango."]],
+    ] },
+};
+const page = PAGES[pageName];
+
 const svg = d3.select("#s"), defs = svg.append("defs");
 const sh = defs.append("filter").attr("id", "sh").attr("x", "-5%").attr("y", "-5%").attr("width", "110%").attr("height", "115%");
 sh.append("feDropShadow").attr("dx", 0).attr("dy", 4).attr("stdDeviation", 7).attr("flood-color", "#285014").attr("flood-opacity", .08);
 const T = (x, y, txt, size, weight, fill, family) => svg.append("text").attr("x", x).attr("y", y).attr("font-size", size).attr("font-weight", weight || 400)
   .attr("fill", fill || INK).attr("font-family", family || "Inter, Segoe UI, sans-serif").text(txt);
-
-// page background
 svg.append("rect").attr("width", 1280).attr("height", 720).attr("fill", "#EEF6EA");
 
 // ---------------- sidebar ----------------
 const sg = defs.append("linearGradient").attr("id", "sb").attr("x1", 0).attr("x2", 0).attr("y1", 0).attr("y2", 1);
 [["0%", "#2E7D32"], ["100%", "#25692A"]].forEach(([o, c]) => sg.append("stop").attr("offset", o).attr("stop-color", c));
 svg.append("rect").attr("width", 210).attr("height", 720).attr("fill", "url(#sb)");
-svg.append("path").attr("d", "M0,720 L0,600 C60,560 150,585 210,540 L210,720Z").attr("fill", "#1F5A24");
+svg.append("path").attr("d", "M0,720 L0,620 C60,585 150,605 210,570 L210,720Z").attr("fill", "#1F5A24");
 T(20, 44, "Cameroon", 20, 800, "#FFFFFF", "Outfit, sans-serif");
 T(20, 68, "Food Price Watch", 20, 800, "#FFFFFF", "Outfit, sans-serif");
 T(20, 90, "Monthly market prices", 12, 400, "#CDE8C3");
 svg.append("rect").attr("x", 20).attr("y", 102).attr("width", 40).attr("height", 3).attr("rx", 1.5).attr("fill", GOLD);
-// slicer labels; the white dropdown boxes are Power BI slicers
-[["Food", 128], ["Price", 188], ["Month", 248]].forEach(([l, y]) => T(20, y + 12, l, 11.5, 500, "#CDE8C3"));
-// page links (Power BI page-navigation buttons go on top later)
-["This month", "Markets", "Foods", "Regions", "Next month", "Data quality", "Method"].forEach((t, i) => {
-  const y = 322 + i * 27;
-  if (i === 0) svg.append("rect").attr("x", 10).attr("y", y).attr("width", 180).attr("height", 24).attr("rx", 7).attr("fill", GOLD);
-  T(22, y + 17, t, 13, i === 0 ? 700 : 400, i === 0 ? INK : "#DCEFD4");
+// dropdown labels: slots at 128, 188, 248, 308; the white boxes are Power BI slicers
+page.slicers.forEach((l, i) => T(20, 128 + i * 60 + 12, l, 11.5, 500, "#CDE8C3"));
+if (!page.slicers.length) T(20, 140, "This page shows all foods", 12, 400, "#DCEFD4"), T(20, 158, "and markets: no filters.", 12, 400, "#DCEFD4");
+// page links; transparent Power BI buttons sit on top of each one
+NAV.forEach((t, i) => {
+  const y = 372 + i * 25;
+  if (i === page.nav) svg.append("rect").attr("x", 10).attr("y", y).attr("width", 180).attr("height", 22).attr("rx", 7).attr("fill", GOLD);
+  T(22, y + 16, t, 13, i === page.nav ? 700 : 400, i === page.nav ? INK : "#DCEFD4");
 });
-// maize plant growing at the foot of the sidebar
 function maizePlant(x, base, h) {
   const g = svg.append("g").attr("transform", `translate(${x},${base})`), leaf = "#8BC34A", leaf2 = "#6DAA45";
   g.append("path").attr("d", `M0,0 C2,${-h * .4} -2,${-h * .75} 1,${-h}`).attr("stroke", leaf2).attr("stroke-width", h * .035).attr("fill", "none").attr("stroke-linecap", "round");
@@ -59,7 +108,13 @@ function maizePlant(x, base, h) {
   });
   for (let k = -3; k <= 3; k++) g.append("path").attr("d", `M1,${-h} q${k * 3},${-h * .06} ${k * 6},${-h * .04}`).attr("stroke", "#D9A520").attr("stroke-width", 1.4).attr("fill", "none");
 }
-maizePlant(105, 712, 190);
+maizePlant(105, 712, 140);
+
+// ---------------- fixed title (pages without a filter-dependent title) ----------------
+if (page.title) {
+  T(232, 40, page.title[0], 22, 800, INK, "Outfit, sans-serif");
+  if (page.title[1]) T(232, 62, page.title[1], 12.5, 400, MUTED);
+}
 
 // ---------------- cards ----------------
 const card = (x, y, w, h, title, sub) => {
@@ -69,8 +124,6 @@ const card = (x, y, w, h, title, sub) => {
   T(x + 28, y + 28, title, 15, 700, "#1E4A24", "Outfit, sans-serif");
   if (sub) T(x + 28, y + 47, sub, 11.5, 400, FAINT);
 };
-
-// KPI row: icon tiles and fixed labels; the numbers are Power BI cards
 const ICONS = {
   cobDown: g => { g.append("ellipse").attr("cx", 12).attr("cy", 13).attr("rx", 5.5).attr("ry", 10).attr("fill", GOLD);
     for (let r = 0; r < 5; r++) for (let k = 0; k < 2; k++) g.append("circle").attr("cx", 10 + k * 4).attr("cy", 6 + r * 3.6).attr("r", 1.2).attr("fill", "rgba(140,90,0,.35)");
@@ -86,27 +139,37 @@ const ICONS = {
   target: g => { g.append("circle").attr("cx", 15).attr("cy", 15).attr("r", 11).attr("fill", "none").attr("stroke", GREEN).attr("stroke-width", 2.2);
     g.append("circle").attr("cx", 15).attr("cy", 15).attr("r", 6).attr("fill", "none").attr("stroke", GREEN).attr("stroke-width", 2.2);
     g.append("circle").attr("cx", 15).attr("cy", 15).attr("r", 2.2).attr("fill", GOLD); },
+  pin: g => { g.append("path").attr("d", "M15 28s-9-9-9-15a9 9 0 0 1 18 0c0 6-9 15-9 15z").attr("fill", GREEN);
+    g.append("circle").attr("cx", 15).attr("cy", 13).attr("r", 3.5).attr("fill", GOLD); },
+  calendar: g => { g.append("rect").attr("x", 4).attr("y", 7).attr("width", 22).attr("height", 19).attr("rx", 3).attr("fill", "none").attr("stroke", GREEN).attr("stroke-width", 2.2);
+    g.append("rect").attr("x", 4).attr("y", 7).attr("width", 22).attr("height", 6).attr("rx", 2).attr("fill", GREEN);
+    g.append("path").attr("d", "M10 4v6M20 4v6").attr("stroke", GREEN).attr("stroke-width", 2.2).attr("stroke-linecap", "round");
+    g.append("rect").attr("x", 9).attr("y", 17).attr("width", 5).attr("height", 5).attr("rx", 1).attr("fill", GOLD); },
+  chart: g => { [[5, 16, 6], [12, 10, 12], [19, 6, 16]].forEach(([x, y, h]) => g.append("rect").attr("x", x).attr("y", y + 4).attr("width", 5).attr("height", h).attr("rx", 1.5).attr("fill", x === 5 ? LOW : GREEN));
+    g.append("path").attr("d", "M3 27h24").attr("stroke", INK).attr("stroke-width", 1.6); },
+  shield: g => { g.append("path").attr("d", "M15 3 25 7v8c0 6-4 10-10 13C9 25 5 21 5 15V7z").attr("fill", "none").attr("stroke", HIGH).attr("stroke-width", 2.2);
+    g.append("path").attr("d", "M15 10v7").attr("stroke", HIGH).attr("stroke-width", 2.6).attr("stroke-linecap", "round");
+    g.append("circle").attr("cx", 15).attr("cy", 21).attr("r", 1.6).attr("fill", HIGH); },
 };
-const KPI = [["cobDown", "#EAF1FA", "markets cheaper than normal"], ["tagUp", "#FBEDEB", "markets dearer than normal"],
-             ["stall", "#FFF6D6", "markets reporting this month"], ["target", "#EAF4E4", null]];
-const kw = (1026 - 36) / 4;
-KPI.forEach(([ic, bg, label], i) => {
-  const x = 232 + i * (kw + 12), y = 78;
-  card(x, y, kw, 82);
+page.kpis.forEach(([ic, bg, label], i) => {
+  const x = 232 + i * (KW + 12), y = 78;
+  card(x, y, KW, 82);
   svg.append("rect").attr("x", x + 14).attr("y", y + 15).attr("width", 52).attr("height", 52).attr("rx", 14).attr("fill", bg);
   ICONS[ic](svg.append("g").attr("transform", `translate(${x + 25},${y + 26})`));
   if (label) T(x + 78, y + 66, label, 11.5, 400, MUTED);
 });
-
-// main cards
-card(232, 174, 360, 530, "Market map");
-[[HIGH, "Too expensive"], [NORMAL, "Normal"], [LOW, "Too cheap"]].reduce((lx, [c, l]) => {
-  svg.append("circle").attr("cx", lx + 5).attr("cy", 214).attr("r", 5).attr("fill", c);
-  T(lx + 14, 218, l, 11.5, 400, MUTED); return lx + l.length * 6.4 + 30; }, 260);
-T(260, 236, "Bigger dot = bigger change from a normal month", 11, 400, FAINT);
-card(606, 174, 340, 530, "Gap from normal", "Sorted from cheapest to dearest");
-card(960, 174, 298, 230, "Spotlight", "Market furthest from normal");
-card(960, 418, 298, 286, "Markets to watch", "Furthest from normal this month");
+page.cards.forEach(c => card(...c));
+if (page.mapLegend) {
+  [[HIGH, "Too expensive"], [NORMAL, "Normal"], [LOW, "Too cheap"]].reduce((lx, [c, l]) => {
+    svg.append("circle").attr("cx", lx + 5).attr("cy", 214).attr("r", 5).attr("fill", c); T(lx + 14, 218, l, 11.5, 400, MUTED); return lx + l.length * 6.4 + 30; }, 260);
+  T(260, 236, "Bigger dot = bigger change from a normal month", 11, 400, FAINT);
+}
+(page.legends || []).forEach(L => L.items.reduce((lx, [c, l]) => {
+  svg.append("rect").attr("x", lx).attr("y", L.y - 9).attr("width", 11).attr("height", 11).attr("rx", 2).attr("fill", c); T(lx + 16, L.y, l, 11.5, 400, MUTED); return lx + l.length * 6.4 + 34; }, L.x));
+(page.texts || []).forEach(([x, y, w, lines]) => lines.forEach((ln, i) => T(x, y + i * 21, ln, 13.5, 400, INK)));
+if (pageName === "forecast") {
+  T(880, 690, `Tested on 12 past months: typical error ${qs.get("err") || "?"}%.`, 11.5, 400, FAINT);
+}
 document.body.setAttribute("data-ready", "1");
 </script>
 </body>

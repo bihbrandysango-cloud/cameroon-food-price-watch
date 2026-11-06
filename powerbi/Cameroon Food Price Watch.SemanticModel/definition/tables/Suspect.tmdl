@@ -1,0 +1,62 @@
+table Suspect
+
+	column price_month
+		dataType: dateTime
+		formatString: mmm yyyy
+		summarizeBy: none
+		sourceColumn: price_month
+
+	column market
+		dataType: string
+		summarizeBy: none
+		sourceColumn: market
+
+	column region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: region
+
+	column commodity
+		dataType: string
+		summarizeBy: none
+		sourceColumn: commodity
+
+	column price_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: price_type
+
+	column standard_unit
+		dataType: string
+		summarizeBy: none
+		sourceColumn: standard_unit
+
+	column price_per_unit
+		dataType: double
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: price_per_unit
+
+	column national_median
+		dataType: double
+		formatString: #,0
+		summarizeBy: none
+		sourceColumn: national_median
+
+	column ratio_to_national
+		dataType: double
+		formatString: 0.0x
+		summarizeBy: none
+		sourceColumn: ratio_to_national
+
+	partition Suspect = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "suspect.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    H = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    K = Table.SelectColumns(H,{"price_month","market","region","commodity","price_type","standard_unit","price_per_unit","national_median","ratio_to_national"}),
+				    T = Table.TransformColumnTypes(K,{{"price_month", type date},{"market", type text},{"region", type text},{"commodity", type text},{"price_type", type text},{"standard_unit", type text},{"price_per_unit", type number},{"national_median", type number},{"ratio_to_national", type number}}, "en-US")
+				in
+				    T
+

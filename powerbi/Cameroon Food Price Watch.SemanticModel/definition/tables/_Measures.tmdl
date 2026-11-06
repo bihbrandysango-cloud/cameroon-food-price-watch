@@ -162,6 +162,285 @@ table _Measures
 			```
 		formatString: +0%;-0%;0%
 
+	measure 'Price Type Label' = SELECTEDVALUE ( PriceType[Price type], "All" )
+
+	measure 'Cheaper Markets' = ```
+			VAR m = [Latest Month]
+			RETURN CALCULATE ( DISTINCTCOUNT ( Prices[market_code] ), Prices[price_month] = m, Prices[direction] = "Too cheap" )
+			```
+		formatString: #,0
+
+	measure 'Normal Markets' = ```
+			VAR m = [Latest Month]
+			RETURN CALCULATE ( DISTINCTCOUNT ( Prices[market_code] ), Prices[price_month] = m, Prices[direction] = "Normal" )
+			```
+		formatString: #,0
+
+	measure 'Dearer Markets' = ```
+			VAR m = [Latest Month]
+			RETURN CALCULATE ( DISTINCTCOUNT ( Prices[market_code] ), Prices[price_month] = m, Prices[direction] = "Too expensive" )
+			```
+		formatString: #,0
+
+	measure 'Market Colour Light' = ```
+			VAR g = [Gap From Normal]
+			RETURN SWITCH ( TRUE (), ISBLANK ( g ), "#C9C6BB", g >= 0.2, "#C8372D", g <= -0.2, "#2864A8", "#8F8A7E" )
+			```
+
+	measure 'Selected Market' = SELECTEDVALUE ( Markets[market], "all markets" )
+
+	measure 'Market Page Title' = [Selected Market] & " · " & [Food Label]
+
+	measure 'Market Page Subtitle' = ```
+			VAR r = SELECTEDVALUE ( Markets[region] )
+			RETURN IF ( NOT ISBLANK ( r ), r & " region · ", "" ) & [Price Type Label] & " prices over time, FCFA per kg"
+			```
+
+	measure 'Market Last Month' = CALCULATE ( MAX ( Prices[price_month] ) )
+		formatString: mmmm yyyy
+
+	measure 'Latest Price' = ```
+			VAR m = [Market Last Month]
+			RETURN CALCULATE ( AVERAGE ( Prices[price_per_unit] ), Prices[price_month] = m )
+			```
+		formatString: #,0
+
+	measure 'Latest Usual' = ```
+			VAR m = [Market Last Month]
+			RETURN CALCULATE ( AVERAGE ( Prices[normal_price] ), Prices[price_month] = m )
+			```
+		formatString: #,0
+
+	measure 'Latest Change' = ```
+			VAR m = [Market Last Month]
+			RETURN CALCULATE ( AVERAGE ( Prices[gap_from_normal] ), Prices[price_month] = m )
+			```
+		formatString: +0%;-0%;0%
+
+	measure 'Latest Change Colour' = ```
+			VAR g = [Latest Change]
+			RETURN SWITCH ( TRUE (), ISBLANK ( g ), "#C9C6BB", g >= 0.2, "#C8372D", g <= -0.2, "#2864A8", "#8F8A7E" )
+			```
+
+	measure 'Months With Prices' = DISTINCTCOUNT ( Prices[price_month] )
+		formatString: #,0
+
+	measure 'Monthly Price' = AVERAGE ( Prices[price_per_unit] )
+		formatString: #,0
+
+	measure 'Monthly Usual' = AVERAGE ( Prices[normal_price] )
+		formatString: #,0
+
+	measure 'Gap Last 12 Months' = ```
+			VAR last = CALCULATE ( MAX ( Prices[price_month] ), ALLSELECTED ( Calendar ) )
+			VAR d = MAX ( Calendar[Date] )
+			RETURN IF ( d > EOMONTH ( last, -12 ) && d <= EOMONTH ( last, 0 ), AVERAGE ( Prices[gap_from_normal] ) )
+			```
+		formatString: +0%;-0%;0%
+
+	measure 'Gap 12 Colour' = ```
+			VAR g = [Gap Last 12 Months]
+			RETURN SWITCH ( TRUE (), ISBLANK ( g ), "#C9C6BB", g >= 0.2, "#C8372D", g <= -0.2, "#2864A8", "#8F8A7E" )
+			```
+
+	measure 'Market Facts' = ```
+			VAR mk = SELECTEDVALUE ( Markets[market] )
+			RETURN IF ( ISBLANK ( mk ), "Choose one market to see its details.",
+			    SELECTEDVALUE ( Markets[region] ) & " region, " & SELECTEDVALUE ( Markets[department] ) & " department. "
+			    & "Prices from " & FORMAT ( SELECTEDVALUE ( Markets[first_month] ), "MMMM yyyy" ) & " to " & FORMAT ( SELECTEDVALUE ( Markets[last_month] ), "MMMM yyyy" ) & ": "
+			    & SELECTEDVALUE ( Markets[months_with_prices] ) & " months with a price for any food, " & FORMAT ( SELECTEDVALUE ( Markets[coverage] ), "0%" ) & " of that time. "
+			    & IF ( SELECTEDVALUE ( Markets[is_reporting_now] ), "Still reporting.", "Has stopped reporting." ) )
+			```
+
+	measure 'Report Month' = CALCULATE ( MAX ( Prices[price_month] ), REMOVEFILTERS ( Markets ), REMOVEFILTERS ( Commodities ) )
+		formatString: mmmm yyyy
+
+	measure 'Food Typical Gap' = ```
+			VAR m = [Report Month]
+			RETURN CALCULATE ( MEDIAN ( Prices[gap_from_normal] ), Prices[price_month] = m )
+			```
+		formatString: +0%;-0%;0%
+
+	measure 'Food Gap Colour' = ```
+			VAR g = [Food Typical Gap]
+			RETURN SWITCH ( TRUE (), ISBLANK ( g ), "#C9C6BB", g >= 0.2, "#C8372D", g <= -0.2, "#2864A8", "#8F8A7E" )
+			```
+
+	measure 'Food Typical Price' = ```
+			VAR m = [Report Month]
+			RETURN CALCULATE ( MEDIAN ( Prices[price_per_unit] ), Prices[price_month] = m )
+			```
+		formatString: #,0
+
+	measure 'Food Usual' = ```
+			VAR m = [Report Month]
+			RETURN CALCULATE ( MEDIAN ( Prices[normal_price] ), Prices[price_month] = m )
+			```
+		formatString: #,0
+
+	measure 'Food Unit' = ```
+			VAR m = [Report Month]
+			RETURN CALCULATE ( MAX ( Prices[standard_unit] ), Prices[price_month] = m )
+			```
+
+	measure 'Food Cheaper' = ```
+			VAR m = [Report Month]
+			RETURN CALCULATE ( DISTINCTCOUNT ( Prices[market_code] ), Prices[price_month] = m, Prices[direction] = "Too cheap" )
+			```
+		formatString: #,0
+
+	measure 'Food Normal' = ```
+			VAR m = [Report Month]
+			RETURN CALCULATE ( DISTINCTCOUNT ( Prices[market_code] ), Prices[price_month] = m, Prices[direction] = "Normal" )
+			```
+		formatString: #,0
+
+	measure 'Food Dearer' = ```
+			VAR m = [Report Month]
+			RETURN CALCULATE ( DISTINCTCOUNT ( Prices[market_code] ), Prices[price_month] = m, Prices[direction] = "Too expensive" )
+			```
+		formatString: #,0
+
+	measure 'Foods Mostly Cheaper' = COALESCE ( COUNTROWS ( FILTER ( VALUES ( Commodities[commodity] ), [Food Typical Gap] <= -0.2 ) ), 0 )
+		formatString: #,0
+
+	measure 'Foods Mostly Dearer' = COALESCE ( COUNTROWS ( FILTER ( VALUES ( Commodities[commodity] ), [Food Typical Gap] >= 0.2 ) ), 0 )
+		formatString: #,0
+
+	measure 'Foods Judged' = COALESCE ( COUNTROWS ( FILTER ( VALUES ( Commodities[commodity] ), NOT ISBLANK ( [Food Typical Gap] ) ) ), 0 )
+		formatString: #,0
+
+	measure 'Biggest Food Mover' = ```
+			VAR t = FILTER ( ADDCOLUMNS ( VALUES ( Commodities[commodity] ), "@g", [Food Typical Gap] ), NOT ISBLANK ( [@g] ) )
+			RETURN MAXX ( TOPN ( 1, t, ABS ( [@g] ), DESC ), Commodities[commodity] )
+			```
+
+	measure 'Biggest Food Gap' = ```
+			VAR f = [Biggest Food Mover]
+			RETURN CALCULATE ( [Food Typical Gap], Commodities[commodity] = f )
+			```
+		formatString: +0%;-0%;0%
+
+	measure 'Biggest Food Colour' = ```
+			VAR g = [Biggest Food Gap]
+			RETURN SWITCH ( TRUE (), ISBLANK ( g ), "#C9C6BB", g >= 0.2, "#C8372D", g <= -0.2, "#2864A8", "#8F8A7E" )
+			```
+
+	measure 'Biggest Food Label' = "biggest change: " & [Biggest Food Mover]
+
+	measure 'Foods Subtitle' = [Price Type Label] & " prices · " & FORMAT ( [Report Month], "MMMM yyyy" ) & " · each food against the same month in the last five years"
+
+	measure 'Region Typical Gap' = ```
+			VAR m = [Latest Month]
+			RETURN CALCULATE ( MEDIAN ( Prices[gap_from_normal] ), Prices[price_month] = m )
+			```
+		formatString: +0%;-0%;0%
+
+	measure 'Region Gap Colour' = ```
+			VAR g = [Region Typical Gap]
+			RETURN SWITCH ( TRUE (), ISBLANK ( g ), "#C9C6BB", g >= 0.2, "#C8372D", g <= -0.2, "#2864A8", "#8F8A7E" )
+			```
+
+	measure 'Regions Reporting' = COALESCE ( COUNTROWS ( FILTER ( VALUES ( Markets[region] ), NOT ISBLANK ( [Market Price] ) ) ), 0 )
+		formatString: #,0
+
+	measure 'Lowest Region' = ```
+			VAR t = FILTER ( ADDCOLUMNS ( VALUES ( Markets[region] ), "@g", [Region Typical Gap] ), NOT ISBLANK ( [@g] ) )
+			RETURN MAXX ( TOPN ( 1, t, [@g], ASC ), Markets[region] )
+			```
+
+	measure 'Highest Region' = ```
+			VAR t = FILTER ( ADDCOLUMNS ( VALUES ( Markets[region] ), "@g", [Region Typical Gap] ), NOT ISBLANK ( [@g] ) )
+			RETURN MAXX ( TOPN ( 1, t, [@g], DESC ), Markets[region] )
+			```
+
+	measure 'Lowest Region Gap' = ```
+			VAR r = [Lowest Region]
+			RETURN CALCULATE ( [Region Typical Gap], Markets[region] = r )
+			```
+		formatString: +0%;-0%;0%
+
+	measure 'Highest Region Gap' = ```
+			VAR r = [Highest Region]
+			RETURN CALCULATE ( [Region Typical Gap], Markets[region] = r )
+			```
+		formatString: +0%;-0%;0%
+
+	measure 'Lowest Region Colour' = ```
+			VAR g = [Lowest Region Gap]
+			RETURN SWITCH ( TRUE (), ISBLANK ( g ), "#C9C6BB", g >= 0.2, "#C8372D", g <= -0.2, "#2864A8", "#8F8A7E" )
+			```
+
+	measure 'Highest Region Colour' = ```
+			VAR g = [Highest Region Gap]
+			RETURN SWITCH ( TRUE (), ISBLANK ( g ), "#C9C6BB", g >= 0.2, "#C8372D", g <= -0.2, "#2864A8", "#8F8A7E" )
+			```
+
+	measure 'Lowest Region Label' = "lowest against normal: " & [Lowest Region]
+
+	measure 'Highest Region Label' = "highest against normal: " & [Highest Region]
+
+	measure 'Regions Title' = [Food Label] & " prices by region"
+
+	measure 'Regions Subtitle' = [Price Type Label] & " prices · " & FORMAT ( [Latest Month], "MMMM yyyy" ) & " · against the same month in the last five years"
+
+	measure 'Forecast Month Label' = FORMAT ( MAX ( Forecast[forecast_month] ), "MMMM yyyy" )
+
+	measure 'Expected Cheaper' = COALESCE ( CALCULATE ( DISTINCTCOUNT ( Forecast[market_code] ), Forecast[forecast_direction] = "Too cheap" ), 0 )
+		formatString: #,0
+
+	measure 'Expected Dearer' = COALESCE ( CALCULATE ( DISTINCTCOUNT ( Forecast[market_code] ), Forecast[forecast_direction] = "Too expensive" ), 0 )
+		formatString: #,0
+
+	measure 'Range Start' = MAX ( Forecast[forecast_low] )
+		formatString: #,0
+
+	measure 'Range Width' = MAX ( Forecast[forecast_high] ) - MAX ( Forecast[forecast_low] )
+		formatString: #,0
+
+	measure 'Forecast Price' = MAX ( Forecast[forecast_price] )
+		formatString: #,0
+
+	measure 'Forecast Usual' = MAX ( Forecast[normal_price] )
+		formatString: #,0
+
+	measure 'Last Price' = MAX ( Forecast[last_price] )
+		formatString: #,0
+
+	measure 'Likely Range' = IF ( NOT ISBLANK ( [Range Start] ), FORMAT ( MAX ( Forecast[forecast_low] ), "#,0" ) & " to " & FORMAT ( MAX ( Forecast[forecast_high] ), "#,0" ) )
+
+	measure Expected = ```
+			VAR l = MAX ( Forecast[forecast_alert_level] )
+			RETURN SWITCH ( l, "alert high", "Much dearer than normal", "watch high", "Dearer than normal", "normal", "Normal",
+			    "watch low", "Cheaper than normal", "alert low", "Much cheaper than normal", "not enough history", "Not enough history" )
+			```
+
+	measure 'Expected Colour' = SWITCH ( MAX ( Forecast[forecast_direction] ), "Too cheap", "#2864A8", "Too expensive", "#C8372D", "Normal", "#8F8A7E", "#C9C6BB" )
+
+	measure 'Forecast Title' = [Food Label] & ": what next month may bring"
+
+	measure 'Forecast Subtitle' = "Forecast for " & [Forecast Month Label] & " · " & [Price Type Label] & " prices · FCFA per kg"
+
+	measure 'Suspect Prices' = COUNTROWS ( Suspect )
+		formatString: #,0
+
+	measure 'Reporting Fraction' = CALCULATE ( COUNTROWS ( Markets ), Markets[is_reporting_now] = TRUE () ) & " of " & COUNTROWS ( Markets )
+
+	measure 'Average Coverage' = AVERAGE ( Markets[coverage] )
+		formatString: 0%
+
+	measure 'Price Records' = COUNTROWS ( Prices )
+		formatString: #,0
+
+	measure 'Records Latest Year' = ```
+			VAR y = YEAR ( MAX ( Prices[price_month] ) )
+			RETURN CALCULATE ( COUNTROWS ( Prices ), FILTER ( ALL ( Prices[price_month] ), YEAR ( Prices[price_month] ) = y ) )
+			```
+		formatString: #,0
+
+	measure 'Direction Score' = 0.5779
+		formatString: 0%
+
 	partition _Measures = calculated
 		mode: import
 		source = ROW("x",0)

@@ -126,6 +126,116 @@ MEASURES = {
 }
 
 
+def colour_rule(expr: str) -> str:
+    """DAX that turns a gap from normal into the report's three colours (grey-beige when unknown)."""
+    return (f"VAR g = {expr}\nRETURN SWITCH ( TRUE (), ISBLANK ( g ), \"{NOT_JUDGED}\", g >= 0.2, \"{HIGH}\", "
+            f"g <= -0.2, \"{LOW}\", \"{NORMAL}\" )")
+
+
+def latest(agg: str) -> str:
+    """An aggregate of Prices in the latest month of the current filters."""
+    return f"VAR m = [Latest Month]\nRETURN CALCULATE ( {agg}, Prices[price_month] = m )"
+
+
+def status_count(direction: str) -> str:
+    """Markets in a direction in the latest month, blank (not 0) when none, so empty rows drop out."""
+    return f'VAR m = [Latest Month]\nRETURN CALCULATE ( DISTINCTCOUNT ( Prices[market_code] ), Prices[price_month] = m, Prices[direction] = "{direction}" )'
+
+
+MEASURES.update({
+    # ---- shared
+    "Price Type Label": ('SELECTEDVALUE ( PriceType[Price type], "All" )', None),
+    "Cheaper Markets": (status_count("Too cheap"), "#,0"),
+    "Normal Markets": (status_count("Normal"), "#,0"),
+    "Dearer Markets": (status_count("Too expensive"), "#,0"),
+    "Market Colour Light": (colour_rule("[Gap From Normal]"), None),
+
+    # ---- page 2: one market over time
+    "Selected Market": ('SELECTEDVALUE ( Markets[market], "all markets" )', None),
+    "Market Page Title": ('[Selected Market] & " · " & [Food Label]', None),
+    "Market Page Subtitle": ('VAR r = SELECTEDVALUE ( Markets[region] )\nRETURN IF ( NOT ISBLANK ( r ), r & " region · ", "" ) & [Price Type Label] & " prices over time, FCFA per kg"', None),
+    "Market Last Month": ("CALCULATE ( MAX ( Prices[price_month] ) )", "mmmm yyyy"),
+    "Latest Price": ("VAR m = [Market Last Month]\nRETURN CALCULATE ( AVERAGE ( Prices[price_per_unit] ), Prices[price_month] = m )", "#,0"),
+    "Latest Usual": ("VAR m = [Market Last Month]\nRETURN CALCULATE ( AVERAGE ( Prices[normal_price] ), Prices[price_month] = m )", "#,0"),
+    "Latest Change": ("VAR m = [Market Last Month]\nRETURN CALCULATE ( AVERAGE ( Prices[gap_from_normal] ), Prices[price_month] = m )", '+0%;-0%;0%'),
+    "Latest Change Colour": (colour_rule("[Latest Change]"), None),
+    "Months With Prices": ("DISTINCTCOUNT ( Prices[price_month] )", "#,0"),
+    "Monthly Price": ("AVERAGE ( Prices[price_per_unit] )", "#,0"),
+    "Monthly Usual": ("AVERAGE ( Prices[normal_price] )", "#,0"),
+    "Gap Last 12 Months": ("VAR last = CALCULATE ( MAX ( Prices[price_month] ), ALLSELECTED ( Calendar ) )\nVAR d = MAX ( Calendar[Date] )\n"
+                           "RETURN IF ( d > EOMONTH ( last, -12 ) && d <= EOMONTH ( last, 0 ), AVERAGE ( Prices[gap_from_normal] ) )", '+0%;-0%;0%'),
+    "Gap 12 Colour": (colour_rule("[Gap Last 12 Months]"), None),
+    "Market Facts": ('VAR mk = SELECTEDVALUE ( Markets[market] )\nRETURN IF ( ISBLANK ( mk ), "Choose one market to see its details.",\n'
+                     '    SELECTEDVALUE ( Markets[region] ) & " region, " & SELECTEDVALUE ( Markets[department] ) & " department. "\n'
+                     '    & "Prices from " & FORMAT ( SELECTEDVALUE ( Markets[first_month] ), "MMMM yyyy" ) & " to " & FORMAT ( SELECTEDVALUE ( Markets[last_month] ), "MMMM yyyy" ) & ": "\n'
+                     '    & SELECTEDVALUE ( Markets[months_with_prices] ) & " months with a price for any food, " & FORMAT ( SELECTEDVALUE ( Markets[coverage] ), "0%" ) & " of that time. "\n'
+                     '    & IF ( SELECTEDVALUE ( Markets[is_reporting_now] ), "Still reporting.", "Has stopped reporting." ) )', None),
+
+    # ---- page 3: all foods, judged in the report month
+    "Report Month": ("CALCULATE ( MAX ( Prices[price_month] ), REMOVEFILTERS ( Markets ), REMOVEFILTERS ( Commodities ) )", "mmmm yyyy"),
+    "Food Typical Gap": ("VAR m = [Report Month]\nRETURN CALCULATE ( MEDIAN ( Prices[gap_from_normal] ), Prices[price_month] = m )", '+0%;-0%;0%'),
+    "Food Gap Colour": (colour_rule("[Food Typical Gap]"), None),
+    "Food Typical Price": ("VAR m = [Report Month]\nRETURN CALCULATE ( MEDIAN ( Prices[price_per_unit] ), Prices[price_month] = m )", "#,0"),
+    "Food Usual": ("VAR m = [Report Month]\nRETURN CALCULATE ( MEDIAN ( Prices[normal_price] ), Prices[price_month] = m )", "#,0"),
+    "Food Unit": ('VAR m = [Report Month]\nRETURN CALCULATE ( MAX ( Prices[standard_unit] ), Prices[price_month] = m )', None),
+    "Food Cheaper": ('VAR m = [Report Month]\nRETURN CALCULATE ( DISTINCTCOUNT ( Prices[market_code] ), Prices[price_month] = m, Prices[direction] = "Too cheap" )', "#,0"),
+    "Food Normal": ('VAR m = [Report Month]\nRETURN CALCULATE ( DISTINCTCOUNT ( Prices[market_code] ), Prices[price_month] = m, Prices[direction] = "Normal" )', "#,0"),
+    "Food Dearer": ('VAR m = [Report Month]\nRETURN CALCULATE ( DISTINCTCOUNT ( Prices[market_code] ), Prices[price_month] = m, Prices[direction] = "Too expensive" )', "#,0"),
+    "Foods Mostly Cheaper": ("COALESCE ( COUNTROWS ( FILTER ( VALUES ( Commodities[commodity] ), [Food Typical Gap] <= -0.2 ) ), 0 )", "#,0"),
+    "Foods Mostly Dearer": ("COALESCE ( COUNTROWS ( FILTER ( VALUES ( Commodities[commodity] ), [Food Typical Gap] >= 0.2 ) ), 0 )", "#,0"),
+    "Foods Judged": ("COALESCE ( COUNTROWS ( FILTER ( VALUES ( Commodities[commodity] ), NOT ISBLANK ( [Food Typical Gap] ) ) ), 0 )", "#,0"),
+    "Biggest Food Mover": ('VAR t = FILTER ( ADDCOLUMNS ( VALUES ( Commodities[commodity] ), "@g", [Food Typical Gap] ), NOT ISBLANK ( [@g] ) )\n'
+                           "RETURN MAXX ( TOPN ( 1, t, ABS ( [@g] ), DESC ), Commodities[commodity] )", None),
+    "Biggest Food Gap": ('VAR f = [Biggest Food Mover]\nRETURN CALCULATE ( [Food Typical Gap], Commodities[commodity] = f )', '+0%;-0%;0%'),
+    "Biggest Food Colour": (colour_rule("[Biggest Food Gap]"), None),
+    "Biggest Food Label": ('"biggest change: " & [Biggest Food Mover]', None),
+    "Foods Subtitle": ('[Price Type Label] & " prices · " & FORMAT ( [Report Month], "MMMM yyyy" ) & " · each food against the same month in the last five years"', None),
+
+    # ---- page 4: regions
+    "Region Typical Gap": (latest("MEDIAN ( Prices[gap_from_normal] )"), '+0%;-0%;0%'),
+    "Region Gap Colour": (colour_rule("[Region Typical Gap]"), None),
+    "Regions Reporting": ("COALESCE ( COUNTROWS ( FILTER ( VALUES ( Markets[region] ), NOT ISBLANK ( [Market Price] ) ) ), 0 )", "#,0"),
+    "Lowest Region": ('VAR t = FILTER ( ADDCOLUMNS ( VALUES ( Markets[region] ), "@g", [Region Typical Gap] ), NOT ISBLANK ( [@g] ) )\nRETURN MAXX ( TOPN ( 1, t, [@g], ASC ), Markets[region] )', None),
+    "Highest Region": ('VAR t = FILTER ( ADDCOLUMNS ( VALUES ( Markets[region] ), "@g", [Region Typical Gap] ), NOT ISBLANK ( [@g] ) )\nRETURN MAXX ( TOPN ( 1, t, [@g], DESC ), Markets[region] )', None),
+    "Lowest Region Gap": ('VAR r = [Lowest Region]\nRETURN CALCULATE ( [Region Typical Gap], Markets[region] = r )', '+0%;-0%;0%'),
+    "Highest Region Gap": ('VAR r = [Highest Region]\nRETURN CALCULATE ( [Region Typical Gap], Markets[region] = r )', '+0%;-0%;0%'),
+    "Lowest Region Colour": (colour_rule("[Lowest Region Gap]"), None),
+    "Highest Region Colour": (colour_rule("[Highest Region Gap]"), None),
+    "Lowest Region Label": ('"lowest against normal: " & [Lowest Region]', None),
+    "Highest Region Label": ('"highest against normal: " & [Highest Region]', None),
+    "Regions Title": ('[Food Label] & " prices by region"', None),
+    "Regions Subtitle": ('[Price Type Label] & " prices · " & FORMAT ( [Latest Month], "MMMM yyyy" ) & " · against the same month in the last five years"', None),
+
+    # ---- page 5: next month
+    "Forecast Month Label": ('FORMAT ( MAX ( Forecast[forecast_month] ), "MMMM yyyy" )', None),
+    "Expected Cheaper": ('COALESCE ( CALCULATE ( DISTINCTCOUNT ( Forecast[market_code] ), Forecast[forecast_direction] = "Too cheap" ), 0 )', "#,0"),
+    "Expected Dearer": ('COALESCE ( CALCULATE ( DISTINCTCOUNT ( Forecast[market_code] ), Forecast[forecast_direction] = "Too expensive" ), 0 )', "#,0"),
+    "Range Start": ("MAX ( Forecast[forecast_low] )", "#,0"),
+    "Range Width": ("MAX ( Forecast[forecast_high] ) - MAX ( Forecast[forecast_low] )", "#,0"),
+    "Forecast Price": ("MAX ( Forecast[forecast_price] )", "#,0"),
+    "Forecast Usual": ("MAX ( Forecast[normal_price] )", "#,0"),
+    "Last Price": ("MAX ( Forecast[last_price] )", "#,0"),
+    "Likely Range": ('IF ( NOT ISBLANK ( [Range Start] ), FORMAT ( MAX ( Forecast[forecast_low] ), "#,0" ) & " to " & FORMAT ( MAX ( Forecast[forecast_high] ), "#,0" ) )', None),
+    "Expected": ('VAR l = MAX ( Forecast[forecast_alert_level] )\nRETURN SWITCH ( l, "alert high", "Much dearer than normal", "watch high", "Dearer than normal", "normal", "Normal",\n'
+                 '    "watch low", "Cheaper than normal", "alert low", "Much cheaper than normal", "not enough history", "Not enough history" )', None),
+    # colour by the forecast's verdict, so "not enough history" stays neutral even when a gap exists
+    "Expected Colour": (f'SWITCH ( MAX ( Forecast[forecast_direction] ), "Too cheap", "{LOW}", "Too expensive", "{HIGH}", "Normal", "{NORMAL}", "{NOT_JUDGED}" )', None),
+    "Forecast Title": ('[Food Label] & ": what next month may bring"', None),
+    "Forecast Subtitle": ('"Forecast for " & [Forecast Month Label] & " · " & [Price Type Label] & " prices · FCFA per kg"', None),
+
+    # ---- page 6: data quality (no filters on that page)
+    "Suspect Prices": ("COUNTROWS ( Suspect )", "#,0"),
+    "Reporting Fraction": ('CALCULATE ( COUNTROWS ( Markets ), Markets[is_reporting_now] = TRUE () ) & " of " & COUNTROWS ( Markets )', None),
+    "Average Coverage": ("AVERAGE ( Markets[coverage] )", "0%"),
+    "Price Records": ("COUNTROWS ( Prices )", "#,0"),
+    "Records Latest Year": ("VAR y = YEAR ( MAX ( Prices[price_month] ) )\nRETURN CALCULATE ( COUNTROWS ( Prices ), FILTER ( ALL ( Prices[price_month] ), YEAR ( Prices[price_month] ) = y ) )", "#,0"),
+})
+
+# The forecast's tested score comes from the backtest, so the report never states a number by hand
+_backtest = json.loads((POWERBI.parent / "reports" / "forecast_backtest.json").read_text(encoding="utf-8"))
+MEASURES["Direction Score"] = (str(_backtest["model"]["direction_right_on_big_moves"]), "0%")
+
+
 def measures_table() -> str:
     out = ["table _Measures", ""]
     for name, (dax, fmt) in MEASURES.items():
@@ -148,7 +258,7 @@ def build_model(root: Path) -> None:
     write_json(sm / "definition.pbism", {"$schema": "https://developer.microsoft.com/json-schemas/fabric/item/semanticModel/definitionProperties/1.0.0/schema.json", "version": "4.2", "settings": {}})
     write_json(sm / ".platform", platform("SemanticModel"))
     (d / "database.tmdl").write_text("database\n\tcompatibilityLevel: 1606\n\n", encoding="utf-8")
-    tables = ["Prices", "Markets", "Commodities", "PriceType", "Calendar", "Forecast", "_Measures"]
+    tables = ["Prices", "Markets", "Commodities", "PriceType", "Calendar", "Forecast", "Suspect", "_Measures"]
     (d / "model.tmdl").write_text(
         "model Model\n\tculture: en-US\n\tdefaultPowerBIDataSourceVersion: powerBI_V3\n\tsourceQueryCulture: en-US\n"
         "\tdataAccessOptions\n\t\tlegacyRedirects\n\t\treturnErrorValuesAsNull\n\n"
@@ -184,6 +294,13 @@ def build_model(root: Path) -> None:
         ("normal_price", "double", "#,0", False), ("years_of_history", "int64", None, False),
         ("forecast_gap_from_normal", "double", "+0%;-0%;0%", False), ("forecast_alert_level", "string", None, False),
         ("forecast_direction", "string", None, False),
+    ]), encoding="utf-8")
+    # prices far from the national median, for the Data quality page (no relationships: that page has no filters)
+    (t / "Suspect.tmdl").write_text(csv_table("Suspect", "suspect.csv", [
+        ("price_month", "dateTime", "mmm yyyy", False), ("market", "string", None, False), ("region", "string", None, False),
+        ("commodity", "string", None, False), ("price_type", "string", None, False), ("standard_unit", "string", None, False),
+        ("price_per_unit", "double", "#,0", False), ("national_median", "double", "#,0", False),
+        ("ratio_to_national", "double", "0.0x", False),
     ]), encoding="utf-8")
     (t / "PriceType.tmdl").write_text(
         "table PriceType\n\n"
@@ -395,6 +512,209 @@ def overview_visuals():
     return v
 
 
+# ----------------------------------------------------------------------------- shared visual builders (pages 2-7)
+
+PAGE_IDS = ["p_overview", "p_markets", "p_foods", "p_regions", "p_forecast", "p_quality", "p_method"]
+KW = (1026 - 36) / 4
+KX = [232 + i * (KW + 12) + 78 for i in range(4)]   # where each KPI number starts, right of its icon
+STATUS = [("Cheaper", LOW), ("Normal", NORMAL), ("Dearer", HIGH)]
+
+
+def fill_by(m):
+    return [{"properties": {"fill": {"solid": {"color": {"expr": measure(m)}}}},
+             "selector": {"data": [{"dataViewWildcard": {"matchingOption": 1}}]}}]
+
+
+def axis_objs(cat_font=9):
+    return {"categoryAxis": props(show=True, labelColor=colour(INK), fontSize=cat_font, fontFamily=FONT, showAxisTitle=False),
+            "valueAxis": props(show=True, labelColor=colour(MUTED), fontSize=8, gridlineShow=True, gridlineColor=colour("#E8F0E3"), showAxisTitle=False),
+            "legend": props(show=False)}
+
+
+def sorted_by(v, field, direction="Ascending"):
+    v["visual"]["query"]["sortDefinition"] = {"sort": [{"field": field, "direction": direction}], "isDefaultSort": False}
+    return v
+
+
+def bar(name, x, y, w, h, cat, value_m, colour_m, label, tooltips=(), horizontal=True, labels=True):
+    """One measure per category, each bar coloured by a colour measure."""
+    q = {"Category": {"projections": [{**proj(cat[0], cat[1]), "active": True}]},
+         "Y": {"projections": [proj(measure(value_m), label)]}}
+    if tooltips:
+        q["Tooltips"] = {"projections": [proj(measure(t)) for t in tooltips]}
+    objs = {**axis_objs(), "dataPoint": fill_by(colour_m), "labels": props(show=labels, color=colour(INK), fontSize=8)}
+    return visual(name, x, y, w, h, "clusteredBarChart" if horizontal else "clusteredColumnChart", q, objs)
+
+
+def stacked(name, x, y, w, h, cat, series, colours, labels=True, hide_first=False):
+    """Stacked bars, one series per measure with a fixed colour. hide_first paints the first
+    series white, which turns a stacked bar into a floating range bar on a white card."""
+    q = {"Category": {"projections": [{**proj(cat[0], cat[1]), "active": True}]},
+         "Y": {"projections": [proj(measure(m), lbl) for m, lbl in series]}}
+    points = [{"properties": {"fill": colour(c)}, "selector": {"metadata": f"_Measures.{m}"}} for (m, _), c in zip(series, colours)]
+    objs = {**axis_objs(), "dataPoint": points, "labels": props(show=labels, color=colour("#FFFFFF"), fontSize=8)}
+    if hide_first:
+        objs["labels"] = props(show=False)
+    return visual(name, x, y, w, h, "barChart", q, objs)
+
+
+def table(name, x, y, w, h, fields, colour_col=None, colour_m=None, font=10):
+    """fields: list of projections. colour_col (a measure name) gets its text coloured by colour_m."""
+    objs = {"columnHeaders": props(fontColor=colour(MUTED), backColor=colour("#FFFFFF"), fontSize=9, fontFamily=FONT),
+            "values": props(fontColorPrimary=colour(INK), backColorPrimary=colour("#FFFFFF"), fontColorSecondary=colour(INK),
+                            backColorSecondary=colour("#FFFFFF"), fontSize=font, fontFamily=FONT),
+            "grid": props(gridVertical=False, gridHorizontal=True, gridHorizontalColor=colour("#EEF3EA"), rowPadding=4),
+            "total": props(totals=False)}
+    if colour_col:
+        objs["values"].append({"properties": {"fontColor": {"solid": {"color": {"expr": measure(colour_m)}}}},
+                               "selector": {"metadata": f"_Measures.{colour_col}"}})
+    return visual(name, x, y, w, h, "tableEx", {"Values": {"projections": fields}}, objs)
+
+
+def title_strip(title_m=None, sub_m=None):
+    v = []
+    if title_m:
+        v.append(text_card("tTitle", 232, 12, 820, 38, title_m, 20, INK, bold=True))
+    if sub_m:
+        v.append(text_card("tSub", 232, 48, 1000, 24, sub_m, 10, MUTED))
+    return v
+
+
+def kpi(i, m, col=INK, colour_m=None, label_m=None, name=None):
+    """A KPI number in tile i (0-3); its icon and fixed label are in the background."""
+    c = card(name or f"k{i + 1}", KX[i], 84, 160, 46, m, 24, col, bold=True)
+    v = [card_colour_by(c, colour_m) if colour_m else c]
+    if label_m:
+        v.append(text_card(f"k{i + 1}Lbl", KX[i], 132, 160, 22, label_m, 9, MUTED))
+    return v
+
+
+def sidebar_slicers(names):
+    """Sidebar dropdowns in the background's label slots (128, 188, 248, 308)."""
+    spec = {"Food": ("slFood", "Commodities", "commodity", "Maize (white)", False),
+            "Price": ("slType", "PriceType", "Price type", "Retail", False),
+            "Month": ("slMonth", "Calendar", "Month", None, True),
+            "Market": ("slMarket", "Markets", "market", "Maroua", False)}
+    out = []
+    for i, n in enumerate(names):
+        vid, tbl, col, default, desc = spec[n]
+        out.append(slicer(vid, 20, 146 + i * 60, 170, 30, tbl, col, n, default=default, descending=desc))
+    return out
+
+
+def nav_buttons(current):
+    """Transparent buttons over the sidebar page links. In Power BI Desktop, Ctrl+click to follow them."""
+    out = []
+    for i, target in enumerate(PAGE_IDS):
+        if target == current:
+            continue
+        b = visual(f"nav{i}", 10, 372 + i * 25, 180, 22, "actionButton", {}, {
+            "icon": [{"properties": {"shapeType": lit("blank")}, "selector": {"id": "default"}}],
+            "outline": [{"properties": {"show": lit(False)}, "selector": {"id": "default"}}],
+            "fill": [{"properties": {"show": lit(False)}, "selector": {"id": "default"}}],
+            "text": [{"properties": {"show": lit(False)}, "selector": {"id": "default"}}],
+        })
+        b["visual"]["query"] = None
+        del b["visual"]["query"]
+        b["visual"]["visualContainerObjects"]["visualLink"] = props(show=True, type="PageNavigation", navigationSection=target)
+        b["visual"]["howCreated"] = "InsertVisualButton"
+        out.append(b)
+    return out
+
+
+# ----------------------------------------------------------------------------- pages 2-7
+
+def markets_visuals():
+    v = sidebar_slicers(["Food", "Price", "Month", "Market"]) + title_strip("Market Page Title", "Market Page Subtitle")
+    v += kpi(0, "Latest Price") + kpi(1, "Latest Usual", NORMAL)
+    v += kpi(2, "Latest Change", LOW, "Latest Change Colour") + kpi(3, "Months With Prices")
+    # price and usual price over time
+    q = {"Category": {"projections": [{**proj(column("Calendar", "Month Start"), "Month"), "active": True}]},
+         "Y": {"projections": [proj(measure("Monthly Price"), "Price"), proj(measure("Monthly Usual"), "Usual for that month")]}}
+    objs = {**axis_objs(8),
+            "dataPoint": [{"properties": {"fill": colour(GREEN)}, "selector": {"metadata": "_Measures.Monthly Price"}},
+                          {"properties": {"fill": colour(NORMAL)}, "selector": {"metadata": "_Measures.Monthly Usual"}}],
+            "lineStyles": [{"properties": {"strokeWidth": lit(3), "showMarker": lit(False)}},
+                           {"properties": {"lineStyle": lit("dashed"), "strokeWidth": lit(2)}, "selector": {"metadata": "_Measures.Monthly Usual"}}],
+            "labels": props(show=False)}
+    v.append(visual("lineMarket", 246, 226, 1000, 240, "lineChart", q, objs))
+    v.append(bar("col12", 246, 540, 572, 156, (column("Calendar", "Month Start"), "Month"), "Gap Last 12 Months", "Gap 12 Colour",
+                 "Change from usual", horizontal=False))
+    v.append(text_card("facts", 864, 528, 380, 160, "Market Facts", 11, INK))
+    return v
+
+
+def foods_visuals():
+    v = sidebar_slicers(["Price", "Month"]) + title_strip(None, "Foods Subtitle")
+    v += kpi(0, "Foods Mostly Cheaper", LOW) + kpi(1, "Foods Mostly Dearer", HIGH) + kpi(2, "Foods Judged")
+    v += kpi(3, "Biggest Food Gap", LOW, "Biggest Food Colour", "Biggest Food Label")
+    food = (column("Commodities", "commodity"), "Food")
+    v.append(sorted_by(stacked("stFoods", 246, 248, 476, 448, food,
+                               [("Food Cheaper", "Cheaper"), ("Food Normal", "Normal"), ("Food Dearer", "Dearer")],
+                               [LOW, NORMAL, HIGH]), measure("Food Cheaper"), "Descending"))
+    v.append(sorted_by(bar("barFoodGap", 760, 226, 486, 240, food, "Food Typical Gap", "Food Gap Colour", "Typical change"),
+                       measure("Food Typical Gap")))
+    v.append(sorted_by(table("tblFoods", 760, 540, 486, 156,
+                             [proj(column("Commodities", "commodity"), "Food"), proj(measure("Food Typical Price"), "Now"),
+                              proj(measure("Food Usual"), "Usual"), proj(measure("Food Unit"), "Per"), proj(measure("Food Typical Gap"), "Change")],
+                             "Food Typical Gap", "Food Gap Colour", font=9), measure("Food Typical Gap")))
+    return v
+
+
+def regions_visuals():
+    v = sidebar_slicers(["Food", "Price", "Month"]) + title_strip("Regions Title", "Regions Subtitle")
+    v += kpi(0, "Regions Reporting") + kpi(1, "Lowest Region Gap", LOW, "Lowest Region Colour", "Lowest Region Label")
+    v += kpi(2, "Highest Region Gap", HIGH, "Highest Region Colour", "Highest Region Label") + kpi(3, "Markets Judged")
+    region = (column("Markets", "region"), "Region")
+    v.append(sorted_by(bar("barRegion", 246, 226, 476, 240, region, "Region Typical Gap", "Region Gap Colour", "Typical change"),
+                       measure("Region Typical Gap")))
+    v.append(sorted_by(stacked("stRegion", 246, 540, 476, 156, region,
+                               [("Cheaper Markets", "Cheaper"), ("Normal Markets", "Normal"), ("Dearer Markets", "Dearer")],
+                               [LOW, NORMAL, HIGH]), measure("Cheaper Markets"), "Descending"))
+    v.append(sorted_by(table("tblRegions", 760, 232, 486, 460,
+                             [proj(column("Markets", "region"), "Region"), proj(measure("Markets Reporting"), "Reporting"),
+                              proj(measure("Cheaper Markets"), "Cheaper"), proj(measure("Dearer Markets"), "Dearer"),
+                              proj(measure("Region Typical Gap"), "Typical change")],
+                             "Region Typical Gap", "Region Gap Colour", font=11), measure("Region Typical Gap")))
+    return v
+
+
+def forecast_visuals():
+    v = sidebar_slicers(["Food", "Price"]) + title_strip("Forecast Title", "Forecast Subtitle")
+    v += kpi(0, "Forecast Month Label") + kpi(1, "Expected Cheaper", LOW) + kpi(2, "Expected Dearer", HIGH) + kpi(3, "Direction Score", GREEN)
+    market = (column("Markets", "market"), "Market")
+    rng = stacked("rngForecast", 246, 228, 592, 452, market, [("Range Start", "From"), ("Range Width", "Likely range")],
+                  ["#FFFFFF", GREEN], hide_first=True)
+    rng["visual"]["query"]["queryState"]["Tooltips"] = {"projections": [proj(measure("Forecast Price"), "Best guess"),
+                                                                         proj(measure("Forecast Usual"), "Usual for that month"),
+                                                                         proj(measure("Expected"))]}
+    v.append(sorted_by(rng, measure("Range Start")))
+    v.append(sorted_by(table("tblForecast", 880, 228, 366, 452,
+                             [proj(column("Markets", "market"), "Market"), proj(measure("Last Price"), "Now"),
+                              proj(measure("Likely Range"), "Likely next month"), proj(measure("Expected"), "Expected")],
+                             "Expected", "Expected Colour", font=9), measure("Last Price")))
+    return v
+
+
+def quality_visuals():
+    v = kpi(0, "Suspect Prices", HIGH) + kpi(1, "Reporting Fraction") + kpi(2, "Average Coverage") + kpi(3, "Records Latest Year")
+    yr = {"Category": {"projections": [{**proj(column("Calendar", "Year"), "Year"), "active": True}]},
+          "Y": {"projections": [proj(measure("Price Records"), "Price records")]}}
+    col = visual("colRecords", 246, 226, 476, 240, "clusteredColumnChart", yr,
+                 {**axis_objs(9), "dataPoint": props(fill=colour(GREEN)), "labels": props(show=True, color=colour(INK), fontSize=8)})
+    v.append(sorted_by(col, column("Calendar", "Year")))
+    v.append(sorted_by(table("tblSuspect", 760, 228, 486, 464,
+                             [proj(column("Suspect", "price_month"), "Month"), proj(column("Suspect", "market"), "Market"),
+                              proj(column("Suspect", "commodity"), "Food"), proj(column("Suspect", "price_per_unit"), "Price"),
+                              proj(column("Suspect", "national_median"), "Typical"), proj(column("Suspect", "ratio_to_national"), "Times")],
+                             font=9), column("Suspect", "ratio_to_national"), "Descending"))
+    return v
+
+
+def method_visuals():
+    return []
+
+
 # ----------------------------------------------------------------------------- report
 
 THEME = {
@@ -427,7 +747,7 @@ def build_report(root: Path) -> None:
     (res / "SharedResources" / "BaseThemes").mkdir(parents=True)
     shutil.copy(BASE_THEME, res / "SharedResources" / "BaseThemes" / "CY24SU10.json")
     write_json(res / "RegisteredResources" / "FoodPriceWatchGreen.json", THEME)
-    images = [BACKGROUND, MAP_IMAGE]
+    images = [f"bg_{p}.png" for p in ["overview", "markets", "foods", "regions", "forecast", "quality", "method"]] + [MAP_IMAGE]
     for img in images:
         shutil.copy(IMAGES / img, res / "RegisteredResources" / img)
 
@@ -445,7 +765,15 @@ def build_report(root: Path) -> None:
         "settings": {"useStylableVisualContainerHeader": True, "exportDataMode": "AllowSummarized", "defaultDrillFilterOtherVisuals": True,
                      "allowChangeFilterTypes": True, "useEnhancedTooltips": True, "useDefaultAggregateDisplayName": True}})
 
-    pages = {"p_overview": ("This month", BACKGROUND, overview_visuals())}
+    pages = {"p_overview": ("This month", "bg_overview.png", overview_visuals()),
+             "p_markets": ("Markets", "bg_markets.png", markets_visuals()),
+             "p_foods": ("Foods", "bg_foods.png", foods_visuals()),
+             "p_regions": ("Regions", "bg_regions.png", regions_visuals()),
+             "p_forecast": ("Next month", "bg_forecast.png", forecast_visuals()),
+             "p_quality": ("Data quality", "bg_quality.png", quality_visuals()),
+             "p_method": ("Method", "bg_method.png", method_visuals())}
+    for pid, (_, _, visuals) in pages.items():
+        visuals.extend(nav_buttons(pid))
     write_json(d / "pages" / "pages.json", {"$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json",
                                             "pageOrder": list(pages), "activePageName": "p_overview"})
     for pid, (title, bg, visuals) in pages.items():

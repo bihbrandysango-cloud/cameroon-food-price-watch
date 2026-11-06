@@ -42,8 +42,38 @@
           "type": "CustomTheme"
         },
         {
-          "name": "bg_overview_sidebar.png",
-          "path": "bg_overview_sidebar.png",
+          "name": "bg_overview.png",
+          "path": "bg_overview.png",
+          "type": "Image"
+        },
+        {
+          "name": "bg_markets.png",
+          "path": "bg_markets.png",
+          "type": "Image"
+        },
+        {
+          "name": "bg_foods.png",
+          "path": "bg_foods.png",
+          "type": "Image"
+        },
+        {
+          "name": "bg_regions.png",
+          "path": "bg_regions.png",
+          "type": "Image"
+        },
+        {
+          "name": "bg_forecast.png",
+          "path": "bg_forecast.png",
+          "type": "Image"
+        },
+        {
+          "name": "bg_quality.png",
+          "path": "bg_quality.png",
+          "type": "Image"
+        },
+        {
+          "name": "bg_method.png",
+          "path": "bg_method.png",
           "type": "Image"
         },
         {

@@ -64,6 +64,14 @@ QUERIES = {
         from fct_monthly_prices
         order by commodity
     """,
+    # prices far from what other markets charged that month (kept, but left out of alerts)
+    "suspect": """
+        select price_month, market, region, commodity, price_type, standard_unit,
+               round(price_per_unit, 2) as price_per_unit, national_median, ratio_to_national
+        from fct_monthly_prices
+        where is_suspect_price
+        order by ratio_to_national desc
+    """,
     "forecast": f"""
         select forecast_month, market_code, commodity_code, price_type, last_price,
                forecast_price, forecast_low, forecast_high, normal_price, years_of_history,
