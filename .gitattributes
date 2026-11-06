@@ -1,0 +1,2 @@
+# Keep LF everywhere so the data file's SHA-256 is the same on every machine
+* text=auto eol=lf
