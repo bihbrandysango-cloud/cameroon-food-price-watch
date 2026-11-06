@@ -68,9 +68,18 @@ const STYLES = {
   line:   { panel: ["rgba(255,255,255,.015)", "#2A5236", 10], tabs: "underline" },
   kernel: { panel: ["#12321E", "none", 20], tabs: "pill" },
   glow:   { panel: ["rgba(255,255,255,.035)", "rgba(255,255,255,.09)", 18], tabs: "underline" },
+  // light styles: dark text on light panels, easiest to read
+  cream:  { panel: ["#FFFFFF", "#F0E2B2", 16], tabs: "pill", light: true,
+            th: { title: "#2A3B1C", panelTitle: "#2A3B1C", sub: "#7A7360", tabOn: ["#F2C230", "#2A2410"], tabOff: ["#FFFFFF", "#EAD9A0", "#6B5E3A"] } },
+  fresh:  { panel: ["#FFFFFF", "#D6E7CD", 16], tabs: "pill", light: true,
+            th: { title: "#FFFFFF", panelTitle: "#1E4A24", sub: "#6A7C62", tabOn: ["#F2C230", "#1B3A1E"], tabOff: ["rgba(255,255,255,.14)", "rgba(255,255,255,.45)", "#EAF6E3"] } },
+  white:  { panel: ["#FBFBF7", "#ECEAE0", 14], tabs: "underline", light: true,
+            th: { title: "#1F3A22", panelTitle: "#1F3A22", sub: "#77786C", tabOn: ["#2E7D32", "#F2B705"], tabOff: [null, null, "#77786C"] } },
 };
 const styleName = new URLSearchParams(location.search).get("style") || "field";
 const S = STYLES[styleName];
+// text and tab colours: dark styles share one set, light styles bring their own
+const TH = S.th || { title: "#EAF3DF", panelTitle: "#CFE3BC", sub: "#9FB58F", tabOn: ["#F5C518", "#0C2614"], tabOff: ["rgba(9,30,15,.55)", "rgba(160,210,110,.35)", "#CFE3BC"] };
 const defs = bg.append("defs");
 function gradient(id, stops, radial, attrs = {}) {
   const g = defs.append(radial ? "radialGradient" : "linearGradient").attr("id", id);
@@ -103,6 +112,47 @@ if (styleName === "leaf") {
   bg.append("circle").attr("cx", 1180).attr("cy", 40).attr("r", 420).attr("fill", "url(#sun)");
 }
 
+// soft shadow for light panels
+const shadow = defs.append("filter").attr("id", "shadow").attr("x", "-5%").attr("y", "-5%").attr("width", "110%").attr("height", "112%");
+shadow.append("feDropShadow").attr("dx", 0).attr("dy", 4).attr("stdDeviation", 8).attr("flood-color", "#5A4A10").attr("flood-opacity", .08);
+
+// a simple maize cob with two leaves, used as decoration on the light styles
+function cobArt(x, y, s, o = {}) {
+  const g = bg.append("g").attr("transform", `translate(${x},${y}) scale(${s}) rotate(${o.rotate || 0})`).attr("opacity", o.opacity ?? 1);
+  g.append("path").attr("d", "M0,0 C-30,-40 -34,-110 -8,-170 C-14,-110 -6,-50 0,0Z").attr("fill", o.leaf || "#6DAA45");
+  g.append("path").attr("d", "M0,0 C30,-40 34,-110 8,-170 C14,-110 6,-50 0,0Z").attr("fill", o.leaf2 || "#4E8F35");
+  g.append("ellipse").attr("cx", 0).attr("cy", -92).attr("rx", 20).attr("ry", 62).attr("fill", o.cob || "#F2C230");
+  for (let r = 0; r < 12; r++) for (let k = -2; k <= 2; k++) {
+    const yy = -146 + r * 9.6, half = 20 * Math.sqrt(Math.max(0, 1 - ((yy + 92) / 62) ** 2));
+    if (Math.abs(k * 7) < half - 3) g.append("ellipse").attr("cx", k * 7 + (r % 2) * 1.5).attr("cy", yy).attr("rx", 3.1).attr("ry", 3.8).attr("fill", o.kernel || "#F8D65A").attr("stroke", "rgba(170,120,0,.25)").attr("stroke-width", .6);
+  }
+  g.append("path").attr("d", "M0,0 C-24,-30 -26,-70 -14,-104 C-12,-70 -6,-36 0,0Z").attr("fill", o.leaf || "#6DAA45").attr("opacity", .95);
+  g.append("path").attr("d", "M0,-154 q6,-14 16,-18 M0,-154 q-4,-15 -12,-20").attr("stroke", "#C98A3A").attr("stroke-width", 1.6).attr("fill", "none");
+}
+
+if (styleName === "cream") {
+  // warm maize cream, a gold band at the top, a cob resting in the bottom-right corner
+  gradient("cr", [["0%", "#FFF3CC"], ["45%", "#FFF9E6"], ["100%", "#FFFDF6"]], false, { x1: 0, x2: 0, y1: 0, y2: 1 });
+  bg.append("rect").attr("width", 1280).attr("height", 720).attr("fill", "url(#cr)");
+  bg.append("rect").attr("width", 1280).attr("height", 6).attr("fill", "#F2C230");
+  // a cob lying in the open space of the header, between the title and the slicers
+  cobArt(560, 84, .42, { rotate: 72, opacity: .95 });
+  cobArt(640, 98, .34, { rotate: 100, opacity: .8 });
+} else if (styleName === "fresh") {
+  // pale green page with a deep green header band and a light leaf sweeping through it
+  bg.append("rect").attr("width", 1280).attr("height", 720).attr("fill", "#EEF6EA");
+  bg.append("rect").attr("width", 1280).attr("height", 116).attr("fill", "#2E7D32");
+  bg.append("path").attr("d", "M520,116 C700,40 920,10 1300,-10 L1300,116Z").attr("fill", "#388E3C");
+  bg.append("path").attr("d", "M760,116 C900,70 1080,46 1300,40 L1300,116Z").attr("fill", "#43A047").attr("opacity", .6);
+  bg.append("rect").attr("y", 116).attr("width", 1280).attr("height", 4).attr("fill", "#F2C230");
+} else if (styleName === "white") {
+  // clean white page; maize and a touch of green only at the edges
+  bg.append("rect").attr("width", 1280).attr("height", 720).attr("fill", "#FFFFFF");
+  bg.append("path").attr("d", "M0,708 C300,696 520,716 820,702 C1020,694 1160,706 1280,700 L1280,720 L0,720Z").attr("fill", "#8BC34A");
+  bg.append("path").attr("d", "M0,714 C260,706 560,722 900,710 C1080,704 1200,712 1280,708 L1280,720 L0,720Z").attr("fill", "#2E7D32");
+  bg.append("line").attr("x1", 34).attr("x2", 1246).attr("y1", 113).attr("y2", 113).attr("stroke", "#F2B705").attr("stroke-width", 2);
+}
+
 if (styleName === "field") {
 // sky glow and sweeping leaves
 const gr = bg.append("defs").append("radialGradient").attr("id", "glow").attr("cx", "70%").attr("cy", "0%").attr("r", "80%");
@@ -131,7 +181,7 @@ const logo = bg.append("g").attr("transform", "translate(34,62) scale(1.2)");
 logo.append("path").attr("d", "M9 30c-2-6 0-12 4-15M23 30c2-6 0-12-4-15").attr("stroke", "#7DBB4A").attr("stroke-width", 2.2).attr("fill", "none").attr("stroke-linecap", "round");
 logo.append("ellipse").attr("cx", 16).attr("cy", 13).attr("rx", 6.5).attr("ry", 11).attr("fill", "#F5C518");
 for (let r = 0; r < 5; r++) for (let k = 0; k < 3; k++) logo.append("circle").attr("cx", 12.2 + k * 3.8).attr("cy", 5 + r * 3.9).attr("r", 1.3).attr("fill", "rgba(0,0,0,.18)");
-bg.append("text").attr("x", 82).attr("y", 90).attr("font-size", 24).attr("font-weight", 700).attr("fill", "#EAF3DF").text("Cameroon Food Price Watch");
+bg.append("text").attr("x", 82).attr("y", 90).attr("font-size", 24).attr("font-weight", 700).attr("fill", TH.title).text("Cameroon Food Price Watch");
 // page tabs: a slim row across the top, right-aligned; the title row below holds the slicers
 const tabs = ["This month", "Markets", "Foods", "Regions", "Next month", "Data quality", "Method"];
 let tx = 1246;
@@ -140,29 +190,37 @@ tabs.slice().reverse().forEach((label, ri) => {
   const on = i === page.active;
   if (S.tabs === "pill") {
     bg.append("rect").attr("x", tx).attr("y", 16).attr("width", w).attr("height", 24).attr("rx", 12)
-      .attr("fill", on ? "#F5C518" : "rgba(9,30,15,.55)").attr("stroke", on ? "none" : "rgba(160,210,110,.35)");
-    bg.append("text").attr("x", tx + w / 2).attr("y", 32).attr("text-anchor", "middle").attr("font-size", 11.5).attr("font-weight", on ? 700 : 500).attr("fill", on ? "#0C2614" : "#CFE3BC").text(label);
+      .attr("fill", on ? TH.tabOn[0] : TH.tabOff[0]).attr("stroke", on ? "none" : TH.tabOff[1]);
+    bg.append("text").attr("x", tx + w / 2).attr("y", 32).attr("text-anchor", "middle").attr("font-size", 11.5).attr("font-weight", on ? 700 : 500).attr("fill", on ? TH.tabOn[1] : TH.tabOff[2]).text(label);
   } else {
-    bg.append("text").attr("x", tx + w / 2).attr("y", 32).attr("text-anchor", "middle").attr("font-size", 12).attr("font-weight", on ? 700 : 400).attr("fill", on ? "#F5C518" : "#9FB58F").text(label);
-    if (on) bg.append("rect").attr("x", tx + 10).attr("y", 39).attr("width", w - 20).attr("height", 2).attr("rx", 1).attr("fill", "#F5C518");
+    // underline tabs: tabOn = [text colour, underline colour]
+    const onText = S.th ? TH.tabOn[0] : "#F5C518", line = S.th ? TH.tabOn[1] : "#F5C518";
+    bg.append("text").attr("x", tx + w / 2).attr("y", 32).attr("text-anchor", "middle").attr("font-size", 12).attr("font-weight", on ? 700 : 400).attr("fill", on ? onText : (S.th ? TH.tabOff[2] : "#9FB58F")).text(label);
+    if (on) bg.append("rect").attr("x", tx + 10).attr("y", 39).attr("width", w - 20).attr("height", 2.5).attr("rx", 1).attr("fill", line);
   }
   tx -= 4;
 });
 
 // glass panels with their titles
 page.panels.forEach(([x, y, w, h, title, sub]) => {
-  bg.append("rect").attr("x", x).attr("y", y).attr("width", w).attr("height", h).attr("rx", S.panel[2]).attr("fill", S.panel[0]).attr("stroke", S.panel[1]);
-  bg.append("text").attr("x", x + 18).attr("y", y + 28).attr("font-size", 15).attr("font-weight", 500).attr("fill", "#CFE3BC").text(title);
-  if (sub) bg.append("text").attr("x", x + 18).attr("y", y + 46).attr("font-size", 11.5).attr("fill", "#9FB58F").text(sub);
+  bg.append("rect").attr("x", x).attr("y", y).attr("width", w).attr("height", h).attr("rx", S.panel[2]).attr("fill", S.panel[0]).attr("stroke", S.panel[1])
+    .attr("filter", S.light ? "url(#shadow)" : null);
+  if (S.light) bg.append("rect").attr("x", x + 18).attr("y", y + 15).attr("width", 4).attr("height", 18).attr("rx", 2).attr("fill", "#F2B705");
+  const tx0 = x + (S.light ? 30 : 18);
+  bg.append("text").attr("x", tx0).attr("y", y + 29).attr("font-size", S.light ? 16 : 15).attr("font-weight", S.light ? 700 : 500).attr("fill", TH.panelTitle).text(title);
+  if (sub) bg.append("text").attr("x", tx0).attr("y", y + 47).attr("font-size", 12).attr("fill", TH.sub).text(sub);
 });
 
-// map legend: colour = direction, size = strength
+// map legend: colour = direction, size = how big the change is
 if (page.legend) {
-  const items = [["#E5573E", "Too expensive", 6], ["#F4A462", "Rising", 4.5], ["#7F8A82", "Normal", 4.5], ["#93C6F2", "Falling", 4.5], ["#2F84D8", "Too cheap", 6]];
+  const items = S.light
+    ? [["#C8372D", "Too expensive", 6], ["#8F8A7E", "Normal", 4.5], ["#2864A8", "Too cheap", 6]]
+    : [["#E5573E", "Too expensive", 6], ["#F4A462", "Rising", 4.5], ["#7F8A82", "Normal", 4.5], ["#93C6F2", "Falling", 4.5], ["#2F84D8", "Too cheap", 6]];
   let lx = page.legend[0];
   items.forEach(([c, l, r]) => { bg.append("circle").attr("cx", lx + 6).attr("cy", page.legend[1]).attr("r", r).attr("fill", c);
-    bg.append("text").attr("x", lx + 15).attr("y", page.legend[1] + 4).attr("font-size", 11).attr("fill", "#CFE3BC").text(l); lx += l.length * 6.2 + 30; });
-  bg.append("text").attr("x", page.legend[0]).attr("y", page.legend[1] + 20).attr("font-size", 10.5).attr("fill", "#9FB58F").text("Big dot = alert (40%+ from normal) · small dot = watch (20–40%)");
+    bg.append("text").attr("x", lx + 15).attr("y", page.legend[1] + 4).attr("font-size", S.light ? 12 : 11).attr("fill", TH.panelTitle).text(l); lx += l.length * 6.6 + 32; });
+  bg.append("text").attr("x", page.legend[0]).attr("y", page.legend[1] + 20).attr("font-size", S.light ? 11.5 : 10.5).attr("fill", TH.sub)
+    .text(S.light ? "Bigger dot = bigger change from a normal month" : "Big dot = alert (40%+ from normal) · small dot = watch (20–40%)");
 }
 document.body.setAttribute("data-ready", "1");
 </script>

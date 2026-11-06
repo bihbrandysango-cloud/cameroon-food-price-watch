@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Light Page Designs</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; background:#F1F0EA; color:#1F2A1C; font-family:Inter, system-ui, sans-serif; }
+  header.board, section.option, footer.board { max-width:1340px; margin:0 auto; padding:0 16px; }
+  header.board { padding-top:40px; }
+  h1 { font-family:Fraunces, serif; font-size:38px; margin:0 0 8px; }
+  header.board p, .opt p { color:#55604C; line-height:1.5; max-width:840px; margin:4px 0; }
+  section.option { margin-top:30px; margin-bottom:56px; }
+  .opt { margin-bottom:12px; } .opt .tag { font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:#55604C; }
+  .opt h2 { font-family:Fraunces, serif; font-size:27px; margin:2px 0 4px; }
+  .wrap { position:relative; width:100%; border-radius:12px; overflow:hidden; box-shadow:0 14px 36px rgba(40,40,10,.16); }
+  .page { position:absolute; left:0; top:0; width:1280px; height:720px; transform-origin:top left; font-family:"Segoe UI", Inter, sans-serif; }
+  .page > img.bg { position:absolute; inset:0; width:1280px; height:720px; }
+  .abs { position:absolute; }
+  .slicer .lab { font-size:11.5px; } .slicer .box { margin-top:3px; height:26px; border-radius:6px; font-size:12.5px; padding:4px 9px; display:flex; justify-content:space-between; }
+  .tip { position:fixed; pointer-events:none; background:#1F2A1C; color:#fff; font:12px/1.45 Inter, sans-serif; padding:8px 10px; border-radius:8px; opacity:0; z-index:9; }
+  footer.board { color:#55604C; font-size:13px; padding-bottom:60px; line-height:1.5; }
+</style>
+</head>
+<body>
+<header class="board">
+  <h1>Light designs: easy for everyone to read</h1>
+  <p>Same page and same real numbers (retail white maize, September 2026), now with dark text on light backgrounds. Colours are kept to three plain meanings: <b style="color:#C8372D">red = too expensive</b>, <b style="color:#8F8A7E">grey = normal</b>, <b style="color:#2864A8">blue = too cheap</b>. A bigger dot or a longer bar means a bigger change.</p>
+</header>
+
+<section class="option"><div class="opt"><div class="tag">Option A · yellow and white</div><h2>Harvest Cream</h2>
+  <p>Warm maize-cream page with a gold line across the top and two maize cobs lying in the header. White cards with a soft shadow and a small gold marker beside each title.</p></div>
+  <div class="wrap"><div class="page" data-theme="cream"></div></div></section>
+
+<section class="option"><div class="opt"><div class="tag">Option B · green</div><h2>Fresh Field</h2>
+  <p>A deep green header band with light leaf curves and a gold edge, over a pale green page. White cards keep every number easy to read; the green says "agriculture" at a glance.</p></div>
+  <div class="wrap"><div class="page" data-theme="fresh"></div></div></section>
+
+<section class="option"><div class="opt"><div class="tag">Option C · white, maize and a little green</div><h2>Clean Harvest</h2>
+  <p>Almost all white, like a printed report. Maize shows up as the gold line under the header and the cob logo; green appears only in the tabs and a thin wave of grass along the bottom.</p></div>
+  <div class="wrap"><div class="page" data-theme="white"></div></div></section>
+
+<footer class="board">The content is drawn here to match the Power BI visuals; in the report the cards, map and bars are live Power BI visuals on top of the chosen background image.</footer>
+<div class="tip" id="tip"></div>
+
+<script>
+const DATA = __DATA__;
+const THEMES = {
+  cream: { ink: "#2A3B1C", muted: "#7A7360", big: "#2E6B2A", slicerLab: "#7A7360", box: ["#FFFFFF", "#E6D7A6", "#2A3B1C"], grid: "#EFE8D4" },
+  fresh: { ink: "#1E3A22", muted: "#66755F", big: "#2E7D32", slicerLab: "#D9EED2", box: ["#FFFFFF", "#FFFFFF", "#1E3A22"], grid: "#E3EEDD" },
+  white: { ink: "#1F3A22", muted: "#77786C", big: "#2E7D32", slicerLab: "#77786C", box: ["#FFFFFF", "#D9D7CC", "#1F3A22"], grid: "#EEEDE6" },
+};
+const HIGH = "#C8372D", NORMAL = "#8F8A7E", LOW = "#2864A8", NOHIST = "#C9C6BB";
+const colourOf = lvl => lvl.includes("high") ? HIGH : lvl.includes("low") ? LOW : lvl === "normal" ? NORMAL : NOHIST;
+const LON = [8.0, 16.6], LAT = [1.5, 13.2];
+const fmt = d3.format(",.0f"), pct = d => (d > 0 ? "+" : d < 0 ? "−" : "") + Math.abs(Math.round(d * 100)) + "%";
+const plain = { "alert high":"Much more expensive than normal", "watch high":"More expensive than normal", "alert low":"Much cheaper than normal", "watch low":"Cheaper than normal", "normal":"Normal", "not enough history":"Not enough history to judge" };
+const tip = document.getElementById("tip");
+const show = (e, h) => { tip.innerHTML = h; tip.style.opacity = 1; tip.style.left = Math.min(e.clientX + 14, innerWidth - 260) + "px"; tip.style.top = e.clientY + 14 + "px"; };
+const hide = () => tip.style.opacity = 0;
+
+const judged = DATA.maize_markets.filter(m => m.alert_level !== "not enough history");
+const spot = judged.reduce((a, b) => Math.abs(b.gap) > Math.abs(a.gap) ? b : a);
+const nLow = judged.filter(m => m.alert_level.includes("low")).length, nHigh = judged.filter(m => m.alert_level.includes("high")).length;
+
+function build(el) {
+  const T = THEMES[el.dataset.theme], p = d3.select(el);
+  p.append("img").attr("class", "bg").attr("src", `../out/bg_overview_${el.dataset.theme}.png`);
+  const div = (x, y, w, css, html) => p.append("div").attr("class", "abs").style("left", x + "px").style("top", y + "px").style("width", w ? w + "px" : null).attr("style", (_, i, n) => n[0].getAttribute("style") + ";" + css).html(html);
+  // slicers
+  [[846, 160, "Food", "Maize (white)"], [1016, 100, "Price", "Retail"], [1126, 120, "Month", "Latest"]].forEach(([x, w, l, v]) =>
+    p.append("div").attr("class", "abs slicer").style("left", x + "px").style("top", "62px").style("width", w + "px")
+      .html(`<div class="lab" style="color:${T.slicerLab}">${l}</div><div class="box" style="background:${T.box[0]};border:1px solid ${T.box[1]};color:${T.box[2]}"><span>${v}</span><span style="opacity:.6">▾</span></div>`));
+  // card 1
+  div(64, 160, 260, `font-size:54px;font-weight:700;color:${T.big}`, `${Math.max(nLow, nHigh)} <span style="font-size:28px;color:${T.muted}">of ${judged.length}</span>`);
+  div(64, 238, 256, `font-size:16px;line-height:1.4;color:${T.ink}`, `maize markets are selling <b style="color:${LOW}">well below normal</b>. ${nHigh} are above normal.`);
+  div(64, 306, 256, `font-size:12px;line-height:1.45;color:${T.muted}`, `${DATA.maize_markets.length} markets reported prices in September 2026. A market needs three years of prices before we can say what is normal.`);
+  // spotlight
+  div(64, 444, 256, `font-size:21px;font-weight:700;color:${T.ink}`, `${spot.market} <span style="font-weight:400;color:${T.muted};font-size:15px">· ${spot.region}</span>`);
+  div(64, 482, 120, `color:${T.ink}`, `<div style="font-size:28px;font-weight:700">${fmt(spot.price)}</div><div style="font-size:12px;color:${T.muted}">FCFA per kg now</div>`);
+  div(196, 482, 120, `color:${T.muted}`, `<div style="font-size:28px;font-weight:700">${fmt(spot.normal)}</div><div style="font-size:12px">usual for September</div>`);
+  div(64, 548, 256, `font-size:15px;color:${T.ink}`, `<span style="font-size:36px;font-weight:700;color:${LOW}">${pct(spot.gap)}</span> &nbsp;cheaper than usual`);
+  div(64, 612, 256, `font-size:12.5px;line-height:1.45;color:${T.ink}`, "Good news for families who buy maize. Hard for farmers, who are selling below what seed and fertiliser cost.");
+  // map
+  const mx = 370, my = 200, mw = 360, mh = 488;
+  p.append("img").attr("class", "abs").attr("src", "../out/map_outline_light.png").style("left", mx + "px").style("top", my + "px").style("width", mw + "px").style("height", mh + "px");
+  const svg = p.append("svg").attr("class", "abs").style("left", mx + "px").style("top", my + "px").attr("width", mw).attr("height", mh);
+  const x = d3.scaleLinear().domain(LON).range([0, mw]), y = d3.scaleLinear().domain(LAT).range([mh, 0]);
+  const pts = DATA.maize_markets.slice().sort((a, b) => Math.abs(a.gap || 0) - Math.abs(b.gap || 0));
+  svg.selectAll("circle").data(pts).join("circle").attr("cx", d => x(d.lon)).attr("cy", d => y(d.lat))
+    .attr("r", d => d.alert_level.startsWith("alert") ? 8.5 : d.alert_level.startsWith("watch") ? 6.5 : d.alert_level === "normal" ? 5 : 4)
+    .attr("fill", d => d.alert_level === "not enough history" ? "#FFFFFF" : colourOf(d.alert_level)).attr("stroke", d => d.alert_level === "not enough history" ? NOHIST : "#FFFFFF").attr("stroke-width", 1.6)
+    .on("mousemove", (e, d) => show(e, `<b>${d.market}</b><br>${fmt(d.price)} FCFA/kg · usual ${d.normal ? fmt(d.normal) : "–"}<br>${plain[d.alert_level]}`)).on("mouseleave", hide);
+  ["Garoua", "Maroua", "Ngaoundéré", "Buea", "Yaoundé-Mfoundi", "Bamenda"].forEach(n => { const m = DATA.maize_markets.find(d => d.market === n); if (!m) return;
+    svg.append("text").attr("x", x(m.lon) + 10).attr("y", y(m.lat) + 4).attr("font-size", 11).attr("font-weight", 600).attr("fill", T.ink).attr("paint-order", "stroke").attr("stroke", "#FFFFFF").attr("stroke-width", 3).text(n.replace("-Mfoundi", "")); });
+  // bars
+  const bx = 778, by = 186, bw = 456, bh = 500, rows = judged.slice().sort((a, b) => a.gap - b.gap);
+  const bs = p.append("svg").attr("class", "abs").style("left", bx + "px").style("top", by + "px").attr("width", bw).attr("height", bh);
+  const sx = d3.scaleLinear().domain([-0.75, 0.25]).range([100, bw - 44]), sy = d3.scaleBand().domain(rows.map(d => d.market)).range([6, bh - 24]).padding(.3);
+  bs.selectAll("line").data([-.6, -.4, -.2, 0, .2]).join("line").attr("x1", sx).attr("x2", sx).attr("y1", 0).attr("y2", bh - 22).attr("stroke", d => d === 0 ? "#B9B6AA" : T.grid);
+  bs.selectAll("text.ax").data([-.6, -.4, -.2, 0, .2]).join("text").attr("x", sx).attr("y", bh - 6).attr("text-anchor", "middle").attr("font-size", 10.5).attr("fill", T.muted).text(d => pct(d));
+  const g = bs.selectAll("g").data(rows).join("g").attr("transform", d => `translate(0,${sy(d.market)})`);
+  g.append("text").attr("x", 92).attr("y", sy.bandwidth() / 2 + 4).attr("text-anchor", "end").attr("font-size", 11.5).attr("fill", T.ink).text(d => d.market);
+  g.append("rect").attr("x", d => sx(Math.min(0, d.gap))).attr("width", d => Math.max(2, Math.abs(sx(d.gap) - sx(0)))).attr("height", sy.bandwidth()).attr("rx", 3).attr("fill", d => colourOf(d.alert_level));
+  g.append("text").attr("x", d => d.gap < 0 ? sx(d.gap) - 5 : sx(d.gap) + 5).attr("y", sy.bandwidth() / 2 + 4).attr("text-anchor", d => d.gap < 0 ? "end" : "start").attr("font-size", 10.5).attr("font-weight", 600).attr("fill", T.ink).text(d => pct(d.gap));
+  g.on("mousemove", (e, d) => show(e, `<b>${d.market}</b><br>${fmt(d.price)} against a usual ${fmt(d.normal)} FCFA/kg<br>${plain[d.alert_level]}`)).on("mouseleave", hide);
+}
+document.querySelectorAll(".page").forEach(build);
+function fit() { document.querySelectorAll(".wrap").forEach(w => { const s = w.clientWidth / 1280; w.style.height = 720 * s + "px"; w.firstElementChild.style.transform = `scale(${s})`; }); }
+addEventListener("resize", fit); fit();
+</script>
+</body>
+</html>

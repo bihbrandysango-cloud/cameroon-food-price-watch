@@ -21,10 +21,12 @@ d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json").the
   const all = topojson.feature(w, w.objects.countries).features;
   const cmr = all.find(f => f.id === "120");
   const svg = d3.select("#m");
+  // ?theme=light: pale green land for light pages
+  const light = new URLSearchParams(location.search).get("theme") === "light";
   // neighbours, faint, for context
   svg.append("g").selectAll("path").data(all.filter(f => ["566", "148", "140", "226", "266", "178"].includes(f.id))).join("path")
-    .attr("d", path).attr("fill", "none").attr("stroke", "rgba(79,138,88,.35)").attr("stroke-width", 1.5);
-  svg.append("path").datum(cmr).attr("d", path).attr("fill", "#163A21").attr("stroke", "#4F8A58").attr("stroke-width", 3);
+    .attr("d", path).attr("fill", "none").attr("stroke", light ? "rgba(120,150,110,.35)" : "rgba(79,138,88,.35)").attr("stroke-width", 1.5);
+  svg.append("path").datum(cmr).attr("d", path).attr("fill", light ? "#E4F0DC" : "#163A21").attr("stroke", light ? "#7FAE6E" : "#4F8A58").attr("stroke-width", 3);
   document.body.setAttribute("data-ready", "1");
 });
 </script>
