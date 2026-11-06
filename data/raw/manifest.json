@@ -1,16 +1,29 @@
 {
-  "source": "https://data.humdata.org/dataset/wfp-food-prices-for-cameroon",
+  "source": "https://hapi.humdata.org/api/v2/food-security-nutrition-poverty/food-prices-market-monitor?location_code=CMR",
   "fetches": [
     {
-      "fetched_at": "2026-11-06T03:54:30+00:00",
-      "method": "manual file prices.csv",
-      "hdx_last_modified": "2026-11-04T01:14:34.717365",
-      "sha256": "d73be6d007a4f3225c9b4507eb7e08e42119e31a3402f7412b00cba31472391b",
-      "rows": 77711,
-      "first_date": "2005-01-15",
+      "fetched_at": "2026-11-06T13:20:47+00:00",
+      "mode": "full",
+      "rows_downloaded": 68996,
+      "rows_added": 68996,
+      "sha256": "d06c02644aa2c7efeb1119390d9310b98da797c03fdfd17914ae85b0267e745c",
+      "rows": 68996,
+      "first_date": "2017-01-15",
       "last_date": "2026-09-15",
-      "markets": 83,
-      "commodities": 55
+      "markets": 76,
+      "commodities": 54
+    },
+    {
+      "fetched_at": "2026-11-06T13:21:22+00:00",
+      "mode": "refresh from 2026-05-01",
+      "rows_downloaded": 2756,
+      "rows_added": 0,
+      "sha256": "76b0099c9952483bdf71525ee983b487bf524c60e48021f092bc56fa0997be0e",
+      "rows": 68996,
+      "first_date": "2017-01-15",
+      "last_date": "2026-09-15",
+      "markets": 76,
+      "commodities": 54
     }
   ]
 }

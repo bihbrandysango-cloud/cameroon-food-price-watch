@@ -12,22 +12,22 @@ Some rise every year is normal: prices climb in the lean season before harvest. 
 
 ## The data
 
-[WFP food prices for Cameroon](https://data.humdata.org/dataset/wfp-food-prices-for-cameroon), published by the World Food Programme on the Humanitarian Data Exchange (HDX), licence CC BY-IGO.
+[WFP food prices for Cameroon](https://data.humdata.org/dataset/wfp-food-prices-for-cameroon), published by the World Food Programme on the Humanitarian Data Exchange (HDX), licence CC BY-IGO. The pipeline reads it through [HDX HAPI](https://hapi.humdata.org/docs), the Humanitarian API, which is built for programs like this one.
 
-- 77,711 price records, January 2005 to September 2026
-- 83 markets in 9 regions, 55 commodities
+- 68,996 price records, January 2017 to September 2026 (HAPI's coverage; the HDX file goes back to 2005)
+- 76 markets in 9 regions, 54 commodities
 - Retail and wholesale prices in FCFA, with local units (kg, 15 kg, 100 kg bags)
 
 Limits worth knowing:
 - WFP is collecting less. About 16,000 prices were recorded in 2023 and about 4,000 in the first nine months of 2026.
-- Many markets in the Centre, Littoral and South-West have only a few years of history, so "normal for this month" can't be calculated for them yet.
+- Many markets in the Centre, Littoral and South-West have only a few years of history, so "normal for this month" can't be calculated for them yet. Starting in 2017 also means the baseline covers about nine years, not twenty.
 - Limbe and the rest of Fako are not covered.
 
 ## How it works
 
 | Step | What it does | Status |
 |---|---|---|
-| 1. Fetch | Checks HDX each month and saves the new file only when HDX has updated it. Validates columns, row count and prices before saving | Done |
+| 1. Fetch | Pulls prices from HDX HAPI each month, checks them, merges in new and corrected rows, and saves only when something changed | Done |
 | 2. Clean and store | dbt models in DuckDB: one unit (FCFA per kg), consistent market names, gaps marked | Next |
 | 3. Community data | Prices collected by hand in Limbe markets, added as a second source | Planned |
 | 4. Alerts | Price compared with the same month in past years, flagged both ways | Planned |
@@ -36,21 +36,27 @@ Limits worth knowing:
 
 ### Step 1 in detail
 
-`src/ingest/fetch_wfp.py` asks the HDX API when the dataset last changed. If that matches the last saved version in `data/raw/manifest.json`, it stops. Otherwise it downloads the CSV, checks it, and records the fetch (time, HDX version, row count, date range, SHA-256 hash) in the manifest.
+`src/ingest/fetch_wfp.py` downloads prices from HAPI in pages of 2,000 rows and retries pages that arrive cut off. The first run takes the full history. After that it takes only the last six months, because WFP sometimes corrects recent prices, and merges them in: new rows are added and corrected rows replace old ones. Every price must be a positive number. If the result is identical to the last save, nothing is written. Each save is recorded in `data/raw/manifest.json` with the time, mode, row counts, date range and a SHA-256 hash.
 
 A GitHub Actions workflow (`.github/workflows/monthly-fetch.yml`) runs the tests and the fetch on the 10th of each month and commits new data.
 
-**Known issue:** HDX's firewall answers scripted file downloads with a bot-check challenge, though its metadata API works. The script detects this and stops with a clear message instead of saving an empty file. Until there's an approved automated route, download the CSV from the HDX page and load it with `--from-file`.
+Why HAPI and not the HDX file link: HDX's firewall answers scripted file downloads with a bot check. HAPI is HDX's supported route for programs.
 
 ## How to run
 
 Requires Python 3.10 or later. Step 1 uses only the standard library.
 
+HAPI asks each app to identify itself with base64 of `app_name:email`. Set it as an environment variable (and as the repository secret `HAPI_APP_IDENTIFIER` for GitHub Actions):
+
+```bash
+export HAPI_APP_IDENTIFIER=$(printf 'your-app-name:you@example.com' | base64)
+```
+
 ```bash
 pip install -r requirements-dev.txt
 python -m pytest -q
-python -m src.ingest.fetch_wfp                              # automatic
-python -m src.ingest.fetch_wfp --from-file path/to/wfp_food_prices_cmr.csv   # manual download
+python -m src.ingest.fetch_wfp           # update the last six months
+python -m src.ingest.fetch_wfp --full    # rebuild the whole history
 ```
 
 ## Credits

@@ -1,14 +1,21 @@
-"""Fetch the latest WFP food price data for Cameroon from HDX.
+"""Fetch WFP food prices for Cameroon from HDX HAPI, the Humanitarian API.
 
 Step 1 of the pipeline. Runs once a month (GitHub Actions) or by hand:
 
-    python -m src.ingest.fetch_wfp
+    python -m src.ingest.fetch_wfp            # update the last few months
+    python -m src.ingest.fetch_wfp --full     # rebuild the whole history
+
+HAPI needs an app identifier: base64 of "app_name:email". It is read from the
+HAPI_APP_IDENTIFIER environment variable so the email never sits in the code.
 
 What it does:
-1. Asks the HDX API when the Cameroon food price dataset was last updated.
-2. If that is the same as the copy we already have, it stops. Nothing to do.
-3. Otherwise it downloads the CSV, checks it looks right, and saves it to
-   data/raw/ along with a manifest that records every fetch.
+1. Downloads prices from HAPI page by page (at most 10,000 rows a page).
+   The first run takes the full history. Later runs take only the last
+   REFRESH_MONTHS months, because WFP sometimes corrects recent prices.
+2. Checks the rows look right.
+3. Merges them into data/raw/wfp_food_prices_cmr.csv: new rows are added and
+   corrected rows replace old ones.
+4. Saves only if something changed, and records every run in a manifest.
 
 Only the Python standard library is used, so this step has no dependencies.
 """
@@ -18,176 +25,189 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import http.client
 import io
 import json
 import logging
+import os
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 
-HDX_API = "https://data.humdata.org/api/3/action/package_show?id={dataset}"
-DATASET_ID = "wfp-food-prices-for-cameroon"
-# HDX names the two files in this dataset "Cameroon - Food Prices" and "Cameroon - Markets"
-RESOURCES = {
-    "prices": "Cameroon - Food Prices",
-    "markets": "Cameroon - Markets",
-}
+HAPI_URL = "https://hapi.humdata.org/api/v2/food-security-nutrition-poverty/food-prices-market-monitor"
+LOCATION = "CMR"
+# HAPI allows 10,000 rows a call, but big pages often arrive cut off, so ask for fewer
+PAGE_SIZE = 2_000
+REFRESH_MONTHS = 6
 
-REQUIRED_PRICE_COLUMNS = {
-    "date", "admin1", "admin2", "market", "market_id", "latitude", "longitude",
-    "category", "commodity", "commodity_id", "unit", "priceflag", "pricetype",
-    "currency", "price", "usdprice",
-}
-# A real monthly file has tens of thousands of rows; far fewer means a broken download
-MIN_PRICE_ROWS = 10_000
+COLUMNS = [
+    "reference_period_start", "reference_period_end", "admin1_code", "admin1_name",
+    "admin2_code", "admin2_name", "market_code", "market_name", "lat", "lon",
+    "commodity_category", "commodity_code", "commodity_name", "unit", "price_flag",
+    "price_type", "currency_code", "price",
+]
+# One price per market, food, unit, price type and flag, per month
+KEY = ("market_code", "commodity_code", "unit", "price_type", "price_flag", "reference_period_start")
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 RAW_DIR = REPO_ROOT / "data" / "raw"
-MANIFEST_PATH = RAW_DIR / "manifest.json"
-
-USER_AGENT = "cameroon-food-price-watch/0.1 (+https://github.com/bihbrandysango-cloud)"
+DATA_FILE = "wfp_food_prices_cmr.csv"
 
 log = logging.getLogger("fetch_wfp")
 
 
 class ValidationError(Exception):
-    """The downloaded file is not what we expect."""
+    """The data from HAPI is not what we expect."""
 
 
-class BlockedError(Exception):
-    """The server's bot protection challenged the request instead of sending data."""
-
-
-def http_get(url: str, retries: int = 3, timeout: int = 60) -> bytes:
-    """GET a URL, retrying with a growing wait if the server is slow or down."""
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+def http_get_json(url: str, retries: int = 5, timeout: int = 300) -> dict:
+    """GET a URL and parse JSON, retrying with a growing wait if the server is slow,
+    down, or sends a cut-off response."""
+    request = urllib.request.Request(url, headers={"Accept": "application/json"})
     for attempt in range(1, retries + 1):
         try:
             with urllib.request.urlopen(request, timeout=timeout) as response:
-                # HDX's firewall answers scripted downloads with an empty 202 "challenge"
-                if response.headers.get("x-amzn-waf-action") or response.status == 202:
-                    raise BlockedError(
-                        f"{url} returned a bot-check challenge, not data. "
-                        "Download the file by hand and use --from-file."
-                    )
-                return response.read()
-        except (urllib.error.URLError, TimeoutError) as error:
+                return json.loads(response.read())
+        except (urllib.error.URLError, TimeoutError, http.client.IncompleteRead,
+                json.JSONDecodeError) as error:
             if attempt == retries:
                 raise
-            wait = 5 * attempt
+            wait = 10 * attempt
             log.warning("Attempt %d failed (%s). Retrying in %ds.", attempt, error, wait)
             time.sleep(wait)
     raise RuntimeError("unreachable")
 
 
-def get_dataset_info(dataset: str = DATASET_ID) -> dict:
-    """Return HDX metadata for the dataset: when it changed and where its files are."""
-    payload = json.loads(http_get(HDX_API.format(dataset=dataset)))
-    if not payload.get("success"):
-        raise RuntimeError(f"HDX API returned an error for {dataset}")
-    result = payload["result"]
-    urls = {}
-    for key, name in RESOURCES.items():
-        match = [r for r in result["resources"] if r["name"] == name]
-        if not match:
-            raise RuntimeError(f"HDX dataset has no file called '{name}'")
-        urls[key] = match[0]["url"]
-    return {
-        "last_modified": result["last_modified"],
-        "dataset_date": result.get("dataset_date"),
-        "urls": urls,
-    }
+def months_back(today: date, months: int) -> str:
+    """First day of the month `months` before today, as YYYY-MM-DD."""
+    index = today.year * 12 + today.month - 1 - months
+    return f"{index // 12:04d}-{index % 12 + 1:02d}-01"
 
 
-def validate_prices(raw: bytes) -> dict:
-    """Check the price CSV and return a short summary of it.
+def download(app_identifier: str, start_date: str | None = None) -> list[dict]:
+    """Download every Cameroon price row from HAPI, optionally from start_date on."""
+    rows: list[dict] = []
+    offset = 0
+    while True:
+        params = {
+            "location_code": LOCATION,
+            "output_format": "json",
+            "limit": PAGE_SIZE,
+            "offset": offset,
+            "app_identifier": app_identifier,
+        }
+        if start_date:
+            params["start_date"] = start_date
+        page = http_get_json(f"{HAPI_URL}?{urllib.parse.urlencode(params)}")["data"]
+        rows.extend(page)
+        log.info("Page at offset %s: %s rows", f"{offset:,}", f"{len(page):,}")
+        if len(page) < PAGE_SIZE:
+            return rows
+        offset += PAGE_SIZE
 
-    Raises ValidationError if columns are missing, the file is too small,
-    or prices are not numbers.
+
+def clean(rows: list[dict]) -> list[dict]:
+    """Keep our columns, trim dates to YYYY-MM-DD and check every row.
+
+    Raises ValidationError if a column is missing or a price is not a positive number.
     """
-    text = raw.decode("utf-8-sig")
-    reader = csv.DictReader(io.StringIO(text))
-    missing = REQUIRED_PRICE_COLUMNS - set(reader.fieldnames or [])
-    if missing:
-        raise ValidationError(f"Missing columns: {sorted(missing)}")
-
-    rows = 0
-    dates, markets, commodities = set(), set(), set()
-    for line_no, row in enumerate(reader, start=2):
-        # Some HDX files carry a second header row of #hxl tags; skip it
-        if row["date"].startswith("#"):
-            continue
+    cleaned = []
+    for number, row in enumerate(rows, start=1):
+        missing = [c for c in COLUMNS if c not in row]
+        if missing:
+            raise ValidationError(f"Row {number} is missing {missing}")
         try:
-            float(row["price"])
-        except ValueError:
-            raise ValidationError(f"Line {line_no}: price is not a number: {row['price']!r}")
-        rows += 1
-        dates.add(row["date"])
-        markets.add(row["market"])
-        commodities.add(row["commodity"])
+            price = float(row["price"])
+        except (TypeError, ValueError):
+            raise ValidationError(f"Row {number}: price is not a number: {row['price']!r}")
+        if price <= 0:
+            raise ValidationError(f"Row {number}: price must be above zero, got {price}")
+        out = {c: "" if row[c] is None else str(row[c]) for c in COLUMNS}
+        out["price"] = str(price)
+        out["reference_period_start"] = out["reference_period_start"][:10]
+        out["reference_period_end"] = out["reference_period_end"][:10]
+        cleaned.append(out)
+    return cleaned
 
-    if rows < MIN_PRICE_ROWS:
-        raise ValidationError(f"Only {rows} rows; expected at least {MIN_PRICE_ROWS}")
 
+def merge(existing: list[dict], fresh: list[dict]) -> list[dict]:
+    """Add fresh rows to existing ones. A fresh row replaces an old row with the same key."""
+    merged = {tuple(r[k] for k in KEY): r for r in existing}
+    merged.update({tuple(r[k] for k in KEY): r for r in fresh})
+    return sorted(merged.values(), key=lambda r: tuple(r[k] for k in KEY[::-1]))
+
+
+def read_csv(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    with path.open(encoding="utf-8", newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def to_csv_bytes(rows: list[dict]) -> bytes:
+    buffer = io.StringIO()
+    writer = csv.DictWriter(buffer, fieldnames=COLUMNS, lineterminator="\n")
+    writer.writeheader()
+    writer.writerows(rows)
+    return buffer.getvalue().encode("utf-8")
+
+
+def summarise(rows: list[dict]) -> dict:
+    dates = [r["reference_period_start"] for r in rows]
     return {
-        "rows": rows,
+        "rows": len(rows),
         "first_date": min(dates),
         "last_date": max(dates),
-        "markets": len(markets),
-        "commodities": len(commodities),
+        "markets": len({r["market_code"] for r in rows}),
+        "commodities": len({r["commodity_code"] for r in rows}),
     }
 
 
-def load_manifest(path: Path = MANIFEST_PATH) -> dict:
+def load_manifest(path: Path) -> dict:
     if path.exists():
         return json.loads(path.read_text(encoding="utf-8"))
-    return {"source": f"https://data.humdata.org/dataset/{DATASET_ID}", "fetches": []}
+    return {"source": f"{HAPI_URL}?location_code={LOCATION}", "fetches": []}
 
 
-def is_new_version(manifest: dict, hdx_last_modified: str) -> bool:
-    """True when HDX has a version we have not saved yet."""
-    if not manifest["fetches"]:
-        return True
-    return manifest["fetches"][-1]["hdx_last_modified"] != hdx_last_modified
-
-
-def fetch(force: bool = False, raw_dir: Path = RAW_DIR, from_file: Path | None = None) -> bool:
-    """Run the fetch. Returns True if new data was saved.
-
-    from_file: a prices CSV downloaded by hand from HDX, used instead of downloading.
-    """
+def fetch(app_identifier: str, full: bool = False, raw_dir: Path = RAW_DIR,
+          today: date | None = None) -> bool:
+    """Run the fetch. Returns True if the saved data changed."""
+    data_path = raw_dir / DATA_FILE
     manifest_path = raw_dir / "manifest.json"
+    existing = read_csv(data_path)
+
+    # No saved data yet means we need the whole history
+    start_date = None if full or not existing else months_back(today or date.today(), REFRESH_MONTHS)
+    log.info("Downloading %s", f"from {start_date}" if start_date else "the full history")
+
+    fresh = clean(download(app_identifier, start_date))
+    if not fresh:
+        raise ValidationError("HAPI returned no rows")
+
+    # merge() also sorts, so a full run and a refresh write rows in the same order
+    merged = merge([] if full else existing, fresh)
+    new_bytes = to_csv_bytes(merged)
+    new_hash = hashlib.sha256(new_bytes).hexdigest()
+
     manifest = load_manifest(manifest_path)
-
-    info = get_dataset_info()
-    log.info("HDX last updated the dataset at %s", info["last_modified"])
-
-    if not force and not is_new_version(manifest, info["last_modified"]):
-        log.info("We already have this version. Nothing to do.")
+    previous = manifest["fetches"][-1].get("sha256") if manifest["fetches"] else None
+    if new_hash == previous:
+        log.info("No new or corrected prices. Nothing to save.")
         return False
 
-    if from_file:
-        prices_raw = from_file.read_bytes()
-        markets_raw = None
-    else:
-        prices_raw = http_get(info["urls"]["prices"])
-        markets_raw = http_get(info["urls"]["markets"])
-    summary = validate_prices(prices_raw)
-
     raw_dir.mkdir(parents=True, exist_ok=True)
-    # Overwrite one file per source: git keeps the history, so no dated copies needed
-    (raw_dir / "wfp_food_prices_cmr.csv").write_bytes(prices_raw)
-    if markets_raw is not None:
-        (raw_dir / "wfp_markets_cmr.csv").write_bytes(markets_raw)
-
+    data_path.write_bytes(new_bytes)
+    summary = summarise(merged)
     manifest["fetches"].append({
         "fetched_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "method": f"manual file {from_file.name}" if from_file else "automatic download",
-        "hdx_last_modified": info["last_modified"],
-        "sha256": hashlib.sha256(prices_raw).hexdigest(),
+        "mode": "full" if start_date is None else f"refresh from {start_date}",
+        "rows_downloaded": len(fresh),
+        "rows_added": len(merged) - len(existing) if not full else len(merged),
+        "sha256": new_hash,
         **summary,
     })
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
@@ -202,19 +222,22 @@ def fetch(force: bool = False, raw_dir: Path = RAW_DIR, from_file: Path | None =
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--force", action="store_true", help="download even if unchanged")
-    parser.add_argument("--from-file", type=Path, help="use a prices CSV downloaded by hand")
+    parser.add_argument("--full", action="store_true", help="re-download the whole history")
     args = parser.parse_args(argv)
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-    try:
-        fetch(force=args.force, from_file=args.from_file)
-    except ValidationError as error:
-        log.error("Downloaded file failed checks, nothing saved: %s", error)
-        return 1
-    except BlockedError as error:
-        log.error("%s", error)
+    app_identifier = os.environ.get("HAPI_APP_IDENTIFIER")
+    if not app_identifier:
+        log.error(
+            "Set HAPI_APP_IDENTIFIER to base64 of 'app_name:email'. "
+            "See https://hdx-hapi.readthedocs.io/en/latest/getting-started/"
+        )
         return 2
+    try:
+        fetch(app_identifier, full=args.full)
+    except ValidationError as error:
+        log.error("Data failed checks, nothing saved: %s", error)
+        return 1
     return 0
 
 
