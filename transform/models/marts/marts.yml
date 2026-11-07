@@ -4,6 +4,19 @@ models:
   - name: fct_monthly_prices
     description: One price per market, food, price type and month in a standard unit, with prices far from the national median flagged as suspect (kept, not deleted).
     columns:
+      - name: market_code
+        description: Every price belongs to a known market.
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_markets')
+                field: market_code
+      - name: price_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["retail", "wholesale"]
       - name: price_per_unit
         tests: [not_null]
       - name: is_suspect_price
@@ -31,3 +44,11 @@ models:
 
   - name: rpt_current_alerts
     description: The latest month's prices outside the normal range, furthest from normal first.
+    columns:
+      - name: alert_level
+        description: Only prices outside the normal range belong here.
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["watch high", "watch low", "alert high", "alert low"]

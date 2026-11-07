@@ -4,6 +4,8 @@ Food prices in Cameroon swing sharply, and the families who buy food and the far
 
 ![This month page](docs/screenshots/01-this-month.png)
 
+**[Watch the 1 min 41 s video tour](docs/walkthrough.mp4)** of all seven pages.
+
 | | |
 |---|---|
 | **Data** | 68,996 WFP price records, Jan 2017 to Sep 2026, 76 markets, 54 foods |
@@ -102,7 +104,13 @@ The model is no more accurate than assuming the price stays the same, because 35
 | 6. Data quality | Suspect prices, coverage, and known problems in the source data |
 | 7. Method | How it works and its limits, in plain words |
 
-Screenshots of every page are in `docs/screenshots/`. A 1 min 41 s video tour of the report, with captions, is [`docs/walkthrough.mp4`](docs/walkthrough.mp4). A walkthrough of the engineering and science work, with outputs, is in `docs/behind-the-dashboard.html`.
+| | |
+|---|---|
+| ![Markets](docs/screenshots/02-markets.png) | ![Foods](docs/screenshots/03-foods.png) |
+| ![Regions](docs/screenshots/04-regions.png) | ![Next month](docs/screenshots/05-next-month.png) |
+| ![Data quality](docs/screenshots/06-data-quality.png) | ![Method](docs/screenshots/07-method.png) |
+
+A 1 min 41 s video tour of the report, with captions, is [`docs/walkthrough.mp4`](docs/walkthrough.mp4). A walkthrough of the engineering and science work, with outputs, is in `docs/behind-the-dashboard.html`.
 
 ## Reproduce it
 
