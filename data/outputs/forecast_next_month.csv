@@ -1,439 +1,439 @@
 forecast_month,region,market_code,market,commodity_code,commodity,price_type,standard_unit,last_price,forecast_price,forecast_low,forecast_high,normal_price,years_of_history,forecast_gap_from_normal,forecast_alert_level
-2026-10-01,Adamawa,7603,Banyo,254,Bananas,retail,kg,167.0,167.0,142.91,197.43,168.5,4,-0.009,normal
-2026-10-01,Adamawa,7603,Banyo,78,Beans (red),retail,kg,400.0,402.42,344.36,475.75,681.5,4,-0.41,alert low
-2026-10-01,Adamawa,7603,Banyo,302,Cassava (cossette),retail,kg,124.0,124.0,106.11,146.6,238.84,4,-0.481,alert low
-2026-10-01,Adamawa,7603,Banyo,291,Cassava (fresh),retail,kg,250.0,246.84,211.23,291.82,200.0,4,0.234,watch high
-2026-10-01,Adamawa,7603,Banyo,866,Cocoyam (macabo),retail,kg,385.0,385.0,329.46,455.16,385.0,4,0.0,normal
-2026-10-01,Adamawa,7603,Banyo,119,Groundnuts (shelled),retail,kg,526.0,529.76,453.33,626.3,711.135,4,-0.255,watch low
-2026-10-01,Adamawa,7603,Banyo,67,Maize (white),retail,kg,111.0,111.27,95.22,131.55,193.5,4,-0.425,alert low
-2026-10-01,Adamawa,7603,Banyo,76,Maize flour,retail,kg,264.0,267.91,229.26,316.73,425.0,3,-0.37,watch low
-2026-10-01,Adamawa,7603,Banyo,141,Meat (beef),retail,kg,2500.0,2500.0,2139.33,2955.57,2500.0,4,0.0,normal
-2026-10-01,Adamawa,7603,Banyo,173,Onions,retail,kg,362.0,364.49,311.9,430.91,850.0,3,-0.571,alert low
-2026-10-01,Adamawa,7603,Banyo,147,Plantains,retail,kg,385.0,385.0,329.46,455.16,392.5,4,-0.019,normal
-2026-10-01,Adamawa,7603,Banyo,83,Potatoes,retail,kg,400.0,394.13,337.27,465.96,250.0,4,0.577,alert high
-2026-10-01,Adamawa,7603,Banyo,148,Potatoes (Irish),retail,kg,500.0,500.0,427.87,591.11,500.0,4,0.0,normal
-2026-10-01,Adamawa,7603,Banyo,225,"Rice (long grain, imported)",retail,kg,441.0,448.64,383.91,530.39,587.5,4,-0.236,watch low
-2026-10-01,Adamawa,7603,Banyo,185,Salt,retail,kg,350.0,350.0,299.51,413.78,350.0,4,0.0,normal
-2026-10-01,Adamawa,7603,Banyo,97,Sugar,retail,kg,900.0,911.79,780.25,1077.95,1000.0,4,-0.088,normal
-2026-10-01,Adamawa,7603,Banyo,114,Tomatoes,retail,kg,500.0,499.43,427.38,590.44,571.0,4,-0.125,normal
-2026-10-01,Adamawa,7603,Banyo,58,Wheat flour,retail,kg,500.0,500.0,427.87,591.11,560.0,4,-0.107,normal
-2026-10-01,Adamawa,7604,Mayo Darlé,254,Bananas,retail,kg,174.0,174.0,148.9,205.71,232.0,3,-0.25,watch low
-2026-10-01,Adamawa,7604,Mayo Darlé,78,Beans (red),retail,kg,367.0,373.77,319.85,441.89,490.0,3,-0.237,watch low
-2026-10-01,Adamawa,7604,Mayo Darlé,291,Cassava (fresh),retail,kg,250.0,250.0,213.93,295.56,250.0,3,0.0,normal
-2026-10-01,Adamawa,7604,Mayo Darlé,866,Cocoyam (macabo),retail,kg,435.0,435.0,372.24,514.27,277.78,3,0.566,alert high
-2026-10-01,Adamawa,7604,Mayo Darlé,719,"Fish (tilapia, salted, dried)",retail,kg,2857.0,2857.0,2444.82,3377.62,3529.41,3,-0.191,normal
-2026-10-01,Adamawa,7604,Mayo Darlé,67,Maize (white),retail,kg,111.0,111.0,94.99,131.23,172.0,3,-0.355,watch low
-2026-10-01,Adamawa,7604,Mayo Darlé,76,Maize flour,retail,kg,318.0,318.14,272.24,376.11,309.0,3,0.03,normal
-2026-10-01,Adamawa,7604,Mayo Darlé,141,Meat (beef),retail,kg,3000.0,2984.73,2554.13,3528.63,2450.0,3,0.218,watch high
-2026-10-01,Adamawa,7604,Mayo Darlé,62,Oil (palm),retail,litre,1053.0,1053.0,901.08,1244.89,1053.0,3,0.0,normal
-2026-10-01,Adamawa,7604,Mayo Darlé,690,Okra (dry),retail,kg,500.0,495.19,423.75,585.42,614.585,2,-0.194,not enough history
-2026-10-01,Adamawa,7604,Mayo Darlé,173,Onions,retail,kg,526.0,526.0,450.11,621.85,579.0,3,-0.092,normal
-2026-10-01,Adamawa,7604,Mayo Darlé,147,Plantains,retail,kg,800.0,799.91,684.51,945.68,747.0,3,0.071,normal
-2026-10-01,Adamawa,7604,Mayo Darlé,83,Potatoes,retail,kg,432.0,431.79,369.5,510.48,303.0,3,0.425,alert high
-2026-10-01,Adamawa,7604,Mayo Darlé,71,Rice (local),retail,kg,292.0,303.31,259.55,358.58,417.0,3,-0.273,watch low
-2026-10-01,Adamawa,7604,Mayo Darlé,225,"Rice (long grain, imported)",retail,kg,500.0,499.97,427.84,591.07,530.3,3,-0.057,normal
-2026-10-01,Adamawa,7604,Mayo Darlé,185,Salt,retail,kg,250.0,250.0,213.93,295.56,272.22,3,-0.082,normal
-2026-10-01,Adamawa,7604,Mayo Darlé,97,Sugar,retail,kg,900.0,896.58,767.23,1059.96,817.0,3,0.097,normal
-2026-10-01,Adamawa,7604,Mayo Darlé,598,Taro,retail,kg,422.0,423.75,362.61,500.97,422.0,3,0.004,normal
-2026-10-01,Adamawa,7604,Mayo Darlé,114,Tomatoes,retail,kg,632.0,631.71,540.57,746.82,632.0,3,-0.0,normal
-2026-10-01,Adamawa,7605,Mbé,120,Beans (niebe),retail,kg,463.0,463.18,396.36,547.58,370.0,1,0.252,not enough history
-2026-10-01,Adamawa,7605,Mbé,302,Cassava (cossette),retail,kg,217.0,201.49,172.42,238.21,217.0,1,-0.071,not enough history
-2026-10-01,Adamawa,7605,Mbé,291,Cassava (fresh),retail,kg,100.0,105.98,90.69,125.29,196.0,1,-0.459,not enough history
-2026-10-01,Adamawa,7605,Mbé,866,Cocoyam (macabo),retail,kg,161.0,161.0,137.77,190.34,161.0,1,0.0,not enough history
-2026-10-01,Adamawa,7605,Mbé,719,"Fish (tilapia, salted, dried)",retail,kg,1300.0,1284.81,1099.45,1518.94,968.0,1,0.327,not enough history
-2026-10-01,Adamawa,7605,Mbé,119,Groundnuts (shelled),retail,kg,441.0,442.28,378.47,522.87,441.0,1,0.003,not enough history
-2026-10-01,Adamawa,7605,Mbé,67,Maize (white),retail,kg,154.0,152.86,130.81,180.72,154.0,1,-0.007,not enough history
-2026-10-01,Adamawa,7605,Mbé,141,Meat (beef),retail,kg,2500.0,2500.0,2139.33,2955.57,2200.0,1,0.136,not enough history
-2026-10-01,Adamawa,7605,Mbé,690,Okra (dry),retail,kg,1179.0,1172.98,1003.75,1386.72,1071.0,1,0.095,not enough history
-2026-10-01,Adamawa,7605,Mbé,173,Onions,retail,kg,456.0,430.68,368.54,509.16,370.0,1,0.164,not enough history
-2026-10-01,Adamawa,7605,Mbé,225,"Rice (long grain, imported)",retail,kg,529.0,536.08,458.74,633.76,600.0,1,-0.107,not enough history
-2026-10-01,Adamawa,7605,Mbé,185,Salt,retail,kg,321.0,321.0,274.69,379.49,321.0,1,0.0,not enough history
-2026-10-01,Adamawa,7605,Mbé,282,Sorghum (red),retail,kg,149.0,150.79,129.04,178.27,143.0,1,0.054,not enough history
-2026-10-01,Adamawa,7605,Mbé,135,Sorghum (white),retail,kg,161.0,159.99,136.91,189.15,143.0,1,0.119,not enough history
-2026-10-01,Adamawa,7605,Mbé,97,Sugar,retail,kg,750.0,759.08,649.57,897.4,800.0,1,-0.051,not enough history
-2026-10-01,Adamawa,7605,Mbé,114,Tomatoes,retail,kg,361.0,361.0,308.92,426.78,361.0,1,0.0,not enough history
-2026-10-01,Adamawa,7605,Mbé,58,Wheat flour,retail,kg,600.0,600.0,513.44,709.34,600.0,1,0.0,not enough history
-2026-10-01,Adamawa,7607,Ngaoundéré,254,Bananas,retail,kg,311.0,311.0,266.13,367.67,311.0,4,0.0,normal
-2026-10-01,Adamawa,7607,Ngaoundéré,120,Beans (niebe),retail,kg,441.0,448.43,383.73,530.14,632.0,4,-0.29,watch low
-2026-10-01,Adamawa,7607,Ngaoundéré,78,Beans (red),retail,kg,498.0,495.21,423.77,585.45,853.0,4,-0.419,alert low
-2026-10-01,Adamawa,7607,Ngaoundéré,302,Cassava (cossette),retail,kg,192.0,196.29,167.97,232.06,294.525,4,-0.334,watch low
-2026-10-01,Adamawa,7607,Ngaoundéré,291,Cassava (fresh),retail,kg,250.0,250.0,213.93,295.56,198.5,4,0.259,watch high
-2026-10-01,Adamawa,7607,Ngaoundéré,866,Cocoyam (macabo),retail,kg,261.0,261.0,223.35,308.56,261.0,4,0.0,normal
-2026-10-01,Adamawa,7607,Ngaoundéré,719,"Fish (tilapia, salted, dried)",retail,kg,1875.0,1886.68,1614.49,2230.48,1775.0,4,0.063,normal
-2026-10-01,Adamawa,7607,Ngaoundéré,119,Groundnuts (shelled),retail,kg,765.0,762.02,652.08,900.88,803.35,4,-0.051,normal
-2026-10-01,Adamawa,7607,Ngaoundéré,67,Maize (white),retail,kg,145.0,146.14,125.06,172.78,263.99,4,-0.446,alert low
-2026-10-01,Adamawa,7607,Ngaoundéré,141,Meat (beef),retail,kg,3000.0,3000.0,2567.19,3546.68,2608.5,4,0.15,normal
-2026-10-01,Adamawa,7607,Ngaoundéré,147,Plantains,retail,kg,355.0,355.0,303.78,419.69,355.0,4,0.0,normal
-2026-10-01,Adamawa,7607,Ngaoundéré,83,Potatoes,retail,kg,220.0,215.06,184.03,254.24,150.0,4,0.434,alert high
-2026-10-01,Adamawa,7607,Ngaoundéré,148,Potatoes (Irish),retail,kg,473.0,473.67,405.33,559.99,611.0,4,-0.225,watch low
-2026-10-01,Adamawa,7607,Ngaoundéré,225,"Rice (long grain, imported)",retail,kg,500.0,508.52,435.16,601.19,608.0,4,-0.164,normal
-2026-10-01,Adamawa,7607,Ngaoundéré,185,Salt,retail,kg,300.0,300.0,256.72,354.67,275.0,4,0.091,normal
-2026-10-01,Adamawa,7607,Ngaoundéré,282,Sorghum (red),retail,kg,424.0,427.95,366.21,505.94,433.0,4,-0.012,normal
-2026-10-01,Adamawa,7607,Ngaoundéré,135,Sorghum (white),retail,kg,530.0,510.14,436.55,603.11,486.5,4,0.049,normal
-2026-10-01,Adamawa,7607,Ngaoundéré,97,Sugar,retail,kg,844.0,845.54,723.56,999.63,900.0,4,-0.061,normal
-2026-10-01,Adamawa,7607,Ngaoundéré,598,Taro,retail,kg,302.0,302.0,258.43,357.03,302.0,4,0.0,normal
-2026-10-01,Adamawa,7607,Ngaoundéré,114,Tomatoes,retail,kg,487.0,484.38,414.5,572.65,466.775,4,0.038,normal
-2026-10-01,Adamawa,7607,Ngaoundéré,58,Wheat flour,retail,kg,506.0,506.2,433.17,598.44,605.0,4,-0.163,normal
-2026-10-01,Adamawa,7599,Tibati,254,Bananas,retail,kg,313.0,313.0,267.84,370.04,312.0,4,0.003,normal
-2026-10-01,Adamawa,7599,Tibati,120,Beans (niebe),retail,kg,552.0,576.01,492.91,680.97,740.845,4,-0.222,watch low
-2026-10-01,Adamawa,7599,Tibati,78,Beans (red),retail,kg,526.0,526.0,450.11,621.85,823.0,4,-0.361,watch low
-2026-10-01,Adamawa,7599,Tibati,302,Cassava (cossette),retail,kg,148.0,148.0,126.65,174.97,207.655,4,-0.287,watch low
-2026-10-01,Adamawa,7599,Tibati,866,Cocoyam (macabo),retail,kg,145.0,145.0,124.08,171.42,145.0,3,0.0,normal
-2026-10-01,Adamawa,7599,Tibati,719,"Fish (tilapia, salted, dried)",retail,kg,1875.0,1933.75,1654.77,2286.14,2400.0,4,-0.194,normal
-2026-10-01,Adamawa,7599,Tibati,119,Groundnuts (shelled),retail,kg,602.0,602.0,515.15,711.7,783.0,4,-0.231,watch low
-2026-10-01,Adamawa,7599,Tibati,67,Maize (white),retail,kg,155.0,152.26,130.29,180.0,179.5,4,-0.152,normal
-2026-10-01,Adamawa,7599,Tibati,76,Maize flour,retail,kg,330.0,330.0,282.39,390.13,330.0,3,0.0,normal
-2026-10-01,Adamawa,7599,Tibati,141,Meat (beef),retail,kg,2200.0,2200.0,1882.61,2600.9,2000.0,4,0.1,normal
-2026-10-01,Adamawa,7599,Tibati,62,Oil (palm),retail,litre,1000.0,1000.0,855.73,1182.23,1000.0,4,0.0,normal
-2026-10-01,Adamawa,7599,Tibati,690,Okra (dry),retail,kg,2143.0,2143.0,1833.83,2533.51,2143.0,3,0.0,normal
-2026-10-01,Adamawa,7599,Tibati,147,Plantains,retail,kg,318.0,318.0,272.12,375.95,336.5,4,-0.055,normal
-2026-10-01,Adamawa,7599,Tibati,83,Potatoes,retail,kg,250.0,245.28,209.89,289.98,194.0,4,0.264,watch high
-2026-10-01,Adamawa,7599,Tibati,225,"Rice (long grain, imported)",retail,kg,529.0,530.62,454.07,627.32,581.5,4,-0.087,normal
-2026-10-01,Adamawa,7599,Tibati,185,Salt,retail,kg,300.0,300.0,256.72,354.67,300.0,4,0.0,normal
-2026-10-01,Adamawa,7599,Tibati,97,Sugar,retail,kg,900.0,900.0,770.16,1064.0,883.335,4,0.019,normal
-2026-10-01,Adamawa,7599,Tibati,598,Taro,retail,kg,147.0,147.0,125.79,173.79,151.0,4,-0.026,normal
-2026-10-01,Adamawa,7599,Tibati,114,Tomatoes,retail,kg,625.0,625.0,534.83,738.89,580.355,4,0.077,normal
-2026-10-01,Adamawa,7599,Tibati,58,Wheat flour,retail,kg,600.0,600.0,513.44,709.34,600.0,4,0.0,normal
-2026-10-01,Centre,2613,Yaoundé-Mfoundi,254,Bananas,retail,kg,180.0,180.19,154.2,213.03,,0,,not enough history
-2026-10-01,Centre,2613,Yaoundé-Mfoundi,291,Cassava (fresh),retail,kg,195.0,195.24,167.07,230.82,,0,,not enough history
-2026-10-01,Centre,2613,Yaoundé-Mfoundi,866,Cocoyam (macabo),retail,kg,281.0,280.84,240.32,332.02,,0,,not enough history
-2026-10-01,Centre,2613,Yaoundé-Mfoundi,744,"Fish (mackerel, fresh)",retail,kg,2016.0,2017.8,1726.69,2385.49,1710.0,3,0.18,normal
-2026-10-01,Centre,2613,Yaoundé-Mfoundi,67,Maize (white),retail,kg,214.0,214.95,183.94,254.12,,0,,not enough history
-2026-10-01,Centre,2613,Yaoundé-Mfoundi,136,Maize (yellow),retail,kg,214.0,213.53,182.72,252.44,,0,,not enough history
-2026-10-01,Centre,2613,Yaoundé-Mfoundi,141,Meat (beef),retail,kg,3530.0,3531.83,3022.3,4175.43,3060.0,3,0.154,normal
-2026-10-01,Centre,2613,Yaoundé-Mfoundi,62,Oil (palm),retail,litre,976.0,975.92,835.12,1153.76,981.25,3,-0.005,normal
-2026-10-01,Centre,2613,Yaoundé-Mfoundi,147,Plantains,retail,kg,338.0,337.38,288.71,398.86,,0,,not enough history
-2026-10-01,Centre,2613,Yaoundé-Mfoundi,225,"Rice (long grain, imported)",retail,kg,590.0,587.88,503.07,695.01,645.0,3,-0.089,normal
-2026-10-01,Centre,2613,Yaoundé-Mfoundi,58,Wheat flour,retail,kg,480.0,479.6,410.4,566.99,602.5,3,-0.204,watch low
-2026-10-01,Far-North,7622,Doukoula,120,Beans (niebe),retail,kg,167.0,167.0,142.91,197.43,625.0,1,-0.733,not enough history
-2026-10-01,Far-North,7622,Doukoula,291,Cassava (fresh),retail,kg,550.0,550.16,470.79,650.41,85.71,1,5.419,not enough history
-2026-10-01,Far-North,7622,Doukoula,719,"Fish (tilapia, salted, dried)",retail,kg,1300.0,1269.1,1086.01,1500.37,938.0,4,0.353,watch high
-2026-10-01,Far-North,7622,Doukoula,119,Groundnuts (shelled),retail,kg,386.0,383.34,328.04,453.19,341.09000000000003,4,0.124,normal
-2026-10-01,Far-North,7622,Doukoula,67,Maize (white),retail,kg,97.0,97.0,83.01,114.68,97.0,4,0.0,normal
-2026-10-01,Far-North,7622,Doukoula,141,Meat (beef),retail,kg,2143.0,2143.0,1833.83,2533.51,2021.5,4,0.06,normal
-2026-10-01,Far-North,7622,Doukoula,172,Oil (cotton),retail,litre,933.0,933.0,798.4,1103.02,1033.5,4,-0.097,normal
-2026-10-01,Far-North,7622,Doukoula,222,"Oil (vegetable, local)",retail,litre,867.0,867.0,741.92,1024.99,878.0,3,-0.013,normal
-2026-10-01,Far-North,7622,Doukoula,690,Okra (dry),retail,kg,1765.0,1763.24,1508.85,2084.54,,0,,not enough history
-2026-10-01,Far-North,7622,Doukoula,173,Onions,retail,kg,200.0,203.3,173.97,240.34,291.5,4,-0.303,watch low
-2026-10-01,Far-North,7622,Doukoula,83,Potatoes,retail,kg,281.0,274.24,234.67,324.21,181.0,4,0.515,alert high
-2026-10-01,Far-North,7622,Doukoula,71,Rice (local),retail,kg,441.0,441.0,377.38,521.36,441.09000000000003,4,-0.0,normal
-2026-10-01,Far-North,7622,Doukoula,225,"Rice (long grain, imported)",retail,kg,618.0,615.33,526.55,727.46,591.2049999999999,4,0.041,normal
-2026-10-01,Far-North,7622,Doukoula,185,Salt,retail,kg,250.0,249.57,213.57,295.05,225.0,4,0.109,normal
-2026-10-01,Far-North,7622,Doukoula,282,Sorghum (red),retail,kg,171.0,172.29,147.43,203.68,126.715,2,0.36,not enough history
-2026-10-01,Far-North,7622,Doukoula,135,Sorghum (white),retail,kg,182.0,181.47,155.29,214.54,182.0,4,-0.003,normal
-2026-10-01,Far-North,7622,Doukoula,97,Sugar,retail,kg,716.0,716.0,612.7,846.47,716.5,4,-0.001,normal
-2026-10-01,Far-North,7622,Doukoula,598,Taro,retail,kg,294.0,293.68,251.31,347.2,294.0,4,-0.001,normal
-2026-10-01,Far-North,7616,Fotokol,120,Beans (niebe),retail,kg,950.0,945.91,809.44,1118.28,750.0,3,0.261,watch high
-2026-10-01,Far-North,7616,Fotokol,719,"Fish (tilapia, salted, dried)",retail,kg,1438.0,1405.32,1202.58,1661.41,970.59,3,0.448,alert high
-2026-10-01,Far-North,7616,Fotokol,105,Garlic,retail,kg,1884.0,1881.32,1609.9,2224.15,1432.895,2,0.313,not enough history
-2026-10-01,Far-North,7616,Fotokol,119,Groundnuts (shelled),retail,kg,938.0,933.65,798.95,1103.78,909.09,3,0.027,normal
-2026-10-01,Far-North,7616,Fotokol,765,Leafy vegetables,retail,kg,500.0,488.21,417.77,577.17,333.0,3,0.466,alert high
-2026-10-01,Far-North,7616,Fotokol,67,Maize (white),retail,kg,218.0,218.55,187.02,258.38,306.0,3,-0.286,watch low
-2026-10-01,Far-North,7616,Fotokol,141,Meat (beef),retail,kg,2500.0,2500.0,2139.33,2955.57,947.0,3,1.64,alert high
-2026-10-01,Far-North,7616,Fotokol,222,"Oil (vegetable, local)",retail,litre,838.0,833.51,713.26,985.39,818.0,3,0.019,normal
-2026-10-01,Far-North,7616,Fotokol,690,Okra (dry),retail,kg,1617.0,1613.85,1381.02,1907.94,852.0,3,0.894,alert high
-2026-10-01,Far-North,7616,Fotokol,173,Onions,retail,kg,190.0,185.94,159.12,219.83,255.0,1,-0.271,not enough history
-2026-10-01,Far-North,7616,Fotokol,83,Potatoes,retail,kg,192.0,189.2,161.91,223.68,202.21,3,-0.064,normal
-2026-10-01,Far-North,7616,Fotokol,148,Potatoes (Irish),retail,kg,449.0,446.59,382.16,527.97,735.0,3,-0.392,watch low
-2026-10-01,Far-North,7616,Fotokol,71,Rice (local),retail,kg,453.0,452.6,387.3,535.08,553.0,3,-0.182,normal
-2026-10-01,Far-North,7616,Fotokol,225,"Rice (long grain, imported)",retail,kg,500.0,499.66,427.58,590.71,642.0,3,-0.222,watch low
-2026-10-01,Far-North,7616,Fotokol,185,Salt,retail,kg,268.0,268.0,229.34,316.84,315.0,3,-0.149,normal
-2026-10-01,Far-North,7616,Fotokol,282,Sorghum (red),retail,kg,150.0,150.19,128.53,177.56,241.61,3,-0.378,watch low
-2026-10-01,Far-North,7616,Fotokol,135,Sorghum (white),retail,kg,170.0,170.0,145.47,200.98,213.0,3,-0.202,watch low
-2026-10-01,Far-North,7616,Fotokol,97,Sugar,retail,kg,762.0,761.17,651.36,899.88,769.23,3,-0.01,normal
-2026-10-01,Far-North,7616,Fotokol,598,Taro,retail,kg,773.0,755.46,646.47,893.12,696.415,2,0.085,not enough history
-2026-10-01,Far-North,7616,Fotokol,114,Tomatoes,retail,kg,375.0,367.12,314.16,434.02,375.0,3,-0.021,normal
-2026-10-01,Far-North,7614,Gazawa,120,Beans (niebe),retail,kg,435.0,432.83,370.39,511.7,387.93,3,0.116,normal
-2026-10-01,Far-North,7614,Gazawa,719,"Fish (tilapia, salted, dried)",retail,kg,1375.0,1362.27,1165.73,1610.51,875.0,3,0.557,alert high
-2026-10-01,Far-North,7614,Gazawa,67,Maize (white),retail,kg,144.0,144.98,124.06,171.4,210.67,3,-0.312,watch low
-2026-10-01,Far-North,7614,Gazawa,141,Meat (beef),retail,kg,2700.0,2699.63,2310.15,3191.58,2100.0,3,0.286,watch high
-2026-10-01,Far-North,7614,Gazawa,523,Okra (fresh),retail,kg,225.0,225.17,192.69,266.2,275.0,2,-0.181,not enough history
-2026-10-01,Far-North,7614,Gazawa,173,Onions,retail,kg,205.0,205.43,175.8,242.87,228.5,2,-0.101,not enough history
-2026-10-01,Far-North,7614,Gazawa,83,Potatoes,retail,kg,200.0,189.0,161.74,223.44,165.515,2,0.142,not enough history
-2026-10-01,Far-North,7614,Gazawa,71,Rice (local),retail,kg,416.0,415.75,355.77,491.52,394.0,3,0.055,normal
-2026-10-01,Far-North,7614,Gazawa,225,"Rice (long grain, imported)",retail,kg,500.0,501.42,429.08,592.79,500.0,3,0.003,normal
-2026-10-01,Far-North,7614,Gazawa,185,Salt,retail,kg,300.0,300.0,256.72,354.67,300.0,3,0.0,normal
-2026-10-01,Far-North,7614,Gazawa,282,Sorghum (red),retail,kg,115.0,117.97,100.95,139.46,229.69,3,-0.486,alert low
-2026-10-01,Far-North,7614,Gazawa,135,Sorghum (white),retail,kg,188.0,188.81,161.57,223.21,217.0,3,-0.13,normal
-2026-10-01,Far-North,7614,Gazawa,97,Sugar,retail,kg,900.0,899.41,769.65,1063.3,750.0,3,0.199,normal
-2026-10-01,Far-North,7614,Gazawa,114,Tomatoes,retail,kg,333.0,333.0,284.96,393.68,250.0,3,0.332,watch high
-2026-10-01,Far-North,7623,Gobo,120,Beans (niebe),retail,kg,411.0,414.17,354.42,489.64,396.83,3,0.044,normal
-2026-10-01,Far-North,7623,Gobo,719,"Fish (tilapia, salted, dried)",retail,kg,1500.0,1500.05,1283.64,1773.4,1875.0,3,-0.2,watch low
-2026-10-01,Far-North,7623,Gobo,119,Groundnuts (shelled),retail,kg,467.0,489.83,419.17,579.1,489.0,3,0.002,normal
-2026-10-01,Far-North,7623,Gobo,67,Maize (white),retail,kg,250.0,247.88,212.12,293.05,193.55,3,0.281,watch high
-2026-10-01,Far-North,7623,Gobo,141,Meat (beef),retail,kg,2000.0,2000.0,1711.46,2364.45,1700.0,3,0.176,normal
-2026-10-01,Far-North,7623,Gobo,222,"Oil (vegetable, local)",retail,litre,1167.0,1177.38,1007.52,1391.93,1200.0,3,-0.019,normal
-2026-10-01,Far-North,7623,Gobo,690,Okra (dry),retail,kg,981.0,980.68,839.2,1159.39,530.77,3,0.848,alert high
-2026-10-01,Far-North,7623,Gobo,173,Onions,retail,kg,169.0,167.79,143.58,198.36,211.5,2,-0.207,not enough history
-2026-10-01,Far-North,7623,Gobo,71,Rice (local),retail,kg,387.0,388.59,332.53,459.4,401.0,3,-0.031,normal
-2026-10-01,Far-North,7623,Gobo,225,"Rice (long grain, imported)",retail,kg,441.0,436.56,373.58,516.11,375.0,3,0.164,normal
-2026-10-01,Far-North,7623,Gobo,282,Sorghum (red),retail,kg,149.0,150.08,128.42,177.42,184.0,3,-0.184,normal
-2026-10-01,Far-North,7623,Gobo,135,Sorghum (white),retail,kg,139.0,138.06,118.14,163.22,173.785,2,-0.206,not enough history
-2026-10-01,Far-North,7623,Gobo,97,Sugar,retail,kg,959.0,958.35,820.09,1132.98,863.0,3,0.11,normal
-2026-10-01,Far-North,7623,Gobo,114,Tomatoes,retail,kg,357.0,354.35,303.23,418.92,250.0,3,0.417,alert high
-2026-10-01,Far-North,2309,Kaele,120,Beans (niebe),retail,kg,455.0,452.87,387.53,535.39,533.33,5,-0.151,normal
-2026-10-01,Far-North,2309,Kaele,719,"Fish (tilapia, salted, dried)",retail,kg,1500.0,1500.05,1283.64,1773.4,2307.69,3,-0.35,watch low
-2026-10-01,Far-North,2309,Kaele,119,Groundnuts (shelled),retail,kg,695.0,721.4,617.32,852.86,639.0,5,0.129,normal
-2026-10-01,Far-North,2309,Kaele,765,Leafy vegetables,retail,kg,931.0,944.74,808.44,1116.9,598.04,2,0.58,not enough history
-2026-10-01,Far-North,2309,Kaele,67,Maize (white),retail,kg,190.0,190.73,163.22,225.49,339.0,5,-0.437,alert low
-2026-10-01,Far-North,2309,Kaele,141,Meat (beef),retail,kg,2500.0,2500.0,2139.33,2955.57,2000.0,5,0.25,watch high
-2026-10-01,Far-North,2309,Kaele,172,Oil (cotton),retail,litre,1325.0,1324.1,1133.07,1565.38,1500.0,5,-0.117,normal
-2026-10-01,Far-North,2309,Kaele,222,"Oil (vegetable, local)",retail,litre,1267.0,1270.28,1087.01,1501.76,1483.335,2,-0.144,not enough history
-2026-10-01,Far-North,2309,Kaele,690,Okra (dry),retail,kg,918.0,919.75,787.06,1087.36,567.5699999999999,2,0.621,not enough history
-2026-10-01,Far-North,2309,Kaele,173,Onions,retail,kg,411.0,405.62,347.1,479.54,666.67,5,-0.392,watch low
-2026-10-01,Far-North,2309,Kaele,83,Potatoes,retail,kg,381.0,379.18,324.48,448.28,296.775,4,0.278,watch high
-2026-10-01,Far-North,2309,Kaele,71,Rice (local),retail,kg,464.0,470.27,402.43,555.97,476.19,5,-0.012,normal
-2026-10-01,Far-North,2309,Kaele,225,"Rice (long grain, imported)",retail,kg,550.0,550.0,470.65,650.22,550.0,5,0.0,normal
-2026-10-01,Far-North,2309,Kaele,185,Salt,retail,kg,294.0,294.0,251.58,347.57,300.0,5,-0.02,normal
-2026-10-01,Far-North,2309,Kaele,282,Sorghum (red),retail,kg,155.0,159.43,136.43,188.49,256.0,5,-0.377,watch low
-2026-10-01,Far-North,2309,Kaele,135,Sorghum (white),retail,kg,199.0,198.3,169.69,234.44,341.67,5,-0.42,alert low
-2026-10-01,Far-North,2309,Kaele,97,Sugar,retail,kg,800.0,800.0,684.58,945.78,933.0,5,-0.143,normal
-2026-10-01,Far-North,1590,Kousseri,120,Beans (niebe),retail,kg,364.0,366.28,313.44,433.03,695.5,4,-0.473,alert low
-2026-10-01,Far-North,1590,Kousseri,866,Cocoyam (macabo),retail,kg,789.0,789.0,675.17,932.78,557.13,4,0.416,alert high
-2026-10-01,Far-North,1590,Kousseri,719,"Fish (tilapia, salted, dried)",retail,kg,1694.0,1665.71,1425.4,1969.25,1574.94,4,0.058,normal
-2026-10-01,Far-North,1590,Kousseri,105,Garlic,retail,kg,1889.0,1888.66,1616.18,2232.82,2293.105,2,-0.176,not enough history
-2026-10-01,Far-North,1590,Kousseri,119,Groundnuts (shelled),retail,kg,772.0,770.16,659.05,910.5,894.5,4,-0.139,normal
-2026-10-01,Far-North,1590,Kousseri,67,Maize (white),retail,kg,208.0,208.44,178.37,246.42,398.5,4,-0.477,alert low
-2026-10-01,Far-North,1590,Kousseri,141,Meat (beef),retail,kg,3000.0,3000.0,2567.19,3546.68,2487.5,4,0.206,watch high
-2026-10-01,Far-North,1590,Kousseri,172,Oil (cotton),retail,litre,1467.0,1464.42,1253.15,1731.27,1704.0,4,-0.141,normal
-2026-10-01,Far-North,1590,Kousseri,222,"Oil (vegetable, local)",retail,litre,1372.0,1369.15,1171.62,1618.65,1483.0,3,-0.077,normal
-2026-10-01,Far-North,1590,Kousseri,690,Okra (dry),retail,kg,2614.0,2590.1,2216.43,3062.09,1301.0,3,0.991,alert high
-2026-10-01,Far-North,1590,Kousseri,173,Onions,retail,kg,221.0,204.88,175.32,242.22,337.0,4,-0.392,watch low
-2026-10-01,Far-North,1590,Kousseri,83,Potatoes,retail,kg,200.0,198.94,170.24,235.19,348.5,4,-0.429,alert low
-2026-10-01,Far-North,1590,Kousseri,148,Potatoes (Irish),retail,kg,909.0,909.0,777.86,1074.64,1104.5,2,-0.177,not enough history
-2026-10-01,Far-North,1590,Kousseri,71,Rice (local),retail,kg,420.0,415.42,355.49,491.12,539.0,4,-0.229,watch low
-2026-10-01,Far-North,1590,Kousseri,225,"Rice (long grain, imported)",retail,kg,503.0,501.19,428.89,592.53,592.0,4,-0.153,normal
-2026-10-01,Far-North,1590,Kousseri,282,Sorghum (red),retail,kg,156.0,152.36,130.38,180.13,273.0,3,-0.442,alert low
-2026-10-01,Far-North,1590,Kousseri,135,Sorghum (white),retail,kg,170.0,162.12,138.73,191.66,291.0,3,-0.443,alert low
-2026-10-01,Far-North,1590,Kousseri,97,Sugar,retail,kg,1000.0,1000.0,855.73,1182.23,1050.0,4,-0.048,normal
-2026-10-01,Far-North,1590,Kousseri,598,Taro,retail,kg,181.0,180.28,154.27,213.13,260.0,3,-0.307,watch low
-2026-10-01,Far-North,1590,Kousseri,114,Tomatoes,retail,kg,356.0,334.75,286.45,395.75,700.735,4,-0.522,alert low
-2026-10-01,Far-North,1590,Kousseri,58,Wheat flour,retail,kg,500.0,500.0,427.87,591.11,599.0,3,-0.165,normal
-2026-10-01,Far-North,7631,Koza,120,Beans (niebe),retail,kg,440.0,447.91,383.29,529.53,364.0,2,0.231,not enough history
-2026-10-01,Far-North,7631,Koza,719,"Fish (tilapia, salted, dried)",retail,kg,2813.0,2760.07,2361.87,3263.03,1786.0,2,0.545,not enough history
-2026-10-01,Far-North,7631,Koza,105,Garlic,retail,kg,4327.0,4325.14,3701.15,5113.3,1615.0,1,1.678,not enough history
-2026-10-01,Far-North,7631,Koza,119,Groundnuts (shelled),retail,kg,448.0,449.77,384.88,531.73,462.0,2,-0.026,not enough history
-2026-10-01,Far-North,7631,Koza,67,Maize (white),retail,kg,120.0,120.3,102.94,142.22,470.0,2,-0.744,not enough history
-2026-10-01,Far-North,7631,Koza,141,Meat (beef),retail,kg,2000.0,2001.02,1712.33,2365.66,1850.0,2,0.082,not enough history
-2026-10-01,Far-North,7631,Koza,172,Oil (cotton),retail,litre,1500.0,1500.0,1283.6,1773.34,1500.0,2,0.0,not enough history
-2026-10-01,Far-North,7631,Koza,222,"Oil (vegetable, local)",retail,litre,1500.0,1500.0,1283.6,1773.34,1500.0,2,0.0,not enough history
-2026-10-01,Far-North,7631,Koza,173,Onions,retail,kg,148.0,221.21,189.29,261.52,459.0,2,-0.518,not enough history
-2026-10-01,Far-North,7631,Koza,71,Rice (local),retail,kg,350.0,349.86,299.39,413.61,219.0,1,0.598,not enough history
-2026-10-01,Far-North,7631,Koza,225,"Rice (long grain, imported)",retail,kg,500.0,499.93,427.81,591.03,700.0,2,-0.286,not enough history
-2026-10-01,Far-North,7631,Koza,282,Sorghum (red),retail,kg,105.0,110.91,94.9,131.12,222.0,2,-0.5,not enough history
-2026-10-01,Far-North,7631,Koza,135,Sorghum (white),retail,kg,110.0,112.72,96.46,133.27,224.0,2,-0.497,not enough history
-2026-10-01,Far-North,7631,Koza,97,Sugar,retail,kg,1000.0,1000.0,855.73,1182.23,900.0,2,0.111,not enough history
-2026-10-01,Far-North,7631,Koza,114,Tomatoes,retail,kg,153.0,150.48,128.77,177.9,256.0,2,-0.412,not enough history
-2026-10-01,Far-North,7631,Koza,58,Wheat flour,retail,kg,600.0,600.0,513.44,709.34,600.0,2,0.0,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,120,Beans (niebe),retail,kg,700.0,702.89,601.48,830.97,448.5,2,0.567,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,92,Eggs,retail,piece,100.0,100.0,85.57,118.22,100.0,1,0.0,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,171,Fish (dry),retail,kg,1500.0,1501.44,1284.83,1775.04,1500.0,1,0.001,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,719,"Fish (tilapia, salted, dried)",retail,kg,2313.0,2256.65,1931.09,2667.88,970.5,2,1.325,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,119,Groundnuts (shelled),retail,kg,681.0,681.0,582.75,805.1,885.0,2,-0.231,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,67,Maize (white),retail,kg,266.67,268.02,229.35,316.86,608.0,1,-0.559,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,141,Meat (beef),retail,kg,3083.3,3083.3,2638.47,3645.16,2100.0,1,0.468,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,238,Milk (powder),retail,kg,8750.0,8750.0,7487.64,10344.49,7500.0,1,0.167,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,172,Oil (cotton),retail,litre,1700.0,1700.0,1454.74,2009.79,1775.0,1,-0.042,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,222,"Oil (vegetable, local)",retail,litre,1250.0,1248.91,1068.73,1476.5,1172.5,2,0.065,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,690,Okra (dry),retail,kg,1369.0,1361.8,1165.33,1609.96,1060.73,2,0.284,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,173,Onions,retail,kg,500.0,447.52,382.96,529.07,850.0,1,-0.474,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,71,Rice (local),retail,kg,500.0,481.54,412.07,569.29,521.0,2,-0.076,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,225,"Rice (long grain, imported)",retail,kg,716.67,716.51,613.14,847.08,650.0,1,0.102,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,185,Salt,retail,kg,331.0,331.0,283.25,391.32,453.0,2,-0.269,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,282,Sorghum (red),retail,kg,300.0,246.59,211.01,291.53,185.0,1,0.333,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,135,Sorghum (white),retail,kg,380.0,296.16,253.43,350.12,470.5,2,-0.371,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,97,Sugar,retail,kg,900.0,894.45,765.41,1057.44,1065.0,2,-0.16,not enough history
-2026-10-01,Far-North,1591,Logone-Birni,58,Wheat flour,retail,kg,566.0,566.0,484.34,669.14,651.19,2,-0.131,not enough history
-2026-10-01,Far-North,2307,Maroua,120,Beans (niebe),retail,kg,500.0,505.63,432.68,597.77,712.5,4,-0.29,watch low
-2026-10-01,Far-North,2307,Maroua,78,Beans (red),retail,kg,1000.0,943.93,807.75,1115.94,1250.0,4,-0.245,watch low
-2026-10-01,Far-North,2307,Maroua,92,Eggs,retail,piece,93.0,93.27,79.82,110.27,100.0,4,-0.067,normal
-2026-10-01,Far-North,2307,Maroua,744,"Fish (mackerel, fresh)",retail,kg,2266.7,2267.84,1940.66,2681.1,1939.5,4,0.169,normal
-2026-10-01,Far-North,2307,Maroua,719,"Fish (tilapia, salted, dried)",retail,kg,4166.7,3674.66,3144.52,4344.29,1833.0,3,1.005,alert high
-2026-10-01,Far-North,2307,Maroua,119,Groundnuts (shelled),retail,kg,1000.0,975.72,834.95,1153.52,754.165,4,0.294,watch high
-2026-10-01,Far-North,2307,Maroua,67,Maize (white),retail,kg,200.0,200.63,171.69,237.19,325.0,4,-0.383,watch low
-2026-10-01,Far-North,2307,Maroua,141,Meat (beef),retail,kg,2333.0,2387.49,2043.04,2822.55,2500.0,4,-0.045,normal
-2026-10-01,Far-North,2307,Maroua,238,Milk (powder),retail,kg,8750.0,8750.0,7487.64,10344.49,7896.25,4,0.108,normal
-2026-10-01,Far-North,2307,Maroua,172,Oil (cotton),retail,litre,1300.0,1300.0,1112.45,1536.9,1243.75,4,0.045,normal
-2026-10-01,Far-North,2307,Maroua,62,Oil (palm),retail,litre,1000.0,1000.0,855.73,1182.23,983.335,4,0.017,normal
-2026-10-01,Far-North,2307,Maroua,756,"Oil (vegetable, bulk)",retail,litre,1200.0,1200.0,1026.88,1418.67,1197.915,4,0.002,normal
-2026-10-01,Far-North,2307,Maroua,523,Okra (fresh),retail,kg,500.0,499.76,427.66,590.83,704.25,2,-0.29,not enough history
-2026-10-01,Far-North,2307,Maroua,173,Onions,retail,kg,683.0,637.51,545.54,753.69,766.5,4,-0.168,normal
-2026-10-01,Far-North,2307,Maroua,147,Plantains,retail,kg,1000.0,963.85,824.8,1139.49,558.5,4,0.726,alert high
-2026-10-01,Far-North,2307,Maroua,83,Potatoes,retail,kg,300.0,298.87,255.75,353.33,333.41499999999996,4,-0.104,normal
-2026-10-01,Far-North,2307,Maroua,148,Potatoes (Irish),retail,kg,500.0,511.88,438.03,605.16,566.5,4,-0.096,normal
-2026-10-01,Far-North,2307,Maroua,71,Rice (local),retail,kg,483.0,485.73,415.66,574.25,568.75,4,-0.146,normal
-2026-10-01,Far-North,2307,Maroua,225,"Rice (long grain, imported)",retail,kg,583.0,574.6,491.7,679.31,585.75,4,-0.019,normal
-2026-10-01,Far-North,2307,Maroua,185,Salt,retail,kg,300.0,300.0,256.72,354.67,302.0,4,-0.007,normal
-2026-10-01,Far-North,2307,Maroua,282,Sorghum (red),retail,kg,200.0,200.0,171.15,236.45,325.0,4,-0.385,watch low
-2026-10-01,Far-North,2307,Maroua,135,Sorghum (white),retail,kg,250.0,246.97,211.34,291.98,381.25,4,-0.352,watch low
-2026-10-01,Far-North,2307,Maroua,97,Sugar,retail,kg,1000.0,999.33,855.16,1181.44,812.5,4,0.23,watch high
-2026-10-01,Far-North,2307,Maroua,58,Wheat flour,retail,kg,500.0,500.0,427.87,591.11,591.5,3,-0.155,normal
-2026-10-01,Far-North,2307,Maroua,99,Yam,retail,kg,1000.0,1018.79,871.81,1204.44,796.0,4,0.28,watch high
-2026-10-01,Far-North,2311,Mokolo,120,Beans (niebe),retail,kg,519.0,513.44,439.36,607.0,550.0,5,-0.066,normal
-2026-10-01,Far-North,2311,Mokolo,719,"Fish (tilapia, salted, dried)",retail,kg,1300.0,1303.68,1115.6,1541.24,1229.0,4,0.061,normal
-2026-10-01,Far-North,2311,Mokolo,105,Garlic,retail,kg,2000.0,2018.71,1727.47,2386.57,1000.0,1,1.019,not enough history
-2026-10-01,Far-North,2311,Mokolo,67,Maize (white),retail,kg,167.0,163.15,139.62,192.89,267.0,5,-0.389,watch low
-2026-10-01,Far-North,2311,Mokolo,141,Meat (beef),retail,kg,2333.0,2343.73,2005.6,2770.82,2100.0,5,0.116,normal
-2026-10-01,Far-North,2311,Mokolo,172,Oil (cotton),retail,litre,1333.0,1332.73,1140.46,1575.59,1433.0,5,-0.07,normal
-2026-10-01,Far-North,2311,Mokolo,222,"Oil (vegetable, local)",retail,litre,1500.0,1506.29,1288.98,1780.77,1400.0,3,0.076,normal
-2026-10-01,Far-North,2311,Mokolo,690,Okra (dry),retail,kg,1429.0,1421.57,1216.48,1680.62,842.675,2,0.687,not enough history
-2026-10-01,Far-North,2311,Mokolo,173,Onions,retail,kg,338.0,341.45,292.19,403.68,733.5,4,-0.534,alert low
-2026-10-01,Far-North,2311,Mokolo,148,Potatoes (Irish),retail,kg,303.0,302.73,259.06,357.9,250.0,5,0.211,watch high
-2026-10-01,Far-North,2311,Mokolo,225,"Rice (long grain, imported)",retail,kg,441.0,457.16,391.21,540.47,600.0,5,-0.238,watch low
-2026-10-01,Far-North,2311,Mokolo,185,Salt,retail,kg,350.0,350.0,299.51,413.78,333.0,5,0.051,normal
-2026-10-01,Far-North,2311,Mokolo,282,Sorghum (red),retail,kg,186.0,188.6,161.39,222.97,267.0,5,-0.294,watch low
-2026-10-01,Far-North,2311,Mokolo,135,Sorghum (white),retail,kg,251.0,253.01,216.51,299.11,324.0,5,-0.219,watch low
-2026-10-01,Far-North,2311,Mokolo,97,Sugar,retail,kg,700.0,700.0,599.01,827.56,800.0,5,-0.125,normal
-2026-10-01,Far-North,2311,Mokolo,114,Tomatoes,retail,kg,417.0,462.65,395.9,546.96,550.735,4,-0.16,normal
-2026-10-01,Far-North,2311,Mokolo,58,Wheat flour,retail,kg,500.0,500.0,427.87,591.11,575.0,4,-0.13,normal
-2026-10-01,Far-North,2310,Mora,58,Wheat flour,retail,kg,500.0,496.61,424.96,587.1,538.0,3,-0.077,normal
-2026-10-01,Far-North,7615,Salak,120,Beans (niebe),retail,kg,368.0,372.68,318.92,440.6,433.635,4,-0.141,normal
-2026-10-01,Far-North,7615,Salak,719,"Fish (tilapia, salted, dried)",retail,kg,1000.0,887.55,759.5,1049.29,973.5,4,-0.088,normal
-2026-10-01,Far-North,7615,Salak,67,Maize (white),retail,kg,158.0,158.8,135.89,187.74,211.935,4,-0.251,watch low
-2026-10-01,Far-North,7615,Salak,141,Meat (beef),retail,kg,2500.0,2498.23,2137.82,2953.48,2088.5,4,0.196,normal
-2026-10-01,Far-North,7615,Salak,172,Oil (cotton),retail,litre,1296.0,1294.63,1107.85,1530.54,1414.0,4,-0.084,normal
-2026-10-01,Far-North,7615,Salak,222,"Oil (vegetable, local)",retail,litre,1246.0,1243.05,1063.71,1469.57,1300.0,3,-0.044,normal
-2026-10-01,Far-North,7615,Salak,690,Okra (dry),retail,kg,705.0,707.68,605.59,836.64,659.26,3,0.073,normal
-2026-10-01,Far-North,7615,Salak,173,Onions,retail,kg,218.0,214.49,183.54,253.57,320.0,2,-0.33,not enough history
-2026-10-01,Far-North,7615,Salak,83,Potatoes,retail,kg,200.0,207.76,177.79,245.62,194.0,4,0.071,normal
-2026-10-01,Far-North,7615,Salak,148,Potatoes (Irish),retail,kg,545.0,545.0,466.37,644.31,545.0,4,0.0,normal
-2026-10-01,Far-North,7615,Salak,71,Rice (local),retail,kg,403.0,402.84,344.72,476.25,478.5,4,-0.158,normal
-2026-10-01,Far-North,7615,Salak,225,"Rice (long grain, imported)",retail,kg,500.0,500.45,428.25,591.64,577.0,4,-0.133,normal
-2026-10-01,Far-North,7615,Salak,185,Salt,retail,kg,200.0,200.0,171.15,236.45,200.0,4,0.0,normal
-2026-10-01,Far-North,7615,Salak,282,Sorghum (red),retail,kg,122.0,122.38,104.73,144.69,214.515,4,-0.43,alert low
-2026-10-01,Far-North,7615,Salak,135,Sorghum (white),retail,kg,128.0,125.71,107.57,148.61,230.5,4,-0.455,alert low
-2026-10-01,Far-North,7615,Salak,97,Sugar,retail,kg,763.0,762.5,652.49,901.45,800.0,4,-0.047,normal
-2026-10-01,Far-North,7615,Salak,598,Taro,retail,kg,400.0,367.14,314.17,434.05,333.5,4,0.101,normal
-2026-10-01,Far-North,2308,Yagoua,120,Beans (niebe),retail,kg,850.0,819.31,701.11,968.61,516.5,4,0.586,alert high
-2026-10-01,Far-North,2308,Yagoua,291,Cassava (fresh),retail,kg,129.0,129.35,110.69,152.93,113.0,3,0.145,normal
-2026-10-01,Far-North,2308,Yagoua,92,Eggs,retail,piece,91.67,91.67,78.44,108.37,100.0,4,-0.083,normal
-2026-10-01,Far-North,2308,Yagoua,719,"Fish (tilapia, salted, dried)",retail,kg,2813.0,2800.44,2396.42,3310.76,3000.0,3,-0.067,normal
-2026-10-01,Far-North,2308,Yagoua,119,Groundnuts (shelled),retail,kg,500.0,500.0,427.87,591.11,750.0,3,-0.333,watch low
-2026-10-01,Far-North,2308,Yagoua,67,Maize (white),retail,kg,250.0,243.8,208.63,288.23,340.5,4,-0.284,watch low
-2026-10-01,Far-North,2308,Yagoua,141,Meat (beef),retail,kg,2725.0,2722.05,2329.34,3218.08,2479.51,4,0.098,normal
-2026-10-01,Far-North,2308,Yagoua,238,Milk (powder),retail,kg,8500.0,8500.0,7273.71,10048.93,8500.0,3,0.0,normal
-2026-10-01,Far-North,2308,Yagoua,172,Oil (cotton),retail,litre,1418.0,1428.82,1222.69,1689.19,1551.5,4,-0.079,normal
-2026-10-01,Far-North,2308,Yagoua,62,Oil (palm),retail,litre,1400.0,1400.0,1198.02,1655.12,1233.0,3,0.135,normal
-2026-10-01,Far-North,2308,Yagoua,756,"Oil (vegetable, bulk)",retail,litre,1300.0,1300.0,1112.45,1536.9,1217.0,3,0.068,normal
-2026-10-01,Far-North,2308,Yagoua,222,"Oil (vegetable, local)",retail,litre,1228.0,1235.59,1057.33,1460.75,1289.0,3,-0.041,normal
-2026-10-01,Far-North,2308,Yagoua,690,Okra (dry),retail,kg,1000.0,995.25,851.66,1176.61,844.0,3,0.179,normal
-2026-10-01,Far-North,2308,Yagoua,523,Okra (fresh),retail,kg,688.0,696.36,595.89,823.25,647.785,4,0.075,normal
-2026-10-01,Far-North,2308,Yagoua,173,Onions,retail,kg,548.0,507.34,434.15,599.79,667.835,4,-0.24,watch low
-2026-10-01,Far-North,2308,Yagoua,83,Potatoes,retail,kg,500.0,500.0,427.87,591.11,500.0,3,0.0,normal
-2026-10-01,Far-North,2308,Yagoua,71,Rice (local),retail,kg,500.0,500.0,427.87,591.11,450.16499999999996,4,0.111,normal
-2026-10-01,Far-North,2308,Yagoua,225,"Rice (long grain, imported)",retail,kg,616.67,616.67,527.7,729.04,500.0,3,0.233,watch high
-2026-10-01,Far-North,2308,Yagoua,185,Salt,retail,kg,400.0,400.0,342.29,472.89,375.0,4,0.067,normal
-2026-10-01,Far-North,2308,Yagoua,282,Sorghum (red),retail,kg,180.0,185.73,158.94,219.58,299.56,4,-0.38,watch low
-2026-10-01,Far-North,2308,Yagoua,135,Sorghum (white),retail,kg,195.0,194.89,166.77,230.4,337.58500000000004,4,-0.423,alert low
-2026-10-01,Far-North,2308,Yagoua,97,Sugar,retail,kg,900.0,900.0,770.16,1064.0,800.0,4,0.125,normal
-2026-10-01,Far-North,2308,Yagoua,114,Tomatoes,retail,kg,880.0,840.37,719.13,993.51,360.0,3,1.334,alert high
-2026-10-01,Far-North,2308,Yagoua,99,Yam,retail,kg,2000.0,2000.0,1711.46,2364.45,1500.0,2,0.333,not enough history
-2026-10-01,Littoral,5261,Douala-Marché Central,254,Bananas,retail,kg,205.0,205.16,175.56,242.54,,0,,not enough history
-2026-10-01,Littoral,5261,Douala-Marché Central,291,Cassava (fresh),retail,kg,215.0,214.96,183.95,254.13,,0,,not enough history
-2026-10-01,Littoral,5261,Douala-Marché Central,744,"Fish (mackerel, fresh)",retail,kg,2152.0,2154.0,1843.24,2546.51,1700.0,3,0.267,watch high
-2026-10-01,Littoral,5261,Douala-Marché Central,141,Meat (beef),retail,kg,3350.0,3350.0,2866.7,3960.46,3175.0,3,0.055,normal
-2026-10-01,Littoral,5261,Douala-Marché Central,62,Oil (palm),retail,litre,956.0,956.74,818.71,1131.09,960.0,3,-0.003,normal
-2026-10-01,Littoral,5261,Douala-Marché Central,225,"Rice (long grain, imported)",retail,kg,466.0,465.95,398.73,550.86,555.0,3,-0.16,normal
-2026-10-01,Littoral,5261,Douala-Marché Central,58,Wheat flour,retail,kg,480.0,480.0,410.75,567.47,565.0,3,-0.15,normal
-2026-10-01,North,1593,Garoua,254,Bananas,retail,kg,578.0,578.09,494.69,683.43,655.5550000000001,4,-0.118,normal
-2026-10-01,North,1593,Garoua,120,Beans (niebe),retail,kg,548.0,548.79,469.62,648.79,648.0,4,-0.153,normal
-2026-10-01,North,1593,Garoua,291,Cassava (fresh),retail,kg,450.0,449.96,385.05,531.96,,0,,not enough history
-2026-10-01,North,1593,Garoua,719,"Fish (tilapia, salted, dried)",retail,kg,1458.0,1600.44,1369.55,1892.09,2450.0,4,-0.347,watch low
-2026-10-01,North,1593,Garoua,105,Garlic,retail,kg,2873.0,2910.31,2490.44,3440.64,5254.0,1,-0.446,not enough history
-2026-10-01,North,1593,Garoua,119,Groundnuts (shelled),retail,kg,955.0,948.95,812.05,1121.88,994.085,4,-0.045,normal
-2026-10-01,North,1593,Garoua,67,Maize (white),retail,kg,150.0,156.34,133.79,184.83,292.865,4,-0.466,alert low
-2026-10-01,North,1593,Garoua,141,Meat (beef),retail,kg,2635.0,2635.0,2254.85,3115.17,2404.0,4,0.096,normal
-2026-10-01,North,1593,Garoua,172,Oil (cotton),retail,litre,1289.0,1285.62,1100.14,1519.89,1263.45,4,0.018,normal
-2026-10-01,North,1593,Garoua,222,"Oil (vegetable, local)",retail,litre,1180.0,1182.88,1012.23,1398.44,1363.33,3,-0.132,normal
-2026-10-01,North,1593,Garoua,523,Okra (fresh),retail,kg,400.0,406.89,348.19,481.03,1036.36,1,-0.607,not enough history
-2026-10-01,North,1593,Garoua,173,Onions,retail,kg,202.0,196.85,168.45,232.72,394.0,4,-0.5,alert low
-2026-10-01,North,1593,Garoua,83,Potatoes,retail,kg,325.0,316.54,270.87,374.22,177.5,4,0.783,alert high
-2026-10-01,North,1593,Garoua,225,"Rice (long grain, imported)",retail,kg,422.0,427.92,366.18,505.89,594.165,4,-0.28,watch low
-2026-10-01,North,1593,Garoua,185,Salt,retail,kg,279.0,279.32,239.02,330.22,284.0,4,-0.016,normal
-2026-10-01,North,1593,Garoua,282,Sorghum (red),retail,kg,167.0,174.19,149.06,205.93,338.05,4,-0.485,alert low
-2026-10-01,North,1593,Garoua,135,Sorghum (white),retail,kg,229.0,234.78,200.9,277.56,391.66499999999996,4,-0.401,alert low
-2026-10-01,North,1593,Garoua,97,Sugar,retail,kg,739.0,747.39,639.57,883.59,826.985,4,-0.096,normal
-2026-10-01,North,1593,Garoua,114,Tomatoes,retail,kg,444.0,439.09,375.74,519.1,459.5,4,-0.044,normal
-2026-10-01,North,7639,Mayo galke,120,Beans (niebe),retail,kg,395.0,391.01,334.6,462.26,700.98,2,-0.442,not enough history
-2026-10-01,North,7639,Mayo galke,291,Cassava (fresh),retail,kg,200.0,200.0,171.15,236.45,192.765,2,0.038,not enough history
-2026-10-01,North,7639,Mayo galke,719,"Fish (tilapia, salted, dried)",retail,kg,1738.0,1743.92,1492.33,2061.71,2916.665,2,-0.402,not enough history
-2026-10-01,North,7639,Mayo galke,105,Garlic,retail,kg,1765.0,1763.68,1509.24,2085.07,3636.36,1,-0.515,not enough history
-2026-10-01,North,7639,Mayo galke,119,Groundnuts (shelled),retail,kg,482.0,482.0,412.46,569.83,464.83000000000004,2,0.037,not enough history
-2026-10-01,North,7639,Mayo galke,67,Maize (white),retail,kg,153.0,152.06,130.13,179.77,231.25,2,-0.342,not enough history
-2026-10-01,North,7639,Mayo galke,141,Meat (beef),retail,kg,2000.0,2000.0,1711.46,2364.45,1818.1799999999998,2,0.1,not enough history
-2026-10-01,North,7639,Mayo galke,172,Oil (cotton),retail,litre,1500.0,1500.0,1283.6,1773.34,1500.0,2,0.0,not enough history
-2026-10-01,North,7639,Mayo galke,222,"Oil (vegetable, local)",retail,litre,1392.0,1387.94,1187.7,1640.86,1500.0,1,-0.075,not enough history
-2026-10-01,North,7639,Mayo galke,690,Okra (dry),retail,kg,981.0,989.47,846.72,1169.78,782.61,1,0.264,not enough history
-2026-10-01,North,7639,Mayo galke,173,Onions,retail,kg,250.0,254.01,217.36,300.3,439.225,2,-0.422,not enough history
-2026-10-01,North,7639,Mayo galke,225,"Rice (long grain, imported)",retail,kg,441.0,442.13,378.34,522.69,500.0,2,-0.116,not enough history
-2026-10-01,North,7639,Mayo galke,185,Salt,retail,kg,350.0,350.0,299.51,413.78,325.0,2,0.077,not enough history
-2026-10-01,North,7639,Mayo galke,282,Sorghum (red),retail,kg,152.0,154.11,131.87,182.19,244.935,2,-0.371,not enough history
-2026-10-01,North,7639,Mayo galke,135,Sorghum (white),retail,kg,146.0,146.0,124.94,172.61,268.9,2,-0.457,not enough history
-2026-10-01,North,7639,Mayo galke,97,Sugar,retail,kg,900.0,900.0,770.16,1064.0,895.835,2,0.005,not enough history
-2026-10-01,North,7639,Mayo galke,114,Tomatoes,retail,kg,577.0,570.71,488.37,674.7,517.5,2,0.103,not enough history
-2026-10-01,North,1579,Pitoa,120,Beans (niebe),retail,kg,415.0,417.55,357.31,493.64,567.7950000000001,4,-0.265,watch low
-2026-10-01,North,1579,Pitoa,719,"Fish (tilapia, salted, dried)",retail,kg,1400.0,1411.74,1208.07,1668.99,2083.5,4,-0.322,watch low
-2026-10-01,North,1579,Pitoa,105,Garlic,retail,kg,2924.0,2918.91,2497.8,3450.82,1814.38,2,0.609,not enough history
-2026-10-01,North,1579,Pitoa,119,Groundnuts (shelled),retail,kg,542.0,538.09,460.46,636.14,586.0899999999999,4,-0.082,normal
-2026-10-01,North,1579,Pitoa,67,Maize (white),retail,kg,143.0,143.99,123.22,170.23,233.14499999999998,4,-0.382,watch low
-2026-10-01,North,1579,Pitoa,141,Meat (beef),retail,kg,2680.0,2688.37,2300.52,3178.26,2329.5,4,0.154,normal
-2026-10-01,North,1579,Pitoa,172,Oil (cotton),retail,litre,1244.0,1243.15,1063.8,1469.69,1190.5,4,0.044,normal
-2026-10-01,North,1579,Pitoa,222,"Oil (vegetable, local)",retail,litre,1233.0,1227.73,1050.61,1451.46,1306.67,3,-0.06,normal
-2026-10-01,North,1579,Pitoa,523,Okra (fresh),retail,kg,286.0,286.0,244.74,338.12,286.0,3,0.0,normal
-2026-10-01,North,1579,Pitoa,173,Onions,retail,kg,176.0,166.57,142.54,196.92,388.03499999999997,4,-0.571,alert low
-2026-10-01,North,1579,Pitoa,83,Potatoes,retail,kg,200.0,197.01,168.59,232.92,154.0,4,0.279,watch high
-2026-10-01,North,1579,Pitoa,71,Rice (local),retail,kg,381.0,379.92,325.11,449.16,458.0,4,-0.17,normal
-2026-10-01,North,1579,Pitoa,225,"Rice (long grain, imported)",retail,kg,529.0,528.61,452.35,624.93,549.5,4,-0.038,normal
-2026-10-01,North,1579,Pitoa,185,Salt,retail,kg,241.0,241.84,206.95,285.91,233.5,4,0.036,normal
-2026-10-01,North,1579,Pitoa,282,Sorghum (red),retail,kg,150.0,139.61,119.47,165.06,176.0,4,-0.207,watch low
-2026-10-01,North,1579,Pitoa,135,Sorghum (white),retail,kg,143.0,142.28,121.75,168.21,219.925,4,-0.353,watch low
-2026-10-01,North,1579,Pitoa,97,Sugar,retail,kg,717.0,720.24,616.33,851.49,762.0,4,-0.055,normal
-2026-10-01,North,1579,Pitoa,598,Taro,retail,kg,261.0,261.0,223.35,308.56,230.5,4,0.132,normal
-2026-10-01,North,1579,Pitoa,114,Tomatoes,retail,kg,580.0,589.64,504.57,697.09,281.5,4,1.095,alert high
-2026-10-01,North-West,2567,Bamenda,78,Beans (red),retail,kg,375.0,375.0,320.9,443.34,828.0,3,-0.547,alert low
-2026-10-01,North-West,2567,Bamenda,291,Cassava (fresh),retail,kg,146.0,145.31,124.34,171.79,,0,,not enough history
-2026-10-01,North-West,2567,Bamenda,744,"Fish (mackerel, fresh)",retail,kg,2538.0,2537.58,2171.48,2999.99,1624.5,4,0.562,alert high
-2026-10-01,North-West,2567,Bamenda,67,Maize (white),retail,kg,197.0,201.32,172.28,238.01,,0,,not enough history
-2026-10-01,North-West,2567,Bamenda,136,Maize (yellow),retail,kg,230.0,230.0,196.82,271.91,364.0,3,-0.368,watch low
-2026-10-01,North-West,2567,Bamenda,62,Oil (palm),retail,litre,875.0,875.0,748.76,1034.45,889.0,3,-0.016,normal
-2026-10-01,North-West,2567,Bamenda,225,"Rice (long grain, imported)",retail,kg,700.0,700.0,599.01,827.56,570.0,3,0.228,watch high
-2026-10-01,North-West,5275,Kumbo,78,Beans (red),retail,kg,252.0,249.03,213.1,294.4,721.0,3,-0.655,alert low
-2026-10-01,North-West,5275,Kumbo,291,Cassava (fresh),retail,kg,200.0,199.03,170.32,235.3,,0,,not enough history
-2026-10-01,North-West,5275,Kumbo,744,"Fish (mackerel, fresh)",retail,kg,2460.0,2459.35,2104.54,2907.5,1566.5,4,0.57,alert high
-2026-10-01,North-West,5275,Kumbo,67,Maize (white),retail,kg,159.0,160.24,137.12,189.44,,0,,not enough history
-2026-10-01,North-West,5275,Kumbo,136,Maize (yellow),retail,kg,150.0,149.1,127.59,176.27,258.0,3,-0.422,alert low
-2026-10-01,North-West,5275,Kumbo,62,Oil (palm),retail,litre,973.0,971.35,831.21,1148.36,1000.0,3,-0.029,normal
-2026-10-01,North-West,5275,Kumbo,71,Rice (local),retail,kg,412.0,410.04,350.89,484.76,,0,,not enough history
-2026-10-01,North-West,5275,Kumbo,225,"Rice (long grain, imported)",retail,kg,448.0,446.07,381.72,527.36,707.5,2,-0.37,not enough history
-2026-10-01,North-West,5269,Nkambe,78,Beans (red),retail,kg,267.0,264.9,226.68,313.17,654.335,4,-0.595,alert low
-2026-10-01,North-West,5269,Nkambe,291,Cassava (fresh),retail,kg,200.0,199.02,170.31,235.29,,0,,not enough history
-2026-10-01,North-West,5269,Nkambe,744,"Fish (mackerel, fresh)",retail,kg,2356.0,2345.55,2007.16,2772.97,1800.0,3,0.303,watch high
-2026-10-01,North-West,5269,Nkambe,67,Maize (white),retail,kg,111.0,112.22,96.03,132.67,210.0,1,-0.466,not enough history
-2026-10-01,North-West,5269,Nkambe,136,Maize (yellow),retail,kg,122.0,122.26,104.62,144.53,219.0,4,-0.442,alert low
-2026-10-01,North-West,5269,Nkambe,62,Oil (palm),retail,litre,707.0,706.73,604.77,835.52,841.5,4,-0.16,normal
-2026-10-01,North-West,5269,Nkambe,71,Rice (local),retail,kg,433.0,432.74,370.31,511.6,,0,,not enough history
-2026-10-01,North-West,5269,Nkambe,225,"Rice (long grain, imported)",retail,kg,501.0,501.16,428.85,592.48,591.5,4,-0.153,normal
-2026-10-01,North-West,5269,Nkambe,58,Wheat flour,retail,kg,489.0,488.54,418.06,577.57,531.25,2,-0.08,not enough history
-2026-10-01,South-West,4251,Buea,78,Beans (red),retail,kg,675.0,667.89,571.53,789.6,975.0,5,-0.315,watch low
-2026-10-01,South-West,4251,Buea,291,Cassava (fresh),retail,kg,179.0,173.99,148.89,205.7,,0,,not enough history
-2026-10-01,South-West,4251,Buea,744,"Fish (mackerel, fresh)",retail,kg,1840.0,1840.0,1574.54,2175.3,1700.0,5,0.082,normal
-2026-10-01,South-West,4251,Buea,67,Maize (white),retail,kg,317.0,317.4,271.61,375.23,483.33,1,-0.343,not enough history
-2026-10-01,South-West,4251,Buea,136,Maize (yellow),retail,kg,372.0,359.19,307.37,424.65,460.0,5,-0.219,watch low
-2026-10-01,South-West,4251,Buea,62,Oil (palm),retail,litre,775.0,775.0,663.19,916.23,1000.0,5,-0.225,watch low
-2026-10-01,South-West,4251,Buea,225,"Rice (long grain, imported)",retail,kg,508.0,508.0,434.71,600.57,670.0,5,-0.242,watch low
-2026-10-01,South-West,5264,Kumba,78,Beans (red),retail,kg,550.0,551.31,471.77,651.78,1166.65,4,-0.527,alert low
-2026-10-01,South-West,5264,Kumba,291,Cassava (fresh),retail,kg,145.0,145.22,124.27,171.69,,0,,not enough history
-2026-10-01,South-West,5264,Kumba,744,"Fish (mackerel, fresh)",retail,kg,2420.0,2411.84,2063.88,2851.34,1700.0,5,0.419,alert high
-2026-10-01,South-West,5264,Kumba,67,Maize (white),retail,kg,300.0,297.41,254.5,351.61,,0,,not enough history
-2026-10-01,South-West,5264,Kumba,136,Maize (yellow),retail,kg,300.0,289.82,248.01,342.63,377.0,4,-0.231,watch low
-2026-10-01,South-West,5264,Kumba,62,Oil (palm),retail,litre,760.0,760.22,650.54,898.75,944.5,4,-0.195,normal
-2026-10-01,South-West,5264,Kumba,225,"Rice (long grain, imported)",retail,kg,556.0,556.0,475.79,657.32,793.75,4,-0.3,watch low
-2026-10-01,South-West,5264,Kumba,58,Wheat flour,retail,kg,500.0,500.0,427.87,591.11,537.5,2,-0.07,not enough history
-2026-10-01,South-West,5267,Mamfé,78,Beans (red),retail,kg,620.0,619.04,529.73,731.85,900.0,3,-0.312,watch low
-2026-10-01,South-West,5267,Mamfé,291,Cassava (fresh),retail,kg,200.0,187.77,160.68,221.99,,0,,not enough history
-2026-10-01,South-West,5267,Mamfé,744,"Fish (mackerel, fresh)",retail,kg,2500.0,2500.0,2139.33,2955.57,1846.0,4,0.354,watch high
-2026-10-01,South-West,5267,Mamfé,67,Maize (white),retail,kg,333.0,333.0,284.96,393.68,,0,,not enough history
-2026-10-01,South-West,5267,Mamfé,136,Maize (yellow),retail,kg,333.0,333.0,284.96,393.68,275.0,3,0.211,watch high
-2026-10-01,South-West,5267,Mamfé,62,Oil (palm),retail,litre,950.0,936.96,801.78,1107.7,900.0,3,0.041,normal
-2026-10-01,South-West,5267,Mamfé,225,"Rice (long grain, imported)",retail,kg,468.0,471.86,403.79,557.85,616.67,3,-0.235,watch low
-2026-10-01,South-West,5267,Mamfé,58,Wheat flour,retail,kg,456.0,456.0,390.21,539.1,625.0,2,-0.27,not enough history
+2026-10-01,Adamawa,7603,Banyo,254,Bananas,retail,kg,167.0,167.0,142.98,197.51,168.5,4,-0.009,normal
+2026-10-01,Adamawa,7603,Banyo,78,Beans (red),retail,kg,400.0,399.49,342.02,472.47,681.5,4,-0.414,alert low
+2026-10-01,Adamawa,7603,Banyo,302,Cassava (cossette),retail,kg,124.0,124.0,106.17,146.66,238.84,4,-0.481,alert low
+2026-10-01,Adamawa,7603,Banyo,291,Cassava (fresh),retail,kg,250.0,248.38,212.66,293.76,200.0,4,0.242,watch high
+2026-10-01,Adamawa,7603,Banyo,866,Cocoyam (macabo),retail,kg,385.0,385.0,329.62,455.34,385.0,4,0.0,normal
+2026-10-01,Adamawa,7603,Banyo,119,Groundnuts (shelled),retail,kg,526.0,525.74,450.12,621.79,711.135,4,-0.261,watch low
+2026-10-01,Adamawa,7603,Banyo,67,Maize (white),retail,kg,111.0,109.81,94.02,129.88,193.5,4,-0.433,alert low
+2026-10-01,Adamawa,7603,Banyo,76,Maize flour,retail,kg,264.0,267.93,229.39,316.89,425.0,3,-0.37,watch low
+2026-10-01,Adamawa,7603,Banyo,141,Meat (beef),retail,kg,2500.0,2500.0,2140.4,2956.75,2500.0,4,0.0,normal
+2026-10-01,Adamawa,7603,Banyo,173,Onions,retail,kg,362.0,368.68,315.65,436.04,850.0,3,-0.566,alert low
+2026-10-01,Adamawa,7603,Banyo,147,Plantains,retail,kg,385.0,385.0,329.62,455.34,392.5,4,-0.019,normal
+2026-10-01,Adamawa,7603,Banyo,83,Potatoes,retail,kg,400.0,398.98,341.59,471.88,250.0,4,0.596,alert high
+2026-10-01,Adamawa,7603,Banyo,148,Potatoes (Irish),retail,kg,500.0,500.0,428.08,591.35,500.0,4,0.0,normal
+2026-10-01,Adamawa,7603,Banyo,225,"Rice (long grain, imported)",retail,kg,441.0,446.85,382.57,528.48,587.5,4,-0.239,watch low
+2026-10-01,Adamawa,7603,Banyo,185,Salt,retail,kg,350.0,350.0,299.66,413.95,350.0,4,0.0,normal
+2026-10-01,Adamawa,7603,Banyo,97,Sugar,retail,kg,900.0,908.07,777.45,1073.97,1000.0,4,-0.092,normal
+2026-10-01,Adamawa,7603,Banyo,114,Tomatoes,retail,kg,500.0,499.9,428.0,591.24,571.0,4,-0.125,normal
+2026-10-01,Adamawa,7603,Banyo,58,Wheat flour,retail,kg,500.0,500.0,428.08,591.35,560.0,4,-0.107,normal
+2026-10-01,Adamawa,7604,Mayo Darlé,254,Bananas,retail,kg,174.0,173.85,148.84,205.61,232.0,3,-0.251,watch low
+2026-10-01,Adamawa,7604,Mayo Darlé,78,Beans (red),retail,kg,367.0,370.95,317.59,438.72,490.0,3,-0.243,watch low
+2026-10-01,Adamawa,7604,Mayo Darlé,291,Cassava (fresh),retail,kg,250.0,250.0,214.04,295.68,250.0,3,0.0,normal
+2026-10-01,Adamawa,7604,Mayo Darlé,866,Cocoyam (macabo),retail,kg,435.0,433.92,371.5,513.2,277.78,3,0.562,alert high
+2026-10-01,Adamawa,7604,Mayo Darlé,719,"Fish (tilapia, salted, dried)",retail,kg,2857.0,2857.0,2446.04,3378.97,3529.41,3,-0.191,normal
+2026-10-01,Adamawa,7604,Mayo Darlé,67,Maize (white),retail,kg,111.0,111.02,95.05,131.3,172.0,3,-0.355,watch low
+2026-10-01,Adamawa,7604,Mayo Darlé,76,Maize flour,retail,kg,318.0,317.36,271.71,375.34,309.0,3,0.027,normal
+2026-10-01,Adamawa,7604,Mayo Darlé,141,Meat (beef),retail,kg,3000.0,2989.8,2559.74,3536.04,2450.0,3,0.22,watch high
+2026-10-01,Adamawa,7604,Mayo Darlé,62,Oil (palm),retail,litre,1053.0,1053.0,901.53,1245.38,1053.0,3,0.0,normal
+2026-10-01,Adamawa,7604,Mayo Darlé,690,Okra (dry),retail,kg,500.0,497.96,426.33,588.93,614.585,2,-0.19,not enough history
+2026-10-01,Adamawa,7604,Mayo Darlé,173,Onions,retail,kg,526.0,526.0,450.34,622.1,579.0,3,-0.092,normal
+2026-10-01,Adamawa,7604,Mayo Darlé,147,Plantains,retail,kg,800.0,802.69,687.23,949.34,747.0,3,0.075,normal
+2026-10-01,Adamawa,7604,Mayo Darlé,83,Potatoes,retail,kg,432.0,431.94,369.81,510.86,303.0,3,0.426,alert high
+2026-10-01,Adamawa,7604,Mayo Darlé,71,Rice (local),retail,kg,292.0,300.56,257.33,355.47,417.0,3,-0.279,watch low
+2026-10-01,Adamawa,7604,Mayo Darlé,225,"Rice (long grain, imported)",retail,kg,500.0,498.45,426.76,589.52,530.3,3,-0.06,normal
+2026-10-01,Adamawa,7604,Mayo Darlé,185,Salt,retail,kg,250.0,250.0,214.04,295.68,272.22,3,-0.082,normal
+2026-10-01,Adamawa,7604,Mayo Darlé,97,Sugar,retail,kg,900.0,897.29,768.22,1061.22,817.0,3,0.098,normal
+2026-10-01,Adamawa,7604,Mayo Darlé,598,Taro,retail,kg,422.0,424.64,363.56,502.23,422.0,3,0.006,normal
+2026-10-01,Adamawa,7604,Mayo Darlé,114,Tomatoes,retail,kg,632.0,631.37,540.55,746.72,632.0,3,-0.001,normal
+2026-10-01,Adamawa,7605,Mbé,120,Beans (niebe),retail,kg,463.0,462.0,395.55,546.41,370.0,1,0.249,not enough history
+2026-10-01,Adamawa,7605,Mbé,302,Cassava (cossette),retail,kg,217.0,198.01,169.53,234.19,217.0,1,-0.088,not enough history
+2026-10-01,Adamawa,7605,Mbé,291,Cassava (fresh),retail,kg,100.0,99.91,85.54,118.17,196.0,1,-0.49,not enough history
+2026-10-01,Adamawa,7605,Mbé,866,Cocoyam (macabo),retail,kg,161.0,161.0,137.84,190.41,161.0,1,0.0,not enough history
+2026-10-01,Adamawa,7605,Mbé,719,"Fish (tilapia, salted, dried)",retail,kg,1300.0,1274.23,1090.94,1507.03,968.0,1,0.316,not enough history
+2026-10-01,Adamawa,7605,Mbé,119,Groundnuts (shelled),retail,kg,441.0,436.41,373.63,516.14,441.0,1,-0.01,not enough history
+2026-10-01,Adamawa,7605,Mbé,67,Maize (white),retail,kg,154.0,154.3,132.11,182.49,154.0,1,0.002,not enough history
+2026-10-01,Adamawa,7605,Mbé,141,Meat (beef),retail,kg,2500.0,2500.0,2140.4,2956.75,2200.0,1,0.136,not enough history
+2026-10-01,Adamawa,7605,Mbé,690,Okra (dry),retail,kg,1179.0,1176.52,1007.28,1391.46,1071.0,1,0.099,not enough history
+2026-10-01,Adamawa,7605,Mbé,173,Onions,retail,kg,456.0,435.98,373.27,515.63,370.0,1,0.178,not enough history
+2026-10-01,Adamawa,7605,Mbé,225,"Rice (long grain, imported)",retail,kg,529.0,534.62,457.72,632.3,600.0,1,-0.109,not enough history
+2026-10-01,Adamawa,7605,Mbé,185,Salt,retail,kg,321.0,321.0,274.83,379.65,321.0,1,0.0,not enough history
+2026-10-01,Adamawa,7605,Mbé,282,Sorghum (red),retail,kg,149.0,150.47,128.83,177.96,143.0,1,0.052,not enough history
+2026-10-01,Adamawa,7605,Mbé,135,Sorghum (white),retail,kg,161.0,159.85,136.86,189.06,143.0,1,0.118,not enough history
+2026-10-01,Adamawa,7605,Mbé,97,Sugar,retail,kg,750.0,763.3,653.5,902.75,800.0,1,-0.046,not enough history
+2026-10-01,Adamawa,7605,Mbé,114,Tomatoes,retail,kg,361.0,361.0,309.07,426.95,361.0,1,0.0,not enough history
+2026-10-01,Adamawa,7605,Mbé,58,Wheat flour,retail,kg,600.0,600.0,513.69,709.62,600.0,1,0.0,not enough history
+2026-10-01,Adamawa,7607,Ngaoundéré,254,Bananas,retail,kg,311.0,311.0,266.27,367.82,311.0,4,0.0,normal
+2026-10-01,Adamawa,7607,Ngaoundéré,120,Beans (niebe),retail,kg,441.0,447.76,383.36,529.57,632.0,4,-0.292,watch low
+2026-10-01,Adamawa,7607,Ngaoundéré,78,Beans (red),retail,kg,498.0,493.83,422.79,584.05,853.0,4,-0.421,alert low
+2026-10-01,Adamawa,7607,Ngaoundéré,302,Cassava (cossette),retail,kg,192.0,192.61,164.91,227.8,294.525,4,-0.346,watch low
+2026-10-01,Adamawa,7607,Ngaoundéré,291,Cassava (fresh),retail,kg,250.0,249.49,213.6,295.07,198.5,4,0.257,watch high
+2026-10-01,Adamawa,7607,Ngaoundéré,866,Cocoyam (macabo),retail,kg,261.0,261.0,223.46,308.68,261.0,4,0.0,normal
+2026-10-01,Adamawa,7607,Ngaoundéré,719,"Fish (tilapia, salted, dried)",retail,kg,1875.0,1866.79,1598.27,2207.85,1775.0,4,0.052,normal
+2026-10-01,Adamawa,7607,Ngaoundéré,119,Groundnuts (shelled),retail,kg,765.0,757.33,648.4,895.7,803.35,4,-0.057,normal
+2026-10-01,Adamawa,7607,Ngaoundéré,67,Maize (white),retail,kg,145.0,146.07,125.06,172.75,263.99,4,-0.447,alert low
+2026-10-01,Adamawa,7607,Ngaoundéré,141,Meat (beef),retail,kg,3000.0,3000.0,2568.47,3548.1,2608.5,4,0.15,normal
+2026-10-01,Adamawa,7607,Ngaoundéré,147,Plantains,retail,kg,355.0,355.0,303.94,419.86,355.0,4,0.0,normal
+2026-10-01,Adamawa,7607,Ngaoundéré,83,Potatoes,retail,kg,220.0,215.54,184.53,254.91,150.0,4,0.437,alert high
+2026-10-01,Adamawa,7607,Ngaoundéré,148,Potatoes (Irish),retail,kg,473.0,473.05,405.0,559.47,611.0,4,-0.226,watch low
+2026-10-01,Adamawa,7607,Ngaoundéré,225,"Rice (long grain, imported)",retail,kg,500.0,507.86,434.81,600.65,608.0,4,-0.165,normal
+2026-10-01,Adamawa,7607,Ngaoundéré,185,Salt,retail,kg,300.0,300.0,256.85,354.81,275.0,4,0.091,normal
+2026-10-01,Adamawa,7607,Ngaoundéré,282,Sorghum (red),retail,kg,424.0,425.7,364.46,503.47,433.0,4,-0.017,normal
+2026-10-01,Adamawa,7607,Ngaoundéré,135,Sorghum (white),retail,kg,530.0,512.77,439.02,606.46,486.5,4,0.054,normal
+2026-10-01,Adamawa,7607,Ngaoundéré,97,Sugar,retail,kg,844.0,844.3,722.85,998.55,900.0,4,-0.062,normal
+2026-10-01,Adamawa,7607,Ngaoundéré,598,Taro,retail,kg,302.0,301.93,258.5,357.09,302.0,4,-0.0,normal
+2026-10-01,Adamawa,7607,Ngaoundéré,114,Tomatoes,retail,kg,487.0,484.85,415.1,573.43,466.775,4,0.039,normal
+2026-10-01,Adamawa,7607,Ngaoundéré,58,Wheat flour,retail,kg,506.0,506.17,433.36,598.64,605.0,4,-0.163,normal
+2026-10-01,Adamawa,7599,Tibati,254,Bananas,retail,kg,313.0,313.0,267.98,370.19,312.0,4,0.003,normal
+2026-10-01,Adamawa,7599,Tibati,120,Beans (niebe),retail,kg,552.0,576.75,493.79,682.13,740.845,4,-0.221,watch low
+2026-10-01,Adamawa,7599,Tibati,78,Beans (red),retail,kg,526.0,528.37,452.37,624.9,823.0,4,-0.358,watch low
+2026-10-01,Adamawa,7599,Tibati,302,Cassava (cossette),retail,kg,148.0,148.0,126.71,175.04,207.655,4,-0.287,watch low
+2026-10-01,Adamawa,7599,Tibati,866,Cocoyam (macabo),retail,kg,145.0,145.0,124.14,171.49,145.0,3,0.0,normal
+2026-10-01,Adamawa,7599,Tibati,719,"Fish (tilapia, salted, dried)",retail,kg,1875.0,1982.95,1697.72,2345.23,2400.0,4,-0.174,normal
+2026-10-01,Adamawa,7599,Tibati,119,Groundnuts (shelled),retail,kg,602.0,597.66,511.69,706.85,783.0,4,-0.237,watch low
+2026-10-01,Adamawa,7599,Tibati,67,Maize (white),retail,kg,155.0,152.49,130.55,180.35,179.5,4,-0.15,normal
+2026-10-01,Adamawa,7599,Tibati,76,Maize flour,retail,kg,330.0,329.88,282.43,390.14,330.0,3,-0.0,normal
+2026-10-01,Adamawa,7599,Tibati,141,Meat (beef),retail,kg,2200.0,2200.0,1883.55,2601.94,2000.0,4,0.1,normal
+2026-10-01,Adamawa,7599,Tibati,62,Oil (palm),retail,litre,1000.0,1000.0,856.16,1182.7,1000.0,4,0.0,normal
+2026-10-01,Adamawa,7599,Tibati,690,Okra (dry),retail,kg,2143.0,2143.0,1834.75,2534.53,2143.0,3,0.0,normal
+2026-10-01,Adamawa,7599,Tibati,147,Plantains,retail,kg,318.0,318.0,272.26,376.1,336.5,4,-0.055,normal
+2026-10-01,Adamawa,7599,Tibati,83,Potatoes,retail,kg,250.0,245.42,210.12,290.26,194.0,4,0.265,watch high
+2026-10-01,Adamawa,7599,Tibati,225,"Rice (long grain, imported)",retail,kg,529.0,530.43,454.13,627.34,581.5,4,-0.088,normal
+2026-10-01,Adamawa,7599,Tibati,185,Salt,retail,kg,300.0,300.0,256.85,354.81,300.0,4,0.0,normal
+2026-10-01,Adamawa,7599,Tibati,97,Sugar,retail,kg,900.0,900.0,770.54,1064.43,883.335,4,0.019,normal
+2026-10-01,Adamawa,7599,Tibati,598,Taro,retail,kg,147.0,147.0,125.86,173.86,151.0,4,-0.026,normal
+2026-10-01,Adamawa,7599,Tibati,114,Tomatoes,retail,kg,625.0,625.0,535.1,739.19,580.355,4,0.077,normal
+2026-10-01,Adamawa,7599,Tibati,58,Wheat flour,retail,kg,600.0,600.0,513.69,709.62,600.0,4,0.0,normal
+2026-10-01,Centre,2613,Yaoundé-Mfoundi,254,Bananas,retail,kg,180.0,180.13,154.22,213.04,,0,,not enough history
+2026-10-01,Centre,2613,Yaoundé-Mfoundi,291,Cassava (fresh),retail,kg,195.0,195.08,167.02,230.72,,0,,not enough history
+2026-10-01,Centre,2613,Yaoundé-Mfoundi,866,Cocoyam (macabo),retail,kg,281.0,281.6,241.09,333.05,,0,,not enough history
+2026-10-01,Centre,2613,Yaoundé-Mfoundi,744,"Fish (mackerel, fresh)",retail,kg,2016.0,2017.76,1727.52,2386.41,1710.0,3,0.18,normal
+2026-10-01,Centre,2613,Yaoundé-Mfoundi,67,Maize (white),retail,kg,214.0,214.64,183.77,253.86,,0,,not enough history
+2026-10-01,Centre,2613,Yaoundé-Mfoundi,136,Maize (yellow),retail,kg,214.0,214.5,183.64,253.69,,0,,not enough history
+2026-10-01,Centre,2613,Yaoundé-Mfoundi,141,Meat (beef),retail,kg,3530.0,3539.43,3030.31,4186.09,3060.0,3,0.157,normal
+2026-10-01,Centre,2613,Yaoundé-Mfoundi,62,Oil (palm),retail,litre,976.0,976.47,836.02,1154.88,981.25,3,-0.005,normal
+2026-10-01,Centre,2613,Yaoundé-Mfoundi,147,Plantains,retail,kg,338.0,337.55,289.0,399.23,,0,,not enough history
+2026-10-01,Centre,2613,Yaoundé-Mfoundi,225,"Rice (long grain, imported)",retail,kg,590.0,588.74,504.06,696.31,645.0,3,-0.087,normal
+2026-10-01,Centre,2613,Yaoundé-Mfoundi,58,Wheat flour,retail,kg,480.0,480.12,411.06,567.84,602.5,3,-0.203,watch low
+2026-10-01,Far-North,7622,Doukoula,120,Beans (niebe),retail,kg,167.0,166.95,142.93,197.45,625.0,1,-0.733,not enough history
+2026-10-01,Far-North,7622,Doukoula,291,Cassava (fresh),retail,kg,550.0,549.98,470.87,650.47,85.71,1,5.417,not enough history
+2026-10-01,Far-North,7622,Doukoula,719,"Fish (tilapia, salted, dried)",retail,kg,1300.0,1274.23,1090.94,1507.03,938.0,4,0.358,watch high
+2026-10-01,Far-North,7622,Doukoula,119,Groundnuts (shelled),retail,kg,386.0,381.26,326.42,450.92,341.09000000000003,4,0.118,normal
+2026-10-01,Far-North,7622,Doukoula,67,Maize (white),retail,kg,97.0,97.0,83.05,114.72,97.0,4,0.0,normal
+2026-10-01,Far-North,7622,Doukoula,141,Meat (beef),retail,kg,2143.0,2143.0,1834.75,2534.53,2021.5,4,0.06,normal
+2026-10-01,Far-North,7622,Doukoula,172,Oil (cotton),retail,litre,933.0,931.96,797.9,1102.23,1033.5,4,-0.098,normal
+2026-10-01,Far-North,7622,Doukoula,222,"Oil (vegetable, local)",retail,litre,867.0,865.01,740.59,1023.05,878.0,3,-0.015,normal
+2026-10-01,Far-North,7622,Doukoula,690,Okra (dry),retail,kg,1765.0,1765.0,1511.12,2087.47,,0,,not enough history
+2026-10-01,Far-North,7622,Doukoula,173,Onions,retail,kg,200.0,200.28,171.47,236.87,291.5,4,-0.313,watch low
+2026-10-01,Far-North,7622,Doukoula,83,Potatoes,retail,kg,281.0,270.43,231.53,319.83,181.0,4,0.494,alert high
+2026-10-01,Far-North,7622,Doukoula,71,Rice (local),retail,kg,441.0,441.0,377.57,521.57,441.09000000000003,4,-0.0,normal
+2026-10-01,Far-North,7622,Doukoula,225,"Rice (long grain, imported)",retail,kg,618.0,618.52,529.55,731.52,591.2049999999999,4,0.046,normal
+2026-10-01,Far-North,7622,Doukoula,185,Salt,retail,kg,250.0,249.52,213.63,295.11,225.0,4,0.109,normal
+2026-10-01,Far-North,7622,Doukoula,282,Sorghum (red),retail,kg,171.0,173.5,148.55,205.2,126.715,2,0.369,not enough history
+2026-10-01,Far-North,7622,Doukoula,135,Sorghum (white),retail,kg,182.0,182.05,155.86,215.31,182.0,4,0.0,normal
+2026-10-01,Far-North,7622,Doukoula,97,Sugar,retail,kg,716.0,716.0,613.01,846.81,716.5,4,-0.001,normal
+2026-10-01,Far-North,7622,Doukoula,598,Taro,retail,kg,294.0,293.97,251.68,347.67,294.0,4,-0.0,normal
+2026-10-01,Far-North,7616,Fotokol,120,Beans (niebe),retail,kg,950.0,940.07,804.85,1111.82,750.0,3,0.253,watch high
+2026-10-01,Far-North,7616,Fotokol,719,"Fish (tilapia, salted, dried)",retail,kg,1438.0,1402.91,1201.11,1659.22,970.59,3,0.445,alert high
+2026-10-01,Far-North,7616,Fotokol,105,Garlic,retail,kg,1884.0,1880.51,1610.01,2224.07,1432.895,2,0.312,not enough history
+2026-10-01,Far-North,7616,Fotokol,119,Groundnuts (shelled),retail,kg,938.0,937.07,802.28,1108.27,909.09,3,0.031,normal
+2026-10-01,Far-North,7616,Fotokol,765,Leafy vegetables,retail,kg,500.0,492.45,421.62,582.43,333.0,3,0.479,alert high
+2026-10-01,Far-North,7616,Fotokol,67,Maize (white),retail,kg,218.0,218.44,187.02,258.35,306.0,3,-0.286,watch low
+2026-10-01,Far-North,7616,Fotokol,141,Meat (beef),retail,kg,2500.0,2500.0,2140.4,2956.75,947.0,3,1.64,alert high
+2026-10-01,Far-North,7616,Fotokol,222,"Oil (vegetable, local)",retail,litre,838.0,836.24,715.96,989.03,818.0,3,0.022,normal
+2026-10-01,Far-North,7616,Fotokol,690,Okra (dry),retail,kg,1617.0,1613.14,1381.1,1907.86,852.0,3,0.893,alert high
+2026-10-01,Far-North,7616,Fotokol,173,Onions,retail,kg,190.0,188.62,161.49,223.08,255.0,1,-0.26,not enough history
+2026-10-01,Far-North,7616,Fotokol,83,Potatoes,retail,kg,192.0,191.19,163.69,226.12,202.21,3,-0.054,normal
+2026-10-01,Far-North,7616,Fotokol,148,Potatoes (Irish),retail,kg,449.0,447.23,382.9,528.94,735.0,3,-0.392,watch low
+2026-10-01,Far-North,7616,Fotokol,71,Rice (local),retail,kg,453.0,452.71,387.59,535.42,553.0,3,-0.181,normal
+2026-10-01,Far-North,7616,Fotokol,225,"Rice (long grain, imported)",retail,kg,500.0,499.36,427.53,590.6,642.0,3,-0.222,watch low
+2026-10-01,Far-North,7616,Fotokol,185,Salt,retail,kg,268.0,268.0,229.45,316.96,315.0,3,-0.149,normal
+2026-10-01,Far-North,7616,Fotokol,282,Sorghum (red),retail,kg,150.0,148.77,127.37,175.95,241.61,3,-0.384,watch low
+2026-10-01,Far-North,7616,Fotokol,135,Sorghum (white),retail,kg,170.0,170.0,145.55,201.06,213.0,3,-0.202,watch low
+2026-10-01,Far-North,7616,Fotokol,97,Sugar,retail,kg,762.0,761.41,651.89,900.52,769.23,3,-0.01,normal
+2026-10-01,Far-North,7616,Fotokol,598,Taro,retail,kg,773.0,760.4,651.02,899.32,696.415,2,0.092,not enough history
+2026-10-01,Far-North,7616,Fotokol,114,Tomatoes,retail,kg,375.0,374.06,320.25,442.4,375.0,3,-0.003,normal
+2026-10-01,Far-North,7614,Gazawa,120,Beans (niebe),retail,kg,435.0,432.85,370.59,511.93,387.93,3,0.116,normal
+2026-10-01,Far-North,7614,Gazawa,719,"Fish (tilapia, salted, dried)",retail,kg,1375.0,1358.17,1162.8,1606.3,875.0,3,0.552,alert high
+2026-10-01,Far-North,7614,Gazawa,67,Maize (white),retail,kg,144.0,145.4,124.49,171.97,210.67,3,-0.31,watch low
+2026-10-01,Far-North,7614,Gazawa,141,Meat (beef),retail,kg,2700.0,2691.25,2304.14,3182.94,2100.0,3,0.282,watch high
+2026-10-01,Far-North,7614,Gazawa,523,Okra (fresh),retail,kg,225.0,226.82,194.19,268.26,275.0,2,-0.175,not enough history
+2026-10-01,Far-North,7614,Gazawa,173,Onions,retail,kg,205.0,203.46,174.2,240.64,228.5,2,-0.11,not enough history
+2026-10-01,Far-North,7614,Gazawa,83,Potatoes,retail,kg,200.0,183.17,156.82,216.63,165.515,2,0.107,not enough history
+2026-10-01,Far-North,7614,Gazawa,71,Rice (local),retail,kg,416.0,414.61,354.97,490.36,394.0,3,0.052,normal
+2026-10-01,Far-North,7614,Gazawa,225,"Rice (long grain, imported)",retail,kg,500.0,502.78,430.46,594.63,500.0,3,0.006,normal
+2026-10-01,Far-North,7614,Gazawa,185,Salt,retail,kg,300.0,300.0,256.85,354.81,300.0,3,0.0,normal
+2026-10-01,Far-North,7614,Gazawa,282,Sorghum (red),retail,kg,115.0,116.74,99.95,138.07,229.69,3,-0.492,alert low
+2026-10-01,Far-North,7614,Gazawa,135,Sorghum (white),retail,kg,188.0,188.26,161.18,222.65,217.0,3,-0.132,normal
+2026-10-01,Far-North,7614,Gazawa,97,Sugar,retail,kg,900.0,892.12,763.8,1055.12,750.0,3,0.189,normal
+2026-10-01,Far-North,7614,Gazawa,114,Tomatoes,retail,kg,333.0,333.0,285.1,393.84,250.0,3,0.332,watch high
+2026-10-01,Far-North,7623,Gobo,120,Beans (niebe),retail,kg,411.0,413.23,353.79,488.72,396.83,3,0.041,normal
+2026-10-01,Far-North,7623,Gobo,719,"Fish (tilapia, salted, dried)",retail,kg,1500.0,1508.62,1291.62,1784.25,1875.0,3,-0.195,normal
+2026-10-01,Far-North,7623,Gobo,119,Groundnuts (shelled),retail,kg,467.0,482.98,413.51,571.22,489.0,3,-0.012,normal
+2026-10-01,Far-North,7623,Gobo,67,Maize (white),retail,kg,250.0,245.31,210.02,290.13,193.55,3,0.267,watch high
+2026-10-01,Far-North,7623,Gobo,141,Meat (beef),retail,kg,2000.0,2000.0,1712.32,2365.4,1700.0,3,0.176,normal
+2026-10-01,Far-North,7623,Gobo,222,"Oil (vegetable, local)",retail,litre,1167.0,1166.46,998.67,1379.57,1200.0,3,-0.028,normal
+2026-10-01,Far-North,7623,Gobo,690,Okra (dry),retail,kg,981.0,986.48,844.58,1166.71,530.77,3,0.859,alert high
+2026-10-01,Far-North,7623,Gobo,173,Onions,retail,kg,169.0,167.95,143.79,198.63,211.5,2,-0.206,not enough history
+2026-10-01,Far-North,7623,Gobo,71,Rice (local),retail,kg,387.0,389.01,333.06,460.09,401.0,3,-0.03,normal
+2026-10-01,Far-North,7623,Gobo,225,"Rice (long grain, imported)",retail,kg,441.0,437.2,374.32,517.08,375.0,3,0.166,normal
+2026-10-01,Far-North,7623,Gobo,282,Sorghum (red),retail,kg,149.0,150.01,128.43,177.42,184.0,3,-0.185,normal
+2026-10-01,Far-North,7623,Gobo,135,Sorghum (white),retail,kg,139.0,137.64,117.84,162.78,173.785,2,-0.208,not enough history
+2026-10-01,Far-North,7623,Gobo,97,Sugar,retail,kg,959.0,958.78,820.87,1133.95,863.0,3,0.111,normal
+2026-10-01,Far-North,7623,Gobo,114,Tomatoes,retail,kg,357.0,355.55,304.41,420.51,250.0,3,0.422,alert high
+2026-10-01,Far-North,2309,Kaele,120,Beans (niebe),retail,kg,455.0,452.89,387.75,535.63,533.33,5,-0.151,normal
+2026-10-01,Far-North,2309,Kaele,719,"Fish (tilapia, salted, dried)",retail,kg,1500.0,1506.44,1289.75,1781.66,2307.69,3,-0.347,watch low
+2026-10-01,Far-North,2309,Kaele,119,Groundnuts (shelled),retail,kg,695.0,704.16,602.87,832.81,639.0,5,0.102,normal
+2026-10-01,Far-North,2309,Kaele,765,Leafy vegetables,retail,kg,931.0,948.81,812.34,1122.16,598.04,2,0.587,not enough history
+2026-10-01,Far-North,2309,Kaele,67,Maize (white),retail,kg,190.0,190.32,162.94,225.09,339.0,5,-0.439,alert low
+2026-10-01,Far-North,2309,Kaele,141,Meat (beef),retail,kg,2500.0,2500.0,2140.4,2956.75,2000.0,5,0.25,watch high
+2026-10-01,Far-North,2309,Kaele,172,Oil (cotton),retail,litre,1325.0,1322.37,1132.16,1563.97,1500.0,5,-0.118,normal
+2026-10-01,Far-North,2309,Kaele,222,"Oil (vegetable, local)",retail,litre,1267.0,1266.7,1084.5,1498.13,1483.335,2,-0.146,not enough history
+2026-10-01,Far-North,2309,Kaele,690,Okra (dry),retail,kg,918.0,915.38,783.71,1082.62,567.5699999999999,2,0.613,not enough history
+2026-10-01,Far-North,2309,Kaele,173,Onions,retail,kg,411.0,409.8,350.85,484.67,666.67,5,-0.385,watch low
+2026-10-01,Far-North,2309,Kaele,83,Potatoes,retail,kg,381.0,378.66,324.19,447.84,296.775,4,0.276,watch high
+2026-10-01,Far-North,2309,Kaele,71,Rice (local),retail,kg,464.0,464.72,397.88,549.63,476.19,5,-0.024,normal
+2026-10-01,Far-North,2309,Kaele,225,"Rice (long grain, imported)",retail,kg,550.0,549.59,470.54,650.0,550.0,5,-0.001,normal
+2026-10-01,Far-North,2309,Kaele,185,Salt,retail,kg,294.0,294.01,251.72,347.72,300.0,5,-0.02,normal
+2026-10-01,Far-North,2309,Kaele,282,Sorghum (red),retail,kg,155.0,160.71,137.59,190.07,256.0,5,-0.372,watch low
+2026-10-01,Far-North,2309,Kaele,135,Sorghum (white),retail,kg,199.0,198.46,169.91,234.72,341.67,5,-0.419,alert low
+2026-10-01,Far-North,2309,Kaele,97,Sugar,retail,kg,800.0,800.0,684.93,946.16,933.0,5,-0.143,normal
+2026-10-01,Far-North,1590,Kousseri,120,Beans (niebe),retail,kg,364.0,365.91,313.28,432.77,695.5,4,-0.474,alert low
+2026-10-01,Far-North,1590,Kousseri,866,Cocoyam (macabo),retail,kg,789.0,789.0,675.51,933.15,557.13,4,0.416,alert high
+2026-10-01,Far-North,1590,Kousseri,719,"Fish (tilapia, salted, dried)",retail,kg,1694.0,1667.02,1427.24,1971.59,1574.94,4,0.058,normal
+2026-10-01,Far-North,1590,Kousseri,105,Garlic,retail,kg,1889.0,1895.05,1622.46,2241.27,2293.105,2,-0.174,not enough history
+2026-10-01,Far-North,1590,Kousseri,119,Groundnuts (shelled),retail,kg,772.0,767.96,657.5,908.27,894.5,4,-0.141,normal
+2026-10-01,Far-North,1590,Kousseri,67,Maize (white),retail,kg,208.0,208.28,178.32,246.33,398.5,4,-0.477,alert low
+2026-10-01,Far-North,1590,Kousseri,141,Meat (beef),retail,kg,3000.0,3000.0,2568.47,3548.1,2487.5,4,0.206,watch high
+2026-10-01,Far-North,1590,Kousseri,172,Oil (cotton),retail,litre,1467.0,1465.64,1254.82,1733.41,1704.0,4,-0.14,normal
+2026-10-01,Far-North,1590,Kousseri,222,"Oil (vegetable, local)",retail,litre,1372.0,1369.35,1172.38,1619.54,1483.0,3,-0.077,normal
+2026-10-01,Far-North,1590,Kousseri,690,Okra (dry),retail,kg,2614.0,2602.81,2228.41,3078.34,1301.0,3,1.001,alert high
+2026-10-01,Far-North,1590,Kousseri,173,Onions,retail,kg,221.0,214.63,183.76,253.84,337.0,4,-0.363,watch low
+2026-10-01,Far-North,1590,Kousseri,83,Potatoes,retail,kg,200.0,199.29,170.62,235.7,348.5,4,-0.428,alert low
+2026-10-01,Far-North,1590,Kousseri,148,Potatoes (Irish),retail,kg,909.0,907.67,777.11,1073.5,1104.5,2,-0.178,not enough history
+2026-10-01,Far-North,1590,Kousseri,71,Rice (local),retail,kg,420.0,415.67,355.88,491.61,539.0,4,-0.229,watch low
+2026-10-01,Far-North,1590,Kousseri,225,"Rice (long grain, imported)",retail,kg,503.0,502.52,430.24,594.33,592.0,4,-0.151,normal
+2026-10-01,Far-North,1590,Kousseri,282,Sorghum (red),retail,kg,156.0,150.71,129.03,178.24,273.0,3,-0.448,alert low
+2026-10-01,Far-North,1590,Kousseri,135,Sorghum (white),retail,kg,170.0,162.13,138.81,191.76,291.0,3,-0.443,alert low
+2026-10-01,Far-North,1590,Kousseri,97,Sugar,retail,kg,1000.0,1000.0,856.16,1182.7,1050.0,4,-0.048,normal
+2026-10-01,Far-North,1590,Kousseri,598,Taro,retail,kg,181.0,180.97,154.94,214.03,260.0,3,-0.304,watch low
+2026-10-01,Far-North,1590,Kousseri,114,Tomatoes,retail,kg,356.0,345.49,295.8,408.61,700.735,4,-0.507,alert low
+2026-10-01,Far-North,1590,Kousseri,58,Wheat flour,retail,kg,500.0,500.0,428.08,591.35,599.0,3,-0.165,normal
+2026-10-01,Far-North,7631,Koza,120,Beans (niebe),retail,kg,440.0,443.29,379.53,524.28,364.0,2,0.218,not enough history
+2026-10-01,Far-North,7631,Koza,719,"Fish (tilapia, salted, dried)",retail,kg,2813.0,2761.0,2363.85,3265.44,1786.0,2,0.546,not enough history
+2026-10-01,Far-North,7631,Koza,105,Garlic,retail,kg,4327.0,4326.47,3704.15,5116.92,1615.0,1,1.679,not enough history
+2026-10-01,Far-North,7631,Koza,119,Groundnuts (shelled),retail,kg,448.0,443.69,379.87,524.75,462.0,2,-0.04,not enough history
+2026-10-01,Far-North,7631,Koza,67,Maize (white),retail,kg,120.0,121.06,103.64,143.17,470.0,2,-0.742,not enough history
+2026-10-01,Far-North,7631,Koza,141,Meat (beef),retail,kg,2000.0,1999.25,1711.68,2364.52,1850.0,2,0.081,not enough history
+2026-10-01,Far-North,7631,Koza,172,Oil (cotton),retail,litre,1500.0,1500.0,1284.24,1774.05,1500.0,2,0.0,not enough history
+2026-10-01,Far-North,7631,Koza,222,"Oil (vegetable, local)",retail,litre,1500.0,1500.0,1284.24,1774.05,1500.0,2,0.0,not enough history
+2026-10-01,Far-North,7631,Koza,173,Onions,retail,kg,148.0,165.56,141.75,195.81,459.0,2,-0.639,not enough history
+2026-10-01,Far-North,7631,Koza,71,Rice (local),retail,kg,350.0,349.83,299.51,413.74,219.0,1,0.597,not enough history
+2026-10-01,Far-North,7631,Koza,225,"Rice (long grain, imported)",retail,kg,500.0,500.0,428.08,591.35,700.0,2,-0.286,not enough history
+2026-10-01,Far-North,7631,Koza,282,Sorghum (red),retail,kg,105.0,108.46,92.86,128.27,222.0,2,-0.511,not enough history
+2026-10-01,Far-North,7631,Koza,135,Sorghum (white),retail,kg,110.0,112.35,96.19,132.87,224.0,2,-0.498,not enough history
+2026-10-01,Far-North,7631,Koza,97,Sugar,retail,kg,1000.0,1000.0,856.16,1182.7,900.0,2,0.111,not enough history
+2026-10-01,Far-North,7631,Koza,114,Tomatoes,retail,kg,153.0,153.62,131.52,181.68,256.0,2,-0.4,not enough history
+2026-10-01,Far-North,7631,Koza,58,Wheat flour,retail,kg,600.0,600.0,513.69,709.62,600.0,2,0.0,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,120,Beans (niebe),retail,kg,700.0,700.61,599.84,828.61,448.5,2,0.562,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,92,Eggs,retail,piece,100.0,99.96,85.58,118.22,100.0,1,-0.0,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,171,Fish (dry),retail,kg,1500.0,1513.04,1295.4,1789.47,1500.0,1,0.009,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,719,"Fish (tilapia, salted, dried)",retail,kg,2313.0,2259.37,1934.38,2672.16,970.5,2,1.328,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,119,Groundnuts (shelled),retail,kg,681.0,680.59,582.69,804.93,885.0,2,-0.231,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,67,Maize (white),retail,kg,266.67,266.96,228.56,315.74,608.0,1,-0.561,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,141,Meat (beef),retail,kg,3083.3,3082.82,2639.38,3646.06,2100.0,1,0.468,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,238,Milk (powder),retail,kg,8750.0,8749.65,7491.08,10348.21,7500.0,1,0.167,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,172,Oil (cotton),retail,litre,1700.0,1698.65,1454.31,2008.99,1775.0,1,-0.043,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,222,"Oil (vegetable, local)",retail,litre,1250.0,1247.49,1068.05,1475.41,1172.5,2,0.064,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,690,Okra (dry),retail,kg,1369.0,1368.26,1171.44,1618.24,1060.73,2,0.29,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,173,Onions,retail,kg,500.0,428.52,366.88,506.82,850.0,1,-0.496,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,71,Rice (local),retail,kg,500.0,477.8,409.07,565.09,521.0,2,-0.083,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,225,"Rice (long grain, imported)",retail,kg,716.67,716.48,613.42,847.39,650.0,1,0.102,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,185,Salt,retail,kg,331.0,331.0,283.39,391.47,453.0,2,-0.269,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,282,Sorghum (red),retail,kg,300.0,231.38,198.1,273.65,185.0,1,0.251,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,135,Sorghum (white),retail,kg,380.0,277.76,237.8,328.5,470.5,2,-0.41,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,97,Sugar,retail,kg,900.0,885.44,758.08,1047.21,1065.0,2,-0.169,not enough history
+2026-10-01,Far-North,1591,Logone-Birni,58,Wheat flour,retail,kg,566.0,566.0,484.59,669.41,651.19,2,-0.131,not enough history
+2026-10-01,Far-North,2307,Maroua,120,Beans (niebe),retail,kg,500.0,503.43,431.02,595.41,712.5,4,-0.293,watch low
+2026-10-01,Far-North,2307,Maroua,78,Beans (red),retail,kg,1000.0,952.12,815.16,1126.07,1250.0,4,-0.238,watch low
+2026-10-01,Far-North,2307,Maroua,92,Eggs,retail,piece,93.0,94.04,80.52,111.23,100.0,4,-0.06,normal
+2026-10-01,Far-North,2307,Maroua,744,"Fish (mackerel, fresh)",retail,kg,2266.7,2269.07,1942.68,2683.63,1939.5,4,0.17,normal
+2026-10-01,Far-North,2307,Maroua,719,"Fish (tilapia, salted, dried)",retail,kg,4166.7,3839.25,3287.0,4540.68,1833.0,3,1.095,alert high
+2026-10-01,Far-North,2307,Maroua,119,Groundnuts (shelled),retail,kg,1000.0,990.21,847.77,1171.12,754.165,4,0.313,watch high
+2026-10-01,Far-North,2307,Maroua,67,Maize (white),retail,kg,200.0,200.44,171.61,237.07,325.0,4,-0.383,watch low
+2026-10-01,Far-North,2307,Maroua,141,Meat (beef),retail,kg,2333.0,2383.06,2040.28,2818.45,2500.0,4,-0.047,normal
+2026-10-01,Far-North,2307,Maroua,238,Milk (powder),retail,kg,8750.0,8750.0,7491.39,10348.63,7896.25,4,0.108,normal
+2026-10-01,Far-North,2307,Maroua,172,Oil (cotton),retail,litre,1300.0,1298.64,1111.84,1535.9,1243.75,4,0.044,normal
+2026-10-01,Far-North,2307,Maroua,62,Oil (palm),retail,litre,1000.0,1000.0,856.16,1182.7,983.335,4,0.017,normal
+2026-10-01,Far-North,2307,Maroua,756,"Oil (vegetable, bulk)",retail,litre,1200.0,1200.0,1027.39,1419.24,1197.915,4,0.002,normal
+2026-10-01,Far-North,2307,Maroua,523,Okra (fresh),retail,kg,500.0,501.75,429.58,593.43,704.25,2,-0.288,not enough history
+2026-10-01,Far-North,2307,Maroua,173,Onions,retail,kg,683.0,633.33,542.23,749.04,766.5,4,-0.174,normal
+2026-10-01,Far-North,2307,Maroua,147,Plantains,retail,kg,1000.0,969.19,829.78,1146.26,558.5,4,0.735,alert high
+2026-10-01,Far-North,2307,Maroua,83,Potatoes,retail,kg,300.0,300.37,257.16,355.25,333.41499999999996,4,-0.099,normal
+2026-10-01,Far-North,2307,Maroua,148,Potatoes (Irish),retail,kg,500.0,504.99,432.35,597.25,566.5,4,-0.109,normal
+2026-10-01,Far-North,2307,Maroua,71,Rice (local),retail,kg,483.0,482.99,413.52,571.23,568.75,4,-0.151,normal
+2026-10-01,Far-North,2307,Maroua,225,"Rice (long grain, imported)",retail,kg,583.0,579.35,496.01,685.19,585.75,4,-0.011,normal
+2026-10-01,Far-North,2307,Maroua,185,Salt,retail,kg,300.0,300.27,257.08,355.13,302.0,4,-0.006,normal
+2026-10-01,Far-North,2307,Maroua,282,Sorghum (red),retail,kg,200.0,197.39,168.99,233.45,325.0,4,-0.393,watch low
+2026-10-01,Far-North,2307,Maroua,135,Sorghum (white),retail,kg,250.0,244.7,209.51,289.41,381.25,4,-0.358,watch low
+2026-10-01,Far-North,2307,Maroua,97,Sugar,retail,kg,1000.0,999.41,855.65,1182.0,812.5,4,0.23,watch high
+2026-10-01,Far-North,2307,Maroua,58,Wheat flour,retail,kg,500.0,500.0,428.08,591.35,591.5,3,-0.155,normal
+2026-10-01,Far-North,2307,Maroua,99,Yam,retail,kg,1000.0,993.45,850.55,1174.95,796.0,4,0.248,watch high
+2026-10-01,Far-North,2311,Mokolo,120,Beans (niebe),retail,kg,519.0,515.1,441.01,609.21,550.0,5,-0.063,normal
+2026-10-01,Far-North,2311,Mokolo,719,"Fish (tilapia, salted, dried)",retail,kg,1300.0,1293.61,1107.53,1529.95,1229.0,4,0.053,normal
+2026-10-01,Far-North,2311,Mokolo,105,Garlic,retail,kg,2000.0,2059.76,1763.48,2436.08,1000.0,1,1.06,not enough history
+2026-10-01,Far-North,2311,Mokolo,67,Maize (white),retail,kg,167.0,164.01,140.42,193.97,267.0,5,-0.386,watch low
+2026-10-01,Far-North,2311,Mokolo,141,Meat (beef),retail,kg,2333.0,2350.25,2012.19,2779.65,2100.0,5,0.119,normal
+2026-10-01,Far-North,2311,Mokolo,172,Oil (cotton),retail,litre,1333.0,1337.26,1144.91,1581.58,1433.0,5,-0.067,normal
+2026-10-01,Far-North,2311,Mokolo,222,"Oil (vegetable, local)",retail,litre,1500.0,1499.38,1283.71,1773.31,1400.0,3,0.071,normal
+2026-10-01,Far-North,2311,Mokolo,690,Okra (dry),retail,kg,1429.0,1428.22,1222.78,1689.16,842.675,2,0.695,not enough history
+2026-10-01,Far-North,2311,Mokolo,173,Onions,retail,kg,338.0,334.37,286.27,395.46,733.5,4,-0.544,alert low
+2026-10-01,Far-North,2311,Mokolo,148,Potatoes (Irish),retail,kg,303.0,302.33,258.84,357.57,250.0,5,0.209,watch high
+2026-10-01,Far-North,2311,Mokolo,225,"Rice (long grain, imported)",retail,kg,441.0,450.46,385.66,532.75,600.0,5,-0.249,watch low
+2026-10-01,Far-North,2311,Mokolo,185,Salt,retail,kg,350.0,350.0,299.66,413.95,333.0,5,0.051,normal
+2026-10-01,Far-North,2311,Mokolo,282,Sorghum (red),retail,kg,186.0,185.74,159.02,219.67,267.0,5,-0.304,watch low
+2026-10-01,Far-North,2311,Mokolo,135,Sorghum (white),retail,kg,251.0,251.86,215.63,297.88,324.0,5,-0.223,watch low
+2026-10-01,Far-North,2311,Mokolo,97,Sugar,retail,kg,700.0,700.0,599.31,827.89,800.0,5,-0.125,normal
+2026-10-01,Far-North,2311,Mokolo,114,Tomatoes,retail,kg,417.0,424.88,363.77,502.51,550.735,4,-0.229,watch low
+2026-10-01,Far-North,2311,Mokolo,58,Wheat flour,retail,kg,500.0,500.0,428.08,591.35,575.0,4,-0.13,normal
+2026-10-01,Far-North,2310,Mora,58,Wheat flour,retail,kg,500.0,490.34,419.81,579.93,538.0,3,-0.089,normal
+2026-10-01,Far-North,7615,Salak,120,Beans (niebe),retail,kg,368.0,369.34,316.22,436.82,433.635,4,-0.148,normal
+2026-10-01,Far-North,7615,Salak,719,"Fish (tilapia, salted, dried)",retail,kg,1000.0,914.19,782.69,1081.21,973.5,4,-0.061,normal
+2026-10-01,Far-North,7615,Salak,67,Maize (white),retail,kg,158.0,158.15,135.4,187.04,211.935,4,-0.254,watch low
+2026-10-01,Far-North,7615,Salak,141,Meat (beef),retail,kg,2500.0,2497.73,2138.45,2954.06,2088.5,4,0.196,normal
+2026-10-01,Far-North,7615,Salak,172,Oil (cotton),retail,litre,1296.0,1292.0,1106.16,1528.05,1414.0,4,-0.086,normal
+2026-10-01,Far-North,7615,Salak,222,"Oil (vegetable, local)",retail,litre,1246.0,1243.45,1064.59,1470.63,1300.0,3,-0.043,normal
+2026-10-01,Far-North,7615,Salak,690,Okra (dry),retail,kg,705.0,707.01,605.31,836.18,659.26,3,0.072,normal
+2026-10-01,Far-North,7615,Salak,173,Onions,retail,kg,218.0,207.17,177.37,245.02,320.0,2,-0.353,not enough history
+2026-10-01,Far-North,7615,Salak,83,Potatoes,retail,kg,200.0,201.58,172.59,238.41,194.0,4,0.039,normal
+2026-10-01,Far-North,7615,Salak,148,Potatoes (Irish),retail,kg,545.0,545.0,466.61,644.57,545.0,4,0.0,normal
+2026-10-01,Far-North,7615,Salak,71,Rice (local),retail,kg,403.0,402.78,344.84,476.37,478.5,4,-0.158,normal
+2026-10-01,Far-North,7615,Salak,225,"Rice (long grain, imported)",retail,kg,500.0,506.0,433.22,598.45,577.0,4,-0.123,normal
+2026-10-01,Far-North,7615,Salak,185,Salt,retail,kg,200.0,200.0,171.23,236.54,200.0,4,0.0,normal
+2026-10-01,Far-North,7615,Salak,282,Sorghum (red),retail,kg,122.0,121.44,103.98,143.63,214.515,4,-0.434,alert low
+2026-10-01,Far-North,7615,Salak,135,Sorghum (white),retail,kg,128.0,126.3,108.13,149.38,230.5,4,-0.452,alert low
+2026-10-01,Far-North,7615,Salak,97,Sugar,retail,kg,763.0,762.53,652.85,901.85,800.0,4,-0.047,normal
+2026-10-01,Far-North,7615,Salak,598,Taro,retail,kg,400.0,370.02,316.8,437.63,333.5,4,0.11,normal
+2026-10-01,Far-North,2308,Yagoua,120,Beans (niebe),retail,kg,850.0,832.64,712.87,984.76,516.5,4,0.612,alert high
+2026-10-01,Far-North,2308,Yagoua,291,Cassava (fresh),retail,kg,129.0,129.6,110.96,153.28,113.0,3,0.147,normal
+2026-10-01,Far-North,2308,Yagoua,92,Eggs,retail,piece,91.67,91.67,78.48,108.42,100.0,4,-0.083,normal
+2026-10-01,Far-North,2308,Yagoua,719,"Fish (tilapia, salted, dried)",retail,kg,2813.0,2793.8,2391.93,3304.22,3000.0,3,-0.069,normal
+2026-10-01,Far-North,2308,Yagoua,119,Groundnuts (shelled),retail,kg,500.0,499.18,427.38,590.38,750.0,3,-0.334,watch low
+2026-10-01,Far-North,2308,Yagoua,67,Maize (white),retail,kg,250.0,248.7,212.93,294.14,340.5,4,-0.27,watch low
+2026-10-01,Far-North,2308,Yagoua,141,Meat (beef),retail,kg,2725.0,2721.59,2330.11,3218.82,2479.51,4,0.098,normal
+2026-10-01,Far-North,2308,Yagoua,238,Milk (powder),retail,kg,8500.0,8521.66,7295.89,10078.57,8500.0,3,0.003,normal
+2026-10-01,Far-North,2308,Yagoua,172,Oil (cotton),retail,litre,1418.0,1425.05,1220.07,1685.41,1551.5,4,-0.082,normal
+2026-10-01,Far-North,2308,Yagoua,62,Oil (palm),retail,litre,1400.0,1399.45,1198.15,1655.13,1233.0,3,0.135,normal
+2026-10-01,Far-North,2308,Yagoua,756,"Oil (vegetable, bulk)",retail,litre,1300.0,1298.76,1111.94,1536.04,1217.0,3,0.067,normal
+2026-10-01,Far-North,2308,Yagoua,222,"Oil (vegetable, local)",retail,litre,1228.0,1229.95,1053.03,1454.66,1289.0,3,-0.046,normal
+2026-10-01,Far-North,2308,Yagoua,690,Okra (dry),retail,kg,1000.0,999.67,855.88,1182.31,844.0,3,0.184,normal
+2026-10-01,Far-North,2308,Yagoua,523,Okra (fresh),retail,kg,688.0,702.86,601.76,831.28,647.785,4,0.085,normal
+2026-10-01,Far-North,2308,Yagoua,173,Onions,retail,kg,548.0,532.21,455.65,629.44,667.835,4,-0.203,watch low
+2026-10-01,Far-North,2308,Yagoua,83,Potatoes,retail,kg,500.0,500.0,428.08,591.35,500.0,3,0.0,normal
+2026-10-01,Far-North,2308,Yagoua,71,Rice (local),retail,kg,500.0,499.97,428.05,591.31,450.16499999999996,4,0.111,normal
+2026-10-01,Far-North,2308,Yagoua,225,"Rice (long grain, imported)",retail,kg,616.67,616.67,527.97,729.34,500.0,3,0.233,watch high
+2026-10-01,Far-North,2308,Yagoua,185,Salt,retail,kg,400.0,400.0,342.46,473.08,375.0,4,0.067,normal
+2026-10-01,Far-North,2308,Yagoua,282,Sorghum (red),retail,kg,180.0,186.45,159.63,220.51,299.56,4,-0.378,watch low
+2026-10-01,Far-North,2308,Yagoua,135,Sorghum (white),retail,kg,195.0,195.51,167.38,231.23,337.58500000000004,4,-0.421,alert low
+2026-10-01,Far-North,2308,Yagoua,97,Sugar,retail,kg,900.0,900.0,770.54,1064.43,800.0,4,0.125,normal
+2026-10-01,Far-North,2308,Yagoua,114,Tomatoes,retail,kg,880.0,872.98,747.41,1032.47,360.0,3,1.425,alert high
+2026-10-01,Far-North,2308,Yagoua,99,Yam,retail,kg,2000.0,1999.7,1712.06,2365.04,1500.0,2,0.333,not enough history
+2026-10-01,Littoral,5261,Douala-Marché Central,254,Bananas,retail,kg,205.0,205.02,175.53,242.48,,0,,not enough history
+2026-10-01,Littoral,5261,Douala-Marché Central,291,Cassava (fresh),retail,kg,215.0,214.95,184.03,254.22,,0,,not enough history
+2026-10-01,Littoral,5261,Douala-Marché Central,744,"Fish (mackerel, fresh)",retail,kg,2152.0,2154.32,1844.44,2547.92,1700.0,3,0.267,watch high
+2026-10-01,Littoral,5261,Douala-Marché Central,141,Meat (beef),retail,kg,3350.0,3350.0,2868.13,3962.05,3175.0,3,0.055,normal
+2026-10-01,Littoral,5261,Douala-Marché Central,62,Oil (palm),retail,litre,956.0,957.28,819.58,1132.17,960.0,3,-0.003,normal
+2026-10-01,Littoral,5261,Douala-Marché Central,225,"Rice (long grain, imported)",retail,kg,466.0,466.29,399.22,551.49,555.0,3,-0.16,normal
+2026-10-01,Littoral,5261,Douala-Marché Central,58,Wheat flour,retail,kg,480.0,480.0,410.96,567.7,565.0,3,-0.15,normal
+2026-10-01,North,1593,Garoua,254,Bananas,retail,kg,578.0,577.54,494.46,683.05,655.5550000000001,4,-0.119,normal
+2026-10-01,North,1593,Garoua,120,Beans (niebe),retail,kg,548.0,549.6,470.54,650.01,648.0,4,-0.152,normal
+2026-10-01,North,1593,Garoua,291,Cassava (fresh),retail,kg,450.0,449.35,384.71,531.44,,0,,not enough history
+2026-10-01,North,1593,Garoua,719,"Fish (tilapia, salted, dried)",retail,kg,1458.0,1556.33,1332.47,1840.68,2450.0,4,-0.365,watch low
+2026-10-01,North,1593,Garoua,105,Garlic,retail,kg,2873.0,2958.85,2533.25,3499.43,5254.0,1,-0.437,not enough history
+2026-10-01,North,1593,Garoua,119,Groundnuts (shelled),retail,kg,955.0,949.58,812.99,1123.07,994.085,4,-0.045,normal
+2026-10-01,North,1593,Garoua,67,Maize (white),retail,kg,150.0,154.75,132.49,183.02,292.865,4,-0.472,alert low
+2026-10-01,North,1593,Garoua,141,Meat (beef),retail,kg,2635.0,2634.27,2255.35,3115.55,2404.0,4,0.096,normal
+2026-10-01,North,1593,Garoua,172,Oil (cotton),retail,litre,1289.0,1287.73,1102.5,1523.0,1263.45,4,0.019,normal
+2026-10-01,North,1593,Garoua,222,"Oil (vegetable, local)",retail,litre,1180.0,1179.35,1009.71,1394.82,1363.33,3,-0.135,normal
+2026-10-01,North,1593,Garoua,523,Okra (fresh),retail,kg,400.0,402.76,344.82,476.34,1036.36,1,-0.611,not enough history
+2026-10-01,North,1593,Garoua,173,Onions,retail,kg,202.0,202.12,173.05,239.05,394.0,4,-0.487,alert low
+2026-10-01,North,1593,Garoua,83,Potatoes,retail,kg,325.0,311.01,266.27,367.83,177.5,4,0.752,alert high
+2026-10-01,North,1593,Garoua,225,"Rice (long grain, imported)",retail,kg,422.0,424.72,363.63,502.31,594.165,4,-0.285,watch low
+2026-10-01,North,1593,Garoua,185,Salt,retail,kg,279.0,279.2,239.04,330.21,284.0,4,-0.017,normal
+2026-10-01,North,1593,Garoua,282,Sorghum (red),retail,kg,167.0,174.44,149.35,206.31,338.05,4,-0.484,alert low
+2026-10-01,North,1593,Garoua,135,Sorghum (white),retail,kg,229.0,230.94,197.72,273.13,391.66499999999996,4,-0.41,alert low
+2026-10-01,North,1593,Garoua,97,Sugar,retail,kg,739.0,741.64,634.96,877.13,826.985,4,-0.103,normal
+2026-10-01,North,1593,Garoua,114,Tomatoes,retail,kg,444.0,441.65,378.13,522.34,459.5,4,-0.039,normal
+2026-10-01,North,7639,Mayo galke,120,Beans (niebe),retail,kg,395.0,391.14,334.88,462.6,700.98,2,-0.442,not enough history
+2026-10-01,North,7639,Mayo galke,291,Cassava (fresh),retail,kg,200.0,200.2,171.4,236.78,192.765,2,0.039,not enough history
+2026-10-01,North,7639,Mayo galke,719,"Fish (tilapia, salted, dried)",retail,kg,1738.0,1800.59,1541.59,2129.55,2916.665,2,-0.383,not enough history
+2026-10-01,North,7639,Mayo galke,105,Garlic,retail,kg,1765.0,1764.82,1510.96,2087.25,3636.36,1,-0.515,not enough history
+2026-10-01,North,7639,Mayo galke,119,Groundnuts (shelled),retail,kg,482.0,481.43,412.18,569.39,464.83000000000004,2,0.036,not enough history
+2026-10-01,North,7639,Mayo galke,67,Maize (white),retail,kg,153.0,151.84,130.0,179.58,231.25,2,-0.343,not enough history
+2026-10-01,North,7639,Mayo galke,141,Meat (beef),retail,kg,2000.0,2000.0,1712.32,2365.4,1818.1799999999998,2,0.1,not enough history
+2026-10-01,North,7639,Mayo galke,172,Oil (cotton),retail,litre,1500.0,1492.62,1277.92,1765.33,1500.0,2,-0.005,not enough history
+2026-10-01,North,7639,Mayo galke,222,"Oil (vegetable, local)",retail,litre,1392.0,1389.78,1189.87,1643.7,1500.0,1,-0.073,not enough history
+2026-10-01,North,7639,Mayo galke,690,Okra (dry),retail,kg,981.0,986.23,844.37,1166.42,782.61,1,0.26,not enough history
+2026-10-01,North,7639,Mayo galke,173,Onions,retail,kg,250.0,249.27,213.42,294.81,439.225,2,-0.432,not enough history
+2026-10-01,North,7639,Mayo galke,225,"Rice (long grain, imported)",retail,kg,441.0,444.58,380.63,525.81,500.0,2,-0.111,not enough history
+2026-10-01,North,7639,Mayo galke,185,Salt,retail,kg,350.0,350.0,299.66,413.95,325.0,2,0.077,not enough history
+2026-10-01,North,7639,Mayo galke,282,Sorghum (red),retail,kg,152.0,155.43,133.07,183.83,244.935,2,-0.365,not enough history
+2026-10-01,North,7639,Mayo galke,135,Sorghum (white),retail,kg,146.0,145.78,124.81,172.41,268.9,2,-0.458,not enough history
+2026-10-01,North,7639,Mayo galke,97,Sugar,retail,kg,900.0,900.0,770.54,1064.43,895.835,2,0.005,not enough history
+2026-10-01,North,7639,Mayo galke,114,Tomatoes,retail,kg,577.0,573.31,490.84,678.05,517.5,2,0.108,not enough history
+2026-10-01,North,1579,Pitoa,120,Beans (niebe),retail,kg,415.0,415.98,356.14,491.98,567.7950000000001,4,-0.267,watch low
+2026-10-01,North,1579,Pitoa,719,"Fish (tilapia, salted, dried)",retail,kg,1400.0,1410.02,1207.2,1667.63,2083.5,4,-0.323,watch low
+2026-10-01,North,1579,Pitoa,105,Garlic,retail,kg,2924.0,2918.45,2498.65,3451.65,1814.38,2,0.609,not enough history
+2026-10-01,North,1579,Pitoa,119,Groundnuts (shelled),retail,kg,542.0,536.63,459.44,634.67,586.0899999999999,4,-0.084,normal
+2026-10-01,North,1579,Pitoa,67,Maize (white),retail,kg,143.0,143.56,122.91,169.79,233.14499999999998,4,-0.384,watch low
+2026-10-01,North,1579,Pitoa,141,Meat (beef),retail,kg,2680.0,2678.08,2292.86,3167.37,2329.5,4,0.15,normal
+2026-10-01,North,1579,Pitoa,172,Oil (cotton),retail,litre,1244.0,1235.43,1057.72,1461.14,1190.5,4,0.038,normal
+2026-10-01,North,1579,Pitoa,222,"Oil (vegetable, local)",retail,litre,1233.0,1229.76,1052.87,1454.43,1306.67,3,-0.059,normal
+2026-10-01,North,1579,Pitoa,523,Okra (fresh),retail,kg,286.0,286.0,244.86,338.25,286.0,3,0.0,normal
+2026-10-01,North,1579,Pitoa,173,Onions,retail,kg,176.0,172.45,147.65,203.96,388.03499999999997,4,-0.556,alert low
+2026-10-01,North,1579,Pitoa,83,Potatoes,retail,kg,200.0,197.17,168.81,233.2,154.0,4,0.28,watch high
+2026-10-01,North,1579,Pitoa,71,Rice (local),retail,kg,381.0,379.56,324.96,448.9,458.0,4,-0.171,normal
+2026-10-01,North,1579,Pitoa,225,"Rice (long grain, imported)",retail,kg,529.0,529.13,453.02,625.81,549.5,4,-0.037,normal
+2026-10-01,North,1579,Pitoa,185,Salt,retail,kg,241.0,241.21,206.51,285.28,233.5,4,0.033,normal
+2026-10-01,North,1579,Pitoa,282,Sorghum (red),retail,kg,150.0,132.63,113.55,156.87,176.0,4,-0.246,watch low
+2026-10-01,North,1579,Pitoa,135,Sorghum (white),retail,kg,143.0,141.64,121.27,167.52,219.925,4,-0.356,watch low
+2026-10-01,North,1579,Pitoa,97,Sugar,retail,kg,717.0,719.9,616.35,851.42,762.0,4,-0.055,normal
+2026-10-01,North,1579,Pitoa,598,Taro,retail,kg,261.0,261.0,223.45,308.68,230.5,4,0.132,normal
+2026-10-01,North,1579,Pitoa,114,Tomatoes,retail,kg,580.0,576.92,493.94,682.33,281.5,4,1.049,alert high
+2026-10-01,North-West,2567,Bamenda,78,Beans (red),retail,kg,375.0,374.6,320.72,443.04,828.0,3,-0.548,alert low
+2026-10-01,North-West,2567,Bamenda,291,Cassava (fresh),retail,kg,146.0,145.88,124.9,172.54,,0,,not enough history
+2026-10-01,North-West,2567,Bamenda,744,"Fish (mackerel, fresh)",retail,kg,2538.0,2536.95,2172.03,3000.45,1624.5,4,0.562,alert high
+2026-10-01,North-West,2567,Bamenda,67,Maize (white),retail,kg,197.0,198.27,169.75,234.5,,0,,not enough history
+2026-10-01,North-West,2567,Bamenda,136,Maize (yellow),retail,kg,230.0,229.85,196.78,271.84,364.0,3,-0.369,watch low
+2026-10-01,North-West,2567,Bamenda,62,Oil (palm),retail,litre,875.0,875.0,749.14,1034.86,889.0,3,-0.016,normal
+2026-10-01,North-West,2567,Bamenda,225,"Rice (long grain, imported)",retail,kg,700.0,700.0,599.31,827.89,570.0,3,0.228,watch high
+2026-10-01,North-West,5275,Kumbo,78,Beans (red),retail,kg,252.0,249.59,213.69,295.19,721.0,3,-0.654,alert low
+2026-10-01,North-West,5275,Kumbo,291,Cassava (fresh),retail,kg,200.0,198.01,169.52,234.18,,0,,not enough history
+2026-10-01,North-West,5275,Kumbo,744,"Fish (mackerel, fresh)",retail,kg,2460.0,2458.72,2105.05,2907.92,1566.5,4,0.57,alert high
+2026-10-01,North-West,5275,Kumbo,67,Maize (white),retail,kg,159.0,159.04,136.16,188.1,,0,,not enough history
+2026-10-01,North-West,5275,Kumbo,136,Maize (yellow),retail,kg,150.0,149.81,128.26,177.19,258.0,3,-0.419,alert low
+2026-10-01,North-West,5275,Kumbo,62,Oil (palm),retail,litre,973.0,969.9,830.39,1147.1,1000.0,3,-0.03,normal
+2026-10-01,North-West,5275,Kumbo,71,Rice (local),retail,kg,412.0,411.98,352.72,487.25,,0,,not enough history
+2026-10-01,North-West,5275,Kumbo,225,"Rice (long grain, imported)",retail,kg,448.0,446.99,382.7,528.66,707.5,2,-0.368,not enough history
+2026-10-01,North-West,5269,Nkambe,78,Beans (red),retail,kg,267.0,261.18,223.61,308.89,654.335,4,-0.601,alert low
+2026-10-01,North-West,5269,Nkambe,291,Cassava (fresh),retail,kg,200.0,198.55,169.99,234.82,,0,,not enough history
+2026-10-01,North-West,5269,Nkambe,744,"Fish (mackerel, fresh)",retail,kg,2356.0,2341.09,2004.34,2768.81,1800.0,3,0.301,watch high
+2026-10-01,North-West,5269,Nkambe,67,Maize (white),retail,kg,111.0,112.26,96.11,132.77,210.0,1,-0.465,not enough history
+2026-10-01,North-West,5269,Nkambe,136,Maize (yellow),retail,kg,122.0,122.31,104.71,144.65,219.0,4,-0.442,alert low
+2026-10-01,North-West,5269,Nkambe,62,Oil (palm),retail,litre,707.0,707.17,605.45,836.38,841.5,4,-0.16,normal
+2026-10-01,North-West,5269,Nkambe,71,Rice (local),retail,kg,433.0,432.71,370.47,511.77,,0,,not enough history
+2026-10-01,North-West,5269,Nkambe,225,"Rice (long grain, imported)",retail,kg,501.0,500.18,428.23,591.56,591.5,4,-0.154,normal
+2026-10-01,North-West,5269,Nkambe,58,Wheat flour,retail,kg,489.0,488.36,418.11,577.58,531.25,2,-0.081,not enough history
+2026-10-01,South-West,4251,Buea,78,Beans (red),retail,kg,675.0,671.44,574.86,794.11,975.0,5,-0.311,watch low
+2026-10-01,South-West,4251,Buea,291,Cassava (fresh),retail,kg,179.0,174.85,149.7,206.8,,0,,not enough history
+2026-10-01,South-West,4251,Buea,744,"Fish (mackerel, fresh)",retail,kg,1840.0,1847.64,1581.88,2185.21,1700.0,5,0.087,normal
+2026-10-01,South-West,4251,Buea,67,Maize (white),retail,kg,317.0,316.4,270.88,374.2,483.33,1,-0.345,not enough history
+2026-10-01,South-West,4251,Buea,136,Maize (yellow),retail,kg,372.0,364.31,311.91,430.87,460.0,5,-0.208,watch low
+2026-10-01,South-West,4251,Buea,62,Oil (palm),retail,litre,775.0,777.39,665.57,919.42,1000.0,5,-0.223,watch low
+2026-10-01,South-West,4251,Buea,225,"Rice (long grain, imported)",retail,kg,508.0,506.65,433.77,599.22,670.0,5,-0.244,watch low
+2026-10-01,South-West,5264,Kumba,78,Beans (red),retail,kg,550.0,550.2,471.06,650.73,1166.65,4,-0.528,alert low
+2026-10-01,South-West,5264,Kumba,291,Cassava (fresh),retail,kg,145.0,145.23,124.34,171.77,,0,,not enough history
+2026-10-01,South-West,5264,Kumba,744,"Fish (mackerel, fresh)",retail,kg,2420.0,2412.4,2065.4,2853.15,1700.0,5,0.419,alert high
+2026-10-01,South-West,5264,Kumba,67,Maize (white),retail,kg,300.0,295.44,252.95,349.42,,0,,not enough history
+2026-10-01,South-West,5264,Kumba,136,Maize (yellow),retail,kg,300.0,290.43,248.66,343.5,377.0,4,-0.23,watch low
+2026-10-01,South-West,5264,Kumba,62,Oil (palm),retail,litre,760.0,761.36,651.85,900.46,944.5,4,-0.194,normal
+2026-10-01,South-West,5264,Kumba,225,"Rice (long grain, imported)",retail,kg,556.0,556.65,476.58,658.35,793.75,4,-0.299,watch low
+2026-10-01,South-West,5264,Kumba,58,Wheat flour,retail,kg,500.0,500.0,428.08,591.35,537.5,2,-0.07,not enough history
+2026-10-01,South-West,5267,Mamfé,78,Beans (red),retail,kg,620.0,620.12,530.92,733.42,900.0,3,-0.311,watch low
+2026-10-01,South-West,5267,Mamfé,291,Cassava (fresh),retail,kg,200.0,195.28,167.19,230.96,,0,,not enough history
+2026-10-01,South-West,5267,Mamfé,744,"Fish (mackerel, fresh)",retail,kg,2500.0,2500.0,2140.4,2956.75,1846.0,4,0.354,watch high
+2026-10-01,South-West,5267,Mamfé,67,Maize (white),retail,kg,333.0,332.99,285.1,393.83,,0,,not enough history
+2026-10-01,South-West,5267,Mamfé,136,Maize (yellow),retail,kg,333.0,332.99,285.09,393.83,275.0,3,0.211,watch high
+2026-10-01,South-West,5267,Mamfé,62,Oil (palm),retail,litre,950.0,935.85,801.24,1106.83,900.0,3,0.04,normal
+2026-10-01,South-West,5267,Mamfé,225,"Rice (long grain, imported)",retail,kg,468.0,467.57,400.32,553.0,616.67,3,-0.242,watch low
+2026-10-01,South-West,5267,Mamfé,58,Wheat flour,retail,kg,456.0,456.0,390.41,539.31,625.0,2,-0.27,not enough history

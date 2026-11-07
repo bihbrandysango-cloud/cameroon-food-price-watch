@@ -41,8 +41,8 @@ price_month,market,region,commodity,price_type,standard_unit,price_per_unit,nati
 2023-09-15,Ngong,North,Beans (niebe),retail,kg,5455.0,605.0,9.02
 2024-04-15,Yaoundé-Mokolo,Centre,Maize (white),wholesale,kg,1600.0,180.55555555555554,8.86
 2021-10-15,Nkambe,North-West,Yam,retail,kg,3500.0,400.0,8.75
-2022-09-15,Garoua,North,Cassava (fresh),retail,kg,1578.95,181.25,8.71
 2024-04-15,Douala-Marché Central,Littoral,Groundnuts (shelled),wholesale,kg,1565.0,179.75,8.71
+2022-09-15,Garoua,North,Cassava (fresh),retail,kg,1578.95,181.25,8.71
 2022-08-15,Garoua,North,Cassava (fresh),retail,kg,1578.95,183.76999999999998,8.59
 2022-11-15,Garoua,North,Cassava (fresh),retail,kg,1578.95,183.76999999999998,8.59
 2023-09-15,Koza,Far-North,Rice (local),retail,kg,4369.0,513.0,8.52
@@ -55,11 +55,11 @@ price_month,market,region,commodity,price_type,standard_unit,price_per_unit,nati
 2023-06-15,Mokolo,Far-North,Potatoes (Irish),retail,kg,4000.0,500.0,8.0
 2023-03-15,Garoua,North,Cassava (fresh),retail,kg,1579.0,198.5,7.95
 2023-07-15,Garoua,North,Cassava (fresh),retail,kg,1579.0,198.5,7.95
-2024-09-15,Garoua,North,Cassava (fresh),retail,kg,1579.0,200.0,7.9
 2023-10-15,Garoua,North,Cassava (fresh),retail,kg,1579.0,200.0,7.9
+2024-09-15,Garoua,North,Cassava (fresh),retail,kg,1579.0,200.0,7.9
 2024-10-15,Garoua,North,Cassava (fresh),retail,kg,1575.0,200.0,7.88
-2022-10-15,Garoua,North,Cassava (fresh),retail,kg,1578.95,202.7,7.79
 2022-06-15,Garoua,North,Cassava (fresh),retail,kg,1578.95,202.7,7.79
+2022-10-15,Garoua,North,Cassava (fresh),retail,kg,1578.95,202.7,7.79
 2023-02-15,Kousseri,Far-North,Plantains,retail,kg,2500.0,321.25,7.78
 2023-06-15,Garoua,North,Cassava (fresh),retail,kg,1579.0,205.5,7.68
 2023-05-15,Garoua,North,Cassava (fresh),retail,kg,1579.0,205.5,7.68
@@ -73,51 +73,51 @@ price_month,market,region,commodity,price_type,standard_unit,price_per_unit,nati
 2023-09-15,Mayo Darlé,Adamawa,Plantains,retail,kg,3093.0,460.0,6.72
 2022-08-15,Banyo,Adamawa,Onions,retail,kg,3896.1,583.335,6.68
 2024-04-15,Yaoundé-Mfoundi,Centre,"Fish (mackerel, fresh)",retail,kg,20000.0,3108.0,6.44
-2022-05-15,Kousseri,Far-North,Plantains,retail,kg,2500.0,395.83500000000004,6.32
 2024-04-15,Yaoundé-Mfoundi,Centre,Maize (yellow),wholesale,kg,1733.33,274.30555555555554,6.32
+2022-05-15,Kousseri,Far-North,Plantains,retail,kg,2500.0,395.83500000000004,6.32
 2023-11-15,Nkambe,North-West,"Fish (tilapia, salted, dried)",retail,kg,9000.0,1436.5,6.27
 2022-11-15,Banyo,Adamawa,Onions,retail,kg,4480.52,717.0,6.25
-2023-01-15,Banyo,Adamawa,Onions,retail,kg,3701.3,600.0,6.17
 2024-04-15,Douala-Bonaberi,Littoral,Maize (yellow),wholesale,kg,1691.67,274.30555555555554,6.17
 2024-04-15,Yaoundé-Mokolo,Centre,Maize (yellow),wholesale,kg,1693.33,274.30555555555554,6.17
+2023-01-15,Banyo,Adamawa,Onions,retail,kg,3701.3,600.0,6.17
 2022-07-15,Mokolo,Far-North,Potatoes (Irish),retail,kg,3658.33,600.0,6.1
 2024-07-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,150.0,6.06
-2022-11-15,Kousseri,Far-North,Plantains,retail,kg,2500.0,413.79,6.04
 2022-08-15,Kousseri,Far-North,Maize (white),retail,kg,1433.33,237.29,6.04
+2022-11-15,Kousseri,Far-North,Plantains,retail,kg,2500.0,413.79,6.04
 2022-05-15,Garoua,North,Cassava (fresh),retail,kg,1105.26,183.76999999999998,6.01
 2023-09-15,Ngaoundéré,Adamawa,Eggs,retail,piece,600.0,100.0,6.0
 2023-03-15,Mbaiboum,North,Plantains,retail,kg,2000.0,334.0,5.99
 2023-03-15,Kousseri,Far-North,Plantains,retail,kg,2000.0,334.0,5.99
-2025-03-15,Garoua,North,Cassava (fresh),retail,kg,1179.0,198.425,5.94
-2024-05-15,Mogode,Far-North,Garlic,retail,kg,9375.0,1579.0,5.94
 2022-10-15,Mokolo,Far-North,Yam,retail,kg,3000.0,505.0,5.94
+2024-05-15,Mogode,Far-North,Garlic,retail,kg,9375.0,1579.0,5.94
+2025-03-15,Garoua,North,Cassava (fresh),retail,kg,1179.0,198.425,5.94
 2023-03-15,Mokolo,Far-North,Potatoes (Irish),retail,kg,3083.0,529.0,5.83
 2023-03-15,Mokolo,Far-North,Yam,retail,kg,3500.0,607.5,5.76
 2023-02-15,Mbaiboum,North,Plantains,retail,kg,1833.33,321.25,5.71
 2023-04-15,Mbaiboum,North,Plantains,retail,kg,2000.0,350.0,5.71
 2024-09-15,Kousseri,Far-North,Plantains,retail,kg,2000.0,351.0,5.7
-2021-12-15,Yagoua,Far-North,Potatoes (Irish),retail,kg,2833.33,500.0,5.67
 2022-09-15,Banyo,Adamawa,Onions,retail,kg,3584.42,632.5,5.67
 2022-12-15,Banyo,Adamawa,Onions,retail,kg,3896.1,687.5,5.67
+2021-12-15,Yagoua,Far-North,Potatoes (Irish),retail,kg,2833.33,500.0,5.67
 2022-08-15,Logone-Birni,Far-North,Maize (white),retail,kg,1333.33,237.29,5.62
 2022-11-15,Mokolo,Far-North,Potatoes (Irish),retail,kg,2833.0,504.0,5.62
 2026-06-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,162.0,5.61
-2024-03-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,4000.0,720.0,5.56
 2020-03-15,Ngaoui,Adamawa,Onions,wholesale,kg,666.67,120.0,5.56
+2024-03-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,4000.0,720.0,5.56
 2023-09-15,Mayo Darlé,Adamawa,Bananas,retail,kg,2107.0,380.0,5.54
 2023-01-15,Mokolo,Far-North,Potatoes (Irish),retail,kg,3167.0,572.145,5.54
 2025-08-15,Garoua,North,Cassava (fresh),retail,kg,1105.0,200.0,5.53
-2019-03-15,Bertoua 1,East,Onions,wholesale,kg,888.89,161.11111111111111,5.52
 2019-03-15,Bertoua 2,East,Onions,wholesale,kg,888.89,161.11111111111111,5.52
+2019-03-15,Bertoua 1,East,Onions,wholesale,kg,888.89,161.11111111111111,5.52
 2026-05-15,Maroua,Far-North,Cassava (fresh),retail,kg,1053.0,192.0,5.48
 2021-06-15,Mada,Far-North,Plantains,retail,kg,2733.0,500.0,5.47
 2023-09-15,Salak,Far-North,Potatoes (Irish),retail,kg,2500.0,457.5,5.46
-2023-05-15,Mbaiboum,North,Plantains,retail,kg,2000.0,367.0,5.45
-2022-10-15,Banyo,Adamawa,Onions,retail,kg,3896.1,715.0,5.45
 2022-05-15,Logone-Birni,Far-North,Maize (white),retail,kg,1200.0,220.34,5.45
+2022-10-15,Banyo,Adamawa,Onions,retail,kg,3896.1,715.0,5.45
+2023-05-15,Mbaiboum,North,Plantains,retail,kg,2000.0,367.0,5.45
 2023-06-15,Mogode,Far-North,Garlic,retail,kg,9375.0,1723.0,5.44
-2024-02-15,Mogode,Far-North,Garlic,retail,kg,9375.0,1731.0,5.42
 2023-05-15,Mogode,Far-North,Garlic,retail,kg,9375.0,1731.0,5.42
+2024-02-15,Mogode,Far-North,Garlic,retail,kg,9375.0,1731.0,5.42
 2024-04-15,Bamenda,North-West,Oil (palm),wholesale,litre,1050.0,195.5,5.37
 2024-04-15,Douala-Sandaga,Littoral,Oil (palm),retail,litre,6400.0,1200.0,5.33
 2024-07-15,Kousseri,Far-North,Plantains,retail,kg,2000.0,375.0,5.33
@@ -125,8 +125,8 @@ price_month,market,region,commodity,price_type,standard_unit,price_per_unit,nati
 2022-07-15,Logone-Birni,Far-North,Maize (white),retail,kg,1233.33,233.15,5.29
 2024-10-15,Kousseri,Far-North,Plantains,retail,kg,2000.0,378.5,5.28
 2022-06-15,Kousseri,Far-North,Plantains,retail,kg,2183.33,413.79,5.28
-2023-08-15,Mogode,Far-North,Garlic,retail,kg,9375.0,1779.5,5.27
 2022-12-15,Kousseri,Far-North,Plantains,retail,kg,2000.0,379.17,5.27
+2023-08-15,Mogode,Far-North,Garlic,retail,kg,9375.0,1779.5,5.27
 2024-05-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,4000.0,760.0,5.26
 2022-05-15,Banyo,Adamawa,Onions,retail,kg,1948.05,370.83500000000004,5.25
 2023-10-15,Nkambe,North-West,"Fish (tilapia, salted, dried)",retail,kg,8889.0,1708.5,5.2
@@ -144,14 +144,14 @@ price_month,market,region,commodity,price_type,standard_unit,price_per_unit,nati
 2023-09-15,Ngaoui,Adamawa,"Fish (tilapia, salted, dried)",retail,kg,3250.0,661.0,4.92
 2022-07-15,Kousseri,Far-North,Plantains,retail,kg,2000.0,410.0,4.88
 2022-06-15,Banyo,Adamawa,Onions,retail,kg,1948.05,400.0,4.87
-2022-08-15,Kousseri,Far-North,Plantains,retail,kg,2000.0,411.895,4.86
 2026-04-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,187.0,4.86
+2022-08-15,Kousseri,Far-North,Plantains,retail,kg,2000.0,411.895,4.86
 2022-12-15,Mbaiboum,North,Plantains,retail,kg,1833.33,379.17,4.84
 2019-03-15,Mandjou,East,Onions,wholesale,kg,777.78,161.11111111111111,4.83
 2022-12-15,Mamfé,South-West,Cassava (cossette),retail,kg,1112.5,230.83499999999998,4.82
-2023-09-15,Ngong,North,Okra (dry),retail,kg,2778.0,578.0,4.81
 2024-11-15,Fundong,North-West,Cassava (fresh),retail,kg,1015.0,211.0,4.81
 2025-05-15,Bamenda,North-West,Okra (fresh),retail,kg,5657.0,1175.0,4.81
+2023-09-15,Ngong,North,Okra (dry),retail,kg,2778.0,578.0,4.81
 2023-10-15,Mogode,Far-North,Garlic,retail,kg,9375.0,1967.0,4.77
 2023-02-15,Maroua-Dougoy,Far-North,Potatoes,retail,kg,1000.0,210.0,4.76
 2025-06-15,Garoua,North,Cassava (fresh),retail,kg,1000.0,211.0,4.74
@@ -161,243 +161,243 @@ price_month,market,region,commodity,price_type,standard_unit,price_per_unit,nati
 2025-11-15,Doukoula,Far-North,Cassava (fresh),retail,kg,936.0,200.0,4.68
 2023-09-15,Tibati,Adamawa,Taro,retail,kg,1522.0,326.0,4.67
 2021-04-15,Bamenda-Nkwen,North-West,Yam,retail,kg,2100.0,450.0,4.67
-2025-02-15,Garoua,North,Cassava (fresh),retail,kg,978.95,210.53,4.65
 2022-10-15,Kousseri,Far-North,Yam,retail,kg,2350.0,505.0,4.65
 2023-08-15,Mbaiboum,North,Plantains,retail,kg,2000.0,430.0,4.65
-2024-04-15,Bamenda,North-West,"Fish (mackerel, fresh)",retail,kg,14375.0,3108.0,4.63
+2025-02-15,Garoua,North,Cassava (fresh),retail,kg,978.95,210.53,4.65
 2020-03-15,Meiganga,Adamawa,Onions,wholesale,kg,555.56,120.0,4.63
-2022-11-15,Kousseri,Far-North,Yam,retail,kg,2933.0,635.0,4.62
+2024-04-15,Bamenda,North-West,"Fish (mackerel, fresh)",retail,kg,14375.0,3108.0,4.63
 2026-02-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,196.85,4.62
-2024-01-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,197.0,4.61
+2022-11-15,Kousseri,Far-North,Yam,retail,kg,2933.0,635.0,4.62
 2024-02-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,197.0,4.61
 2023-02-15,Kousseri,Far-North,Potatoes (Irish),retail,kg,2533.33,550.0,4.61
+2024-01-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,197.0,4.61
 2026-03-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,198.425,4.58
-2024-10-15,Kousseri,Far-North,Potatoes (Irish),retail,kg,2000.0,436.5,4.58
 2023-03-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,198.5,4.58
+2024-10-15,Kousseri,Far-North,Potatoes (Irish),retail,kg,2000.0,436.5,4.58
 2024-03-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,198.5,4.58
 2024-08-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,198.5,4.58
 2023-12-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,198.5,4.58
-2026-03-15,Garoua,North,Cassava (fresh),retail,kg,905.26,198.425,4.56
 2024-07-15,Mogode,Far-North,Garlic,retail,kg,9375.0,2058.0,4.56
-2024-09-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,200.0,4.55
+2026-03-15,Garoua,North,Cassava (fresh),retail,kg,905.26,198.425,4.56
 2025-12-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,200.0,4.55
-2023-11-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,200.0,4.55
 2023-10-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,200.0,4.55
-2023-09-15,Bamyanga,Adamawa,"Fish (tilapia, salted, dried)",retail,kg,3000.0,661.0,4.54
-2023-09-15,Meiganga,Adamawa,"Fish (tilapia, salted, dried)",retail,kg,3000.0,661.0,4.54
-2023-01-15,Mokolo,Far-North,Yam,retail,kg,4000.0,881.0,4.54
+2024-09-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,200.0,4.55
+2023-11-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,200.0,4.55
 2022-09-15,Mbaiboum,North,Plantains,retail,kg,1833.0,404.0,4.54
+2023-09-15,Meiganga,Adamawa,"Fish (tilapia, salted, dried)",retail,kg,3000.0,661.0,4.54
+2023-09-15,Bamyanga,Adamawa,"Fish (tilapia, salted, dried)",retail,kg,3000.0,661.0,4.54
+2023-01-15,Mokolo,Far-North,Yam,retail,kg,4000.0,881.0,4.54
 2024-10-15,Doukoula,Far-North,Cassava (fresh),retail,kg,900.0,200.0,4.5
-2024-04-15,Yaoundé-Marché 8e,Centre,Oil (palm),retail,litre,5375.0,1200.0,4.48
 2023-09-15,Galim tignère,Adamawa,"Rice (long grain, imported)",retail,kg,2643.0,590.0,4.48
-2023-09-15,Ngaoundéré,Adamawa,Wheat flour,retail,kg,2700.0,605.0,4.46
+2024-04-15,Yaoundé-Marché 8e,Centre,Oil (palm),retail,litre,5375.0,1200.0,4.48
 2023-12-15,Mogode,Far-North,Garlic,retail,kg,9375.0,2104.0,4.46
 2024-04-15,Bamenda,North-West,Maize (yellow),wholesale,kg,1222.22,274.30555555555554,4.46
+2023-09-15,Ngaoundéré,Adamawa,Wheat flour,retail,kg,2700.0,605.0,4.46
 2023-06-15,Mbaiboum,North,Plantains,retail,kg,2000.0,450.0,4.44
 2022-06-15,Logone-Birni,Far-North,Maize (white),retail,kg,1000.0,225.0,4.44
 2022-11-15,Mbaiboum,North,Plantains,retail,kg,1833.33,413.79,4.43
 2024-03-15,Mokolo,Far-North,Yam,retail,kg,3000.0,677.0,4.43
-2023-03-15,Mokolo,Far-North,Leafy vegetables,retail,kg,2000.0,454.0,4.41
 2023-06-15,Zamay,Far-North,Onions,retail,kg,2000.0,453.5,4.41
+2023-03-15,Mokolo,Far-North,Leafy vegetables,retail,kg,2000.0,454.0,4.41
 2026-05-15,Logone-Birni,Far-North,Leafy vegetables,retail,kg,1750.0,400.0,4.38
 2026-03-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,2700.0,618.0,4.37
 2022-07-15,Banyo,Adamawa,Onions,retail,kg,2181.82,500.0,4.36
-2023-11-15,Garoua,North,Cassava (fresh),retail,kg,868.0,200.0,4.34
 2022-12-15,Logone-Birni,Far-North,Maize (white),retail,kg,966.67,222.67000000000002,4.34
+2023-11-15,Garoua,North,Cassava (fresh),retail,kg,868.0,200.0,4.34
 2024-03-15,Buea,South-West,Sugar,retail,kg,3900.0,900.0,4.33
-2023-08-15,Mokolo,Far-North,Potatoes (Irish),retail,kg,2167.0,502.0,4.32
+2024-06-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.09,210.53,4.32
 2024-04-15,Guider,North,Taro,retail,kg,1304.0,302.0,4.32
 2025-08-15,Mamfé,South-West,Maize (yellow),retail,kg,1450.0,335.5,4.32
+2023-08-15,Mokolo,Far-North,Potatoes (Irish),retail,kg,2167.0,502.0,4.32
 2024-04-15,Kaele,Far-North,Beans (niebe),wholesale,kg,57.0,13.2,4.32
-2024-06-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.09,210.53,4.32
 2026-02-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,2400.0,559.0,4.29
-2026-01-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,212.5,4.28
 2023-10-15,Kousseri,Far-North,Potatoes (Irish),retail,kg,1924.0,450.0,4.28
+2026-01-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,212.5,4.28
 2022-10-15,Kousseri,Far-North,Plantains,retail,kg,1750.0,409.6,4.27
 2023-05-15,Mokolo,Far-North,Potatoes,retail,kg,1333.0,314.0,4.25
 2025-10-15,Doukoula,Far-North,Cassava (fresh),retail,kg,836.0,197.0,4.24
 2026-07-15,Maroua,Far-North,Cassava (fresh),retail,kg,750.0,177.5,4.23
 2023-02-15,Banyo,Adamawa,Onions,retail,kg,2337.66,553.75,4.22
 2024-04-15,Bamenda,North-West,Beans (red),wholesale,kg,650.0,154.0,4.22
-2026-08-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,2600.0,617.0,4.21
 2023-09-15,Gobo,Far-North,"Rice (long grain, imported)",retail,kg,2483.0,590.0,4.21
+2026-08-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,2600.0,617.0,4.21
 2023-09-15,Gobo,Far-North,Sorghum (white),retail,kg,2522.0,600.0,4.2
 2023-09-15,Ngong,North,Salt,retail,kg,1450.0,346.0,4.19
 2023-03-15,Mamfé,South-West,Maize (yellow),retail,kg,1433.0,342.0,4.19
-2025-07-15,Garoua,North,Cassava (fresh),retail,kg,860.0,205.5,4.18
 2024-01-15,Mokolo,Far-North,Potatoes,retail,kg,1167.0,279.0,4.18
-2024-04-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,3000.0,720.0,4.17
+2025-07-15,Garoua,North,Cassava (fresh),retail,kg,860.0,205.5,4.18
 2022-07-15,Kousseri,Far-North,Potatoes (Irish),retail,kg,2500.0,600.0,4.17
+2024-04-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,3000.0,720.0,4.17
 2025-06-15,Mamfé,South-West,Maize (yellow),retail,kg,1500.0,359.5,4.17
 2025-09-15,Garoua,North,Cassava (fresh),retail,kg,831.58,200.0,4.16
-2025-06-15,Maroua-Dougoy,Far-North,Plantains,retail,kg,1667.0,402.0,4.15
+2024-06-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,3066.7,739.855,4.15
 2022-02-15,Kaele,Far-North,Potatoes (Irish),retail,kg,2000.0,482.33500000000004,4.15
 2025-05-15,Nkambe,North-West,"Fish (tilapia, salted, dried)",retail,kg,5872.5,1414.85,4.15
-2024-06-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,3066.7,739.855,4.15
 2022-10-15,Kousseri,Far-North,Sorghum (red),retail,kg,858.0,206.9,4.15
+2025-06-15,Maroua-Dougoy,Far-North,Plantains,retail,kg,1667.0,402.0,4.15
 2021-06-15,Kousseri,Far-North,Plantains,retail,kg,2067.0,500.0,4.13
 2024-04-15,Buea,South-West,"Rice (long grain, imported)",wholesale,kg,330.0,80.45,4.1
 2023-05-15,Kousseri,Far-North,Plantains,retail,kg,1500.0,367.0,4.09
 2026-06-15,Yagoua,Far-North,Yam,retail,kg,3166.7,777.0,4.08
 2024-08-15,Kousseri,Far-North,Potatoes (Irish),retail,kg,2000.0,493.0,4.06
 2022-08-15,Mbaiboum,North,Plantains,retail,kg,1666.67,411.895,4.05
-2023-08-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,225.0,4.04
 2023-06-15,Mokolo,Far-North,Onions,retail,kg,1833.0,453.5,4.04
-2022-06-15,Mbaiboum,North,Plantains,retail,kg,1666.67,413.79,4.03
+2023-08-15,Doukoula,Far-North,Cassava (fresh),retail,kg,909.0,225.0,4.04
 2024-11-15,Doukoula,Far-North,Cassava (fresh),retail,kg,850.0,211.0,4.03
 2022-12-15,Kousseri,Far-North,Yam,retail,kg,2500.0,620.83,4.03
+2022-06-15,Mbaiboum,North,Plantains,retail,kg,1666.67,413.79,4.03
 2023-03-15,Zamay,Far-North,Yam,retail,kg,2438.0,607.5,4.01
 2021-09-15,Kousseri,Far-North,Plantains,retail,kg,2000.0,500.0,4.0
 2023-09-15,Ngaoui,Adamawa,Yam,retail,kg,2400.0,600.0,4.0
-2021-04-15,Mada,Far-North,Plantains,retail,kg,2000.0,500.0,4.0
 2026-05-15,Maroua,Far-North,Leafy vegetables,retail,kg,1600.0,400.0,4.0
-2022-08-15,Kousseri,Far-North,Potatoes (Irish),retail,kg,2000.0,500.0,4.0
-2021-04-15,Logone-Birni,Far-North,Plantains,retail,kg,2000.0,500.0,4.0
+2021-04-15,Mada,Far-North,Plantains,retail,kg,2000.0,500.0,4.0
 2026-05-15,Mokolo,Far-North,Leafy vegetables,retail,kg,1600.0,400.0,4.0
+2021-04-15,Logone-Birni,Far-North,Plantains,retail,kg,2000.0,500.0,4.0
+2022-08-15,Kousseri,Far-North,Potatoes (Irish),retail,kg,2000.0,500.0,4.0
 2022-10-15,Kousseri,Far-North,Sorghum (white),retail,kg,921.0,230.92000000000002,3.99
 2023-09-15,Mbaiboum,North,Plantains,retail,kg,1833.0,460.0,3.98
-2026-03-15,Yagoua,Far-North,Yam,retail,kg,2000.0,508.48,3.93
 2026-07-15,Yagoua,Far-North,Yam,retail,kg,3166.7,805.24,3.93
+2026-03-15,Yagoua,Far-North,Yam,retail,kg,2000.0,508.48,3.93
 2024-08-15,Kaele,Far-North,Leafy vegetables,retail,kg,1444.0,368.0,3.92
 2021-12-15,Kaele,Far-North,Potatoes,retail,kg,850.0,216.67,3.92
 2024-03-15,Mogode,Far-North,Garlic,retail,kg,9375.0,2399.0,3.91
 2023-09-15,Banyo,Adamawa,"Rice (long grain, imported)",retail,kg,2300.0,590.0,3.9
 2025-11-15,Mamfé,South-West,Leafy vegetables,retail,kg,1613.3,415.0,3.89
 2022-01-15,Yagoua,Far-North,Potatoes (Irish),retail,kg,2250.0,578.33,3.89
-2023-08-15,Kousseri,Far-North,Plantains,retail,kg,1667.0,430.0,3.88
 2023-07-15,Zamay,Far-North,Yam,retail,kg,3000.0,773.0,3.88
-2021-10-15,Kaele,Far-North,Plantains,retail,kg,2000.0,516.665,3.87
+2023-08-15,Kousseri,Far-North,Plantains,retail,kg,1667.0,430.0,3.88
 2023-09-15,Fotokol,Far-North,Okra (dry),retail,kg,2238.0,578.0,3.87
-2023-05-15,Mokolo,Far-North,Onions,retail,kg,1500.0,389.0,3.86
+2021-10-15,Kaele,Far-North,Plantains,retail,kg,2000.0,516.665,3.87
 2022-02-15,Mbaiboum,North,Plantains,retail,kg,1000.0,259.33,3.86
-2023-02-15,Logone-Birni,Far-North,Maize (white),retail,kg,1000.0,262.125,3.81
-2023-09-15,Guider,North,Okra (dry),retail,kg,2200.0,578.0,3.81
+2023-05-15,Mokolo,Far-North,Onions,retail,kg,1500.0,389.0,3.86
 2026-04-15,Yagoua,Far-North,Yam,retail,kg,2500.0,656.0,3.81
+2023-09-15,Guider,North,Okra (dry),retail,kg,2200.0,578.0,3.81
+2023-02-15,Logone-Birni,Far-North,Maize (white),retail,kg,1000.0,262.125,3.81
 2023-07-15,Mokolo,Far-North,Potatoes,retail,kg,1167.0,306.0,3.81
-2022-03-15,Yagoua,Far-North,Potatoes,retail,kg,800.0,211.785,3.78
 2022-04-15,Banyo,Adamawa,Onions,retail,kg,1324.68,350.0,3.78
-2023-03-15,Garoua,North,Garlic,retail,kg,5476.0,1450.0,3.78
 2023-03-15,Kousseri,Far-North,Potatoes (Irish),retail,kg,2000.0,529.0,3.78
-2021-09-15,Yagoua,Far-North,Yam,retail,kg,1500.0,400.0,3.75
-2021-10-15,Yagoua,Far-North,Yam,retail,kg,1500.0,400.0,3.75
-2023-09-15,Ngaoui,Adamawa,Tomatoes,retail,kg,2000.0,534.0,3.75
+2023-03-15,Garoua,North,Garlic,retail,kg,5476.0,1450.0,3.78
+2022-03-15,Yagoua,Far-North,Potatoes,retail,kg,800.0,211.785,3.78
 2026-08-15,Doukoula,Far-North,Cassava (fresh),retail,kg,750.0,200.0,3.75
 2026-08-15,Maroua,Far-North,Taro,retail,kg,1000.0,267.0,3.75
+2023-09-15,Ngaoui,Adamawa,Tomatoes,retail,kg,2000.0,534.0,3.75
+2021-09-15,Yagoua,Far-North,Yam,retail,kg,1500.0,400.0,3.75
+2021-10-15,Yagoua,Far-North,Yam,retail,kg,1500.0,400.0,3.75
 2026-07-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,2667.0,713.0,3.74
-2023-08-15,Garoua,North,Bananas,retail,kg,1369.0,367.0,3.73
-2026-02-15,Yagoua,Far-North,Okra (fresh),retail,kg,1000.0,268.0,3.73
 2022-11-15,Logone-Birni,Far-North,Maize (white),retail,kg,800.0,214.69,3.73
+2026-02-15,Yagoua,Far-North,Okra (fresh),retail,kg,1000.0,268.0,3.73
+2023-08-15,Garoua,North,Bananas,retail,kg,1369.0,367.0,3.73
 2025-10-15,Garoua,North,Cassava (fresh),retail,kg,732.0,197.0,3.72
 2022-07-15,Kousseri,Far-North,Maize (white),retail,kg,866.67,233.15,3.72
 2024-04-15,Yagoua,Far-North,Sorghum (red),wholesale,kg,127.5,34.35,3.71
+2023-09-15,Kousseri,Far-North,Plantains,retail,kg,1700.0,460.0,3.7
 2021-04-15,Zamay,Far-North,Yam,retail,kg,1667.0,450.0,3.7
 2023-08-15,Mokolo,Far-North,Yam,retail,kg,2333.0,631.0,3.7
-2023-09-15,Kousseri,Far-North,Plantains,retail,kg,1700.0,460.0,3.7
 2023-09-15,Salak,Far-North,Peppers (dried),retail,kg,3583.0,970.0,3.69
 2024-09-15,Kousseri,Far-North,Potatoes (Irish),retail,kg,1500.0,408.0,3.68
-2021-11-15,Kaele,Far-North,Yam,retail,kg,1833.33,500.0,3.67
 2021-03-15,Meiganga,Adamawa,Taro,retail,kg,2000.0,545.0,3.67
+2021-11-15,Kaele,Far-North,Yam,retail,kg,1833.33,500.0,3.67
 2022-07-15,Mbaiboum,North,Plantains,retail,kg,1500.0,410.0,3.66
 2022-10-15,Mbaiboum,North,Plantains,retail,kg,1500.0,409.6,3.66
-2023-05-15,Koza,Far-North,Tomatoes,retail,kg,1684.0,462.0,3.65
 2023-02-15,Mora,Far-North,Potatoes,retail,kg,766.67,210.0,3.65
-2022-01-15,Tiko,South-West,Okra (fresh),retail,kg,2000.0,550.0,3.64
-2022-12-15,Logone-Birni,Far-North,Sorghum (white),retail,kg,1000.0,275.0,3.64
-2023-02-15,Maroua,Far-North,Potatoes (Irish),retail,kg,2000.0,550.0,3.64
-2023-02-15,Mora,Far-North,Potatoes (Irish),retail,kg,2000.0,550.0,3.64
+2023-05-15,Koza,Far-North,Tomatoes,retail,kg,1684.0,462.0,3.65
 2023-02-15,Maroua-Dougoy,Far-North,Potatoes (Irish),retail,kg,2000.0,550.0,3.64
+2022-12-15,Logone-Birni,Far-North,Sorghum (white),retail,kg,1000.0,275.0,3.64
 2022-12-15,Mara,Far-North,Sorghum (white),retail,kg,1000.0,275.0,3.64
+2023-02-15,Mora,Far-North,Potatoes (Irish),retail,kg,2000.0,550.0,3.64
 2022-01-15,Mutengene,South-West,Okra (fresh),retail,kg,2000.0,550.0,3.64
+2022-01-15,Tiko,South-West,Okra (fresh),retail,kg,2000.0,550.0,3.64
+2023-02-15,Maroua,Far-North,Potatoes (Irish),retail,kg,2000.0,550.0,3.64
 2022-06-15,Maroua-Dougoy,Far-North,Potatoes (Irish),retail,kg,2000.0,552.78,3.62
 2022-10-15,Mara,Far-North,Sorghum (white),retail,kg,833.0,230.92000000000002,3.61
-2023-06-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,3600.0,1000.0,3.6
-2025-04-15,Nkambe,North-West,"Fish (tilapia, salted, dried)",retail,kg,5490.0,1526.3,3.6
 2024-10-15,Kousseri,Far-North,Yam,retail,kg,2500.0,695.0,3.6
-2022-12-15,Mara,Far-North,Maize (white),retail,kg,800.0,222.67000000000002,3.59
+2025-04-15,Nkambe,North-West,"Fish (tilapia, salted, dried)",retail,kg,5490.0,1526.3,3.6
+2023-06-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,3600.0,1000.0,3.6
 2023-07-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,3500.0,975.0,3.59
+2022-12-15,Mara,Far-North,Maize (white),retail,kg,800.0,222.67000000000002,3.59
+2023-02-15,Kaele,Far-North,Leafy vegetables,retail,kg,1411.77,394.17,3.58
 2020-04-15,Ngaoui,Adamawa,Onions,wholesale,kg,555.56,155.0,3.58
 2023-03-15,Mara,Far-North,Maize (white),retail,kg,900.0,251.5,3.58
-2023-02-15,Kaele,Far-North,Leafy vegetables,retail,kg,1411.77,394.17,3.58
 2023-06-15,Kousseri,Far-North,Plantains,retail,kg,1600.0,450.0,3.56
 2024-03-15,Zamay,Far-North,Maize (white),retail,kg,900.0,252.5,3.56
 2026-07-15,Garoua,North,Cassava (fresh),retail,kg,631.58,177.5,3.56
-2025-07-15,Mamfé,South-West,Maize (yellow),retail,kg,1267.0,357.0,3.55
-2023-09-15,Ngong,North,Maize (white),retail,kg,2000.0,563.0,3.55
-2020-10-15,Kousseri,Far-North,Onions,retail,kg,3819.0,1075.0,3.55
 2024-10-15,Meiganga,Adamawa,"Fish (tilapia, salted, dried)",retail,kg,6500.0,1833.0,3.55
+2023-04-15,Mokolo,Far-North,Potatoes (Irish),retail,kg,1833.0,517.0,3.55
+2025-07-15,Mamfé,South-West,Maize (yellow),retail,kg,1267.0,357.0,3.55
+2020-10-15,Kousseri,Far-North,Onions,retail,kg,3819.0,1075.0,3.55
 2024-09-15,Kousseri,Far-North,Maize (white),retail,kg,1200.0,338.0,3.55
 2024-10-15,Ngaoui,Adamawa,"Fish (tilapia, salted, dried)",retail,kg,6500.0,1833.0,3.55
-2023-04-15,Mokolo,Far-North,Potatoes (Irish),retail,kg,1833.0,517.0,3.55
-2023-03-15,Garoua,North,Bananas,retail,kg,1109.0,313.0,3.54
-2025-11-15,Maroua-Dougoy,Far-North,Plantains,retail,kg,1750.0,494.17,3.54
+2023-09-15,Ngong,North,Maize (white),retail,kg,2000.0,563.0,3.55
 2024-09-15,Mogode,Far-North,Garlic,retail,kg,9375.0,2647.0,3.54
+2025-11-15,Maroua-Dougoy,Far-North,Plantains,retail,kg,1750.0,494.17,3.54
+2023-03-15,Garoua,North,Bananas,retail,kg,1109.0,313.0,3.54
 2025-12-15,Mamfé,South-West,Cocoyam (macabo),retail,kg,1265.0,358.0,3.53
 2022-03-15,Kousseri,Far-North,Plantains,retail,kg,1766.67,500.0,3.53
-2023-08-15,Nkambe,North-West,"Fish (tilapia, salted, dried)",retail,kg,5707.0,1623.0,3.52
 2022-01-15,Kumba,South-West,Okra (fresh),retail,kg,1933.33,550.0,3.52
 2023-01-15,Kousseri,Far-North,Taro,retail,kg,937.5,266.31,3.52
+2023-08-15,Nkambe,North-West,"Fish (tilapia, salted, dried)",retail,kg,5707.0,1623.0,3.52
 2022-09-15,Fotokol,Far-North,Taro,retail,kg,1043.48,297.61,3.51
-2024-03-15,Mokolo,Far-North,Maize (white),retail,kg,883.0,252.5,3.5
 2021-12-15,Kaele,Far-North,Potatoes (Irish),retail,kg,1750.0,500.0,3.5
+2024-03-15,Mokolo,Far-North,Maize (white),retail,kg,883.0,252.5,3.5
 2022-12-15,Logone-Birni,Far-North,Sorghum (red),retail,kg,883.33,253.27,3.49
 2024-07-15,Kaele,Far-North,Leafy vegetables,retail,kg,1222.0,350.5,3.49
 2024-04-15,Mogode,Far-North,Garlic,retail,kg,9375.0,2689.5,3.49
 2023-05-15,Kaele,Far-North,Leafy vegetables,retail,kg,1333.0,383.0,3.48
-2022-09-15,Kousseri,Far-North,Sorghum (white),retail,kg,850.0,245.0,3.47
 2024-07-15,Meiganga,Adamawa,"Fish (tilapia, salted, dried)",retail,kg,6500.0,1875.0,3.47
 2024-07-15,Ngaoui,Adamawa,"Fish (tilapia, salted, dried)",retail,kg,6500.0,1875.0,3.47
-2026-05-15,Garoua,North,Plantains,retail,kg,1230.0,355.0,3.46
+2022-09-15,Kousseri,Far-North,Sorghum (white),retail,kg,850.0,245.0,3.47
 2022-01-15,Kaele,Far-North,Potatoes (Irish),retail,kg,2000.0,578.33,3.46
+2026-05-15,Garoua,North,Plantains,retail,kg,1230.0,355.0,3.46
 2022-12-15,Guider,North,Onions,retail,kg,2380.95,687.5,3.46
-2022-12-15,Kousseri,Far-North,Sorghum (white),retail,kg,950.0,275.0,3.45
 2023-03-15,Logone-Birni,Far-North,Maize (white),retail,kg,867.0,251.5,3.45
 2023-03-15,Kousseri,Far-North,Maize (white),retail,kg,867.0,251.5,3.45
+2022-12-15,Kousseri,Far-North,Sorghum (white),retail,kg,950.0,275.0,3.45
 2023-06-15,Garoua,North,Garlic,retail,kg,5921.0,1723.0,3.44
 2025-07-15,Garoua,North,Plantains,retail,kg,1483.0,432.5,3.43
-2024-03-15,Mokolo,Far-North,Potatoes (Irish),retail,kg,2000.0,585.0,3.42
 2023-06-15,Kaele,Far-North,Leafy vegetables,retail,kg,1333.0,389.5,3.42
+2024-03-15,Mokolo,Far-North,Potatoes (Irish),retail,kg,2000.0,585.0,3.42
 2022-12-15,Kousseri,Far-North,Taro,retail,kg,937.5,274.61,3.41
-2022-10-15,Mara,Far-North,Maize (white),retail,kg,725.0,213.0,3.4
 2025-10-15,Buea,South-West,Okra (fresh),retail,kg,2381.0,700.0,3.4
 2025-12-15,Barombi Kang,South-West,Taro,retail,kg,1000.0,294.0,3.4
-2023-09-15,Garoua,North,Bananas,retail,kg,1290.0,380.0,3.39
+2022-10-15,Mara,Far-North,Maize (white),retail,kg,725.0,213.0,3.4
 2024-03-15,Zamay,Far-North,Sorghum (white),retail,kg,950.0,280.0,3.39
+2023-09-15,Garoua,North,Bananas,retail,kg,1290.0,380.0,3.39
 2022-04-15,Ngaoui,Adamawa,Potatoes,retail,kg,700.0,207.345,3.38
 2026-07-15,Garoua,North,Plantains,retail,kg,1300.6,385.0,3.38
-2022-04-15,Galim tignère,Adamawa,Onions,retail,kg,1176.47,350.0,3.36
 2024-03-15,Zamay,Far-North,Sorghum (red),retail,kg,933.0,277.5,3.36
+2022-04-15,Galim tignère,Adamawa,Onions,retail,kg,1176.47,350.0,3.36
 2026-03-15,Ngaoundéré,Adamawa,Sorghum (red),retail,kg,445.55,133.0,3.35
-2022-07-15,Mora,Far-North,Potatoes (Irish),retail,kg,2000.0,600.0,3.33
-2024-04-15,Maroua,Far-North,Yam,retail,kg,1416.5,425.0,3.33
-2024-06-15,Mokolo,Far-North,Potatoes,retail,kg,833.0,250.0,3.33
-2023-02-15,Maroua,Far-North,Potatoes,retail,kg,700.0,210.0,3.33
-2022-08-15,Kousseri,Far-North,Salt,retail,kg,1000.0,300.0,3.33
-2022-08-15,Logone-Birni,Far-North,Salt,retail,kg,1000.0,300.0,3.33
-2022-08-15,Mara,Far-North,Salt,retail,kg,1000.0,300.0,3.33
-2021-12-15,Zamay,Far-North,Cassava (cossette),retail,kg,1000.0,300.0,3.33
 2023-09-15,Gazawa,Far-North,Potatoes,retail,kg,1000.0,300.0,3.33
-2026-09-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,2000.0,602.0,3.32
+2023-02-15,Maroua,Far-North,Potatoes,retail,kg,700.0,210.0,3.33
+2022-08-15,Mara,Far-North,Salt,retail,kg,1000.0,300.0,3.33
+2024-06-15,Mokolo,Far-North,Potatoes,retail,kg,833.0,250.0,3.33
+2024-04-15,Maroua,Far-North,Yam,retail,kg,1416.5,425.0,3.33
+2022-08-15,Kousseri,Far-North,Salt,retail,kg,1000.0,300.0,3.33
+2022-07-15,Mora,Far-North,Potatoes (Irish),retail,kg,2000.0,600.0,3.33
+2021-12-15,Zamay,Far-North,Cassava (cossette),retail,kg,1000.0,300.0,3.33
+2022-08-15,Logone-Birni,Far-North,Salt,retail,kg,1000.0,300.0,3.33
 2022-11-15,Kousseri,Far-North,Taro,retail,kg,937.5,282.0,3.32
+2026-09-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,2000.0,602.0,3.32
 2023-07-15,Kousseri,Far-North,Plantains,retail,kg,1467.0,442.5,3.32
-2025-11-15,Mamfé,South-West,Cocoyam (macabo),retail,kg,1423.3,430.0,3.31
 2022-01-15,Kaele,Far-North,Yam,retail,kg,1750.0,528.33,3.31
 2023-09-15,Mogode,Far-North,Soybeans,retail,kg,1600.0,483.5,3.31
-2020-04-15,Batoua Godolé,Adamawa,Onions,wholesale,kg,511.11,155.0,3.3
+2025-11-15,Mamfé,South-West,Cocoyam (macabo),retail,kg,1423.3,430.0,3.31
 2022-04-15,Garoua,North,Cassava (fresh),retail,kg,631.58,191.4,3.3
 2022-10-15,Mara,Far-North,Sorghum (red),retail,kg,683.0,206.9,3.3
+2020-04-15,Batoua Godolé,Adamawa,Onions,wholesale,kg,511.11,155.0,3.3
 2023-03-15,Kousseri,Far-North,Yam,retail,kg,2000.0,607.5,3.29
 2024-11-15,Garoua,North,Plantains,retail,kg,1136.6,345.0,3.29
 2021-10-15,Bamenda-Nkwen,North-West,Yam,retail,kg,1316.67,400.0,3.29
-2023-09-15,Kousseri,Far-North,Potatoes (Irish),retail,kg,1500.0,457.5,3.28
 2023-09-15,Mokolo,Far-North,Potatoes (Irish),retail,kg,1500.0,457.5,3.28
 2026-06-15,Garoua,North,Plantains,retail,kg,1213.1,370.0,3.28
+2023-09-15,Kousseri,Far-North,Potatoes (Irish),retail,kg,1500.0,457.5,3.28
 2023-09-15,Yagoua,Far-North,"Fish (tilapia, salted, dried)",retail,kg,2167.0,661.0,3.28
-2025-11-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,2600.0,793.94,3.27
 2022-11-15,Guider,North,Onions,retail,kg,2341.27,717.0,3.27
 2026-01-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,2100.0,641.5,3.27
-2022-11-15,Mara,Far-North,Maize (white),retail,kg,700.0,214.69,3.26
+2025-11-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,2600.0,793.94,3.27
 2022-08-15,Ngaoui,Adamawa,Onions,retail,kg,1900.0,583.335,3.26
 2023-04-15,Zamay,Far-North,Yam,retail,kg,2833.0,868.0,3.26
+2022-11-15,Mara,Far-North,Maize (white),retail,kg,700.0,214.69,3.26
 2024-09-15,Logone-Birni,Far-North,Maize (white),retail,kg,1100.0,338.0,3.25
 2026-04-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,1900.0,585.735,3.24
 2022-10-15,Kousseri,Far-North,Taro,retail,kg,937.5,290.0,3.23
@@ -406,648 +406,648 @@ price_month,market,region,commodity,price_type,standard_unit,price_per_unit,nati
 2022-12-15,Kousseri,Far-North,Sorghum (red),retail,kg,816.67,253.27,3.22
 2022-07-15,Zamay,Far-North,Sugar,retail,kg,2572.22,800.0,3.22
 2026-02-15,Garoua,North,Cassava (fresh),retail,kg,631.58,196.85,3.21
-2022-05-15,Fotokol,Far-North,Taro,retail,kg,886.96,276.67,3.21
 2024-04-15,Yaoundé-Mokolo,Centre,Cocoyam (macabo),wholesale,kg,2200.0,686.25,3.21
-2026-09-15,Ngaoundéré,Adamawa,Onions,retail,kg,800.0,250.0,3.2
-2022-06-15,Mora,Far-North,Tomatoes,retail,kg,1629.63,509.62,3.2
+2022-05-15,Fotokol,Far-North,Taro,retail,kg,886.96,276.67,3.21
 2022-11-15,Betare Oya,East,Beans (niebe),retail,kg,2000.0,625.0,3.2
 2024-03-15,Zamay,Far-North,Yam,retail,kg,2167.0,677.0,3.2
+2022-06-15,Mora,Far-North,Tomatoes,retail,kg,1629.63,509.62,3.2
+2026-09-15,Ngaoundéré,Adamawa,Onions,retail,kg,800.0,250.0,3.2
 2023-02-15,Galim tignère,Adamawa,Onions,retail,kg,1764.71,553.75,3.19
 2024-04-15,Limbé,South-West,Wheat flour,retail,kg,6025.0,1890.0,3.19
-2025-09-15,Doukoula,Far-North,Cassava (fresh),retail,kg,636.0,200.0,3.18
-2022-09-15,Mara,Far-North,Maize (white),retail,kg,750.0,235.96,3.18
-2023-12-15,Garoua,North,Cassava (fresh),retail,kg,632.0,198.5,3.18
 2022-05-15,Mara,Far-North,Maize (white),retail,kg,700.0,220.34,3.18
-2025-12-15,Yagoua,Far-North,Yam,retail,kg,3167.0,1000.0,3.17
-2022-05-15,Galim tignère,Adamawa,Onions,retail,kg,1176.47,370.83500000000004,3.17
-2023-06-15,Guider,North,Garlic,retail,kg,5455.0,1723.0,3.17
-2023-08-15,Mbaiboum,North,Yam,retail,kg,2000.0,631.0,3.17
-2023-07-15,Garoua,North,Garlic,retail,kg,5889.0,1859.665,3.17
+2025-09-15,Doukoula,Far-North,Cassava (fresh),retail,kg,636.0,200.0,3.18
+2023-12-15,Garoua,North,Cassava (fresh),retail,kg,632.0,198.5,3.18
+2022-09-15,Mara,Far-North,Maize (white),retail,kg,750.0,235.96,3.18
 2022-08-15,Yamba,Adamawa,Onions,retail,kg,1850.0,583.335,3.17
-2026-03-15,Ngaoundéré,Adamawa,Sorghum (white),retail,kg,494.7,156.0,3.17
 2023-09-15,Kaele,Far-North,Leafy vegetables,retail,kg,1213.0,382.5,3.17
-2024-02-15,Zamay,Far-North,Maize (white),retail,kg,850.0,269.0,3.16
+2023-06-15,Guider,North,Garlic,retail,kg,5455.0,1723.0,3.17
+2025-12-15,Yagoua,Far-North,Yam,retail,kg,3167.0,1000.0,3.17
+2026-03-15,Ngaoundéré,Adamawa,Sorghum (white),retail,kg,494.7,156.0,3.17
+2023-07-15,Garoua,North,Garlic,retail,kg,5889.0,1859.665,3.17
+2022-05-15,Galim tignère,Adamawa,Onions,retail,kg,1176.47,370.83500000000004,3.17
+2023-08-15,Mbaiboum,North,Yam,retail,kg,2000.0,631.0,3.17
 2025-11-15,Garoua,North,Cassava (fresh),retail,kg,631.58,200.0,3.16
+2024-02-15,Zamay,Far-North,Maize (white),retail,kg,850.0,269.0,3.16
 2022-12-15,Mara,Far-North,Sorghum (red),retail,kg,800.0,253.27,3.16
 2023-11-15,Guider,North,Watermelons,retail,kg,1019.0,323.0,3.15
 2022-11-15,Fotokol,Far-North,Potatoes (Irish),retail,kg,1583.33,504.0,3.14
 2026-01-15,Kousseri,Far-North,Cocoyam (macabo),retail,kg,789.0,251.66,3.14
-2022-07-15,Logone-Birni,Far-North,Sugar,retail,kg,2500.0,800.0,3.13
-2021-09-15,Kaele,Far-North,Yam,retail,kg,1250.0,400.0,3.13
 2023-10-15,Fotokol,Far-North,Taro,retail,kg,818.0,261.0,3.13
-2026-09-15,Garoua,North,Plantains,retail,kg,1206.0,385.0,3.13
+2021-09-15,Kaele,Far-North,Yam,retail,kg,1250.0,400.0,3.13
 2022-12-15,Guzang,North-West,Cocoyam (macabo),retail,kg,1041.67,332.5,3.13
+2026-09-15,Garoua,North,Plantains,retail,kg,1206.0,385.0,3.13
+2022-07-15,Logone-Birni,Far-North,Sugar,retail,kg,2500.0,800.0,3.13
 2025-04-15,Garoua,North,Plantains,retail,kg,1202.2,384.81,3.12
-2026-06-15,Ngaoundéré,Adamawa,Sorghum (white),retail,kg,471.0,151.5,3.11
 2022-09-15,Garoua,North,Garlic,retail,kg,6428.57,2065.02,3.11
+2026-06-15,Ngaoundéré,Adamawa,Sorghum (white),retail,kg,471.0,151.5,3.11
 2020-01-15,Guiwa Yangamo,East,Beans (niebe),wholesale,kg,666.67,215.0,3.1
-2021-03-15,Yagoua,Far-North,Plantains,retail,kg,1500.0,483.5,3.1
-2023-09-15,Salak,Far-North,Eggs,retail,piece,310.0,100.0,3.1
-2020-01-15,Tongo Gandima,East,Beans (niebe),wholesale,kg,666.67,215.0,3.1
-2020-01-15,Ndokayo,East,Beans (niebe),wholesale,kg,666.67,215.0,3.1
-2021-03-15,Mada,Far-North,Plantains,retail,kg,1500.0,483.5,3.1
-2022-10-15,Garoua,North,Garlic,retail,kg,6095.24,1965.81,3.1
 2020-01-15,Betare Oya,East,Beans (niebe),wholesale,kg,666.67,215.0,3.1
-2022-09-15,Kousseri,Far-North,Sorghum (red),retail,kg,733.0,236.84,3.09
+2023-09-15,Salak,Far-North,Eggs,retail,piece,310.0,100.0,3.1
+2022-10-15,Garoua,North,Garlic,retail,kg,6095.24,1965.81,3.1
+2021-03-15,Mada,Far-North,Plantains,retail,kg,1500.0,483.5,3.1
+2020-01-15,Tongo Gandima,East,Beans (niebe),wholesale,kg,666.67,215.0,3.1
+2021-03-15,Yagoua,Far-North,Plantains,retail,kg,1500.0,483.5,3.1
+2020-01-15,Ndokayo,East,Beans (niebe),wholesale,kg,666.67,215.0,3.1
 2024-02-15,Ngaoundéré,Adamawa,Bananas,retail,kg,725.0,235.0,3.09
 2023-08-15,Garoua,North,Garlic,retail,kg,5505.0,1779.5,3.09
-2020-10-15,Kousseri,Far-North,Tomatoes,retail,kg,1850.0,600.0,3.08
+2022-09-15,Kousseri,Far-North,Sorghum (red),retail,kg,733.0,236.84,3.09
 2023-09-15,Mora,Far-North,"Oil (vegetable, local)",retail,litre,2342.0,761.0,3.08
+2020-10-15,Kousseri,Far-North,Tomatoes,retail,kg,1850.0,600.0,3.08
 2026-06-15,Mayo Darlé,Adamawa,Groundnuts (shelled),retail,kg,2100.0,682.5,3.08
 2023-08-15,Guider,North,Garlic,retail,kg,5455.0,1779.5,3.07
-2023-06-15,Mokolo,Far-North,Yam,retail,kg,2233.0,730.0,3.06
 2023-01-15,Mora,Far-North,Potatoes,retail,kg,633.5,207.0,3.06
 2023-01-15,Mora,Far-North,Potatoes (Irish),retail,kg,1750.0,572.145,3.06
-2022-04-15,Mayo Darlé,Adamawa,Onions,retail,kg,1066.67,350.0,3.05
+2023-06-15,Mokolo,Far-North,Yam,retail,kg,2233.0,730.0,3.06
 2023-02-15,Kousseri,Far-North,Maize (white),retail,kg,800.0,262.125,3.05
+2022-04-15,Mayo Darlé,Adamawa,Onions,retail,kg,1066.67,350.0,3.05
 2025-12-15,Mamfé,South-West,Leafy vegetables,retail,kg,1545.0,508.0,3.04
 2022-11-15,Kousseri,Far-North,Potatoes (Irish),retail,kg,1533.0,504.0,3.04
+2023-09-15,Maroua,Far-North,"Fish (tilapia, salted, dried)",retail,kg,2000.0,661.0,3.03
 2023-07-15,Kaele,Far-North,Leafy vegetables,retail,kg,1250.0,412.0,3.03
 2026-02-15,Ngaoundéré,Adamawa,Sorghum (red),retail,kg,396.04,130.5,3.03
-2024-09-15,Kaele,Far-North,Leafy vegetables,retail,kg,1333.0,440.0,3.03
-2023-09-15,Maroua,Far-North,"Fish (tilapia, salted, dried)",retail,kg,2000.0,661.0,3.03
-2023-02-15,Kousseri,Far-North,Taro,retail,kg,937.5,309.17,3.03
 2024-06-15,Kaele,Far-North,Leafy vegetables,retail,kg,1250.0,412.0,3.03
+2023-02-15,Kousseri,Far-North,Taro,retail,kg,937.5,309.17,3.03
+2024-09-15,Kaele,Far-North,Leafy vegetables,retail,kg,1333.0,440.0,3.03
 2023-05-15,Zamay,Far-North,Yam,retail,kg,2667.0,883.0,3.02
 2023-06-15,Guider,North,Watermelons,retail,kg,976.5,323.0,3.02
 2026-02-15,Kousseri,Far-North,Cocoyam (macabo),retail,kg,789.0,262.15999999999997,3.01
 2022-10-15,Logone-Birni,Far-North,Sorghum (red),retail,kg,621.0,206.9,3.0
-2024-06-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,144.65,443.0,0.33
-2023-12-15,Koza,Far-North,Rice (local),retail,kg,145.0,444.0,0.33
-2024-01-15,Pitoa,North,Okra (fresh),retail,kg,286.0,867.0,0.33
-2024-01-15,Koza,Far-North,Rice (local),retail,kg,143.0,431.0,0.33
-2022-02-15,Wum,North-West,Maize (white),wholesale,kg,83.33,252.5,0.33
-2023-10-15,Gazawa,Far-North,Onions,retail,kg,207.0,625.0,0.33
-2025-02-15,Batouri,East,Bananas,retail,kg,103.0,312.5,0.33
-2024-06-15,Gbiti,East,Yam,retail,kg,250.0,762.0,0.33
-2022-11-15,Kentzou,East,Yam,retail,kg,210.0,635.0,0.33
-2024-04-15,Kaele,Far-North,Groundnuts (shelled),wholesale,kg,59.5,179.75,0.33
-2024-04-15,Mayo Darlé,Adamawa,Okra (dry),retail,kg,400.0,1212.0,0.33
-2024-11-15,Salak,Far-North,Onions,retail,kg,240.0,735.5,0.33
-2022-01-15,Betare Oya,East,Fish (dry),retail,kg,1033.33,3111.0,0.33
-2025-04-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,144.65,435.9,0.33
-2022-11-15,Salak,Far-North,"Fish (tilapia, salted, dried)",retail,kg,666.67,2008.93,0.33
-2025-11-15,Mora,Far-North,Beans (niebe),retail,kg,225.0,679.44,0.33
-2024-11-15,Galim tignère,Adamawa,Cassava (cossette),retail,kg,127.0,389.055,0.33
-2024-02-15,Pitoa,North,Okra (fresh),retail,kg,286.0,858.5,0.33
-2025-11-15,Salak,Far-North,Onions,retail,kg,240.0,737.325,0.33
-2024-10-15,Galim tignère,Adamawa,Taro,retail,kg,100.0,304.0,0.33
-2022-06-15,Salak,Far-North,"Fish (tilapia, salted, dried)",retail,kg,733.33,2218.335,0.33
-2022-10-15,Batouri,East,Plantains,retail,kg,135.0,409.6,0.33
-2024-10-15,Kentzou,East,Plantains,retail,kg,125.0,378.5,0.33
-2025-08-15,Pitoa,North,Okra (fresh),retail,kg,286.0,859.0,0.33
-2023-03-15,Mokolo,Far-North,Okra (fresh),retail,kg,317.0,958.0,0.33
-2025-09-15,Galim tignère,Adamawa,Onions,retail,kg,150.0,459.15999999999997,0.33
 2022-11-15,Yagoua,Far-North,Cassava (fresh),retail,kg,60.91,183.76999999999998,0.33
-2023-11-15,Fotokol,Far-North,Onions,retail,kg,230.0,700.0,0.33
-2021-03-15,Maroua,Far-North,Onions,retail,kg,158.0,483.0,0.33
-2024-04-15,Mokolo,Far-North,Rice (local),wholesale,kg,19.96,60.95,0.33
-2023-09-15,Gobo,Far-North,Maize (white),retail,kg,183.0,563.0,0.33
-2023-08-15,Gazawa,Far-North,Onions,retail,kg,207.0,633.0,0.33
+2022-02-15,Wum,North-West,Maize (white),wholesale,kg,83.33,252.5,0.33
+2022-11-15,Salak,Far-North,"Fish (tilapia, salted, dried)",retail,kg,666.67,2008.93,0.33
+2022-11-15,Kentzou,East,Yam,retail,kg,210.0,635.0,0.33
+2024-11-15,Salak,Far-North,Onions,retail,kg,240.0,735.5,0.33
 2024-06-15,Gobo,Far-North,Onions,retail,kg,182.93,558.0,0.33
+2024-11-15,Galim tignère,Adamawa,Cassava (cossette),retail,kg,127.0,389.055,0.33
+2024-06-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,144.65,443.0,0.33
+2024-06-15,Gbiti,East,Yam,retail,kg,250.0,762.0,0.33
+2023-10-15,Gazawa,Far-North,Onions,retail,kg,207.0,625.0,0.33
+2024-01-15,Pitoa,North,Okra (fresh),retail,kg,286.0,867.0,0.33
+2024-04-15,Kaele,Far-North,Groundnuts (shelled),wholesale,kg,59.5,179.75,0.33
+2025-02-15,Batouri,East,Bananas,retail,kg,103.0,312.5,0.33
+2025-08-15,Pitoa,North,Okra (fresh),retail,kg,286.0,859.0,0.33
+2024-01-15,Koza,Far-North,Rice (local),retail,kg,143.0,431.0,0.33
+2025-11-15,Mora,Far-North,Beans (niebe),retail,kg,225.0,679.44,0.33
+2024-04-15,Mayo Darlé,Adamawa,Okra (dry),retail,kg,400.0,1212.0,0.33
+2023-03-15,Mokolo,Far-North,Okra (fresh),retail,kg,317.0,958.0,0.33
+2022-10-15,Batouri,East,Plantains,retail,kg,135.0,409.6,0.33
+2025-09-15,Galim tignère,Adamawa,Onions,retail,kg,150.0,459.15999999999997,0.33
 2024-02-15,Fotokol,Far-North,Meat (beef),retail,kg,789.0,2400.0,0.33
-2023-05-15,Fotokol,Far-North,Meat (beef),retail,kg,789.0,2500.0,0.32
-2023-07-15,Ngong,North,"Fish (tilapia, salted, dried)",retail,kg,495.0,1539.5,0.32
-2023-10-15,Kumbo,North-West,Plantains,retail,kg,130.0,402.0,0.32
-2023-10-15,Kousseri,Far-North,Watermelons,retail,kg,110.0,343.0,0.32
-2024-01-15,Galim tignère,Adamawa,Potatoes,retail,kg,89.0,279.0,0.32
-2021-12-15,Ndop,North-West,Potatoes (Irish),retail,kg,158.0,500.0,0.32
-2026-08-15,Koza,Far-North,Tomatoes,retail,kg,153.0,484.5,0.32
-2026-08-15,Koza,Far-North,Okra (dry),retail,kg,331.0,1045.0,0.32
-2025-10-15,Doukoula,Far-North,Beans (niebe),retail,kg,238.0,747.0,0.32
-2023-09-15,Ngong,North,Sorghum (white),retail,kg,193.0,600.0,0.32
-2023-06-15,Doukoula,Far-North,Maize (white),retail,kg,97.0,300.0,0.32
-2021-12-15,Wum,North-West,Cassava meal (gari),retail,kg,248.0,775.0,0.32
-2023-03-15,Fotokol,Far-North,Meat (beef),retail,kg,789.0,2500.0,0.32
-2022-12-15,Salak,Far-North,"Fish (tilapia, salted, dried)",retail,kg,666.67,2058.27,0.32
-2023-06-15,Ngong,North,"Fish (tilapia, salted, dried)",retail,kg,527.0,1653.0,0.32
-2022-09-15,Betare Oya,East,Onions,retail,kg,200.0,632.5,0.32
-2023-08-15,Koza,Far-North,Rice (local),retail,kg,152.0,475.0,0.32
-2025-04-15,Tibati,Adamawa,Taro,retail,kg,147.06,456.5,0.32
-2023-08-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,145.0,448.5,0.32
-2023-04-15,Kousseri,Far-North,Okra (fresh),retail,kg,317.0,1000.0,0.32
-2024-02-15,Ngong,North,"Fish (tilapia, salted, dried)",retail,kg,495.0,1566.0,0.32
-2023-07-15,Fotokol,Far-North,Meat (beef),retail,kg,789.0,2500.0,0.32
-2022-10-15,Mogode,Far-North,Potatoes (Irish),retail,kg,160.09,497.0,0.32
-2025-12-15,Pitoa,North,Onions,retail,kg,194.44,608.5,0.32
-2023-12-15,Salak,Far-North,Onions,retail,kg,240.0,759.5,0.32
-2023-03-15,Fotokol,Far-North,Onions,retail,kg,128.0,400.0,0.32
-2024-04-15,Douala-Sandaga,Littoral,Plantains,wholesale,kg,543.75,1723.9583333333335,0.32
+2025-11-15,Salak,Far-North,Onions,retail,kg,240.0,737.325,0.33
+2024-04-15,Mokolo,Far-North,Rice (local),wholesale,kg,19.96,60.95,0.33
+2021-03-15,Maroua,Far-North,Onions,retail,kg,158.0,483.0,0.33
+2023-08-15,Gazawa,Far-North,Onions,retail,kg,207.0,633.0,0.33
+2024-10-15,Galim tignère,Adamawa,Taro,retail,kg,100.0,304.0,0.33
+2022-01-15,Betare Oya,East,Fish (dry),retail,kg,1033.33,3111.0,0.33
+2022-06-15,Salak,Far-North,"Fish (tilapia, salted, dried)",retail,kg,733.33,2218.335,0.33
+2023-09-15,Gobo,Far-North,Maize (white),retail,kg,183.0,563.0,0.33
+2025-04-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,144.65,435.9,0.33
+2024-02-15,Pitoa,North,Okra (fresh),retail,kg,286.0,858.5,0.33
+2023-12-15,Koza,Far-North,Rice (local),retail,kg,145.0,444.0,0.33
+2023-11-15,Fotokol,Far-North,Onions,retail,kg,230.0,700.0,0.33
+2024-10-15,Kentzou,East,Plantains,retail,kg,125.0,378.5,0.33
+2023-09-15,Garoua,North,Oil (cotton),retail,litre,478.0,1500.0,0.32
 2023-10-15,Galim tignère,Adamawa,Potatoes,retail,kg,89.0,274.0,0.32
+2023-10-15,Kumbo,North-West,Plantains,retail,kg,130.0,402.0,0.32
+2024-07-15,Gbiti,East,Yam,retail,kg,250.0,791.0,0.32
+2024-02-15,Ngong,North,"Fish (tilapia, salted, dried)",retail,kg,495.0,1566.0,0.32
+2022-11-15,Batouri,East,Yam,retail,kg,205.0,635.0,0.32
+2025-12-15,Pitoa,North,Onions,retail,kg,194.44,608.5,0.32
+2024-01-15,Doukoula,Far-North,Beans (niebe),retail,kg,167.0,517.0,0.32
+2023-10-15,Kousseri,Far-North,Watermelons,retail,kg,110.0,343.0,0.32
+2025-10-15,Salak,Far-North,Onions,retail,kg,160.0,503.0,0.32
+2023-06-15,Doukoula,Far-North,Maize (white),retail,kg,97.0,300.0,0.32
+2023-06-15,Ngong,North,"Fish (tilapia, salted, dried)",retail,kg,527.0,1653.0,0.32
+2021-12-15,Wum,North-West,Cassava meal (gari),retail,kg,248.0,775.0,0.32
+2023-09-15,Ngong,North,Sorghum (white),retail,kg,193.0,600.0,0.32
+2024-04-15,Douala-Sandaga,Littoral,Plantains,wholesale,kg,543.75,1723.9583333333335,0.32
+2023-07-15,Fotokol,Far-North,Meat (beef),retail,kg,789.0,2500.0,0.32
+2023-03-15,Fotokol,Far-North,Meat (beef),retail,kg,789.0,2500.0,0.32
+2023-03-15,Fotokol,Far-North,Onions,retail,kg,128.0,400.0,0.32
+2025-05-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,144.65,451.67,0.32
+2024-04-15,Tibati,Adamawa,Wheat flour,retail,kg,600.0,1890.0,0.32
+2024-04-15,Ngaoundéré,Adamawa,Wheat flour,retail,kg,600.0,1890.0,0.32
+2021-12-15,Ndop,North-West,Potatoes (Irish),retail,kg,158.0,500.0,0.32
+2022-10-15,Mogode,Far-North,Potatoes (Irish),retail,kg,160.09,497.0,0.32
+2023-05-15,Fotokol,Far-North,Meat (beef),retail,kg,789.0,2500.0,0.32
+2024-01-15,Galim tignère,Adamawa,Potatoes,retail,kg,89.0,279.0,0.32
+2023-07-15,Doukoula,Far-North,Maize (white),retail,kg,97.0,301.16499999999996,0.32
+2025-04-15,Tibati,Adamawa,Taro,retail,kg,147.06,456.5,0.32
+2023-04-15,Kousseri,Far-North,Okra (fresh),retail,kg,317.0,1000.0,0.32
+2025-09-15,Gbiti,East,Yam,retail,kg,300.0,930.5,0.32
+2026-06-15,Mayo Darlé,Adamawa,Okra (dry),retail,kg,350.0,1107.0,0.32
+2021-11-15,Wum,North-West,Cassava meal (gari),retail,kg,159.0,500.0,0.32
+2026-08-15,Koza,Far-North,Tomatoes,retail,kg,153.0,484.5,0.32
+2023-07-15,Ngong,North,"Fish (tilapia, salted, dried)",retail,kg,495.0,1539.5,0.32
+2023-05-15,Barombi Kang,South-West,Yam,retail,kg,281.0,883.0,0.32
+2023-07-15,Kousseri,Far-North,"Fish (tilapia, salted, dried)",retail,kg,500.0,1539.5,0.32
+2026-08-15,Koza,Far-North,Okra (dry),retail,kg,331.0,1045.0,0.32
+2023-06-15,Fotokol,Far-North,Meat (beef),retail,kg,789.0,2500.0,0.32
+2025-10-15,Doukoula,Far-North,Beans (niebe),retail,kg,238.0,747.0,0.32
+2023-12-15,Salak,Far-North,Onions,retail,kg,240.0,759.5,0.32
+2023-08-15,Koza,Far-North,Rice (local),retail,kg,152.0,475.0,0.32
 2023-10-15,Batouri,East,Yam,retail,kg,175.0,550.25,0.32
 2023-11-15,Fotokol,Far-North,Meat (beef),retail,kg,789.0,2467.0,0.32
-2023-05-15,Barombi Kang,South-West,Yam,retail,kg,281.0,883.0,0.32
 2023-11-15,Galim tignère,Adamawa,Onions,retail,kg,225.0,700.0,0.32
-2025-09-15,Gbiti,East,Yam,retail,kg,300.0,930.5,0.32
-2024-04-15,Tibati,Adamawa,Wheat flour,retail,kg,600.0,1890.0,0.32
-2023-07-15,Doukoula,Far-North,Maize (white),retail,kg,97.0,301.16499999999996,0.32
-2022-11-15,Batouri,East,Yam,retail,kg,205.0,635.0,0.32
-2026-06-15,Mayo Darlé,Adamawa,Okra (dry),retail,kg,350.0,1107.0,0.32
-2024-01-15,Doukoula,Far-North,Beans (niebe),retail,kg,167.0,517.0,0.32
-2025-05-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,144.65,451.67,0.32
 2023-09-15,Gobo,Far-North,"Fish (tilapia, salted, dried)",retail,kg,214.0,661.0,0.32
-2023-06-15,Fotokol,Far-North,Meat (beef),retail,kg,789.0,2500.0,0.32
-2023-07-15,Kousseri,Far-North,"Fish (tilapia, salted, dried)",retail,kg,500.0,1539.5,0.32
-2024-04-15,Ngaoundéré,Adamawa,Wheat flour,retail,kg,600.0,1890.0,0.32
-2021-11-15,Wum,North-West,Cassava meal (gari),retail,kg,159.0,500.0,0.32
-2024-07-15,Gbiti,East,Yam,retail,kg,250.0,791.0,0.32
-2023-09-15,Garoua,North,Oil (cotton),retail,litre,478.0,1500.0,0.32
-2025-10-15,Salak,Far-North,Onions,retail,kg,160.0,503.0,0.32
-2024-11-15,Gobo,Far-North,Onions,retail,kg,230.18,735.5,0.31
-2024-03-15,Ngong,North,Onions,retail,kg,153.0,491.5,0.31
-2024-04-15,Douala-Sandaga,Littoral,Maize (yellow),wholesale,kg,85.0,274.30555555555554,0.31
-2022-08-15,Gbiti,East,Yam,retail,kg,250.0,798.335,0.31
-2021-07-15,Mora,Far-North,Onions,retail,kg,125.83,400.0,0.31
-2026-07-15,Koza,Far-North,Tomatoes,retail,kg,153.0,500.0,0.31
-2025-05-15,Tibati,Adamawa,Taro,retail,kg,147.06,475.0,0.31
-2024-08-15,Pitoa,North,Okra (fresh),retail,kg,286.0,930.0,0.31
-2023-12-15,Batouri,East,Yam,retail,kg,185.0,603.0,0.31
-2021-03-15,Maroua,Far-North,Okra (fresh),retail,kg,167.0,533.0,0.31
-2021-11-15,Nkambe,North-West,Potatoes,retail,kg,125.0,400.0,0.31
-2023-09-15,Ngaoundéré,Adamawa,Taro,retail,kg,102.0,326.0,0.31
-2023-04-15,Barombi Kang,South-West,Yam,retail,kg,265.0,868.0,0.31
-2024-03-15,Galim tignère,Adamawa,Potatoes,retail,kg,89.0,285.0,0.31
-2023-05-15,Salak,Far-North,Onions,retail,kg,120.0,389.0,0.31
-2024-01-15,Kentzou,East,Yam,retail,kg,352.5,1150.0,0.31
-2021-12-15,Ndop,North-West,Taro,retail,kg,112.5,358.41499999999996,0.31
-2021-10-15,Maroua,Far-North,Okra (fresh),retail,kg,166.67,533.33,0.31
-2022-12-15,Yagoua,Far-North,Watermelons,retail,kg,163.49,524.59,0.31
-2022-01-15,Kumbo,North-West,Potatoes (Irish),retail,kg,176.67,578.33,0.31
-2023-06-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,145.0,475.0,0.31
-2022-12-15,Mokolo,Far-North,Potatoes,retail,kg,63.03,203.36,0.31
-2024-04-15,Mora,Far-North,Onions,retail,kg,108.0,343.0,0.31
-2025-10-15,Koza,Far-North,Rice (local),retail,kg,135.0,432.5,0.31
-2025-09-15,Mbé,Adamawa,Cocoyam (macabo),retail,kg,161.0,525.0,0.31
-2024-11-15,Galim tignère,Adamawa,Groundnuts (shelled),retail,kg,233.0,742.0,0.31
-2025-09-15,Tibati,Adamawa,Taro,retail,kg,147.0,479.0,0.31
-2025-10-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,145.0,472.5,0.31
+2023-08-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,145.0,448.5,0.32
+2022-12-15,Salak,Far-North,"Fish (tilapia, salted, dried)",retail,kg,666.67,2058.27,0.32
+2022-09-15,Betare Oya,East,Onions,retail,kg,200.0,632.5,0.32
 2023-07-15,Ngong,North,Onions,retail,kg,149.0,475.0,0.31
-2024-07-15,Gobo,Far-North,Onions,retail,kg,183.0,595.0,0.31
-2022-07-15,Ngong,North,Onions,retail,kg,154.74,500.0,0.31
-2023-09-15,Koza,Far-North,Soybeans,retail,kg,152.0,483.5,0.31
+2025-10-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,145.0,472.5,0.31
 2026-03-15,Tibati,Adamawa,Yam,retail,kg,158.73,508.48,0.31
-2023-04-15,Barombi Kang,South-West,Fish (dry),retail,kg,1250.0,3975.0,0.31
+2021-10-15,Maroua,Far-North,Okra (fresh),retail,kg,166.67,533.33,0.31
+2022-07-15,Ngong,North,Onions,retail,kg,154.74,500.0,0.31
+2022-12-15,Yagoua,Far-North,Watermelons,retail,kg,163.49,524.59,0.31
+2021-07-15,Mora,Far-North,Onions,retail,kg,125.83,400.0,0.31
+2025-12-15,Doukoula,Far-North,Beans (niebe),retail,kg,143.0,466.66499999999996,0.31
+2021-12-15,Ndop,North-West,Taro,retail,kg,112.5,358.41499999999996,0.31
+2023-09-15,Ngaoundéré,Adamawa,Taro,retail,kg,102.0,326.0,0.31
+2024-11-15,Galim tignère,Adamawa,Groundnuts (shelled),retail,kg,233.0,742.0,0.31
+2024-08-15,Galim tignère,Adamawa,Onions,retail,kg,183.0,600.0,0.31
+2023-09-15,Koza,Far-North,Soybeans,retail,kg,152.0,483.5,0.31
+2022-08-15,Gbiti,East,Yam,retail,kg,250.0,798.335,0.31
+2024-11-15,Gobo,Far-North,Onions,retail,kg,230.18,735.5,0.31
+2026-07-15,Koza,Far-North,Tomatoes,retail,kg,153.0,500.0,0.31
+2025-09-15,Mbé,Adamawa,Cocoyam (macabo),retail,kg,161.0,525.0,0.31
+2024-08-15,Pitoa,North,Okra (fresh),retail,kg,286.0,930.0,0.31
+2023-05-15,Salak,Far-North,Onions,retail,kg,120.0,389.0,0.31
+2023-04-15,Barombi Kang,South-West,Yam,retail,kg,265.0,868.0,0.31
+2023-06-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,145.0,475.0,0.31
+2024-01-15,Kentzou,East,Yam,retail,kg,352.5,1150.0,0.31
+2025-09-15,Tibati,Adamawa,Taro,retail,kg,147.0,479.0,0.31
+2024-03-15,Ngong,North,Onions,retail,kg,153.0,491.5,0.31
+2022-12-15,Mokolo,Far-North,Potatoes,retail,kg,63.03,203.36,0.31
 2025-12-15,Tibati,Adamawa,Cassava (cossette),retail,kg,147.78,477.0,0.31
 2024-09-15,Gobo,Far-North,Onions,retail,kg,198.0,639.5,0.31
-2024-08-15,Galim tignère,Adamawa,Onions,retail,kg,183.0,600.0,0.31
-2025-12-15,Doukoula,Far-North,Beans (niebe),retail,kg,143.0,466.66499999999996,0.31
+2025-10-15,Koza,Far-North,Rice (local),retail,kg,135.0,432.5,0.31
+2023-04-15,Barombi Kang,South-West,Fish (dry),retail,kg,1250.0,3975.0,0.31
+2024-07-15,Gobo,Far-North,Onions,retail,kg,183.0,595.0,0.31
+2022-01-15,Kumbo,North-West,Potatoes (Irish),retail,kg,176.67,578.33,0.31
+2024-04-15,Douala-Sandaga,Littoral,Maize (yellow),wholesale,kg,85.0,274.30555555555554,0.31
+2024-03-15,Galim tignère,Adamawa,Potatoes,retail,kg,89.0,285.0,0.31
+2024-04-15,Mora,Far-North,Onions,retail,kg,108.0,343.0,0.31
 2023-07-15,Doukoula,Far-North,Sorghum (red),retail,kg,95.0,309.5,0.31
-2022-10-15,Mokolo,Far-North,Okra (fresh),retail,kg,267.0,898.9449999999999,0.3
-2021-11-15,Nkambe,North-West,Taro,retail,kg,177.5,600.0,0.3
-2023-05-15,Fotokol,Far-North,Peppers (dried),retail,kg,658.0,2206.0,0.3
-2023-01-15,Ngong,North,Onions,retail,kg,182.83,600.0,0.3
-2023-10-15,Galim tignère,Adamawa,Onions,retail,kg,189.0,625.0,0.3
+2021-11-15,Nkambe,North-West,Potatoes,retail,kg,125.0,400.0,0.31
+2025-05-15,Tibati,Adamawa,Taro,retail,kg,147.06,475.0,0.31
+2023-12-15,Batouri,East,Yam,retail,kg,185.0,603.0,0.31
+2021-03-15,Maroua,Far-North,Okra (fresh),retail,kg,167.0,533.0,0.31
+2025-11-15,Pitoa,North,Onions,retail,kg,223.0,737.325,0.3
+2021-04-15,Ndokayo,East,Fish (dry),retail,kg,701.0,2371.0,0.3
 2025-08-15,Gazawa,Far-North,Okra (fresh),retail,kg,256.0,859.0,0.3
-2023-05-15,Ngong,North,"Fish (tilapia, salted, dried)",retail,kg,537.0,1775.0,0.3
-2025-11-15,Doukoula,Far-North,Onions,retail,kg,220.0,737.325,0.3
-2025-12-15,Gobo,Far-North,Onions,retail,kg,183.0,608.5,0.3
+2023-03-15,Pitoa,North,Okra (fresh),retail,kg,286.0,958.0,0.3
 2024-02-15,Koza,Far-North,Okra (dry),retail,kg,288.0,968.5,0.3
-2026-02-15,Tibati,Adamawa,Yam,retail,kg,158.73,525.0,0.3
+2024-11-15,Mayo Darlé,Adamawa,Taro,retail,kg,89.91,300.0,0.3
 2024-04-15,Yaoundé-Marché 8e,Centre,Plantains,wholesale,kg,510.42,1723.9583333333335,0.3
-2024-11-15,Gobo,Far-North,Beans (niebe),retail,kg,311.01,1052.0,0.3
 2023-03-15,Salak,Far-North,Onions,retail,kg,120.0,400.0,0.3
-2023-05-15,Gazawa,Far-North,Potatoes,retail,kg,95.0,314.0,0.3
-2022-11-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,241.885,0.3
+2022-08-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,237.5,0.3
+2019-09-15,Logone-Birni,Far-North,Sorghum (red),wholesale,kg,33.33,110.0,0.3
+2025-12-15,Gobo,Far-North,Onions,retail,kg,183.0,608.5,0.3
+2022-09-15,Maroua,Far-North,Okra (fresh),retail,kg,233.0,773.0,0.3
+2022-09-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,236.84,0.3
 2024-09-15,Kumba,South-West,Fish (dry),retail,kg,1125.0,3762.5,0.3
 2024-09-15,Batouri,East,Plantains,retail,kg,105.0,351.0,0.3
-2023-10-15,Gazawa,Far-North,Potatoes,retail,kg,81.0,274.0,0.3
-2024-11-15,Batouri,East,Plantains,retail,kg,105.0,345.0,0.3
-2025-11-15,Pitoa,North,Onions,retail,kg,223.0,737.325,0.3
-2024-02-15,Fotokol,Far-North,Onions,retail,kg,160.0,526.0,0.3
 2025-09-15,Galim tignère,Adamawa,Taro,retail,kg,143.0,479.0,0.3
-2022-09-15,Maroua,Far-North,Okra (fresh),retail,kg,233.0,773.0,0.3
-2023-09-15,Logone-Birni,Far-North,Pasta (spaghetti),retail,kg,278.0,934.5,0.3
-2023-08-15,Galim tignère,Adamawa,Potatoes,retail,kg,89.0,295.0,0.3
-2022-09-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,236.84,0.3
-2022-01-15,Maroua,Far-North,Beans (niebe),retail,kg,200.0,675.0,0.3
-2024-05-15,Mayo Darlé,Adamawa,Okra (dry),retail,kg,400.0,1323.85,0.3
-2024-05-15,Gbiti,East,Yam,retail,kg,250.0,831.0,0.3
-2024-04-15,Nkambe,North-West,Rice (local),wholesale,kg,18.3,60.95,0.3
-2024-06-15,Doukoula,Far-North,Beans (niebe),retail,kg,243.39,800.0,0.3
 2023-09-15,Fotokol,Far-North,Beans (niebe),retail,kg,182.0,605.0,0.3
-2023-09-15,Mogode,Far-North,Groundnuts (shelled),retail,kg,273.0,900.0,0.3
-2023-09-15,Fotokol,Far-North,Taro,retail,kg,97.0,326.0,0.3
-2023-01-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,266.31,0.3
+2024-05-15,Mayo Darlé,Adamawa,Okra (dry),retail,kg,400.0,1323.85,0.3
 2023-07-15,Koza,Far-North,Rice (local),retail,kg,135.0,450.0,0.3
-2019-09-15,Logone-Birni,Far-North,Sorghum (red),wholesale,kg,33.33,110.0,0.3
-2021-04-15,Ndokayo,East,Fish (dry),retail,kg,701.0,2371.0,0.3
-2023-10-15,Garoua,North,Okra (fresh),retail,kg,211.27,715.165,0.3
-2022-08-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,237.5,0.3
-2022-03-15,Zamay,Far-North,Okra (fresh),retail,kg,233.33,789.47,0.3
-2024-11-15,Mayo Darlé,Adamawa,Taro,retail,kg,89.91,300.0,0.3
-2022-03-15,Zamay,Far-North,Milk (powder),retail,kg,2000.0,6750.0,0.3
-2023-03-15,Pitoa,North,Okra (fresh),retail,kg,286.0,958.0,0.3
-2023-09-15,Batouri,East,Yam,retail,kg,180.0,600.0,0.3
+2023-01-15,Ngong,North,Onions,retail,kg,182.83,600.0,0.3
+2024-02-15,Fotokol,Far-North,Onions,retail,kg,160.0,526.0,0.3
 2023-05-15,Koza,Far-North,Rice (local),retail,kg,135.0,450.0,0.3
-2022-04-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,272.525,0.29
-2023-08-15,Gobo,Far-North,Onions,retail,kg,183.0,633.0,0.29
-2022-05-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,276.67,0.29
-2021-12-15,Wum,North-West,Groundnuts (shelled),retail,kg,178.33,620.835,0.29
+2024-06-15,Doukoula,Far-North,Beans (niebe),retail,kg,243.39,800.0,0.3
+2024-05-15,Gbiti,East,Yam,retail,kg,250.0,831.0,0.3
+2023-09-15,Mogode,Far-North,Groundnuts (shelled),retail,kg,273.0,900.0,0.3
+2024-04-15,Nkambe,North-West,Rice (local),wholesale,kg,18.3,60.95,0.3
+2022-10-15,Mokolo,Far-North,Okra (fresh),retail,kg,267.0,898.9449999999999,0.3
+2023-05-15,Fotokol,Far-North,Peppers (dried),retail,kg,658.0,2206.0,0.3
+2023-10-15,Garoua,North,Okra (fresh),retail,kg,211.27,715.165,0.3
+2023-05-15,Ngong,North,"Fish (tilapia, salted, dried)",retail,kg,537.0,1775.0,0.3
+2023-05-15,Gazawa,Far-North,Potatoes,retail,kg,95.0,314.0,0.3
+2026-02-15,Tibati,Adamawa,Yam,retail,kg,158.73,525.0,0.3
+2023-09-15,Logone-Birni,Far-North,Pasta (spaghetti),retail,kg,278.0,934.5,0.3
+2022-01-15,Maroua,Far-North,Beans (niebe),retail,kg,200.0,675.0,0.3
+2022-03-15,Zamay,Far-North,Milk (powder),retail,kg,2000.0,6750.0,0.3
+2023-10-15,Gazawa,Far-North,Potatoes,retail,kg,81.0,274.0,0.3
+2022-03-15,Zamay,Far-North,Okra (fresh),retail,kg,233.33,789.47,0.3
+2024-11-15,Batouri,East,Plantains,retail,kg,105.0,345.0,0.3
+2023-01-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,266.31,0.3
+2025-11-15,Doukoula,Far-North,Onions,retail,kg,220.0,737.325,0.3
+2023-09-15,Fotokol,Far-North,Taro,retail,kg,97.0,326.0,0.3
+2023-10-15,Galim tignère,Adamawa,Onions,retail,kg,189.0,625.0,0.3
+2022-11-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,241.885,0.3
+2024-11-15,Gobo,Far-North,Beans (niebe),retail,kg,311.01,1052.0,0.3
+2023-08-15,Galim tignère,Adamawa,Potatoes,retail,kg,89.0,295.0,0.3
+2023-09-15,Batouri,East,Yam,retail,kg,180.0,600.0,0.3
+2021-11-15,Nkambe,North-West,Taro,retail,kg,177.5,600.0,0.3
+2024-04-15,Kaele,Far-North,Sorghum (white),wholesale,kg,8.48,29.2625,0.29
+2026-09-15,Mokolo,Far-North,Potatoes,retail,kg,72.0,250.0,0.29
+2024-07-15,Doukoula,Far-North,Maize (white),retail,kg,97.0,332.0,0.29
+2023-10-15,Doukoula,Far-North,Beans (niebe),retail,kg,167.0,582.0,0.29
+2024-01-15,Koza,Far-North,Tomatoes,retail,kg,145.0,497.5,0.29
+2023-09-15,Fotokol,Far-North,Garlic,retail,kg,236.0,811.5,0.29
 2023-10-15,Gobo,Far-North,Onions,retail,kg,183.0,625.0,0.29
-2023-06-15,Galim tignère,Adamawa,Onions,retail,kg,133.0,453.5,0.29
+2022-04-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,272.525,0.29
+2024-01-15,Ngong,North,Onions,retail,kg,153.0,533.0,0.29
+2024-08-15,Doukoula,Far-North,Maize (white),retail,kg,97.0,335.0,0.29
+2024-08-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,145.0,493.0,0.29
+2022-05-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,276.67,0.29
+2024-02-15,Gazawa,Far-North,Okra (fresh),retail,kg,250.0,858.5,0.29
+2024-09-15,Mogode,Far-North,Rice (local),retail,kg,145.0,500.0,0.29
+2024-04-15,Galim tignère,Adamawa,Onions,retail,kg,100.0,343.0,0.29
+2025-08-15,Doukoula,Far-North,Beans (niebe),retail,kg,238.0,811.0,0.29
+2022-09-15,Yagoua,Far-North,Watermelons,retail,kg,120.44,414.13,0.29
 2021-12-15,Nkambe,North-West,Plantains,retail,kg,124.17,428.83,0.29
 2022-12-15,Gazawa,Far-North,Onions,retail,kg,200.0,687.5,0.29
-2024-08-15,Doukoula,Far-North,Maize (white),retail,kg,97.0,335.0,0.29
-2025-03-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,250.0,0.29
-2022-12-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,274.61,0.29
-2023-08-15,Doukoula,Far-North,Maize (white),retail,kg,97.0,340.0,0.29
-2023-10-15,Doukoula,Far-North,Beans (niebe),retail,kg,167.0,582.0,0.29
-2024-02-15,Ngong,North,Onions,retail,kg,153.0,526.0,0.29
-2024-08-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,145.0,493.0,0.29
-2026-09-15,Mokolo,Far-North,Potatoes,retail,kg,72.0,250.0,0.29
-2023-09-15,Fotokol,Far-North,Meat (beef),retail,kg,716.0,2500.0,0.29
-2024-04-15,Galim tignère,Adamawa,Onions,retail,kg,100.0,343.0,0.29
-2024-02-15,Gazawa,Far-North,Okra (fresh),retail,kg,250.0,858.5,0.29
-2022-09-15,Yagoua,Far-North,Watermelons,retail,kg,120.44,414.13,0.29
-2025-11-15,Galim tignère,Adamawa,Onions,retail,kg,211.0,737.325,0.29
-2020-09-15,Mora,Far-North,Onions,retail,kg,225.0,783.33,0.29
-2025-11-15,Garoua,North,Okra (fresh),retail,kg,211.27,734.415,0.29
-2025-11-15,Koza,Far-North,"Fish (tilapia, salted, dried)",retail,kg,500.0,1708.5,0.29
-2023-07-15,Galim tignère,Adamawa,Potatoes,retail,kg,89.0,306.0,0.29
-2023-09-15,Logone-Birni,Far-North,Fish (dry),retail,kg,1000.0,3500.0,0.29
-2022-07-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,250.0,0.29
-2025-08-15,Doukoula,Far-North,Beans (niebe),retail,kg,238.0,811.0,0.29
-2019-05-15,Ndop,North-West,Cassava (fresh),wholesale,kg,43.75,150.0,0.29
-2024-04-15,Galim tignère,Adamawa,Potatoes,retail,kg,89.0,310.0,0.29
-2024-04-15,Kaele,Far-North,Sorghum (white),wholesale,kg,8.48,29.2625,0.29
-2023-09-15,Mara,Far-North,Fish (dry),retail,kg,1000.0,3500.0,0.29
 2025-08-15,Galim tignère,Adamawa,Potatoes,retail,kg,89.0,312.0,0.29
-2023-12-15,Galim tignère,Adamawa,Onions,retail,kg,217.0,759.5,0.29
-2024-09-15,Mogode,Far-North,Rice (local),retail,kg,145.0,500.0,0.29
-2025-08-15,Mbé,Adamawa,Cocoyam (macabo),retail,kg,161.0,550.0,0.29
-2023-09-15,Fotokol,Far-North,Garlic,retail,kg,236.0,811.5,0.29
-2025-09-15,Koza,Far-North,Rice (local),retail,kg,135.0,462.5,0.29
-2023-11-15,Koza,Far-North,Rice (local),retail,kg,135.0,470.0,0.29
 2019-06-15,Ndop,North-West,Cassava (fresh),wholesale,kg,43.75,150.0,0.29
-2024-09-15,Doukoula,Far-North,Maize (white),retail,kg,97.0,338.0,0.29
-2024-01-15,Koza,Far-North,Tomatoes,retail,kg,145.0,497.5,0.29
-2024-07-15,Doukoula,Far-North,Maize (white),retail,kg,97.0,332.0,0.29
-2024-01-15,Ngong,North,Onions,retail,kg,153.0,533.0,0.29
+2024-04-15,Galim tignère,Adamawa,Potatoes,retail,kg,89.0,310.0,0.29
+2023-09-15,Fotokol,Far-North,Meat (beef),retail,kg,716.0,2500.0,0.29
+2025-11-15,Galim tignère,Adamawa,Onions,retail,kg,211.0,737.325,0.29
+2025-08-15,Mbé,Adamawa,Cocoyam (macabo),retail,kg,161.0,550.0,0.29
+2023-09-15,Logone-Birni,Far-North,Fish (dry),retail,kg,1000.0,3500.0,0.29
+2023-09-15,Mara,Far-North,Fish (dry),retail,kg,1000.0,3500.0,0.29
+2024-02-15,Ngong,North,Onions,retail,kg,153.0,526.0,0.29
+2025-03-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,250.0,0.29
+2023-07-15,Galim tignère,Adamawa,Potatoes,retail,kg,89.0,306.0,0.29
+2025-09-15,Koza,Far-North,Rice (local),retail,kg,135.0,462.5,0.29
+2021-12-15,Wum,North-West,Groundnuts (shelled),retail,kg,178.33,620.835,0.29
+2022-12-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,274.61,0.29
 2025-04-15,Batouri,East,Bananas,retail,kg,110.0,385.0,0.29
-2024-10-15,Salak,Far-North,Onions,retail,kg,200.0,702.0,0.28
-2023-06-15,Doukoula,Far-North,Beans (niebe),retail,kg,167.0,597.0,0.28
-2021-11-15,Bamenda,North-West,Cassava (cossette),retail,kg,112.0,400.0,0.28
-2022-11-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,282.0,0.28
-2022-08-15,Ngong,North,Onions,retail,kg,162.48,583.335,0.28
-2022-12-15,Doukoula,Far-North,Beans (niebe),retail,kg,166.67,600.0,0.28
+2023-06-15,Galim tignère,Adamawa,Onions,retail,kg,133.0,453.5,0.29
+2023-08-15,Gobo,Far-North,Onions,retail,kg,183.0,633.0,0.29
+2019-05-15,Ndop,North-West,Cassava (fresh),wholesale,kg,43.75,150.0,0.29
+2023-12-15,Galim tignère,Adamawa,Onions,retail,kg,217.0,759.5,0.29
+2020-09-15,Mora,Far-North,Onions,retail,kg,225.0,783.33,0.29
+2023-08-15,Doukoula,Far-North,Maize (white),retail,kg,97.0,340.0,0.29
+2022-07-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,250.0,0.29
+2025-11-15,Garoua,North,Okra (fresh),retail,kg,211.27,734.415,0.29
+2023-11-15,Koza,Far-North,Rice (local),retail,kg,135.0,470.0,0.29
+2025-11-15,Koza,Far-North,"Fish (tilapia, salted, dried)",retail,kg,500.0,1708.5,0.29
+2024-09-15,Doukoula,Far-North,Maize (white),retail,kg,97.0,338.0,0.29
 2022-12-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,253.27,0.28
-2025-03-15,Batouri,East,Bananas,retail,kg,110.0,395.0,0.28
-2022-07-15,Kentzou,East,Yam,retail,kg,375.0,1337.5,0.28
-2019-09-15,Bamenda,North-West,Cassava (fresh),wholesale,kg,46.88,170.0,0.28
-2025-05-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,257.015,0.28
-2022-07-15,Batouri,East,Yam,retail,kg,375.0,1337.5,0.28
-2022-09-15,Tignère,Adamawa,Okra (fresh),retail,kg,214.29,773.0,0.28
-2024-04-15,Ngong,North,"Fish (tilapia, salted, dried)",retail,kg,495.0,1770.0,0.28
-2023-07-15,Zamay,Far-North,Okra (fresh),retail,kg,200.0,723.0,0.28
-2022-09-15,Bertoua 1,East,Groundnuts (shelled),retail,kg,250.0,877.23,0.28
-2025-11-15,Gazawa,Far-North,Onions,retail,kg,207.0,737.325,0.28
 2021-03-15,Gbiti,East,Yam,retail,kg,275.0,967.0,0.28
-2024-10-15,Batouri,East,Plantains,retail,kg,105.0,378.5,0.28
-2025-07-15,Galim tignère,Adamawa,Taro,retail,kg,133.0,471.0,0.28
+2022-11-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,282.0,0.28
 2025-11-15,Mbé,Adamawa,Cocoyam (macabo),retail,kg,121.0,430.0,0.28
-2022-10-15,Kousseri,Far-North,Okra (fresh),retail,kg,250.0,898.9449999999999,0.28
-2024-11-15,Garoua,North,Okra (fresh),retail,kg,252.0,900.0,0.28
-2022-10-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,290.0,0.28
-2023-02-15,Ngong,North,Onions,retail,kg,154.74,553.75,0.28
-2025-12-15,Gazawa,Far-North,Okra (fresh),retail,kg,250.0,886.5,0.28
-2023-05-15,Galim tignère,Adamawa,Potatoes,retail,kg,89.0,314.0,0.28
-2021-11-15,Mokolo,Far-North,Potatoes (Irish),retail,kg,250.0,900.0,0.28
 2023-01-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,258.4,0.28
-2025-09-15,Fotokol,Far-North,Onions,retail,kg,128.0,459.15999999999997,0.28
+2022-12-15,Doukoula,Far-North,Beans (niebe),retail,kg,166.67,600.0,0.28
+2024-10-15,Batouri,East,Plantains,retail,kg,105.0,378.5,0.28
 2024-09-15,Barombi Kang,South-West,Fish (dry),retail,kg,1043.0,3762.5,0.28
-2023-11-15,Doukoula,Far-North,Beans (niebe),retail,kg,167.0,598.5,0.28
 2023-11-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,252.5,0.28
-2023-07-15,Salak,Far-North,Onions,retail,kg,134.0,475.0,0.28
+2021-11-15,Mokolo,Far-North,Potatoes (Irish),retail,kg,250.0,900.0,0.28
+2025-03-15,Batouri,East,Bananas,retail,kg,110.0,395.0,0.28
+2025-05-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,257.015,0.28
+2022-09-15,Tignère,Adamawa,Okra (fresh),retail,kg,214.29,773.0,0.28
 2024-10-15,Galim tignère,Adamawa,Onions,retail,kg,200.0,702.0,0.28
-2025-09-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,145.0,525.0,0.28
+2023-11-15,Doukoula,Far-North,Beans (niebe),retail,kg,167.0,598.5,0.28
+2023-02-15,Ngong,North,Onions,retail,kg,154.74,553.75,0.28
+2022-08-15,Ngong,North,Onions,retail,kg,162.48,583.335,0.28
+2023-06-15,Doukoula,Far-North,Beans (niebe),retail,kg,167.0,597.0,0.28
+2025-12-15,Gazawa,Far-North,Okra (fresh),retail,kg,250.0,886.5,0.28
 2024-04-15,Banyo,Adamawa,Wheat flour,retail,kg,533.0,1890.0,0.28
-2023-12-15,Kousseri,Far-North,Watermelons,retail,kg,87.0,317.0,0.27
-2021-09-15,Maroua,Far-North,Okra (fresh),retail,kg,150.0,550.0,0.27
-2023-03-15,Gobo,Far-North,Bananas,retail,kg,86.0,313.0,0.27
-2023-09-15,Galim tignère,Adamawa,Cassava (fresh),retail,kg,100.0,375.0,0.27
-2023-11-15,Batouri,East,Yam,retail,kg,170.0,634.5,0.27
-2023-12-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,264.0,0.27
+2024-11-15,Garoua,North,Okra (fresh),retail,kg,252.0,900.0,0.28
+2024-10-15,Salak,Far-North,Onions,retail,kg,200.0,702.0,0.28
+2024-04-15,Ngong,North,"Fish (tilapia, salted, dried)",retail,kg,495.0,1770.0,0.28
+2023-07-15,Salak,Far-North,Onions,retail,kg,134.0,475.0,0.28
+2019-09-15,Bamenda,North-West,Cassava (fresh),wholesale,kg,46.88,170.0,0.28
+2022-07-15,Kentzou,East,Yam,retail,kg,375.0,1337.5,0.28
+2023-07-15,Zamay,Far-North,Okra (fresh),retail,kg,200.0,723.0,0.28
+2025-11-15,Gazawa,Far-North,Onions,retail,kg,207.0,737.325,0.28
+2025-09-15,Fotokol,Far-North,Onions,retail,kg,128.0,459.15999999999997,0.28
+2022-07-15,Batouri,East,Yam,retail,kg,375.0,1337.5,0.28
+2022-10-15,Kousseri,Far-North,Okra (fresh),retail,kg,250.0,898.9449999999999,0.28
+2025-09-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,145.0,525.0,0.28
+2021-11-15,Bamenda,North-West,Cassava (cossette),retail,kg,112.0,400.0,0.28
+2022-09-15,Bertoua 1,East,Groundnuts (shelled),retail,kg,250.0,877.23,0.28
+2023-05-15,Galim tignère,Adamawa,Potatoes,retail,kg,89.0,314.0,0.28
+2022-10-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,290.0,0.28
+2025-07-15,Galim tignère,Adamawa,Taro,retail,kg,133.0,471.0,0.28
 2021-03-15,Tongo Gandima,East,Cassava meal (gari),retail,kg,151.0,566.5,0.27
 2023-05-15,Gazawa,Far-North,Okra (fresh),retail,kg,250.0,910.0,0.27
-2023-09-15,Garoua,North,Groundnuts (shelled),retail,kg,245.0,900.0,0.27
-2022-09-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,297.61,0.27
-2023-03-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,266.5,0.27
-2025-10-15,Gazawa,Far-North,Okra (fresh),retail,kg,188.0,700.0,0.27
-2024-04-15,Mamfé,South-West,Maize (white),wholesale,kg,48.33,180.55555555555554,0.27
-2025-04-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,260.0,0.27
-2026-08-15,Galim tignère,Adamawa,Potatoes,retail,kg,86.0,316.0,0.27
-2023-09-15,Fotokol,Far-North,"Fish (tilapia, salted, dried)",retail,kg,181.0,661.0,0.27
-2025-02-15,Galim tignère,Adamawa,Groundnuts (shelled),retail,kg,200.0,746.5,0.27
-2023-09-15,Gobo,Far-North,Groundnuts (shelled),retail,kg,240.0,900.0,0.27
 2026-06-15,Gazawa,Far-North,"Fish (tilapia, salted, dried)",retail,kg,469.0,1708.85,0.27
-2024-01-15,Galim tignère,Adamawa,Onions,retail,kg,142.0,533.0,0.27
-2023-10-15,Ngong,North,Onions,retail,kg,166.0,625.0,0.27
+2023-09-15,Galim tignère,Adamawa,Cassava (fresh),retail,kg,100.0,375.0,0.27
+2024-04-15,Mamfé,South-West,Maize (white),wholesale,kg,48.33,180.55555555555554,0.27
+2023-03-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,266.5,0.27
+2023-03-15,Gobo,Far-North,Bananas,retail,kg,86.0,313.0,0.27
+2026-08-15,Galim tignère,Adamawa,Potatoes,retail,kg,86.0,316.0,0.27
+2025-04-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,260.0,0.27
 2023-03-15,Mbé,Adamawa,Bananas,retail,kg,86.0,313.0,0.27
-2023-09-15,Mokolo,Far-North,Okra (fresh),retail,kg,183.0,700.0,0.26
-2025-08-15,Fotokol,Far-North,Onions,retail,kg,128.0,491.0,0.26
-2023-05-15,Logone-Birni,Far-North,Fish (dry),retail,kg,1000.0,3900.0,0.26
-2023-05-15,Mara,Far-North,Fish (dry),retail,kg,1000.0,3900.0,0.26
-2022-05-15,Gbiti,East,Yam,retail,kg,250.0,962.5,0.26
-2021-12-15,Ndop,North-West,Plantains,retail,kg,112.5,428.83,0.26
-2023-06-15,Mara,Far-North,Fish (dry),retail,kg,1000.0,3871.5,0.26
-2023-10-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,270.0,0.26
-2021-12-15,Mbaiboum,North,Fish (dry),retail,kg,1000.0,3812.5,0.26
+2023-10-15,Ngong,North,Onions,retail,kg,166.0,625.0,0.27
+2022-09-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,297.61,0.27
+2023-09-15,Fotokol,Far-North,"Fish (tilapia, salted, dried)",retail,kg,181.0,661.0,0.27
+2021-09-15,Maroua,Far-North,Okra (fresh),retail,kg,150.0,550.0,0.27
+2025-02-15,Galim tignère,Adamawa,Groundnuts (shelled),retail,kg,200.0,746.5,0.27
+2023-12-15,Kousseri,Far-North,Watermelons,retail,kg,87.0,317.0,0.27
+2025-10-15,Gazawa,Far-North,Okra (fresh),retail,kg,188.0,700.0,0.27
+2024-01-15,Galim tignère,Adamawa,Onions,retail,kg,142.0,533.0,0.27
+2023-09-15,Gobo,Far-North,Groundnuts (shelled),retail,kg,240.0,900.0,0.27
+2023-09-15,Garoua,North,Groundnuts (shelled),retail,kg,245.0,900.0,0.27
+2023-11-15,Batouri,East,Yam,retail,kg,170.0,634.5,0.27
+2023-12-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,264.0,0.27
+2022-11-15,Ngong,North,Onions,retail,kg,185.02,717.0,0.26
+2023-12-15,Mokolo,Far-North,Onions,retail,kg,200.0,759.5,0.26
 2023-06-15,Salak,Far-North,Onions,retail,kg,120.0,453.5,0.26
-2024-07-15,Kumba,South-West,Fish (dry),retail,kg,1040.0,3983.5,0.26
-2023-05-15,Galim tignère,Adamawa,Onions,retail,kg,100.0,389.0,0.26
-2024-10-15,Fundong,North-West,Cassava (cossette),retail,kg,115.0,450.0,0.26
-2025-06-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,400.0,0.26
-2025-02-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,400.0,0.26
 2024-11-15,Mora,Far-North,Potatoes (Irish),retail,kg,125.0,483.0,0.26
-2024-06-15,Salak,Far-North,Onions,retail,kg,144.0,558.0,0.26
+2023-10-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,270.0,0.26
 2023-06-15,Logone-Birni,Far-North,Fish (dry),retail,kg,1000.0,3871.5,0.26
-2025-05-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,400.0,0.26
-2024-02-15,Galim tignère,Adamawa,Onions,retail,kg,138.0,526.0,0.26
-2026-05-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,400.0,0.26
-2024-11-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,408.0,0.26
-2024-02-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,275.0,0.26
-2023-08-15,Doukoula,Far-North,Beans (niebe),retail,kg,156.0,607.0,0.26
-2020-08-15,Kentzou,East,Cassava (cossette),wholesale,kg,71.11,277.77777777777777,0.26
-2022-06-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,310.875,0.26
 2023-12-15,Doukoula,Far-North,Beans (niebe),retail,kg,146.0,567.5,0.26
-2023-08-15,Gazawa,Far-North,Okra (fresh),retail,kg,208.0,804.0,0.26
-2025-07-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,405.0,0.26
+2025-12-15,Kousseri,Far-North,Onions,retail,kg,158.0,608.5,0.26
+2024-06-15,Salak,Far-North,Onions,retail,kg,144.0,558.0,0.26
+2022-05-15,Gbiti,East,Yam,retail,kg,250.0,962.5,0.26
+2024-06-15,Mayo Darlé,Adamawa,Okra (dry),retail,kg,400.0,1542.9,0.26
 2023-12-15,Koza,Far-North,Tomatoes,retail,kg,141.0,545.0,0.26
-2024-04-15,Mokolo,Far-North,Wheat flour,retail,kg,500.0,1890.0,0.26
-2023-11-15,Gobo,Far-North,Onions,retail,kg,183.0,700.0,0.26
+2024-07-15,Kumba,South-West,Fish (dry),retail,kg,1040.0,3983.5,0.26
 2025-11-15,Gazawa,Far-North,Okra (fresh),retail,kg,188.0,734.415,0.26
 2024-03-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,277.5,0.26
-2023-10-15,Tibati,Adamawa,Yam,retail,kg,143.0,550.25,0.26
-2024-06-15,Mayo Darlé,Adamawa,Okra (dry),retail,kg,400.0,1542.9,0.26
-2023-12-15,Mokolo,Far-North,Onions,retail,kg,200.0,759.5,0.26
-2025-12-15,Kousseri,Far-North,Onions,retail,kg,158.0,608.5,0.26
-2023-08-15,Garoua,North,Okra (fresh),retail,kg,211.0,804.0,0.26
-2024-04-15,Maroua,Far-North,Wheat flour,retail,kg,500.0,1890.0,0.26
-2025-08-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,145.0,550.0,0.26
+2023-11-15,Gobo,Far-North,Onions,retail,kg,183.0,700.0,0.26
 2023-02-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,309.17,0.26
-2026-09-15,Koza,Far-North,Okra (dry),retail,kg,281.0,1089.5,0.26
-2022-11-15,Ngong,North,Onions,retail,kg,185.02,717.0,0.26
+2024-02-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,275.0,0.26
+2023-10-15,Tibati,Adamawa,Yam,retail,kg,143.0,550.25,0.26
+2020-08-15,Kentzou,East,Cassava (cossette),wholesale,kg,71.11,277.77777777777777,0.26
+2025-05-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,400.0,0.26
+2024-04-15,Maroua,Far-North,Wheat flour,retail,kg,500.0,1890.0,0.26
+2025-07-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,405.0,0.26
+2024-04-15,Mokolo,Far-North,Wheat flour,retail,kg,500.0,1890.0,0.26
+2025-08-15,Fotokol,Far-North,Onions,retail,kg,128.0,491.0,0.26
+2021-12-15,Ndop,North-West,Plantains,retail,kg,112.5,428.83,0.26
+2025-06-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,400.0,0.26
+2024-11-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,408.0,0.26
+2025-08-15,Tibati,Adamawa,Cocoyam (macabo),retail,kg,145.0,550.0,0.26
+2024-10-15,Fundong,North-West,Cassava (cossette),retail,kg,115.0,450.0,0.26
+2023-05-15,Logone-Birni,Far-North,Fish (dry),retail,kg,1000.0,3900.0,0.26
+2023-05-15,Mara,Far-North,Fish (dry),retail,kg,1000.0,3900.0,0.26
+2023-06-15,Mara,Far-North,Fish (dry),retail,kg,1000.0,3871.5,0.26
+2023-05-15,Galim tignère,Adamawa,Onions,retail,kg,100.0,389.0,0.26
+2023-08-15,Gazawa,Far-North,Okra (fresh),retail,kg,208.0,804.0,0.26
+2023-08-15,Doukoula,Far-North,Beans (niebe),retail,kg,156.0,607.0,0.26
+2024-02-15,Galim tignère,Adamawa,Onions,retail,kg,138.0,526.0,0.26
+2026-05-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,400.0,0.26
 2024-05-15,Mokolo,Far-North,Okra (fresh),retail,kg,283.0,1102.5,0.26
-2023-08-15,Galim tignère,Adamawa,Onions,retail,kg,156.0,633.0,0.25
+2025-02-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,400.0,0.26
+2021-12-15,Mbaiboum,North,Fish (dry),retail,kg,1000.0,3812.5,0.26
+2023-09-15,Mokolo,Far-North,Okra (fresh),retail,kg,183.0,700.0,0.26
+2022-06-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,310.875,0.26
+2026-09-15,Koza,Far-North,Okra (dry),retail,kg,281.0,1089.5,0.26
+2023-08-15,Garoua,North,Okra (fresh),retail,kg,211.0,804.0,0.26
+2024-01-15,Mbé,Adamawa,Okra (dry),retail,kg,214.0,866.0,0.25
 2021-11-15,Guzang,North-West,Taro,retail,kg,151.67,600.0,0.25
 2023-09-15,Ngaoundéré,Adamawa,"Rice (long grain, imported)",retail,kg,150.0,590.0,0.25
-2023-08-15,Tibati,Adamawa,Yam,retail,kg,159.0,631.0,0.25
-2025-09-15,Garoua,North,Okra (fresh),retail,kg,211.27,836.5,0.25
-2022-03-15,Mokolo,Far-North,Okra (fresh),retail,kg,200.0,789.47,0.25
-2022-06-15,Batouri,East,Yam,retail,kg,207.33,840.0,0.25
-2023-12-15,Garoua,North,Potatoes,retail,kg,49.0,194.75,0.25
-2025-11-15,Gobo,Far-North,Onions,retail,kg,183.0,737.325,0.25
 2022-06-15,Koza,Far-North,Peppers (dried),retail,kg,542.55,2162.775,0.25
-2024-06-15,Barombi Kang,South-West,Fish (dry),retail,kg,1008.0,3967.0,0.25
-2025-05-15,Galim tignère,Adamawa,Groundnuts (shelled),retail,kg,222.22,887.98,0.25
-2023-03-15,Galim tignère,Adamawa,Onions,retail,kg,100.0,400.0,0.25
-2023-07-15,Doukoula,Far-North,Beans (niebe),retail,kg,155.0,608.0,0.25
-2023-09-15,Ngong,North,Garlic,retail,kg,205.0,811.5,0.25
-2024-07-15,Galim tignère,Adamawa,Onions,retail,kg,150.0,595.0,0.25
-2023-09-15,Mayo Darlé,Adamawa,Sugar,retail,kg,222.0,900.0,0.25
 2023-05-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,280.0,0.25
-2025-10-15,Fotokol,Far-North,Onions,retail,kg,128.0,503.0,0.25
-2025-03-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,422.58,0.25
-2024-05-15,Gazawa,Far-North,Okra (fresh),retail,kg,270.83,1102.5,0.25
-2024-01-15,Mbé,Adamawa,Okra (dry),retail,kg,214.0,866.0,0.25
-2024-01-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,280.0,0.25
+2022-03-15,Mokolo,Far-North,Okra (fresh),retail,kg,200.0,789.47,0.25
+2024-06-15,Barombi Kang,South-West,Fish (dry),retail,kg,1008.0,3967.0,0.25
+2022-06-15,Batouri,East,Yam,retail,kg,207.33,840.0,0.25
 2020-03-15,Ndop,North-West,Cassava (fresh),wholesale,kg,31.25,122.890625,0.25
+2025-11-15,Gobo,Far-North,Onions,retail,kg,183.0,737.325,0.25
+2025-09-15,Garoua,North,Okra (fresh),retail,kg,211.27,836.5,0.25
+2023-03-15,Galim tignère,Adamawa,Onions,retail,kg,100.0,400.0,0.25
+2023-09-15,Ngong,North,Garlic,retail,kg,205.0,811.5,0.25
 2023-02-15,Mbé,Adamawa,Salt,retail,kg,75.0,303.33500000000004,0.25
-2024-08-15,Doukoula,Far-North,Beans (niebe),retail,kg,238.0,1000.0,0.24
-2022-11-15,Doukoula,Far-North,Beans (niebe),retail,kg,152.38,625.0,0.24
-2021-12-15,Kumbo,North-West,Groundnuts (shelled),retail,kg,150.0,620.835,0.24
-2022-02-15,Guzang,North-West,Taro,retail,kg,82.0,343.0,0.24
-2024-05-15,Salak,Far-North,Onions,retail,kg,120.0,500.0,0.24
-2024-03-15,Salak,Far-North,Onions,retail,kg,120.0,491.5,0.24
-2023-09-15,Gazawa,Far-North,Meat (beef),retail,kg,611.0,2500.0,0.24
-2023-05-15,Doukoula,Far-North,Beans (niebe),retail,kg,147.0,621.0,0.24
-2024-11-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,300.0,0.24
-2024-10-15,Galim tignère,Adamawa,Cassava (cossette),retail,kg,108.0,450.0,0.24
-2022-10-15,Doukoula,Far-North,Beans (niebe),retail,kg,142.86,600.0,0.24
+2024-01-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,280.0,0.25
+2025-05-15,Galim tignère,Adamawa,Groundnuts (shelled),retail,kg,222.22,887.98,0.25
+2024-07-15,Galim tignère,Adamawa,Onions,retail,kg,150.0,595.0,0.25
+2023-12-15,Garoua,North,Potatoes,retail,kg,49.0,194.75,0.25
+2023-09-15,Mayo Darlé,Adamawa,Sugar,retail,kg,222.0,900.0,0.25
+2024-05-15,Gazawa,Far-North,Okra (fresh),retail,kg,270.83,1102.5,0.25
+2023-07-15,Doukoula,Far-North,Beans (niebe),retail,kg,155.0,608.0,0.25
+2025-03-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,422.58,0.25
+2023-08-15,Tibati,Adamawa,Yam,retail,kg,159.0,631.0,0.25
+2025-10-15,Fotokol,Far-North,Onions,retail,kg,128.0,503.0,0.25
+2023-08-15,Galim tignère,Adamawa,Onions,retail,kg,156.0,633.0,0.25
 2023-01-15,Doukoula,Far-North,Beans (niebe),retail,kg,154.76,633.0,0.24
-2024-11-15,Gobo,Far-North,"Fish (tilapia, salted, dried)",retail,kg,404.31,1700.0,0.24
-2023-12-15,Gobo,Far-North,Onions,retail,kg,183.0,759.5,0.24
 2024-04-15,Kumbo,North-West,Cassava (fresh),wholesale,kg,8.25,33.75,0.24
+2022-09-15,Bertoua 1,East,Tomatoes,retail,kg,133.0,551.605,0.24
+2024-11-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,300.0,0.24
+2024-04-15,Kousseri,Far-North,Maize (white),wholesale,kg,43.0,180.55555555555554,0.24
+2024-03-15,Salak,Far-North,Onions,retail,kg,120.0,491.5,0.24
 2024-09-15,Batouri,East,Bananas,retail,kg,80.0,327.0,0.24
-2023-09-15,Galim tignère,Adamawa,Cassava (cossette),retail,kg,103.0,425.0,0.24
+2024-08-15,Doukoula,Far-North,Beans (niebe),retail,kg,238.0,1000.0,0.24
 2026-04-15,Tibati,Adamawa,Yam,retail,kg,158.73,656.0,0.24
+2022-10-15,Doukoula,Far-North,Beans (niebe),retail,kg,142.86,600.0,0.24
+2025-04-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,434.0,0.24
+2023-05-15,Doukoula,Far-North,Beans (niebe),retail,kg,147.0,621.0,0.24
+2021-12-15,Kumbo,North-West,Groundnuts (shelled),retail,kg,150.0,620.835,0.24
+2024-11-15,Gobo,Far-North,"Fish (tilapia, salted, dried)",retail,kg,404.31,1700.0,0.24
+2024-10-15,Galim tignère,Adamawa,Cassava (cossette),retail,kg,108.0,450.0,0.24
+2022-09-15,Ngong,North,Onions,retail,kg,154.74,632.5,0.24
+2022-02-15,Guzang,North-West,Taro,retail,kg,82.0,343.0,0.24
+2023-09-15,Galim tignère,Adamawa,Cassava (cossette),retail,kg,103.0,425.0,0.24
+2022-08-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,340.42,0.24
+2024-04-15,Kousseri,Far-North,Groundnuts (shelled),wholesale,kg,42.8,179.75,0.24
+2022-08-15,Yagoua,Far-North,Watermelons,retail,kg,98.09,410.33500000000004,0.24
+2022-11-15,Doukoula,Far-North,Beans (niebe),retail,kg,152.38,625.0,0.24
+2023-12-15,Gobo,Far-North,Onions,retail,kg,183.0,759.5,0.24
+2024-05-15,Salak,Far-North,Onions,retail,kg,120.0,500.0,0.24
 2021-10-15,Nkambe,North-West,Taro,retail,kg,166.67,683.335,0.24
 2023-11-15,Kousseri,Far-North,Watermelons,retail,kg,78.0,323.0,0.24
-2024-04-15,Kousseri,Far-North,Groundnuts (shelled),wholesale,kg,42.8,179.75,0.24
-2022-09-15,Ngong,North,Onions,retail,kg,154.74,632.5,0.24
-2022-08-15,Galim tignère,Adamawa,Taro,retail,kg,80.0,340.42,0.24
-2022-08-15,Yagoua,Far-North,Watermelons,retail,kg,98.09,410.33500000000004,0.24
-2022-09-15,Bertoua 1,East,Tomatoes,retail,kg,133.0,551.605,0.24
-2024-04-15,Kousseri,Far-North,Maize (white),wholesale,kg,43.0,180.55555555555554,0.24
-2025-04-15,Gobo,Far-North,Leafy vegetables,retail,kg,105.0,434.0,0.24
-2024-03-15,Tibati,Adamawa,Yam,retail,kg,159.0,677.0,0.23
-2022-12-15,Ngong,North,Onions,retail,kg,154.74,687.5,0.23
-2023-06-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,304.0,0.23
-2023-08-15,Ngong,North,"Fish (tilapia, salted, dried)",retail,kg,366.0,1623.0,0.23
-2024-10-15,Garoua,North,Okra (fresh),retail,kg,200.0,867.0,0.23
-2024-07-15,Barombi Kang,South-West,Fish (dry),retail,kg,923.0,3983.5,0.23
-2025-11-15,Doukoula,Far-North,Beans (niebe),retail,kg,159.0,679.44,0.23
-2025-12-15,Mbé,Adamawa,Cassava (cossette),retail,kg,109.0,477.0,0.23
-2024-10-15,Mora,Far-North,Potatoes (Irish),retail,kg,100.0,436.5,0.23
+2023-09-15,Gazawa,Far-North,Meat (beef),retail,kg,611.0,2500.0,0.24
 2023-03-15,Doukoula,Far-North,Beans (niebe),retail,kg,143.0,618.0,0.23
-2024-10-15,Batouri,East,Bananas,retail,kg,80.0,355.0,0.23
+2023-06-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,304.0,0.23
 2023-09-15,Ngaoundéré,Adamawa,Tomatoes,retail,kg,125.0,534.0,0.23
+2024-07-15,Barombi Kang,South-West,Fish (dry),retail,kg,923.0,3983.5,0.23
 2024-09-15,Garoua,North,Okra (fresh),retail,kg,211.0,929.5,0.23
-2024-11-15,Batouri,East,Yam,retail,kg,143.0,632.0,0.23
-2019-10-15,Ndop,North-West,Cassava (fresh),wholesale,kg,37.5,160.0,0.23
-2023-09-15,Ngaoui,Adamawa,Cocoyam (macabo),retail,kg,108.0,461.0,0.23
+2024-10-15,Mora,Far-North,Potatoes (Irish),retail,kg,100.0,436.5,0.23
+2024-03-15,Tibati,Adamawa,Yam,retail,kg,159.0,677.0,0.23
 2025-06-15,Galim tignère,Adamawa,Groundnuts (shelled),retail,kg,205.0,889.0,0.23
+2025-11-15,Doukoula,Far-North,Beans (niebe),retail,kg,159.0,679.44,0.23
+2024-10-15,Batouri,East,Bananas,retail,kg,80.0,355.0,0.23
+2022-12-15,Ngong,North,Onions,retail,kg,154.74,687.5,0.23
+2019-10-15,Ndop,North-West,Cassava (fresh),wholesale,kg,37.5,160.0,0.23
 2019-11-15,Ndop,North-West,Cassava (fresh),wholesale,kg,37.5,160.0,0.23
 2019-12-15,Ndop,North-West,Cassava (fresh),wholesale,kg,37.5,160.0,0.23
+2024-11-15,Batouri,East,Yam,retail,kg,143.0,632.0,0.23
+2025-12-15,Mbé,Adamawa,Cassava (cossette),retail,kg,109.0,477.0,0.23
+2024-10-15,Garoua,North,Okra (fresh),retail,kg,200.0,867.0,0.23
+2023-08-15,Ngong,North,"Fish (tilapia, salted, dried)",retail,kg,366.0,1623.0,0.23
+2023-09-15,Ngaoui,Adamawa,Cocoyam (macabo),retail,kg,108.0,461.0,0.23
+2023-12-15,Ngong,North,Onions,retail,kg,166.0,759.5,0.22
 2022-11-15,Fotokol,Far-North,Onions,retail,kg,155.84,717.0,0.22
 2025-02-15,Buea,South-West,Cassava (cossette),retail,kg,50.0,230.14499999999998,0.22
-2024-04-15,Mamfé,South-West,Oil (palm),wholesale,litre,43.5,195.5,0.22
-2024-01-15,Gbiti,East,Yam,retail,kg,250.0,1150.0,0.22
+2024-06-15,Galim tignère,Adamawa,Onions,retail,kg,125.0,558.0,0.22
 2024-11-15,Batouri,East,Bananas,retail,kg,80.0,362.0,0.22
-2024-04-15,Nkambe,North-West,Oil (palm),wholesale,litre,43.9,195.5,0.22
-2023-05-15,Zamay,Far-North,Okra (fresh),retail,kg,200.0,910.0,0.22
-2025-07-15,Gazawa,Far-North,Okra (fresh),retail,kg,211.0,940.0,0.22
-2022-10-15,Fotokol,Far-North,Onions,retail,kg,155.84,715.0,0.22
-2023-05-15,Mamfé,South-West,Yam,retail,kg,195.0,883.0,0.22
+2024-04-15,Mamfé,South-West,Oil (palm),wholesale,litre,43.5,195.5,0.22
+2022-09-15,Mogode,Far-North,Potatoes (Irish),retail,kg,110.88,500.0,0.22
 2023-01-15,Mbé,Adamawa,Salt,retail,kg,65.0,300.0,0.22
+2025-07-15,Gazawa,Far-North,Okra (fresh),retail,kg,211.0,940.0,0.22
+2024-04-15,Nkambe,North-West,Oil (palm),wholesale,litre,43.9,195.5,0.22
+2019-09-15,Ndop,North-West,Cassava (fresh),wholesale,kg,37.5,170.0,0.22
+2023-03-15,Fotokol,Far-North,Peppers (dried),retail,kg,526.0,2415.5,0.22
+2024-10-15,Doukoula,Far-North,Sorghum (red),retail,kg,82.0,375.0,0.22
+2024-01-15,Gbiti,East,Yam,retail,kg,250.0,1150.0,0.22
+2022-10-15,Fotokol,Far-North,Onions,retail,kg,155.84,715.0,0.22
+2024-11-15,Kentzou,East,Yam,retail,kg,140.0,632.0,0.22
+2023-05-15,Zamay,Far-North,Okra (fresh),retail,kg,200.0,910.0,0.22
+2023-05-15,Mamfé,South-West,Yam,retail,kg,195.0,883.0,0.22
 2023-11-15,Ngong,North,Onions,retail,kg,153.0,700.0,0.22
 2021-11-15,Bamenda,North-West,Potatoes (Irish),retail,kg,200.0,900.0,0.22
-2023-12-15,Ngong,North,Onions,retail,kg,166.0,759.5,0.22
 2021-11-15,Guzang,North-West,Potatoes (Irish),retail,kg,200.0,900.0,0.22
-2024-10-15,Doukoula,Far-North,Sorghum (red),retail,kg,82.0,375.0,0.22
-2023-03-15,Fotokol,Far-North,Peppers (dried),retail,kg,526.0,2415.5,0.22
-2019-09-15,Ndop,North-West,Cassava (fresh),wholesale,kg,37.5,170.0,0.22
-2024-11-15,Kentzou,East,Yam,retail,kg,140.0,632.0,0.22
-2024-06-15,Galim tignère,Adamawa,Onions,retail,kg,125.0,558.0,0.22
-2022-09-15,Mogode,Far-North,Potatoes (Irish),retail,kg,110.88,500.0,0.22
-2022-04-15,Fundong,North-West,Okra (fresh),retail,kg,100.0,483.33500000000004,0.21
-2022-05-15,Fundong,North-West,Okra (fresh),retail,kg,100.0,478.33500000000004,0.21
-2024-04-15,Nkambe,North-West,"Rice (long grain, imported)",wholesale,kg,17.2,80.45,0.21
-2024-08-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,342.5,0.21
-2025-03-15,Galim tignère,Adamawa,Groundnuts (shelled),retail,kg,165.93,800.0,0.21
 2024-04-15,Kousseri,Far-North,Sorghum (white),wholesale,kg,6.15,29.2625,0.21
-2022-10-15,Mokolo,Far-North,Garlic,retail,kg,403.23,1965.81,0.21
-2024-02-15,Gbiti,East,Yam,retail,kg,250.0,1166.5,0.21
-2023-03-15,Yagoua,Far-North,Cassava (fresh),retail,kg,41.0,198.5,0.21
-2025-12-15,Fotokol,Far-North,Onions,retail,kg,128.0,608.5,0.21
+2022-04-15,Fundong,North-West,Okra (fresh),retail,kg,100.0,483.33500000000004,0.21
 2026-04-15,Gazawa,Far-North,"Fish (tilapia, salted, dried)",retail,kg,375.0,1764.7,0.21
-2023-09-15,Mora,Far-North,Pasta (spaghetti),retail,kg,200.0,934.5,0.21
-2023-07-15,Mokolo,Far-North,Okra (fresh),retail,kg,150.0,723.0,0.21
-2019-08-15,Ndop,North-West,Cassava (fresh),wholesale,kg,37.5,180.0,0.21
-2023-04-15,Mamfé,South-West,Yam,retail,kg,185.0,868.0,0.21
+2024-08-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,342.5,0.21
+2022-05-15,Fundong,North-West,Okra (fresh),retail,kg,100.0,478.33500000000004,0.21
 2024-02-15,Batouri,East,Yam,retail,kg,250.0,1166.5,0.21
+2025-12-15,Fotokol,Far-North,Onions,retail,kg,128.0,608.5,0.21
+2024-02-15,Gbiti,East,Yam,retail,kg,250.0,1166.5,0.21
 2024-06-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.43,347.5,0.21
+2022-10-15,Mokolo,Far-North,Garlic,retail,kg,403.23,1965.81,0.21
+2023-03-15,Yagoua,Far-North,Cassava (fresh),retail,kg,41.0,198.5,0.21
+2025-03-15,Galim tignère,Adamawa,Groundnuts (shelled),retail,kg,165.93,800.0,0.21
+2019-08-15,Ndop,North-West,Cassava (fresh),wholesale,kg,37.5,180.0,0.21
+2023-07-15,Mokolo,Far-North,Okra (fresh),retail,kg,150.0,723.0,0.21
+2024-04-15,Nkambe,North-West,"Rice (long grain, imported)",wholesale,kg,17.2,80.45,0.21
+2023-04-15,Mamfé,South-West,Yam,retail,kg,185.0,868.0,0.21
 2026-06-15,Koza,Far-North,Okra (dry),retail,kg,231.0,1107.0,0.21
-2024-03-15,Galim tignère,Adamawa,Onions,retail,kg,100.0,491.5,0.2
-2024-01-15,Kousseri,Far-North,Watermelons,retail,kg,89.0,443.0,0.2
+2023-09-15,Mora,Far-North,Pasta (spaghetti),retail,kg,200.0,934.5,0.21
+2024-05-15,Gazawa,Far-North,"Fish (tilapia, salted, dried)",retail,kg,375.0,1875.0,0.2
 2023-09-15,Garoua,North,Beans (niebe),retail,kg,123.0,605.0,0.2
-2024-05-15,Galim tignère,Adamawa,Onions,retail,kg,100.0,500.0,0.2
 2025-03-15,Buea,South-West,Cassava (cossette),retail,kg,50.0,254.31,0.2
-2024-10-15,Kentzou,East,Yam,retail,kg,140.0,695.0,0.2
+2024-03-15,Galim tignère,Adamawa,Onions,retail,kg,100.0,491.5,0.2
+2024-09-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,359.0,0.2
+2024-07-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,357.0,0.2
+2025-06-15,Pitoa,North,Okra (fresh),retail,kg,200.0,1000.0,0.2
+2024-04-15,Wum,North-West,"Fish (mackerel, fresh)",retail,kg,625.0,3108.0,0.2
+2024-01-15,Kousseri,Far-North,Watermelons,retail,kg,89.0,443.0,0.2
+2024-05-15,Galim tignère,Adamawa,Onions,retail,kg,100.0,500.0,0.2
+2022-10-15,Ngong,North,Onions,retail,kg,145.07,715.0,0.2
 2025-04-15,Maroua-Dougoy,Far-North,"Fish (tilapia, salted, dried)",retail,kg,300.0,1526.3,0.2
+2023-08-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,353.0,0.2
 2020-04-15,Ndop,North-West,Cassava (fresh),wholesale,kg,31.25,160.0,0.2
 2020-05-15,Ndop,North-West,Cassava (fresh),wholesale,kg,31.25,160.0,0.2
 2024-10-15,Batouri,East,Yam,retail,kg,140.0,695.0,0.2
-2024-04-15,Wum,North-West,"Fish (mackerel, fresh)",retail,kg,625.0,3108.0,0.2
-2022-10-15,Ngong,North,Onions,retail,kg,145.07,715.0,0.2
-2024-07-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,357.0,0.2
-2023-08-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,353.0,0.2
-2024-09-15,Doukoula,Far-North,Sorghum (red),retail,kg,71.0,359.0,0.2
-2024-05-15,Gazawa,Far-North,"Fish (tilapia, salted, dried)",retail,kg,375.0,1875.0,0.2
 2021-11-15,Nkambe,North-West,Groundnuts (shelled),retail,kg,141.67,700.0,0.2
+2024-10-15,Kentzou,East,Yam,retail,kg,140.0,695.0,0.2
 2021-11-15,Nkambe,North-West,Potatoes (Irish),retail,kg,177.5,900.0,0.2
-2025-06-15,Pitoa,North,Okra (fresh),retail,kg,200.0,1000.0,0.2
+2023-09-15,Mora,Far-North,Tomatoes,retail,kg,100.0,534.0,0.19
 2023-09-15,Gobo,Far-North,Tomatoes,retail,kg,100.0,534.0,0.19
-2023-09-15,Mora,Far-North,Meat (beef),retail,kg,471.0,2500.0,0.19
+2024-09-15,Batouri,East,Yam,retail,kg,140.0,738.0,0.19
 2024-09-15,Kentzou,East,Yam,retail,kg,140.0,738.0,0.19
+2023-09-15,Mora,Far-North,Meat (beef),retail,kg,471.0,2500.0,0.19
+2025-09-15,Gazawa,Far-North,Okra (fresh),retail,kg,156.0,836.5,0.19
+2022-10-15,Maroua,Far-North,Okra (fresh),retail,kg,175.0,898.9449999999999,0.19
 2023-08-15,Salak,Far-North,Onions,retail,kg,120.0,633.0,0.19
 2022-06-15,Gbiti,East,Yam,retail,kg,157.33,840.0,0.19
-2022-10-15,Maroua,Far-North,Okra (fresh),retail,kg,175.0,898.9449999999999,0.19
-2025-09-15,Gazawa,Far-North,Okra (fresh),retail,kg,156.0,836.5,0.19
-2024-09-15,Batouri,East,Yam,retail,kg,140.0,738.0,0.19
 2022-07-15,Gbiti,East,Yam,retail,kg,250.0,1337.5,0.19
 2024-04-15,Wum,North-West,Maize (white),wholesale,kg,35.0,180.55555555555554,0.19
-2023-09-15,Mora,Far-North,Tomatoes,retail,kg,100.0,534.0,0.19
-2022-02-15,Guzang,North-West,Potatoes (Irish),retail,kg,88.0,482.33500000000004,0.18
-2025-03-15,Gazawa,Far-North,Okra (fresh),retail,kg,211.27,1167.0,0.18
+2024-04-15,Kousseri,Far-North,Sorghum (red),wholesale,kg,6.15,34.35,0.18
+2024-04-15,Mokolo,Far-North,Onions,wholesale,kg,5.45,30.0,0.18
+2025-05-15,Gazawa,Far-North,Okra (fresh),retail,kg,211.27,1175.0,0.18
 2025-04-15,Galim tignère,Adamawa,Groundnuts (shelled),retail,kg,156.0,845.0,0.18
 2025-04-15,Pitoa,North,Okra (fresh),retail,kg,205.63,1115.0,0.18
 2023-08-15,Ngong,North,Onions,retail,kg,115.0,633.0,0.18
-2025-05-15,Gazawa,Far-North,Okra (fresh),retail,kg,211.27,1175.0,0.18
+2025-03-15,Gazawa,Far-North,Okra (fresh),retail,kg,211.27,1167.0,0.18
+2022-02-15,Guzang,North-West,Potatoes (Irish),retail,kg,88.0,482.33500000000004,0.18
 2022-09-15,Bertoua 2,East,Tomatoes,retail,kg,100.0,551.605,0.18
-2024-04-15,Mokolo,Far-North,Onions,wholesale,kg,5.45,30.0,0.18
 2024-04-15,Mamfé,South-West,Maize (yellow),wholesale,kg,50.69,274.30555555555554,0.18
-2024-04-15,Kousseri,Far-North,Sorghum (red),wholesale,kg,6.15,34.35,0.18
-2024-01-15,Batouri,East,Yam,retail,kg,200.0,1150.0,0.17
-2023-09-15,Mayo Darlé,Adamawa,Meat (beef),retail,kg,435.0,2500.0,0.17
-2022-11-15,Garoua Boulaï,East,Fish (dry),retail,kg,500.0,3000.0,0.17
-2024-04-15,Kaele,Far-North,Maize (white),wholesale,kg,30.9,180.55555555555554,0.17
-2024-04-15,Kumba,South-West,"Fish (mackerel, fresh)",retail,kg,540.0,3108.0,0.17
-2025-11-15,Fotokol,Far-North,Onions,retail,kg,128.0,737.325,0.17
-2024-04-15,Kumba,South-West,Maize (white),wholesale,kg,30.0,180.55555555555554,0.17
-2024-11-15,Gazawa,Far-North,Okra (fresh),retail,kg,151.68,900.0,0.17
 2023-01-15,Amchidé,Far-North,Onions,retail,kg,100.56,600.0,0.17
-2021-11-15,Ndop,North-West,Potatoes (Irish),retail,kg,150.0,900.0,0.17
-2023-08-15,Tignère,Adamawa,Watermelons,retail,kg,47.0,284.0,0.17
-2024-11-15,Pitoa,North,Okra (fresh),retail,kg,156.0,900.0,0.17
 2025-05-15,Yagoua,Far-North,Okra (fresh),retail,kg,200.0,1175.0,0.17
-2022-02-15,Yagoua,Far-North,Cassava meal (gari),retail,kg,111.0,683.33,0.16
-2023-05-15,Mokolo,Far-North,Okra (fresh),retail,kg,150.0,910.0,0.16
-2023-09-15,Mogode,Far-North,Meat (beef),retail,kg,410.0,2500.0,0.16
-2024-10-15,Pitoa,North,Okra (fresh),retail,kg,137.0,867.0,0.16
-2023-02-15,Koza,Far-North,Peppers (dried),retail,kg,436.17,2790.7349999999997,0.16
-2024-04-15,Douala-Sandaga,Littoral,Cocoyam (macabo),wholesale,kg,108.0,686.25,0.16
+2024-04-15,Kumba,South-West,Maize (white),wholesale,kg,30.0,180.55555555555554,0.17
+2023-09-15,Mayo Darlé,Adamawa,Meat (beef),retail,kg,435.0,2500.0,0.17
+2024-11-15,Pitoa,North,Okra (fresh),retail,kg,156.0,900.0,0.17
+2024-04-15,Kumba,South-West,"Fish (mackerel, fresh)",retail,kg,540.0,3108.0,0.17
+2024-11-15,Gazawa,Far-North,Okra (fresh),retail,kg,151.68,900.0,0.17
+2024-04-15,Kaele,Far-North,Maize (white),wholesale,kg,30.9,180.55555555555554,0.17
+2024-01-15,Batouri,East,Yam,retail,kg,200.0,1150.0,0.17
+2025-11-15,Fotokol,Far-North,Onions,retail,kg,128.0,737.325,0.17
+2023-08-15,Tignère,Adamawa,Watermelons,retail,kg,47.0,284.0,0.17
+2021-11-15,Ndop,North-West,Potatoes (Irish),retail,kg,150.0,900.0,0.17
+2022-11-15,Garoua Boulaï,East,Fish (dry),retail,kg,500.0,3000.0,0.17
 2023-09-15,Kousseri,Far-North,"Oil (vegetable, local)",retail,litre,123.0,761.0,0.16
-2025-10-15,Garoua,North,Okra (fresh),retail,kg,106.0,700.0,0.15
+2023-02-15,Koza,Far-North,Peppers (dried),retail,kg,436.17,2790.7349999999997,0.16
+2023-09-15,Mogode,Far-North,Meat (beef),retail,kg,410.0,2500.0,0.16
+2023-05-15,Mokolo,Far-North,Okra (fresh),retail,kg,150.0,910.0,0.16
+2024-10-15,Pitoa,North,Okra (fresh),retail,kg,137.0,867.0,0.16
+2022-02-15,Yagoua,Far-North,Cassava meal (gari),retail,kg,111.0,683.33,0.16
+2024-04-15,Douala-Sandaga,Littoral,Cocoyam (macabo),wholesale,kg,108.0,686.25,0.16
 2024-11-15,Buea,South-West,Cassava (cossette),retail,kg,60.0,389.055,0.15
+2025-10-15,Garoua,North,Okra (fresh),retail,kg,106.0,700.0,0.15
 2025-05-15,Buea,South-West,Cassava (cossette),retail,kg,50.0,328.0,0.15
+2023-01-15,Mora,Far-North,Okra (dry),retail,kg,134.0,893.62,0.15
 2023-09-15,Salak,Far-North,"Fish (tilapia, salted, dried)",retail,kg,100.0,661.0,0.15
 2023-09-15,Mora,Far-North,Sugar,retail,kg,136.0,900.0,0.15
-2023-01-15,Mora,Far-North,Okra (dry),retail,kg,134.0,893.62,0.15
-2023-09-15,Doukoula,Far-North,Beans (niebe),retail,kg,82.0,605.0,0.14
 2022-11-15,Garoua Boulaï,East,Onions,retail,kg,100.0,717.0,0.14
 2023-09-15,Mayo Darlé,Adamawa,Tomatoes,retail,kg,75.0,534.0,0.14
-2023-09-15,Salak,Far-North,Meat (beef),retail,kg,354.0,2500.0,0.14
+2023-09-15,Doukoula,Far-North,Beans (niebe),retail,kg,82.0,605.0,0.14
 2022-10-15,Ndop,North-West,Groundnuts (shelled),retail,kg,122.0,850.0,0.14
+2023-09-15,Salak,Far-North,Meat (beef),retail,kg,354.0,2500.0,0.14
 2023-09-15,Garoua,North,Onions,retail,kg,100.0,708.5,0.14
 2019-03-15,Ndokayo,East,Cassava (fresh),wholesale,kg,22.22,160.0,0.14
-2023-03-15,Gazawa,Far-North,Okra (fresh),retail,kg,125.0,958.0,0.13
 2024-04-15,Wum,North-West,Maize (yellow),wholesale,kg,35.28,274.30555555555554,0.13
+2023-03-15,Gazawa,Far-North,Okra (fresh),retail,kg,125.0,958.0,0.13
 2023-01-15,Tignère,Adamawa,Potatoes (Irish),retail,kg,72.0,572.145,0.13
-2023-01-15,Tignère,Adamawa,Onions,retail,kg,75.0,600.0,0.13
 2021-01-15,Douala-Bonaberi,Littoral,Maize (yellow),wholesale,kg,17.69,138.88888888888889,0.13
 2021-01-15,Douala-Marché Central,Littoral,Maize (yellow),wholesale,kg,17.78,138.88888888888889,0.13
 2021-01-15,Douala-Sandaga,Littoral,Maize (yellow),wholesale,kg,17.78,138.88888888888889,0.13
+2023-01-15,Tignère,Adamawa,Onions,retail,kg,75.0,600.0,0.13
 2025-04-15,Buea,South-West,Cassava (cossette),retail,kg,50.0,430.0,0.12
+2024-04-15,Yaoundé-Marché 8e,Centre,Cocoyam (macabo),wholesale,kg,85.0,686.25,0.12
 2023-09-15,Doukoula,Far-North,Meat (beef),retail,kg,302.0,2500.0,0.12
 2021-01-15,Yaoundé-Mfoundi,Centre,Maize (yellow),wholesale,kg,17.24,138.88888888888889,0.12
 2021-01-15,Yaoundé-Marché 8e,Centre,Maize (yellow),wholesale,kg,17.33,138.88888888888889,0.12
-2024-04-15,Yaoundé-Marché 8e,Centre,Cocoyam (macabo),wholesale,kg,85.0,686.25,0.12
 2022-04-15,Koza,Far-North,Peppers (dried),retail,kg,308.51,2750.19,0.11
 2024-06-15,Bamyanga,Adamawa,Cocoyam (macabo),retail,kg,50.0,443.0,0.11
 2023-09-15,Garoua,North,Meat (beef),retail,kg,284.0,2500.0,0.11
+2024-09-15,Buea,South-West,Cassava (cossette),retail,kg,50.0,450.0,0.11
 2023-09-15,Tibati,Adamawa,Meat (beef),retail,kg,267.0,2500.0,0.11
+2024-04-15,Kumba,South-West,Maize (yellow),wholesale,kg,29.72,274.30555555555554,0.11
 2023-01-15,Ngaoui,Adamawa,Tomatoes,retail,kg,48.0,455.72,0.11
 2023-07-15,Logone-Birni,Far-North,Fish (dry),retail,kg,400.0,3600.0,0.11
-2023-02-15,Mayo galke,North,Tomatoes,retail,kg,55.0,510.485,0.11
-2023-09-15,Koza,Far-North,"Rice (long grain, imported)",retail,kg,63.0,590.0,0.11
-2024-09-15,Buea,South-West,Cassava (cossette),retail,kg,50.0,450.0,0.11
-2026-05-15,Logone-Birni,Far-North,Beans (niebe),retail,kg,41.0,370.0,0.11
 2024-10-15,Buea,South-West,Cassava (cossette),retail,kg,50.0,450.0,0.11
-2024-04-15,Kumba,South-West,Maize (yellow),wholesale,kg,29.72,274.30555555555554,0.11
-2022-12-15,Amchidé,Far-North,Onions,retail,kg,67.04,687.5,0.1
+2026-05-15,Logone-Birni,Far-North,Beans (niebe),retail,kg,41.0,370.0,0.11
+2023-09-15,Koza,Far-North,"Rice (long grain, imported)",retail,kg,63.0,590.0,0.11
+2023-02-15,Mayo galke,North,Tomatoes,retail,kg,55.0,510.485,0.11
 2023-09-15,Ngong,North,Meat (beef),retail,kg,262.0,2500.0,0.1
-2020-04-15,Fundong,North-West,Cassava (fresh),wholesale,kg,15.63,160.0,0.1
-2020-05-15,Fundong,North-West,Cassava (fresh),wholesale,kg,15.63,160.0,0.1
 2023-07-15,Mara,Far-North,Fish (dry),retail,kg,350.0,3600.0,0.1
 2019-10-15,Fundong,North-West,Cassava (fresh),wholesale,kg,15.63,160.0,0.1
 2019-11-15,Fundong,North-West,Cassava (fresh),wholesale,kg,15.63,160.0,0.1
+2022-12-15,Amchidé,Far-North,Onions,retail,kg,67.04,687.5,0.1
+2020-04-15,Fundong,North-West,Cassava (fresh),wholesale,kg,15.63,160.0,0.1
+2020-05-15,Fundong,North-West,Cassava (fresh),wholesale,kg,15.63,160.0,0.1
 2023-09-15,Galim tignère,Adamawa,Sugar,retail,kg,89.0,900.0,0.1
-2023-01-15,Amchidé,Far-North,"Fish (tilapia, salted, dried)",retail,kg,172.0,1875.0,0.09
 2023-09-15,Ngaoundéré,Adamawa,Meat (beef),retail,kg,214.0,2500.0,0.09
-2023-02-15,Ngaoui,Adamawa,Tomatoes,retail,kg,48.0,510.485,0.09
-2021-01-15,Yaoundé-Marché 8e,Centre,Maize (white),wholesale,kg,17.07,200.0,0.09
 2024-04-15,Douala-Marché Central,Littoral,Bananas,wholesale,kg,168.75,1812.5,0.09
 2019-08-15,Fundong,North-West,Cassava (fresh),wholesale,kg,15.63,180.0,0.09
 2019-09-15,Fundong,North-West,Cassava (fresh),wholesale,kg,15.63,170.0,0.09
+2023-01-15,Amchidé,Far-North,"Fish (tilapia, salted, dried)",retail,kg,172.0,1875.0,0.09
+2021-01-15,Yaoundé-Marché 8e,Centre,Maize (white),wholesale,kg,17.07,200.0,0.09
+2023-02-15,Ngaoui,Adamawa,Tomatoes,retail,kg,48.0,510.485,0.09
 2023-09-15,Ngaoundéré,Adamawa,Sorghum (white),retail,kg,47.0,600.0,0.08
 2023-09-15,Koza,Far-North,Meat (beef),retail,kg,207.0,2500.0,0.08
+2023-01-15,Mayo Darlé,Adamawa,Okra (dry),retail,kg,75.0,893.62,0.08
 2021-01-15,Douala-Bonaberi,Littoral,Maize (white),wholesale,kg,15.73,200.0,0.08
 2021-01-15,Douala-Marché Central,Littoral,Maize (white),wholesale,kg,15.64,200.0,0.08
 2021-01-15,Douala-Sandaga,Littoral,Maize (white),wholesale,kg,15.82,200.0,0.08
 2021-03-15,Ndokayo,East,Milk (powder),retail,kg,500.0,6250.0,0.08
 2024-04-15,Kousseri,Far-North,Rice (local),wholesale,kg,5.13,60.95,0.08
-2023-01-15,Mayo Darlé,Adamawa,Okra (dry),retail,kg,75.0,893.62,0.08
+2023-09-15,Guider,North,Oil (cotton),retail,litre,100.0,1500.0,0.07
 2024-04-15,Mora,Far-North,Groundnuts (shelled),wholesale,kg,13.0,179.75,0.07
 2024-04-15,Mora,Far-North,Maize (white),wholesale,kg,13.17,180.55555555555554,0.07
-2023-01-15,Ngong,North,Beans (niebe),retail,kg,42.0,633.0,0.07
 2023-02-15,Koza,Far-North,Groundnuts (shelled),retail,kg,65.0,983.33,0.07
-2023-09-15,Guider,North,Oil (cotton),retail,litre,100.0,1500.0,0.07
+2023-01-15,Ngong,North,Beans (niebe),retail,kg,42.0,633.0,0.07
 2022-10-15,Mogode,Far-North,Garlic,retail,kg,90.91,1965.81,0.05
 2022-11-15,Mogode,Far-North,Garlic,retail,kg,90.91,1971.23,0.05
 2022-12-15,Mokolo,Far-North,Garlic,retail,kg,80.65,2027.1299999999999,0.04
-2023-01-15,Mokolo,Far-North,Garlic,retail,kg,80.65,2068.97,0.04
 2022-12-15,Mogode,Far-North,Garlic,retail,kg,90.91,2027.1299999999999,0.04
-2023-02-15,Mokolo,Far-North,Garlic,retail,kg,80.65,2068.97,0.04
 2023-01-15,Gobo,Far-North,Onions,retail,kg,24.0,600.0,0.04
-2022-11-15,Mokolo,Far-North,Garlic,retail,kg,80.65,1971.23,0.04
+2023-01-15,Mokolo,Far-North,Garlic,retail,kg,80.65,2068.97,0.04
+2023-02-15,Mokolo,Far-North,Garlic,retail,kg,80.65,2068.97,0.04
 2023-02-15,Gobo,Far-North,Onions,retail,kg,24.0,553.75,0.04
 2022-09-15,Mogode,Far-North,Garlic,retail,kg,90.91,2065.02,0.04
+2022-11-15,Mokolo,Far-North,Garlic,retail,kg,80.65,1971.23,0.04
 2024-04-15,Maroua,Far-North,Maize (white),wholesale,kg,6.25,180.55555555555554,0.03
-2024-04-15,Mokolo,Far-North,Groundnuts (shelled),wholesale,kg,5.5,179.75,0.03
-2024-04-15,Yagoua,Far-North,Maize (white),wholesale,kg,5.4,180.55555555555554,0.03
 2022-12-15,Mokolo,Far-North,Oil (cotton),retail,litre,50.0,1600.0,0.03
-2024-04-15,Mokolo,Far-North,Maize (white),wholesale,kg,5.5,180.55555555555554,0.03
 2024-04-15,Maroua,Far-North,Groundnuts (shelled),wholesale,kg,6.25,179.75,0.03
+2024-04-15,Mokolo,Far-North,Groundnuts (shelled),wholesale,kg,5.5,179.75,0.03
 2024-04-15,Yagoua,Far-North,Groundnuts (shelled),wholesale,kg,5.4,179.75,0.03
-2020-09-15,Buea,South-West,Cassava (cossette),wholesale,kg,4.44,266.6666666666667,0.02
+2024-04-15,Yagoua,Far-North,Maize (white),wholesale,kg,5.4,180.55555555555554,0.03
+2024-04-15,Mokolo,Far-North,Maize (white),wholesale,kg,5.5,180.55555555555554,0.03
 2023-02-15,Mora,Far-North,Okra (dry),retail,kg,13.0,788.46,0.02
 2023-02-15,Banyo,Adamawa,Cocoyam (macabo),retail,kg,5.0,322.5,0.02
+2020-09-15,Buea,South-West,Cassava (cossette),wholesale,kg,4.44,266.6666666666667,0.02
+2023-02-15,Guider,North,Okra (dry),retail,kg,6.0,788.46,0.01
+2023-01-15,Guider,North,Okra (dry),retail,kg,6.0,893.62,0.01
 2023-01-15,Yagoua,Far-North,Tomatoes,retail,kg,3.0,455.72,0.01
 2023-01-15,Gazawa,Far-North,Tomatoes,retail,kg,3.0,455.72,0.01
 2023-01-15,Mayo galke,North,Tomatoes,retail,kg,6.0,455.72,0.01
-2023-02-15,Guider,North,Okra (dry),retail,kg,6.0,788.46,0.01
 2023-01-15,Fotokol,Far-North,Salt,retail,kg,3.0,300.0,0.01
-2023-01-15,Guider,North,Okra (dry),retail,kg,6.0,893.62,0.01
 2023-01-15,Gazawa,Far-North,Okra (fresh),retail,kg,3.0,933.0,0.0
 2023-01-15,Kaele,Far-North,Peppers (dried),retail,kg,3.0,2672.41,0.0
