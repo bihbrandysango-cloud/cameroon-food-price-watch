@@ -76,9 +76,9 @@ Across maize, imported rice and fresh cassava, high alerts cluster in 2022 to 20
 |---|---|---|---|
 | Next month = this month | 3.2% | 69% | (never predicts a move) |
 | Copy last year's move | 5.6% | 63% | 29% |
-| Gradient-boosted model | 3.4% | 70% | 58% |
+| Gradient-boosted model | 3.3% | 70% | about 6 in 10 |
 
-The model is no more accurate than assuming the price stays the same, because 35% of prices don't change from one month to the next. Where it helps is direction: when prices really moved, it called up or down right 58% of the time. That's why the report shows a likely range (about 14% below to 18% above the estimate) and never one exact number.
+The model is no more accurate than assuming the price stays the same, because 35% of prices don't change from one month to the next. Where it helps is direction: when prices really moved, it called up or down right about 6 times in 10. That's why the report shows a likely range (about 16% below to 17% above the estimate) and never one exact number.
 
 **The source data has errors, and the checks found them.** In September 2023 many markets jump 3 to 10 times and drop back the next month, most likely a recording error. In April 2024 several Yaoundé and Douala markets list fresh cassava at up to 6,400 FCFA "per kg", which are bag prices entered as kg. In all, 1,052 prices (1.5%) are flagged and left out of the alerts and forecasts.
 

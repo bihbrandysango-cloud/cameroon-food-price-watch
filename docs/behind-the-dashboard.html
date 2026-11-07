@@ -112,9 +112,9 @@ price / case when unit_base = 'G' then pack_size / 1000 else pack_size end as pr
     <tr><th>Method</th><th class="n">Typical error</th><th class="n">Within 10%</th><th class="n">Direction right on big moves</th></tr>
     <tr><td>"Same as last month"</td><td class="n">3.2%</td><td class="n">69%</td><td class="n">–</td></tr>
     <tr><td>"Copy last year's pattern"</td><td class="n">5.6%</td><td class="n">63%</td><td class="n">29%</td></tr>
-    <tr><td><b>Machine-learning model</b></td><td class="n">3.4%</td><td class="n">70%</td><td class="n"><b>58%</b></td></tr>
+    <tr><td><b>Machine-learning model</b></td><td class="n">3.3%</td><td class="n">70%</td><td class="n"><b>about 6 in 10</b></td></tr>
   </table>
-  <p style="margin-top:12px"><b>The honest result:</b> the model is no more accurate than assuming the price stays the same, because prices are sticky (35% of the time they don't change at all). It does call the direction of big moves right 58% of the time, against 29% for last year's pattern. So the forecast is shown as a likely range, roughly 14% below to 18% above the estimate, and never as one exact number.</p>
+  <p style="margin-top:12px"><b>The honest result:</b> the model is no more accurate than assuming the price stays the same, because prices are sticky (35% of the time they don't change at all). It does call the direction of big moves right about 6 times in 10, against 3 in 10 for last year's pattern. So the forecast is shown as a likely range, roughly 16% below to 17% above the estimate, and never as one exact number.</p>
 </div>
 
 <h2><span>Data analysis</span><span class="tag da">in progress</span></h2>
