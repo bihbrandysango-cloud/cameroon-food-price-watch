@@ -4,10 +4,10 @@
   "position": {
     "x": 10,
     "y": 422,
-    "z": 15000,
+    "z": 18000,
     "height": 22,
     "width": 180,
-    "tabOrder": 15000
+    "tabOrder": 18000
   },
   "visual": {
     "visualType": "actionButton",
@@ -192,7 +192,7 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true,
-    "howCreated": "InsertVisualButton"
-  }
+    "drillFilterOtherVisuals": true
+  },
+  "howCreated": "InsertVisualButton"
 }

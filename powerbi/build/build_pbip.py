@@ -102,7 +102,7 @@ MEASURES = {
     "FCFA per kg now": ("VAR m = [Latest Month]\nVAR mk = [Spotlight Market]\nRETURN CALCULATE ( MAX ( Prices[price_per_unit] ), Prices[price_month] = m, Markets[market] = mk )", "#,0"),
     "Usual for this month": ("VAR m = [Latest Month]\nVAR mk = [Spotlight Market]\nRETURN CALCULATE ( MAX ( Prices[normal_price] ), Prices[price_month] = m, Markets[market] = mk )", "#,0"),
     "Spotlight Gap": ("VAR m = [Latest Month]\nVAR mk = [Spotlight Market]\nRETURN CALCULATE ( MAX ( Prices[gap_from_normal] ), Prices[price_month] = m, Markets[market] = mk )", '+0%;-0%;0%'),
-    "Spotlight Note": ('IF ( [Spotlight Gap] < 0,\n    "Cheap for families who buy it. For farmers it means selling below what seed and fertiliser cost.",\n    "Hard on families who buy it. Farmers with stock to sell may gain." )', None),
+    "Spotlight Note": ('IF ( [Spotlight Gap] < 0,\n    "Cheap for buyers, hard on farmers.",\n    "Dear for buyers, good for sellers." )', None),
     # ---- one market in the latest month (map and bar chart)
     "Market Price": ("VAR m = [Latest Month]\nRETURN CALCULATE ( MAX ( Prices[price_per_unit] ), Prices[price_month] = m )", "#,0"),
     "Market Normal": ("VAR m = [Latest Month]\nRETURN CALCULATE ( MAX ( Prices[normal_price] ), Prices[price_month] = m )", "#,0"),
@@ -117,7 +117,7 @@ MEASURES = {
     "Page Title": ('[Food Label] & " prices this month"', None),
     "Page Subtitle": ('SELECTEDVALUE ( PriceType[Price type], "All" ) & " prices · " & FORMAT ( [Latest Month], "MMMM yyyy" ) & " · compared with the same month in the last five years"', None),
     "Cheap Fraction": ('[Markets Too Cheap] & " of " & [Markets Judged]', None),
-    "Biggest Change Label": ('"biggest change: " & [Spotlight Market]', None),
+    "Biggest Change Label": ('"biggest: " & [Spotlight Market]', None),
     "Spotlight Gap Colour": (f'IF ( [Spotlight Gap] < 0, "{LOW}", "{HIGH}" )', None),
     "Watch Rank": ("VAR g = [Gap From Normal]\nRETURN\n    IF ( NOT ISBLANK ( g ),\n        RANKX ( FILTER ( ALLSELECTED ( Markets[market] ), NOT ISBLANK ( [Gap From Normal] ) ), ABS ( [Gap From Normal] ), ABS ( g ), DESC ) )", "0"),
     "Now": ("VAR r = [Watch Rank]\nRETURN IF ( NOT ISBLANK ( r ) && r <= 7, [Market Price] )", "#,0"),
@@ -165,11 +165,15 @@ MEASURES.update({
     "Gap Last 12 Months": ("VAR last = CALCULATE ( MAX ( Prices[price_month] ), ALLSELECTED ( Calendar ) )\nVAR d = MAX ( Calendar[Date] )\n"
                            "RETURN IF ( d > EOMONTH ( last, -12 ) && d <= EOMONTH ( last, 0 ), AVERAGE ( Prices[gap_from_normal] ) )", '+0%;-0%;0%'),
     "Gap 12 Colour": (colour_rule("[Gap Last 12 Months]"), None),
-    "Market Facts": ('VAR mk = SELECTEDVALUE ( Markets[market] )\nRETURN IF ( ISBLANK ( mk ), "Choose one market to see its details.",\n'
-                     '    SELECTEDVALUE ( Markets[region] ) & " region, " & SELECTEDVALUE ( Markets[department] ) & " department. "\n'
-                     '    & "Prices from " & FORMAT ( SELECTEDVALUE ( Markets[first_month] ), "MMMM yyyy" ) & " to " & FORMAT ( SELECTEDVALUE ( Markets[last_month] ), "MMMM yyyy" ) & ": "\n'
-                     '    & SELECTEDVALUE ( Markets[months_with_prices] ) & " months with a price for any food, " & FORMAT ( SELECTEDVALUE ( Markets[coverage] ), "0%" ) & " of that time. "\n'
-                     '    & IF ( SELECTEDVALUE ( Markets[is_reporting_now] ), "Still reporting.", "Has stopped reporting." ) )', None),
+    # four short lines: a multi-row card does not wrap long text
+    "Market Facts 1": ('IF ( ISBLANK ( SELECTEDVALUE ( Markets[market] ) ), "Choose one market to see its details.",\n'
+                       '    SELECTEDVALUE ( Markets[region] ) & " region, " & SELECTEDVALUE ( Markets[department] ) & " department" )', None),
+    "Market Facts 2": ('IF ( NOT ISBLANK ( SELECTEDVALUE ( Markets[market] ) ),\n'
+                       '    "Prices from " & FORMAT ( SELECTEDVALUE ( Markets[first_month] ), "MMM yyyy" ) & " to " & FORMAT ( SELECTEDVALUE ( Markets[last_month] ), "MMM yyyy" ) )', None),
+    "Market Facts 3": ('IF ( NOT ISBLANK ( SELECTEDVALUE ( Markets[market] ) ),\n'
+                       '    SELECTEDVALUE ( Markets[months_with_prices] ) & " months with a price, " & FORMAT ( SELECTEDVALUE ( Markets[coverage] ), "0%" ) & " of that time" )', None),
+    "Market Facts 4": ('IF ( NOT ISBLANK ( SELECTEDVALUE ( Markets[market] ) ),\n'
+                       '    IF ( SELECTEDVALUE ( Markets[is_reporting_now] ), "Still reporting", "Has stopped reporting" ) )', None),
 
     # ---- page 3: all foods, judged in the report month
     "Report Month": ("CALCULATE ( MAX ( Prices[price_month] ), REMOVEFILTERS ( Markets ), REMOVEFILTERS ( Commodities ) )", "mmmm yyyy"),
@@ -188,7 +192,7 @@ MEASURES.update({
                            "RETURN MAXX ( TOPN ( 1, t, ABS ( [@g] ), DESC ), Commodities[commodity] )", None),
     "Biggest Food Gap": ('VAR f = [Biggest Food Mover]\nRETURN CALCULATE ( [Food Typical Gap], Commodities[commodity] = f )', '+0%;-0%;0%'),
     "Biggest Food Colour": (colour_rule("[Biggest Food Gap]"), None),
-    "Biggest Food Label": ('"biggest change: " & [Biggest Food Mover]', None),
+    "Biggest Food Label": ('"biggest: " & [Biggest Food Mover]', None),
     "Foods Subtitle": ('[Price Type Label] & " prices · " & FORMAT ( [Report Month], "MMMM yyyy" ) & " · each food against the same month in the last five years"', None),
 
     # ---- page 4: regions
@@ -201,13 +205,13 @@ MEASURES.update({
     "Highest Region Gap": ('VAR r = [Highest Region]\nRETURN CALCULATE ( [Region Typical Gap], Markets[region] = r )', '+0%;-0%;0%'),
     "Lowest Region Colour": (colour_rule("[Lowest Region Gap]"), None),
     "Highest Region Colour": (colour_rule("[Highest Region Gap]"), None),
-    "Lowest Region Label": ('"lowest against normal: " & [Lowest Region]', None),
-    "Highest Region Label": ('"highest against normal: " & [Highest Region]', None),
+    "Lowest Region Label": ('"lowest: " & [Lowest Region]', None),
+    "Highest Region Label": ('"highest: " & [Highest Region]', None),
     "Regions Title": ('[Food Label] & " prices by region"', None),
     "Regions Subtitle": ('[Price Type Label] & " prices · " & FORMAT ( [Latest Month], "MMMM yyyy" ) & " · against the same month in the last five years"', None),
 
     # ---- page 5: next month
-    "Forecast Month Label": ('FORMAT ( MAX ( Forecast[forecast_month] ), "MMMM yyyy" )', None),
+    "Forecast Month Label": ('FORMAT ( MAX ( Forecast[forecast_month] ), "MMM yyyy" )', None),
     "Expected Cheaper": ('COALESCE ( CALCULATE ( DISTINCTCOUNT ( Forecast[market_code] ), Forecast[forecast_direction] = "Too cheap" ), 0 )', "#,0"),
     "Expected Dearer": ('COALESCE ( CALCULATE ( DISTINCTCOUNT ( Forecast[market_code] ), Forecast[forecast_direction] = "Too expensive" ), 0 )', "#,0"),
     "Range Start": ("MAX ( Forecast[forecast_low] )", "#,0"),
@@ -216,8 +220,8 @@ MEASURES.update({
     "Forecast Usual": ("MAX ( Forecast[normal_price] )", "#,0"),
     "Last Price": ("MAX ( Forecast[last_price] )", "#,0"),
     "Likely Range": ('IF ( NOT ISBLANK ( [Range Start] ), FORMAT ( MAX ( Forecast[forecast_low] ), "#,0" ) & " to " & FORMAT ( MAX ( Forecast[forecast_high] ), "#,0" ) )', None),
-    "Expected": ('VAR l = MAX ( Forecast[forecast_alert_level] )\nRETURN SWITCH ( l, "alert high", "Much dearer than normal", "watch high", "Dearer than normal", "normal", "Normal",\n'
-                 '    "watch low", "Cheaper than normal", "alert low", "Much cheaper than normal", "not enough history", "Not enough history" )', None),
+    "Expected": ('VAR l = MAX ( Forecast[forecast_alert_level] )\nRETURN SWITCH ( l, "alert high", "Much dearer", "watch high", "Dearer", "normal", "Normal",\n'
+                 '    "watch low", "Cheaper", "alert low", "Much cheaper", "not enough history", "Not judged" )', None),
     # colour by the forecast's verdict, so "not enough history" stays neutral even when a gap exists
     "Expected Colour": (f'SWITCH ( MAX ( Forecast[forecast_direction] ), "Too cheap", "{LOW}", "Too expensive", "{HIGH}", "Normal", "{NORMAL}", "{NOT_JUDGED}" )', None),
     "Forecast Title": ('[Food Label] & ": what next month may bring"', None),
@@ -558,16 +562,20 @@ def stacked(name, x, y, w, h, cat, series, colours, labels=True, hide_first=Fals
     return visual(name, x, y, w, h, "barChart", q, objs)
 
 
-def table(name, x, y, w, h, fields, colour_col=None, colour_m=None, font=10):
-    """fields: list of projections. colour_col (a measure name) gets its text coloured by colour_m."""
+def table(name, x, y, w, h, fields, colour_col=None, colour_m=None, font=10, widths=None):
+    """fields: list of projections. colour_col (a measure name) gets its text coloured by colour_m.
+    widths: fixed column widths in pixels, in field order, so no column is cut off."""
     objs = {"columnHeaders": props(fontColor=colour(MUTED), backColor=colour("#FFFFFF"), fontSize=9, fontFamily=FONT),
             "values": props(fontColorPrimary=colour(INK), backColorPrimary=colour("#FFFFFF"), fontColorSecondary=colour(INK),
-                            backColorSecondary=colour("#FFFFFF"), fontSize=font, fontFamily=FONT),
+                            backColorSecondary=colour("#FFFFFF"), fontSize=font, fontFamily=FONT, wordWrap=False),
             "grid": props(gridVertical=False, gridHorizontal=True, gridHorizontalColor=colour("#EEF3EA"), rowPadding=4),
             "total": props(totals=False)}
     if colour_col:
         objs["values"].append({"properties": {"fontColor": {"solid": {"color": {"expr": measure(colour_m)}}}},
                                "selector": {"metadata": f"_Measures.{colour_col}"}})
+    if widths:
+        objs["columnWidth"] = [{"properties": {"value": lit(float(wd))}, "selector": {"metadata": f["queryRef"]}}
+                               for f, wd in zip(fields, widths)]
     return visual(name, x, y, w, h, "tableEx", {"Values": {"projections": fields}}, objs)
 
 
@@ -585,7 +593,7 @@ def kpi(i, m, col=INK, colour_m=None, label_m=None, name=None):
     c = card(name or f"k{i + 1}", KX[i], 84, 160, 46, m, 24, col, bold=True)
     v = [card_colour_by(c, colour_m) if colour_m else c]
     if label_m:
-        v.append(text_card(f"k{i + 1}Lbl", KX[i], 132, 160, 22, label_m, 9, MUTED))
+        v.append(text_card(f"k{i + 1}Lbl", KX[i], 132, 168, 22, label_m, 8, MUTED))
     return v
 
 
@@ -617,7 +625,7 @@ def nav_buttons(current):
         b["visual"]["query"] = None
         del b["visual"]["query"]
         b["visual"]["visualContainerObjects"]["visualLink"] = props(show=True, type="PageNavigation", navigationSection=target)
-        b["visual"]["howCreated"] = "InsertVisualButton"
+        b["howCreated"] = "InsertVisualButton"   # belongs on the container, not inside "visual"
         out.append(b)
     return out
 
@@ -640,7 +648,8 @@ def markets_visuals():
     v.append(visual("lineMarket", 246, 226, 1000, 240, "lineChart", q, objs))
     v.append(bar("col12", 246, 540, 572, 156, (column("Calendar", "Month Start"), "Month"), "Gap Last 12 Months", "Gap 12 Colour",
                  "Change from usual", horizontal=False))
-    v.append(text_card("facts", 864, 528, 380, 160, "Market Facts", 11, INK))
+    for i in range(4):
+        v.append(text_card(f"facts{i + 1}", 864, 528 + i * 34, 380, 30, f"Market Facts {i + 1}", 11, INK))
     return v
 
 
@@ -692,7 +701,7 @@ def forecast_visuals():
     v.append(sorted_by(table("tblForecast", 880, 228, 366, 452,
                              [proj(column("Markets", "market"), "Market"), proj(measure("Last Price"), "Now"),
                               proj(measure("Likely Range"), "Likely next month"), proj(measure("Expected"), "Expected")],
-                             "Expected", "Expected Colour", font=9), measure("Last Price")))
+                             "Expected", "Expected Colour", font=9, widths=[100, 42, 108, 96]), measure("Last Price")))
     return v
 
 
@@ -707,7 +716,7 @@ def quality_visuals():
                              [proj(column("Suspect", "price_month"), "Month"), proj(column("Suspect", "market"), "Market"),
                               proj(column("Suspect", "commodity"), "Food"), proj(column("Suspect", "price_per_unit"), "Price"),
                               proj(column("Suspect", "national_median"), "Typical"), proj(column("Suspect", "ratio_to_national"), "Times")],
-                             font=9), column("Suspect", "ratio_to_national"), "Descending"))
+                             font=9, widths=[60, 122, 136, 50, 48, 50]), column("Suspect", "ratio_to_national"), "Descending"))
     return v
 
 

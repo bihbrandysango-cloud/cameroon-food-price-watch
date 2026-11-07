@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
-  "name": "facts",
+  "name": "facts2",
   "position": {
     "x": 864,
-    "y": 528,
-    "z": 13000,
-    "height": 160,
+    "y": 562,
+    "z": 14000,
+    "height": 30,
     "width": 380,
-    "tabOrder": 13000
+    "tabOrder": 14000
   },
   "visual": {
     "visualType": "multiRowCard",
@@ -23,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Market Facts"
+                  "Property": "Market Facts 2"
                 }
               },
-              "queryRef": "_Measures.Market Facts",
-              "nativeQueryRef": "Market Facts"
+              "queryRef": "_Measures.Market Facts 2",
+              "nativeQueryRef": "Market Facts 2"
             }
           ]
         }

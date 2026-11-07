@@ -215,6 +215,13 @@
                   "Value": "'Segoe UI'"
                 }
               }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         },

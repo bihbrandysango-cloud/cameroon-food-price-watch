@@ -84,8 +84,8 @@ table _Measures
 
 	measure 'Spotlight Note' = ```
 			IF ( [Spotlight Gap] < 0,
-			    "Cheap for families who buy it. For farmers it means selling below what seed and fertiliser cost.",
-			    "Hard on families who buy it. Farmers with stock to sell may gain." )
+			    "Cheap for buyers, hard on farmers.",
+			    "Dear for buyers, good for sellers." )
 			```
 
 	measure 'Market Price' = ```
@@ -132,7 +132,7 @@ table _Measures
 
 	measure 'Cheap Fraction' = [Markets Too Cheap] & " of " & [Markets Judged]
 
-	measure 'Biggest Change Label' = "biggest change: " & [Spotlight Market]
+	measure 'Biggest Change Label' = "biggest: " & [Spotlight Market]
 
 	measure 'Spotlight Gap Colour' = IF ( [Spotlight Gap] < 0, "#2864A8", "#C8372D" )
 
@@ -243,13 +243,24 @@ table _Measures
 			RETURN SWITCH ( TRUE (), ISBLANK ( g ), "#C9C6BB", g >= 0.2, "#C8372D", g <= -0.2, "#2864A8", "#8F8A7E" )
 			```
 
-	measure 'Market Facts' = ```
-			VAR mk = SELECTEDVALUE ( Markets[market] )
-			RETURN IF ( ISBLANK ( mk ), "Choose one market to see its details.",
-			    SELECTEDVALUE ( Markets[region] ) & " region, " & SELECTEDVALUE ( Markets[department] ) & " department. "
-			    & "Prices from " & FORMAT ( SELECTEDVALUE ( Markets[first_month] ), "MMMM yyyy" ) & " to " & FORMAT ( SELECTEDVALUE ( Markets[last_month] ), "MMMM yyyy" ) & ": "
-			    & SELECTEDVALUE ( Markets[months_with_prices] ) & " months with a price for any food, " & FORMAT ( SELECTEDVALUE ( Markets[coverage] ), "0%" ) & " of that time. "
-			    & IF ( SELECTEDVALUE ( Markets[is_reporting_now] ), "Still reporting.", "Has stopped reporting." ) )
+	measure 'Market Facts 1' = ```
+			IF ( ISBLANK ( SELECTEDVALUE ( Markets[market] ) ), "Choose one market to see its details.",
+			    SELECTEDVALUE ( Markets[region] ) & " region, " & SELECTEDVALUE ( Markets[department] ) & " department" )
+			```
+
+	measure 'Market Facts 2' = ```
+			IF ( NOT ISBLANK ( SELECTEDVALUE ( Markets[market] ) ),
+			    "Prices from " & FORMAT ( SELECTEDVALUE ( Markets[first_month] ), "MMM yyyy" ) & " to " & FORMAT ( SELECTEDVALUE ( Markets[last_month] ), "MMM yyyy" ) )
+			```
+
+	measure 'Market Facts 3' = ```
+			IF ( NOT ISBLANK ( SELECTEDVALUE ( Markets[market] ) ),
+			    SELECTEDVALUE ( Markets[months_with_prices] ) & " months with a price, " & FORMAT ( SELECTEDVALUE ( Markets[coverage] ), "0%" ) & " of that time" )
+			```
+
+	measure 'Market Facts 4' = ```
+			IF ( NOT ISBLANK ( SELECTEDVALUE ( Markets[market] ) ),
+			    IF ( SELECTEDVALUE ( Markets[is_reporting_now] ), "Still reporting", "Has stopped reporting" ) )
 			```
 
 	measure 'Report Month' = CALCULATE ( MAX ( Prices[price_month] ), REMOVEFILTERS ( Markets ), REMOVEFILTERS ( Commodities ) )
@@ -326,7 +337,7 @@ table _Measures
 			RETURN SWITCH ( TRUE (), ISBLANK ( g ), "#C9C6BB", g >= 0.2, "#C8372D", g <= -0.2, "#2864A8", "#8F8A7E" )
 			```
 
-	measure 'Biggest Food Label' = "biggest change: " & [Biggest Food Mover]
+	measure 'Biggest Food Label' = "biggest: " & [Biggest Food Mover]
 
 	measure 'Foods Subtitle' = [Price Type Label] & " prices · " & FORMAT ( [Report Month], "MMMM yyyy" ) & " · each food against the same month in the last five years"
 
@@ -376,15 +387,15 @@ table _Measures
 			RETURN SWITCH ( TRUE (), ISBLANK ( g ), "#C9C6BB", g >= 0.2, "#C8372D", g <= -0.2, "#2864A8", "#8F8A7E" )
 			```
 
-	measure 'Lowest Region Label' = "lowest against normal: " & [Lowest Region]
+	measure 'Lowest Region Label' = "lowest: " & [Lowest Region]
 
-	measure 'Highest Region Label' = "highest against normal: " & [Highest Region]
+	measure 'Highest Region Label' = "highest: " & [Highest Region]
 
 	measure 'Regions Title' = [Food Label] & " prices by region"
 
 	measure 'Regions Subtitle' = [Price Type Label] & " prices · " & FORMAT ( [Latest Month], "MMMM yyyy" ) & " · against the same month in the last five years"
 
-	measure 'Forecast Month Label' = FORMAT ( MAX ( Forecast[forecast_month] ), "MMMM yyyy" )
+	measure 'Forecast Month Label' = FORMAT ( MAX ( Forecast[forecast_month] ), "MMM yyyy" )
 
 	measure 'Expected Cheaper' = COALESCE ( CALCULATE ( DISTINCTCOUNT ( Forecast[market_code] ), Forecast[forecast_direction] = "Too cheap" ), 0 )
 		formatString: #,0
@@ -411,8 +422,8 @@ table _Measures
 
 	measure Expected = ```
 			VAR l = MAX ( Forecast[forecast_alert_level] )
-			RETURN SWITCH ( l, "alert high", "Much dearer than normal", "watch high", "Dearer than normal", "normal", "Normal",
-			    "watch low", "Cheaper than normal", "alert low", "Much cheaper than normal", "not enough history", "Not enough history" )
+			RETURN SWITCH ( l, "alert high", "Much dearer", "watch high", "Dearer", "normal", "Normal",
+			    "watch low", "Cheaper", "alert low", "Much cheaper", "not enough history", "Not judged" )
 			```
 
 	measure 'Expected Colour' = SWITCH ( MAX ( Forecast[forecast_direction] ), "Too cheap", "#2864A8", "Too expensive", "#C8372D", "Normal", "#8F8A7E", "#C9C6BB" )

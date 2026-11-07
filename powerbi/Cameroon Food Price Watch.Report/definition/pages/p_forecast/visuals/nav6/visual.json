@@ -192,7 +192,7 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true,
-    "howCreated": "InsertVisualButton"
-  }
+    "drillFilterOtherVisuals": true
+  },
+  "howCreated": "InsertVisualButton"
 }
