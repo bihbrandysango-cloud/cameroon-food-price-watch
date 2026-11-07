@@ -102,7 +102,7 @@ The model is no more accurate than assuming the price stays the same, because 35
 | 6. Data quality | Suspect prices, coverage, and known problems in the source data |
 | 7. Method | How it works and its limits, in plain words |
 
-Screenshots of every page are in `docs/screenshots/`. A walkthrough of the engineering and science work, with outputs, is in `docs/behind-the-dashboard.html`.
+Screenshots of every page are in `docs/screenshots/`. A 1 min 41 s video tour of the report, with captions, is [`docs/walkthrough.mp4`](docs/walkthrough.mp4). A walkthrough of the engineering and science work, with outputs, is in `docs/behind-the-dashboard.html`.
 
 ## Reproduce it
 
@@ -155,3 +155,7 @@ docs/                            walkthrough and screenshots
 Python · HDX HAPI · DuckDB · dbt · pandas · scikit-learn · pytest · GitHub Actions · Power BI (PBIP, DAX)
 
 Built by [Bih Brandy Sango](https://github.com/bihbrandysango-cloud).
+
+## Licence
+
+Code: MIT, see [LICENSE](LICENSE). Data: World Food Programme via HDX, CC BY-IGO.
