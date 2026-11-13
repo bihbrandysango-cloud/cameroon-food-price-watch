@@ -1,0 +1,74 @@
+table AlertTypes
+
+	column price_month
+		dataType: dateTime
+		formatString: mmm yyyy
+		summarizeBy: none
+		sourceColumn: price_month
+
+	column market_code
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: market_code
+
+	column commodity_code
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: commodity_code
+
+	column price_type
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: price_type
+
+	column alert_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: alert_type
+
+	column markets_same_direction
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: markets_same_direction
+
+	column markets_judged
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: markets_judged
+
+	column months_running
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: months_running
+
+	column general_gap
+		dataType: double
+		formatString: +0%;-0%;0%
+		summarizeBy: none
+		sourceColumn: general_gap
+
+	column gap_after_general_shift
+		dataType: double
+		formatString: +0%;-0%;0%
+		summarizeBy: none
+		sourceColumn: gap_after_general_shift
+
+	column next_month
+		dataType: string
+		summarizeBy: none
+		sourceColumn: next_month
+
+	partition AlertTypes = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "alert_types.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    H = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    K = Table.SelectColumns(H,{"price_month","market_code","commodity_code","price_type","alert_type","markets_same_direction","markets_judged","months_running","general_gap","gap_after_general_shift","next_month"}),
+				    T = Table.TransformColumnTypes(K,{{"price_month", type date},{"market_code", Int64.Type},{"commodity_code", Int64.Type},{"price_type", type text},{"alert_type", type text},{"markets_same_direction", Int64.Type},{"markets_judged", Int64.Type},{"months_running", Int64.Type},{"general_gap", type number},{"gap_after_general_shift", type number},{"next_month", type text}}, "en-US")
+				in
+				    T
+

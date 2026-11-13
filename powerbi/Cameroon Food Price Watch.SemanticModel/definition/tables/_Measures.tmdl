@@ -162,6 +162,19 @@ table _Measures
 			```
 		formatString: +0%;-0%;0%
 
+	measure 'Alert Type' = ```
+			VAR m = [Latest Month]
+			VAR t = CALCULATETABLE ( VALUES ( AlertTypes[alert_type] ), AlertTypes[price_month] = m )
+			RETURN IF ( COUNTROWS ( t ) = 1, MAXX ( t, AlertTypes[alert_type] ), IF ( COUNTROWS ( t ) > 1, "mixed" ) )
+			```
+
+	measure Why = ```
+			VAR r = [Watch Rank]
+			RETURN IF ( NOT ISBLANK ( r ) && r <= 7,
+			    SWITCH ( [Alert Type], "market-wide shift", "Many markets", "general price shift", "All foods",
+			        "local, lasting", "Local, lasting", "local, new", "Local, new", "mixed", "Mixed" ) )
+			```
+
 	measure 'Price Type Label' = SELECTEDVALUE ( PriceType[Price type], "All" )
 
 	measure 'Cheaper Markets' = ```
@@ -449,7 +462,7 @@ table _Measures
 			```
 		formatString: #,0
 
-	measure 'Direction Score' = 0.5779
+	measure 'Direction Score' = 0.5506
 		formatString: 0%
 
 	partition _Measures = calculated

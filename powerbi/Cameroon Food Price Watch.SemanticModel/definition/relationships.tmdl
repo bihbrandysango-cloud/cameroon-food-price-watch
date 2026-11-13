@@ -26,3 +26,15 @@ relationship r6
 	fromColumn: Forecast.price_type
 	toColumn: PriceType.price_type
 
+relationship r7
+	fromColumn: AlertTypes.market_code
+	toColumn: Markets.market_code
+
+relationship r8
+	fromColumn: AlertTypes.commodity_code
+	toColumn: Commodities.commodity_code
+
+relationship r9
+	fromColumn: AlertTypes.price_type
+	toColumn: PriceType.price_type
+

@@ -71,6 +71,20 @@
               },
               "queryRef": "_Measures.Change",
               "nativeQueryRef": "Change"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Why"
+                }
+              },
+              "queryRef": "_Measures.Why",
+              "nativeQueryRef": "Why"
             }
           ]
         }
@@ -272,6 +286,78 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "66.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Markets.market"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "42.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Now"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "42.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Usual"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "44.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Change"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "74.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Why"
           }
         }
       ]

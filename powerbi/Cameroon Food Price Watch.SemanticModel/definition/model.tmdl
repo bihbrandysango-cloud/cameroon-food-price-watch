@@ -13,4 +13,5 @@ ref table PriceType
 ref table Calendar
 ref table Forecast
 ref table Suspect
+ref table AlertTypes
 ref table _Measures

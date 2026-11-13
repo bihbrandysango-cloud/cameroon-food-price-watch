@@ -123,6 +123,12 @@ MEASURES = {
     "Now": ("VAR r = [Watch Rank]\nRETURN IF ( NOT ISBLANK ( r ) && r <= 7, [Market Price] )", "#,0"),
     "Usual": ("VAR r = [Watch Rank]\nRETURN IF ( NOT ISBLANK ( r ) && r <= 7, [Market Normal] )", "#,0"),
     "Change": ("VAR r = [Watch Rank]\nRETURN IF ( NOT ISBLANK ( r ) && r <= 7, [Gap From Normal] )", '+0%;-0%;0%'),
+    # why a market is off normal (fct_alert_types): one type, or "mixed" when several foods are selected
+    "Alert Type": ('VAR m = [Latest Month]\nVAR t = CALCULATETABLE ( VALUES ( AlertTypes[alert_type] ), AlertTypes[price_month] = m )\n'
+                   'RETURN IF ( COUNTROWS ( t ) = 1, MAXX ( t, AlertTypes[alert_type] ), IF ( COUNTROWS ( t ) > 1, "mixed" ) )', None),
+    "Why": ('VAR r = [Watch Rank]\nRETURN IF ( NOT ISBLANK ( r ) && r <= 7,\n'
+            '    SWITCH ( [Alert Type], "market-wide shift", "Many markets", "general price shift", "All foods",\n'
+            '        "local, lasting", "Local, lasting", "local, new", "Local, new", "mixed", "Mixed" ) )', None),
 }
 
 
@@ -262,7 +268,7 @@ def build_model(root: Path) -> None:
     write_json(sm / "definition.pbism", {"$schema": "https://developer.microsoft.com/json-schemas/fabric/item/semanticModel/definitionProperties/1.0.0/schema.json", "version": "4.2", "settings": {}})
     write_json(sm / ".platform", platform("SemanticModel"))
     (d / "database.tmdl").write_text("database\n\tcompatibilityLevel: 1606\n\n", encoding="utf-8")
-    tables = ["Prices", "Markets", "Commodities", "PriceType", "Calendar", "Forecast", "Suspect", "_Measures"]
+    tables = ["Prices", "Markets", "Commodities", "PriceType", "Calendar", "Forecast", "Suspect", "AlertTypes", "_Measures"]
     (d / "model.tmdl").write_text(
         "model Model\n\tculture: en-US\n\tdefaultPowerBIDataSourceVersion: powerBI_V3\n\tsourceQueryCulture: en-US\n"
         "\tdataAccessOptions\n\t\tlegacyRedirects\n\t\treturnErrorValuesAsNull\n\n"
@@ -306,6 +312,15 @@ def build_model(root: Path) -> None:
         ("price_per_unit", "double", "#,0", False), ("national_median", "double", "#,0", False),
         ("ratio_to_national", "double", "0.0x", False),
     ]), encoding="utf-8")
+    # why each flagged price is off normal (dbt model fct_alert_types)
+    (t / "AlertTypes.tmdl").write_text(csv_table("AlertTypes", "alert_types.csv", [
+        ("price_month", "dateTime", "mmm yyyy", False), ("market_code", "int64", None, True),
+        ("commodity_code", "int64", None, True), ("price_type", "string", None, True),
+        ("alert_type", "string", None, False), ("markets_same_direction", "int64", None, False),
+        ("markets_judged", "int64", None, False), ("months_running", "int64", None, False),
+        ("general_gap", "double", "+0%;-0%;0%", False), ("gap_after_general_shift", "double", "+0%;-0%;0%", False),
+        ("next_month", "string", None, False),
+    ]), encoding="utf-8")
     (t / "PriceType.tmdl").write_text(
         "table PriceType\n\n"
         "\tcolumn price_type\n\t\tdataType: string\n\t\tisHidden\n\t\tsummarizeBy: none\n\t\tsourceColumn: [price_type]\n\n"
@@ -325,7 +340,9 @@ def build_model(root: Path) -> None:
     rels = [("Prices.market_code", "Markets.market_code"), ("Prices.commodity_code", "Commodities.commodity_code"),
             ("Prices.price_type", "PriceType.price_type"), ("Prices.price_month", "Calendar.Date"),
             ("Forecast.market_code", "Markets.market_code"), ("Forecast.commodity_code", "Commodities.commodity_code"),
-            ("Forecast.price_type", "PriceType.price_type")]
+            ("Forecast.price_type", "PriceType.price_type"),
+            ("AlertTypes.market_code", "Markets.market_code"), ("AlertTypes.commodity_code", "Commodities.commodity_code"),
+            ("AlertTypes.price_type", "PriceType.price_type")]
     (d / "relationships.tmdl").write_text("".join(
         f"relationship r{i}\n\tfromColumn: {a}\n\ttoColumn: {b}\n\n" for i, (a, b) in enumerate(rels)), encoding="utf-8")
 
@@ -498,8 +515,9 @@ def overview_visuals():
     v.append(bar)
 
     # markets to watch: the seven markets furthest from normal
-    tbl_q = {"Values": {"projections": [proj(column("Markets", "market"), "Market"), proj(measure("Now")),
-                                        proj(measure("Usual")), proj(measure("Change"))]}}
+    watch_fields = [proj(column("Markets", "market"), "Market"), proj(measure("Now")),
+                    proj(measure("Usual")), proj(measure("Change")), proj(measure("Why"))]
+    tbl_q = {"Values": {"projections": watch_fields}}
     tbl_objs = {
         "columnHeaders": props(fontColor=colour(MUTED), backColor=colour("#FFFFFF"), fontSize=9, fontFamily=FONT),
         "values": props(fontColorPrimary=colour(INK), backColorPrimary=colour("#FFFFFF"), fontColorSecondary=colour(INK),
@@ -510,6 +528,9 @@ def overview_visuals():
     # colour the Change column by direction
     tbl_objs["values"].append({"properties": {"fontColor": {"solid": {"color": {"expr": measure("Market Colour")}}}},
                                "selector": {"metadata": "_Measures.Change"}})
+    # fixed widths so the fifth column (Why) fits without cutting the others
+    tbl_objs["columnWidth"] = [{"properties": {"value": lit(float(wd))}, "selector": {"metadata": f["queryRef"]}}
+                               for f, wd in zip(watch_fields, [66, 42, 42, 44, 74])]
     tbl = visual("tblWatch", 972, 474, 276, 222, "tableEx", tbl_q, tbl_objs)
     tbl["visual"]["query"]["sortDefinition"] = {"sort": [{"field": measure("Change"), "direction": "Ascending"}], "isDefaultSort": False}
     v.append(tbl)
