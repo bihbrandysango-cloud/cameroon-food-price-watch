@@ -462,7 +462,7 @@ table _Measures
 			```
 		formatString: #,0
 
-	measure 'Direction Score' = 0.5506
+	measure 'Direction Score' = 0.5599
 		formatString: 0%
 
 	partition _Measures = calculated
