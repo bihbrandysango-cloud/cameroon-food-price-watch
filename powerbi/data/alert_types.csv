@@ -6249,123 +6249,123 @@ price_month,market_code,commodity_code,price_type,alert_type,markets_same_direct
 2026-02-15,7623,120,retail,market-wide shift,9,9,2,-0.002,-0.219,still off
 2026-02-15,7623,135,retail,market-wide shift,7,8,3,-0.002,-0.429,still off
 2026-02-15,7623,282,retail,market-wide shift,7,7,4,-0.002,-0.532,still off
-2026-03-15,1590,67,retail,market-wide shift,15,16,1,-0.0,-0.251,still off
-2026-03-15,1590,71,retail,"local, new",4,11,1,-0.0,-0.265,still off
-2026-03-15,1590,114,retail,"local, new",3,11,1,-0.0,-0.44,unknown
-2026-03-15,1590,120,retail,market-wide shift,10,13,1,-0.0,-0.645,still off
-2026-03-15,1590,135,retail,market-wide shift,8,11,1,-0.0,-0.558,still off
-2026-03-15,1590,173,retail,market-wide shift,7,13,1,-0.0,-0.622,still off
-2026-03-15,1590,225,retail,"local, new",2,19,1,-0.0,-0.21,still off
-2026-03-15,1590,282,retail,market-wide shift,9,10,1,-0.0,-0.668,still off
-2026-03-15,1590,598,retail,"local, new",2,8,1,-0.0,-0.443,unknown
-2026-03-15,1590,719,retail,"local, new",4,14,1,-0.0,-0.245,unknown
-2026-03-15,1590,866,retail,"local, new",1,5,1,-0.0,1.398,unknown
-2026-03-15,1593,67,retail,market-wide shift,15,16,1,-0.0,-0.335,unknown
-2026-03-15,1593,83,retail,"local, new",3,14,1,-0.0,-0.376,unknown
-2026-03-15,1593,114,retail,"local, new",2,11,1,-0.0,0.2,unknown
-2026-03-15,1593,120,retail,market-wide shift,10,13,1,-0.0,-0.289,unknown
-2026-03-15,1593,147,retail,market-wide shift,3,6,1,-0.0,0.972,unknown
-2026-03-15,1593,173,retail,market-wide shift,7,13,1,-0.0,-0.46,unknown
-2026-03-15,1593,282,retail,market-wide shift,9,10,1,-0.0,-0.214,unknown
-2026-03-15,1593,523,retail,"local, new",1,3,1,-0.0,-0.4,unknown
-2026-03-15,2307,67,retail,market-wide shift,15,16,3,-0.0,-0.432,still off
-2026-03-15,2307,99,retail,market-wide shift,3,4,1,-0.0,-0.623,back to normal
-2026-03-15,2307,119,retail,"local, new",4,12,2,-0.0,-0.221,still off
-2026-03-15,2307,120,retail,market-wide shift,10,13,3,-0.0,-0.286,still off
-2026-03-15,2307,135,retail,market-wide shift,8,11,3,-0.0,-0.456,back to normal
-2026-03-15,2307,147,retail,market-wide shift,3,6,1,-0.0,0.217,back to normal
-2026-03-15,2307,173,retail,market-wide shift,7,13,3,-0.0,-0.626,back to normal
-2026-03-15,2307,185,retail,"local, new",6,14,1,-0.0,0.333,back to normal
-2026-03-15,2307,282,retail,market-wide shift,9,10,3,-0.0,-0.467,still off
-2026-03-15,2307,598,retail,"local, new",1,8,1,-0.0,0.5,unknown
-2026-03-15,2308,67,retail,market-wide shift,15,16,5,-0.0,-0.259,still off
-2026-03-15,2308,83,retail,"local, new",3,14,2,-0.0,-0.266,unknown
-2026-03-15,2308,119,retail,"local, new",4,12,2,-0.0,-0.31,still off
-2026-03-15,2308,120,retail,"local, new",1,13,1,-0.0,0.201,back to normal
-2026-03-15,2308,173,retail,market-wide shift,7,13,1,-0.0,-0.259,back to normal
-2026-03-15,2308,185,retail,"local, new",6,14,1,-0.0,0.214,back to normal
-2026-03-15,2308,225,retail,"local, new",2,19,1,-0.0,0.262,still off
-2026-03-15,2308,756,retail,"local, new",1,3,1,-0.0,0.204,back to normal
-2026-03-15,2309,67,retail,market-wide shift,15,16,3,-0.0,-0.209,still off
-2026-03-15,2309,83,retail,"local, new",3,14,1,-0.0,0.39,back to normal
-2026-03-15,2309,120,retail,market-wide shift,10,13,3,-0.0,-0.342,still off
-2026-03-15,2309,135,retail,market-wide shift,8,11,3,-0.0,-0.32,still off
-2026-03-15,2309,173,retail,market-wide shift,7,13,3,-0.0,-0.595,still off
-2026-03-15,2309,185,retail,"local, new",6,14,1,-0.0,0.259,still off
-2026-03-15,2309,225,retail,"local, new",2,19,1,-0.0,0.258,back to normal
-2026-03-15,2309,282,retail,market-wide shift,9,10,3,-0.0,-0.326,still off
-2026-03-15,2310,58,retail,"local, new",1,10,1,-0.0,-0.202,still off
-2026-03-15,2310,67,retail,market-wide shift,15,16,5,-0.0,-0.389,still off
-2026-03-15,2310,71,retail,"local, new",4,11,2,-0.0,-0.206,back to normal
-2026-03-15,2310,99,retail,market-wide shift,3,4,1,-0.0,-0.208,unknown
-2026-03-15,2310,120,retail,market-wide shift,10,13,3,-0.0,-0.405,still off
-2026-03-15,2310,135,retail,market-wide shift,8,11,5,-0.0,-0.43,still off
-2026-03-15,2310,173,retail,"local, lasting",1,13,4,-0.0,0.254,back to normal
-2026-03-15,2310,282,retail,market-wide shift,9,10,3,-0.0,-0.605,still off
-2026-03-15,2310,690,retail,"local, new",1,2,1,-0.0,-0.4,unknown
-2026-03-15,2310,719,retail,"local, new",4,14,1,-0.0,-0.2,still off
-2026-03-15,2311,67,retail,market-wide shift,15,16,10,-0.0,-0.465,still off
-2026-03-15,2311,71,retail,"local, new",4,11,1,-0.0,-0.26,still off
-2026-03-15,2311,114,retail,"local, lasting",2,11,6,-0.0,1.0,still off
-2026-03-15,2311,119,retail,"local, new",4,12,1,-0.0,-0.534,still off
-2026-03-15,2311,120,retail,market-wide shift,10,13,9,-0.0,-0.607,still off
-2026-03-15,2311,135,retail,market-wide shift,8,11,5,-0.0,-0.588,still off
-2026-03-15,2311,173,retail,market-wide shift,7,13,3,-0.0,-0.333,back to normal
-2026-03-15,2311,185,retail,"local, new",6,14,1,-0.0,0.4,still off
-2026-03-15,2311,282,retail,market-wide shift,9,10,7,-0.0,-0.677,still off
-2026-03-15,4251,136,retail,"local, new",1,1,2,-0.0,-0.318,still off
-2026-03-15,4251,225,retail,"local, new",2,19,1,-0.0,-0.2,back to normal
-2026-03-15,5261,62,retail,"local, new",1,9,1,-0.0,0.243,still off
-2026-03-15,5269,744,retail,"local, new",1,9,1,-0.0,0.393,still off
-2026-03-15,7599,67,retail,market-wide shift,15,16,3,-0.0,-0.376,still off
-2026-03-15,7599,302,retail,market-wide shift,3,4,3,-0.0,-0.334,back to normal
-2026-03-15,7601,67,retail,market-wide shift,15,16,5,-0.0,-0.33,still off
-2026-03-15,7601,78,retail,market-wide shift,4,6,1,-0.0,-0.334,still off
-2026-03-15,7601,302,retail,market-wide shift,3,4,1,-0.0,-0.215,still off
-2026-03-15,7601,598,retail,"local, new",2,8,1,-0.0,-0.387,unknown
-2026-03-15,7603,67,retail,market-wide shift,15,16,5,-0.0,-0.521,still off
-2026-03-15,7603,78,retail,market-wide shift,4,6,1,-0.0,-0.379,still off
-2026-03-15,7603,99,retail,market-wide shift,3,4,1,-0.0,-0.449,unknown
-2026-03-15,7603,114,retail,"local, new",3,11,1,-0.0,-0.375,back to normal
-2026-03-15,7603,119,retail,"local, new",4,12,1,-0.0,-0.214,still off
-2026-03-15,7604,67,retail,market-wide shift,15,16,1,-0.0,-0.493,still off
-2026-03-15,7604,78,retail,market-wide shift,4,6,1,-0.0,-0.409,still off
-2026-03-15,7604,83,retail,"local, new",3,14,1,-0.0,0.631,still off
-2026-03-15,7604,97,retail,"local, new",1,16,1,-0.0,-0.259,still off
-2026-03-15,7604,147,retail,market-wide shift,3,6,1,-0.0,1.7,still off
-2026-03-15,7604,173,retail,market-wide shift,7,13,1,-0.0,-0.2,unknown
-2026-03-15,7604,185,retail,"local, new",1,14,1,-0.0,-0.375,back to normal
-2026-03-15,7604,254,retail,"local, new",1,4,1,-0.0,-0.315,still off
-2026-03-15,7604,719,retail,"local, new",1,14,1,-0.0,0.25,back to normal
-2026-03-15,7604,866,retail,"local, new",1,5,1,-0.0,-0.369,back to normal
-2026-03-15,7607,67,retail,market-wide shift,15,16,3,-0.0,-0.423,still off
-2026-03-15,7607,78,retail,market-wide shift,4,6,3,-0.0,-0.314,still off
-2026-03-15,7607,120,retail,market-wide shift,10,13,2,-0.0,-0.2,still off
-2026-03-15,7607,148,retail,"local, lasting",1,4,3,-0.0,-0.375,still off
-2026-03-15,7607,302,retail,market-wide shift,3,4,1,-0.0,-0.262,still off
-2026-03-15,7614,67,retail,market-wide shift,15,16,1,-0.0,-0.398,unknown
-2026-03-15,7614,83,retail,"local, new",3,14,1,-0.0,-0.478,unknown
-2026-03-15,7614,114,retail,"local, new",3,11,1,-0.0,-0.318,unknown
-2026-03-15,7614,135,retail,market-wide shift,8,11,1,-0.0,-0.48,unknown
-2026-03-15,7614,185,retail,"local, new",6,14,1,-0.0,0.5,unknown
-2026-03-15,7614,282,retail,market-wide shift,9,10,1,-0.0,-0.498,unknown
-2026-03-15,7614,719,retail,"local, new",4,14,1,-0.0,-0.25,unknown
-2026-03-15,7615,67,retail,market-wide shift,15,16,8,-0.0,-0.499,still off
-2026-03-15,7615,71,retail,"local, lasting",4,11,4,-0.0,-0.267,still off
-2026-03-15,7615,83,retail,"local, new",3,14,1,-0.0,0.245,back to normal
-2026-03-15,7615,120,retail,market-wide shift,10,13,3,-0.0,-0.369,still off
-2026-03-15,7615,135,retail,market-wide shift,8,11,8,-0.0,-0.569,still off
-2026-03-15,7615,282,retail,market-wide shift,9,10,8,-0.0,-0.561,still off
-2026-03-15,7615,719,retail,"local, new",4,14,1,-0.0,-0.533,still off
-2026-03-15,7622,120,retail,market-wide shift,10,13,1,-0.0,-0.319,unknown
-2026-03-15,7622,185,retail,"local, new",6,14,1,-0.0,0.222,unknown
-2026-03-15,7622,690,retail,"local, new",1,2,1,-0.0,0.288,unknown
-2026-03-15,7623,67,retail,market-wide shift,15,16,2,-0.0,-0.233,still off
-2026-03-15,7623,92,retail,"local, lasting",1,14,5,-0.0,0.25,back to normal
-2026-03-15,7623,97,retail,"local, new",1,16,1,-0.0,0.298,still off
-2026-03-15,7623,120,retail,market-wide shift,10,13,3,-0.0,-0.394,still off
-2026-03-15,7623,135,retail,market-wide shift,8,11,4,-0.0,-0.403,still off
-2026-03-15,7623,282,retail,market-wide shift,9,10,5,-0.0,-0.425,still off
+2026-03-15,1590,67,retail,market-wide shift,15,16,1,0.0,-0.251,still off
+2026-03-15,1590,71,retail,"local, new",4,11,1,0.0,-0.265,still off
+2026-03-15,1590,114,retail,"local, new",3,11,1,0.0,-0.44,unknown
+2026-03-15,1590,120,retail,market-wide shift,10,13,1,0.0,-0.645,still off
+2026-03-15,1590,135,retail,market-wide shift,8,11,1,0.0,-0.558,still off
+2026-03-15,1590,173,retail,market-wide shift,7,13,1,0.0,-0.622,still off
+2026-03-15,1590,225,retail,"local, new",2,19,1,0.0,-0.21,still off
+2026-03-15,1590,282,retail,market-wide shift,9,10,1,0.0,-0.668,still off
+2026-03-15,1590,598,retail,"local, new",2,8,1,0.0,-0.443,unknown
+2026-03-15,1590,719,retail,"local, new",4,14,1,0.0,-0.245,unknown
+2026-03-15,1590,866,retail,"local, new",1,5,1,0.0,1.398,unknown
+2026-03-15,1593,67,retail,market-wide shift,15,16,1,0.0,-0.335,unknown
+2026-03-15,1593,83,retail,"local, new",3,14,1,0.0,-0.376,unknown
+2026-03-15,1593,114,retail,"local, new",2,11,1,0.0,0.2,unknown
+2026-03-15,1593,120,retail,market-wide shift,10,13,1,0.0,-0.289,unknown
+2026-03-15,1593,147,retail,market-wide shift,3,6,1,0.0,0.972,unknown
+2026-03-15,1593,173,retail,market-wide shift,7,13,1,0.0,-0.46,unknown
+2026-03-15,1593,282,retail,market-wide shift,9,10,1,0.0,-0.214,unknown
+2026-03-15,1593,523,retail,"local, new",1,3,1,0.0,-0.4,unknown
+2026-03-15,2307,67,retail,market-wide shift,15,16,3,0.0,-0.432,still off
+2026-03-15,2307,99,retail,market-wide shift,3,4,1,0.0,-0.623,back to normal
+2026-03-15,2307,119,retail,"local, new",4,12,2,0.0,-0.221,still off
+2026-03-15,2307,120,retail,market-wide shift,10,13,3,0.0,-0.286,still off
+2026-03-15,2307,135,retail,market-wide shift,8,11,3,0.0,-0.456,back to normal
+2026-03-15,2307,147,retail,market-wide shift,3,6,1,0.0,0.217,back to normal
+2026-03-15,2307,173,retail,market-wide shift,7,13,3,0.0,-0.626,back to normal
+2026-03-15,2307,185,retail,"local, new",6,14,1,0.0,0.333,back to normal
+2026-03-15,2307,282,retail,market-wide shift,9,10,3,0.0,-0.467,still off
+2026-03-15,2307,598,retail,"local, new",1,8,1,0.0,0.5,unknown
+2026-03-15,2308,67,retail,market-wide shift,15,16,5,0.0,-0.259,still off
+2026-03-15,2308,83,retail,"local, new",3,14,2,0.0,-0.266,unknown
+2026-03-15,2308,119,retail,"local, new",4,12,2,0.0,-0.31,still off
+2026-03-15,2308,120,retail,"local, new",1,13,1,0.0,0.201,back to normal
+2026-03-15,2308,173,retail,market-wide shift,7,13,1,0.0,-0.259,back to normal
+2026-03-15,2308,185,retail,"local, new",6,14,1,0.0,0.214,back to normal
+2026-03-15,2308,225,retail,"local, new",2,19,1,0.0,0.262,still off
+2026-03-15,2308,756,retail,"local, new",1,3,1,0.0,0.204,back to normal
+2026-03-15,2309,67,retail,market-wide shift,15,16,3,0.0,-0.209,still off
+2026-03-15,2309,83,retail,"local, new",3,14,1,0.0,0.39,back to normal
+2026-03-15,2309,120,retail,market-wide shift,10,13,3,0.0,-0.342,still off
+2026-03-15,2309,135,retail,market-wide shift,8,11,3,0.0,-0.32,still off
+2026-03-15,2309,173,retail,market-wide shift,7,13,3,0.0,-0.595,still off
+2026-03-15,2309,185,retail,"local, new",6,14,1,0.0,0.259,still off
+2026-03-15,2309,225,retail,"local, new",2,19,1,0.0,0.258,back to normal
+2026-03-15,2309,282,retail,market-wide shift,9,10,3,0.0,-0.326,still off
+2026-03-15,2310,58,retail,"local, new",1,10,1,0.0,-0.202,still off
+2026-03-15,2310,67,retail,market-wide shift,15,16,5,0.0,-0.389,still off
+2026-03-15,2310,71,retail,"local, new",4,11,2,0.0,-0.206,back to normal
+2026-03-15,2310,99,retail,market-wide shift,3,4,1,0.0,-0.208,unknown
+2026-03-15,2310,120,retail,market-wide shift,10,13,3,0.0,-0.405,still off
+2026-03-15,2310,135,retail,market-wide shift,8,11,5,0.0,-0.43,still off
+2026-03-15,2310,173,retail,"local, lasting",1,13,4,0.0,0.254,back to normal
+2026-03-15,2310,282,retail,market-wide shift,9,10,3,0.0,-0.605,still off
+2026-03-15,2310,690,retail,"local, new",1,2,1,0.0,-0.4,unknown
+2026-03-15,2310,719,retail,"local, new",4,14,1,0.0,-0.2,still off
+2026-03-15,2311,67,retail,market-wide shift,15,16,10,0.0,-0.465,still off
+2026-03-15,2311,71,retail,"local, new",4,11,1,0.0,-0.26,still off
+2026-03-15,2311,114,retail,"local, lasting",2,11,6,0.0,1.0,still off
+2026-03-15,2311,119,retail,"local, new",4,12,1,0.0,-0.534,still off
+2026-03-15,2311,120,retail,market-wide shift,10,13,9,0.0,-0.607,still off
+2026-03-15,2311,135,retail,market-wide shift,8,11,5,0.0,-0.588,still off
+2026-03-15,2311,173,retail,market-wide shift,7,13,3,0.0,-0.333,back to normal
+2026-03-15,2311,185,retail,"local, new",6,14,1,0.0,0.4,still off
+2026-03-15,2311,282,retail,market-wide shift,9,10,7,0.0,-0.677,still off
+2026-03-15,4251,136,retail,"local, new",1,1,2,0.0,-0.318,still off
+2026-03-15,4251,225,retail,"local, new",2,19,1,0.0,-0.2,back to normal
+2026-03-15,5261,62,retail,"local, new",1,9,1,0.0,0.243,still off
+2026-03-15,5269,744,retail,"local, new",1,9,1,0.0,0.393,still off
+2026-03-15,7599,67,retail,market-wide shift,15,16,3,0.0,-0.376,still off
+2026-03-15,7599,302,retail,market-wide shift,3,4,3,0.0,-0.334,back to normal
+2026-03-15,7601,67,retail,market-wide shift,15,16,5,0.0,-0.33,still off
+2026-03-15,7601,78,retail,market-wide shift,4,6,1,0.0,-0.334,still off
+2026-03-15,7601,302,retail,market-wide shift,3,4,1,0.0,-0.215,still off
+2026-03-15,7601,598,retail,"local, new",2,8,1,0.0,-0.387,unknown
+2026-03-15,7603,67,retail,market-wide shift,15,16,5,0.0,-0.521,still off
+2026-03-15,7603,78,retail,market-wide shift,4,6,1,0.0,-0.379,still off
+2026-03-15,7603,99,retail,market-wide shift,3,4,1,0.0,-0.449,unknown
+2026-03-15,7603,114,retail,"local, new",3,11,1,0.0,-0.375,back to normal
+2026-03-15,7603,119,retail,"local, new",4,12,1,0.0,-0.214,still off
+2026-03-15,7604,67,retail,market-wide shift,15,16,1,0.0,-0.493,still off
+2026-03-15,7604,78,retail,market-wide shift,4,6,1,0.0,-0.409,still off
+2026-03-15,7604,83,retail,"local, new",3,14,1,0.0,0.631,still off
+2026-03-15,7604,97,retail,"local, new",1,16,1,0.0,-0.259,still off
+2026-03-15,7604,147,retail,market-wide shift,3,6,1,0.0,1.7,still off
+2026-03-15,7604,173,retail,market-wide shift,7,13,1,0.0,-0.2,unknown
+2026-03-15,7604,185,retail,"local, new",1,14,1,0.0,-0.375,back to normal
+2026-03-15,7604,254,retail,"local, new",1,4,1,0.0,-0.315,still off
+2026-03-15,7604,719,retail,"local, new",1,14,1,0.0,0.25,back to normal
+2026-03-15,7604,866,retail,"local, new",1,5,1,0.0,-0.369,back to normal
+2026-03-15,7607,67,retail,market-wide shift,15,16,3,0.0,-0.423,still off
+2026-03-15,7607,78,retail,market-wide shift,4,6,3,0.0,-0.314,still off
+2026-03-15,7607,120,retail,market-wide shift,10,13,2,0.0,-0.2,still off
+2026-03-15,7607,148,retail,"local, lasting",1,4,3,0.0,-0.375,still off
+2026-03-15,7607,302,retail,market-wide shift,3,4,1,0.0,-0.262,still off
+2026-03-15,7614,67,retail,market-wide shift,15,16,1,0.0,-0.398,unknown
+2026-03-15,7614,83,retail,"local, new",3,14,1,0.0,-0.478,unknown
+2026-03-15,7614,114,retail,"local, new",3,11,1,0.0,-0.318,unknown
+2026-03-15,7614,135,retail,market-wide shift,8,11,1,0.0,-0.48,unknown
+2026-03-15,7614,185,retail,"local, new",6,14,1,0.0,0.5,unknown
+2026-03-15,7614,282,retail,market-wide shift,9,10,1,0.0,-0.498,unknown
+2026-03-15,7614,719,retail,"local, new",4,14,1,0.0,-0.25,unknown
+2026-03-15,7615,67,retail,market-wide shift,15,16,8,0.0,-0.499,still off
+2026-03-15,7615,71,retail,"local, lasting",4,11,4,0.0,-0.267,still off
+2026-03-15,7615,83,retail,"local, new",3,14,1,0.0,0.245,back to normal
+2026-03-15,7615,120,retail,market-wide shift,10,13,3,0.0,-0.369,still off
+2026-03-15,7615,135,retail,market-wide shift,8,11,8,0.0,-0.569,still off
+2026-03-15,7615,282,retail,market-wide shift,9,10,8,0.0,-0.561,still off
+2026-03-15,7615,719,retail,"local, new",4,14,1,0.0,-0.533,still off
+2026-03-15,7622,120,retail,market-wide shift,10,13,1,0.0,-0.319,unknown
+2026-03-15,7622,185,retail,"local, new",6,14,1,0.0,0.222,unknown
+2026-03-15,7622,690,retail,"local, new",1,2,1,0.0,0.288,unknown
+2026-03-15,7623,67,retail,market-wide shift,15,16,2,0.0,-0.233,still off
+2026-03-15,7623,92,retail,"local, lasting",1,14,5,0.0,0.25,back to normal
+2026-03-15,7623,97,retail,"local, new",1,16,1,0.0,0.298,still off
+2026-03-15,7623,120,retail,market-wide shift,10,13,3,0.0,-0.394,still off
+2026-03-15,7623,135,retail,market-wide shift,8,11,4,0.0,-0.403,still off
+2026-03-15,7623,282,retail,market-wide shift,9,10,5,0.0,-0.425,still off
 2026-04-15,1590,58,retail,market-wide shift,4,6,1,0.0,-0.338,still off
 2026-04-15,1590,67,retail,market-wide shift,13,13,2,0.0,-0.337,still off
 2026-04-15,1590,71,retail,"local, new",3,9,2,0.0,-0.235,still off

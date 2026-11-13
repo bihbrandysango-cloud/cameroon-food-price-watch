@@ -14,12 +14,12 @@
     "direction_right_on_big_moves": 0.293
   },
   "model": {
-    "median_abs_pct_error": 0.0333,
-    "mean_abs_pct_error": 0.1008,
-    "within_10_pct": 0.6965,
-    "direction_right_on_big_moves": 0.5506
+    "median_abs_pct_error": 0.0335,
+    "mean_abs_pct_error": 0.1009,
+    "within_10_pct": 0.6955,
+    "direction_right_on_big_moves": 0.5599
   },
   "big_moves_over_10_pct": 1611,
-  "model_error_p10": -0.1565,
-  "model_error_p90": 0.1676
+  "model_error_p10": -0.1569,
+  "model_error_p90": 0.1678
 }
