@@ -6,6 +6,8 @@ Food prices in Cameroon swing sharply, and the families who buy food and the far
 
 **[Watch the 1 min 41 s video tour](docs/walkthrough.mp4)** of all seven pages.
 
+**Project Walkthrough:** [the whole project in 11 slides (PDF)](docs/Cameroon-Food-Price-Watch-Project-Walkthrough.pdf): problem, data, method, decisions, findings and limits
+
 | | |
 |---|---|
 | **Data** | 68,996 WFP price records, Jan 2017 to Sep 2026, 76 markets, 54 foods |

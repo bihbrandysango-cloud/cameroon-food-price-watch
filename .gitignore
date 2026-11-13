@@ -13,3 +13,6 @@ transform/.user.yml
 powerbi/**/.pbi/localSettings.json
 powerbi/**/.pbi/cache.abf
 powerbi/out/
+
+# private talk materials (PowerPoint with speaker notes)
+presentation/
