@@ -22,6 +22,10 @@ vars:
   history_window_years: 5
   watch_threshold: 0.20  # 20% or more away from normal: watch
   alert_threshold: 0.40  # 40% or more away from normal: alert
+  # Alert types (step 4b): why is a price off normal?
+  market_wide_share: 0.5     # this share of judged markets moving the same way: market-wide
+  min_markets_for_breadth: 3 # fewer judged markets than this: can't call it market-wide
+  lasting_months: 3          # off normal this many months running in one market: lasting
 
 models:
   food_price_watch:

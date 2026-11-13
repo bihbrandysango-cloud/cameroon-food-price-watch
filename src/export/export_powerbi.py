@@ -53,6 +53,16 @@ QUERIES = {
         from fct_price_alerts a
         order by a.price_month, a.market_code, a.commodity_code, a.price_type
     """,
+    # why each price is off normal (step 4b); a separate file so the report's
+    # existing tables are unchanged
+    "alert_types": """
+        select price_month, market_code, commodity_code, price_type, alert_type,
+               markets_same_direction, markets_judged, months_running,
+               general_gap, gap_after_general_shift, next_month
+        from fct_alert_types
+        where alert_type is not null
+        order by price_month, market_code, commodity_code, price_type
+    """,
     "markets": """
         select market_code, market, region, department, lat, lon, first_month, last_month,
                months_with_prices, missing_months, coverage, is_reporting_now

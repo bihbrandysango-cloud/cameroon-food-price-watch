@@ -9,10 +9,10 @@ Food prices in Cameroon swing sharply, and the families who buy food and the far
 | | |
 |---|---|
 | **Data** | 68,996 WFP price records, Jan 2017 to Sep 2026, 76 markets, 54 foods |
-| **Engineering** | Python API ingestion, DuckDB warehouse, dbt models, 24 data checks, monthly GitHub Actions run |
+| **Engineering** | Python API ingestion, DuckDB warehouse, dbt models, 27 data checks, monthly GitHub Actions run |
 | **Science** | Seasonal anomaly detection, gradient-boosted forecast with walk-forward backtest |
 | **Report** | Seven-page Power BI report built as a PBIP project from code |
-| **Tests** | 21 code tests and 24 data checks, all passing |
+| **Tests** | 21 code tests and 27 data checks, all passing |
 
 ## The question
 
@@ -43,16 +43,28 @@ HDX HAPI ──> 1. Fetch ──> 2. Clean and store ──> 3. Alerts ──> 4
 
 **1. Fetch** (`src/ingest/fetch_wfp.py`). Downloads prices from HAPI in pages of 2,000 rows and retries pages that arrive cut off. After the first full download it re-fetches only the last six months, because WFP sometimes corrects recent prices, and merges them in. Each run is recorded in `data/raw/manifest.json` with row counts and a SHA-256 fingerprint; if nothing changed, nothing is saved. The HDX file link blocks scripts with a bot check, so the pipeline uses HAPI, HDX's supported route.
 
-**2. Clean and store** (`transform/`, dbt on DuckDB). In Maroua in September 2024, maize was 350 FCFA per kg retail and 35,000 per 100 kg bag: the same price. The staging model reads the pack size from the unit and converts every price to FCFA per kg (per litre for oil, per piece for eggs). Prices more than 3 times above or below the national median for that food and month are flagged as suspect and kept out of the alerts. Twenty-four data checks run on every build and stop the monthly job if one fails.
+**2. Clean and store** (`transform/`, dbt on DuckDB). In Maroua in September 2024, maize was 350 FCFA per kg retail and 35,000 per 100 kg bag: the same price. The staging model reads the pack size from the unit and converts every price to FCFA per kg (per litre for oil, per piece for eggs). Prices more than 3 times above or below the national median for that food and month are flagged as suspect and kept out of the alerts. Twenty-seven data checks run on every build and stop the monthly job if one fails.
 
 | Table | What's in it |
 |---|---|
 | `stg_wfp__prices` | Every raw price converted to a standard unit |
 | `fct_monthly_prices` | One price per market, food, price type and month, with the national median and a suspect flag |
 | `fct_price_alerts` | Each price against its seasonal normal, with an alert level |
+| `fct_alert_types` | Why a price is off normal: general price shift, market-wide shift, local and lasting, or local and new |
 | `dim_markets` | Each market's location, first and last month, coverage and whether it still reports |
 
 **3. Seasonal alerts** (`fct_price_alerts`). Each price is compared with the median for the same market, food, price type and calendar month in the previous five years, using earlier years only, so an alert knows only what someone would have known at the time. 20% from normal is a watch, 40% is an alert, upwards and downwards. A market needs three earlier years for that month before it's judged. Two tests guard the logic, including one that proves no same-year or future data is used.
+
+**3b. Blip or real change?** (`fct_alert_types`). An alert says a price is far from normal, not why. Each flagged price gets one of four types, using only what was known that month:
+
+| Type | Rule |
+|---|---|
+| General price shift | Most foods in most markets moved the same way that month (a stand-in for inflation), and this price moved no more than that |
+| Market-wide shift | This food moved the same way in at least half of the markets that could be judged (at least 3 markets) |
+| Local, lasting | Only this market, but off normal 3 months or more in a row |
+| Local, new | Only this market, and the first month or two: a possible one-off blip, local shock or data problem |
+
+Three data checks make sure every flagged price gets a type, normal prices get none, and each type meets its own rule.
 
 **4. Forecast** (`src/forecast/forecast_prices.py`). A gradient-boosted tree model (scikit-learn) predicts next month's price for every market, food and price type, using recent moves, last year's move, the national trend, the month, the food and the region. It was tested month by month over October 2025 to September 2026, each time trained only on data from before the month it predicted, and compared with two simple guesses. Its forecast is published as a likely range taken from its own past errors.
 
@@ -72,6 +84,17 @@ HDX HAPI ──> 1. Fetch ──> 2. Clean and store ──> 3. Alerts ──> 4
 
 Across maize, imported rice and fresh cassava, high alerts cluster in 2022 to 2024, when food inflation was high; in 2026 it flips to 80 low alerts against 2 high.
 
+**Most alerts are real market changes, and the types tell them apart.** I checked each type against what happened the following month (that outcome is only used to check, never to label):
+
+| Type | Alerts, 2020 to 2026 | Back to normal the next month |
+|---|---|---|
+| Market-wide shift | 3,325 | 15% |
+| General price shift | 2,038 | 18% |
+| Local, lasting | 347 | 28% |
+| Local, new | 1,490 | 45% |
+
+A first-time alert in a single market is three times as likely to vanish the next month as a market-wide one, so it deserves a check before anyone acts on it. The maize crash is a market-wide shift in 15 of 18 markets, several of them low for 9 to 16 months running. General price shifts appear only in 2020 to 2024 and peak in 2023 (772), when food inflation was high, and none in 2025 or 2026. In September 2026, 93 of the 158 flagged prices are market-wide shifts, 49 local and new, and 16 local and lasting.
+
 **Forecasting one month ahead is hard, and the model says so.** Over 5,136 test predictions:
 
 | Method | Typical error | Within 10% | Direction right when the price moved over 10% |
@@ -86,7 +109,8 @@ The model is no more accurate than assuming the price stays the same, because 35
 
 ## Limitations
 
-- "Normal" isn't adjusted for general inflation yet. Deflating prices with Cameroon's consumer price index is the next improvement.
+- "Normal" isn't adjusted for official inflation yet. The "general price shift" type uses the median move of all foods that month as a stand-in; Cameroon's consumer price index would be more exact.
+- The alert types are rules, not a trained model, and the thresholds (half the markets, 3 months) are judgement calls set in `dbt_project.yml`.
 - 78% of prices can't be judged yet, because markets need three years of history for that month.
 - The suspect-price check compares markets within the same month, so it misses an error that hits every market at once, like September 2023. Comparing each price with the same market's previous month would catch it.
 - One month is a short horizon. A longer horizon, or adding rainfall and exchange-rate data, may help the forecast.
@@ -126,7 +150,7 @@ export HAPI_APP_IDENTIFIER=$(printf 'your-app-name:you@example.com' | base64)
 
 python -m pytest -q                                          # 21 code tests
 python -m src.ingest.fetch_wfp --full                        # 1. fetch the whole history
-dbt build --project-dir transform --profiles-dir transform   # 2-3. warehouse, alerts, 24 data checks
+dbt build --project-dir transform --profiles-dir transform   # 2-3. warehouse, alerts, alert types, 27 data checks
 python -m src.forecast.forecast_prices                       # 4. backtest and forecast
 python -m src.export.export_powerbi                          # 5. tables for Power BI
 python powerbi/build/build_pbip.py                           # build the Power BI project

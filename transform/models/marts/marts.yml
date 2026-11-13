@@ -42,6 +42,18 @@ models:
       - name: years_of_history
         tests: [not_null]
 
+  - name: fct_alert_types
+    description: Every judged price with a reason it is off normal (general price shift, market-wide shift, local lasting, local new), using only what was known that month. next_month is for checking the labels afterwards.
+    columns:
+      - name: alert_type
+        description: Empty for prices within the normal range.
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["general price shift", "market-wide shift", "local, lasting", "local, new"]
+      - name: months_running
+        tests: [not_null]
+
   - name: rpt_current_alerts
     description: The latest month's prices outside the normal range, furthest from normal first.
     columns:
